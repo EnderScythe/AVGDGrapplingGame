@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://dse5mhptrraod"]
+
+[ext_resource type="PackedScene" uid="uid://br8mfg5ehl0w7" path="res://Block.tscn" id="1_48qvd"]
+[ext_resource type="PackedScene" uid="uid://cjlcm3gj7pmgf" path="res://Player.tscn" id="1_chibw"]
+
+[node name="TestRoom" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_chibw")]
+position = Vector2(1353, 676)
+
+[node name="Block" parent="." instance=ExtResource("1_48qvd")]
+position = Vector2(836, 321)
+
+[node name="Block5" parent="." instance=ExtResource("1_48qvd")]
+position = Vector2(979, 877)
+
+[node name="Block7" parent="." instance=ExtResource("1_48qvd")]
+position = Vector2(1413, 875)
+
+[node name="Sprite2D" parent="Block7" index="0"]
+scale = Vector2(3, 1)
+
+[node name="CollisionShape2D" parent="Block7" index="1"]
+scale = Vector2(3, 1)
+
+[node name="Block6" parent="." instance=ExtResource("1_48qvd")]
+position = Vector2(526, 886)
+
+[node name="Sprite2D" parent="Block6" index="0"]
+scale = Vector2(3, 1)
+
+[node name="CollisionShape2D" parent="Block6" index="1"]
+scale = Vector2(3, 1)
+
+[editable path="Block7"]
+[editable path="Block6"]
