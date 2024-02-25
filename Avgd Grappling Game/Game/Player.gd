@@ -4,10 +4,10 @@ const HOOK_RES = preload("res://Game/Hook.tscn")
 var hook = null
 
 const SPEED = 500.0
-const JUMP_VELOCITY = -600.0
+const JUMP_VELOCITY = -800.0
 const ACCL = 4000.0
 const FRIC = 800.0
-const LAUNCH_VEL = 3000.0
+const LAUNCH_VEL = 2800.0
 const HOOK_FRIC = 200.0
 const HOOK_PULL = 4800.0
 const MAX_LENGTH = 1600.0
@@ -48,8 +48,10 @@ func launch_grapple(angle):
 	hook.player = self
 	hook.position = position
 	hook.set_rotation(angle)
-	hook.apply_central_impulse(Vector2(LAUNCH_VEL, 0).rotated(angle))
-	hook.translate(Vector2(125,0).rotated(angle))
+	var initial_impulse = Vector2(LAUNCH_VEL, 0).rotated(angle)
+	var inertia_fac = max(0, velocity.dot(initial_impulse) / initial_impulse.dot(initial_impulse))
+	hook.apply_central_impulse(initial_impulse * (1 + inertia_fac))
+	hook.translate(Vector2(80,0).rotated(angle))
 	add_sibling(hook)
 
 func _input(event):

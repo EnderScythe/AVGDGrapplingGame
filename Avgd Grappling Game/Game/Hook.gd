@@ -9,6 +9,7 @@ var length = 0 # grapple cord length, can be changed during grapple by player (r
 func _ready():
 	contact_monitor = true
 	max_contacts_reported = 3
+	add_collision_exception_with(player)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -32,9 +33,11 @@ func despawn():
 func enter_grapple():
 	freeze = true
 	length = dist_player()
+	remove_collision_exception_with(player)
 	state = 1
 
 func enter_retract():
+	add_collision_exception_with(player)
 	state = 2
 
 func dist_player():
