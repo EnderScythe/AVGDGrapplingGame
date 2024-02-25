@@ -32,5 +32,15 @@ scale = Vector2(3, 1)
 [node name="CollisionShape2D" parent="Block6" index="1"]
 scale = Vector2(3, 1)
 
+[node name="Block8" parent="." instance=ExtResource("1_48qvd")]
+position = Vector2(990, 1204)
+
+[node name="Sprite2D" parent="Block8" index="0"]
+scale = Vector2(20, 1)
+
+[node name="CollisionShape2D" parent="Block8" index="1"]
+scale = Vector2(20, 1)
+
 [editable path="Block7"]
 [editable path="Block6"]
+[editable path="Block8"]
