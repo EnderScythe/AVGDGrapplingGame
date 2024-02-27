@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://c1ecjxi7w7ff8"]
+[gd_scene load_steps=5 format=3 uid="uid://c1ecjxi7w7ff8"]
 
 [ext_resource type="Script" path="res://Menu/Menu.gd" id="1_ax8nx"]
+[ext_resource type="Texture2D" uid="uid://jvlotbrssin5" path="res://ParallaxBackground.png" id="2_ajdjl"]
+[ext_resource type="Script" path="res://Menu/Camera2D.gd" id="3_803cc"]
+[ext_resource type="Script" path="res://Menu/VBoxContainer.gd" id="4_fp2sj"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -11,32 +14,51 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ax8nx")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Background" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(-1, 0)
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(2200, 2.08165e-12)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Background"]
+texture_filter = 1
+position = Vector2(913.5, 598)
+scale = Vector2(3.82344, 4.984)
+texture = ExtResource("2_ajdjl")
+
+[node name="Camera2D" type="Camera2D" parent="ParallaxBackground"]
+position = Vector2(900, 602)
+script = ExtResource("3_803cc")
+
+[node name="MenuList" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ParallaxBackground/MenuList"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -96.0
-offset_top = -50.5
-offset_right = 96.0
-offset_bottom = 50.5
+offset_left = 804.0
+offset_top = 549.5
+offset_right = 996.0
+offset_bottom = 650.5
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("4_fp2sj")
 
-[node name="StartButton" type="Button" parent="VBoxContainer"]
+[node name="StartButton" type="Button" parent="ParallaxBackground/MenuList/VBoxContainer"]
 layout_mode = 2
 text = "Start"
 
-[node name="SettingsButton" type="Button" parent="VBoxContainer"]
+[node name="SettingsButton" type="Button" parent="ParallaxBackground/MenuList/VBoxContainer"]
 layout_mode = 2
 text = "Settings"
 
-[node name="ExitButton" type="Button" parent="VBoxContainer"]
+[node name="ExitButton" type="Button" parent="ParallaxBackground/MenuList/VBoxContainer"]
 layout_mode = 2
 text = "Exit"
 
-[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="ParallaxBackground/MenuList/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="ParallaxBackground/MenuList/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="ParallaxBackground/MenuList/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
