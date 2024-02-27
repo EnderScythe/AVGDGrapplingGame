@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dse5mhptrraod"]
+[gd_scene load_steps=6 format=3 uid="uid://dse5mhptrraod"]
 
 [ext_resource type="PackedScene" uid="uid://cjlcm3gj7pmgf" path="res://Game/Player.tscn" id="1_chibw"]
 [ext_resource type="Texture2D" uid="uid://bkckcmps4w8ql" path="res://icon.svg" id="2_grvmt"]
+[ext_resource type="PackedScene" uid="uid://qajqqd2gk71l" path="res://Enemies/Bat/Bat.tscn" id="2_s661b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3whor"]
 texture = ExtResource("2_grvmt")
@@ -212,6 +213,9 @@ position = Vector2(194, 133)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(0.85, 0.85)
+
+[node name="Bat" parent="." instance=ExtResource("2_s661b")]
+position = Vector2(1829, 530)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_jhlno")

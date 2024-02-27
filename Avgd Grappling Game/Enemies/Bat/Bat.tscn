@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://qajqqd2gk71l"]
+
+[ext_resource type="Script" path="res://Enemies/Bat/Bat.gd" id="1_aym0i"]
+[ext_resource type="Texture2D" uid="uid://x0anwyqy8msn" path="res://Enemies/Bat/bat1-1.png.png" id="1_onh7x"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_37vpw"]
+radius = 45.0
+height = 146.0
+
+[node name="Bat" type="CharacterBody2D"]
+script = ExtResource("1_aym0i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(4, 5)
+scale = Vector2(5, 5)
+texture = ExtResource("1_onh7x")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-25, 26)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(-21, 17)
+polygon = PackedVector2Array(-629, -231, -751, 78, -549, 348, -56, 209, 25, -15, -105, -196)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_37vpw")
