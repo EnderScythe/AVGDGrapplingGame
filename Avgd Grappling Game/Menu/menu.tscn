@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1ecjxi7w7ff8"]
+[gd_scene load_steps=6 format=3 uid="uid://c1ecjxi7w7ff8"]
 
 [ext_resource type="Script" path="res://Menu/Menu.gd" id="1_ax8nx"]
 [ext_resource type="Texture2D" uid="uid://jvlotbrssin5" path="res://ParallaxBackground.png" id="2_ajdjl"]
 [ext_resource type="Script" path="res://Menu/Camera2D.gd" id="3_803cc"]
 [ext_resource type="Script" path="res://Menu/VBoxContainer.gd" id="4_fp2sj"]
+[ext_resource type="Texture2D" uid="uid://b2n1er5ags1fv" path="res://Untitled drawing.png" id="5_q4yt7"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -58,6 +59,10 @@ text = "Settings"
 [node name="ExitButton" type="Button" parent="ParallaxBackground/MenuList/VBoxContainer"]
 layout_mode = 2
 text = "Exit"
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/MenuList/VBoxContainer"]
+position = Vector2(78, -129.5)
+texture = ExtResource("5_q4yt7")
 
 [connection signal="pressed" from="ParallaxBackground/MenuList/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="ParallaxBackground/MenuList/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
