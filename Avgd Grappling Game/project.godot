@@ -69,6 +69,12 @@ extend_grapple={
 ]
 }
 
+[layer_names]
+
+avoidance/layer_1="enemies"
+avoidance/layer_2="player"
+avoidance/layer_3="walls"
+
 [physics]
 
 2d/default_gravity=1800.0
