@@ -11,9 +11,10 @@ var timeSinceNewPos
 var lastPos
 var rng = RandomNumberGenerator.new();
 var accel = 5;
-
+var vxMax = 727
+var vyMax = 500
 #attack
-var atkCooldown;
+var escapeTimer = 0;
 var damage
 var playerPos;
 #var MAX_SPEED = 2000;
@@ -41,12 +42,16 @@ func _physics_process(delta):
 			newPos = position + Vector2(0, rng.randf_range(150, 450)).rotated(newRotation)
 			timeSinceNewPos=0
 	elif aggro == true:
-		if(position.distance_to(playerPos) > 10000):
-			print(position.distance_to(playerPos))
-			aggro=false
-			idle=true
-			accel=5
+		if(position.distance_to(playerPos) > 2000):
+			escapeTimer+=delta
+			print(escapeTimer)
+			if escapeTimer >= 5:
+				aggro=false
+				idle=true
+				accel=5 	
+			newPos=playerPos
 		else:
+			escapeTimer=0
 			newPos = playerPos
 		
 	timeSinceNewPos+=delta
@@ -59,11 +64,15 @@ func _physics_process(delta):
 	#print(-(velocity.y/10))
 	#rotation = deg_to_rad(-(velocity.y/10))
 	#$Sprite2d.rotation_degrees = deg_to_rad((velocity.y/100))
-	print(aggro)
+	print(velocity)
+	if velocity.x>vxMax:
+		velocity.x = vxMax
+	elif velocity.y>vyMax:
+		velocity.y=vyMax
 	move_and_slide()
 
 func _on_area_2d_body_entered(body):
 	if body.get_name() == "Player":
 		idle = false
 		aggro = true
-		accel=10
+		accel=7.5
