@@ -44,7 +44,7 @@ func _physics_process(delta):
 	elif aggro == true:
 		if(position.distance_to(playerPos) > 2000):
 			escapeTimer+=delta
-			print(escapeTimer)
+			# print(escapeTimer)
 			if escapeTimer >= 5:
 				aggro=false
 				idle=true
@@ -64,7 +64,7 @@ func _physics_process(delta):
 	#print(-(velocity.y/10))
 	#rotation = deg_to_rad(-(velocity.y/10))
 	#$Sprite2d.rotation_degrees = deg_to_rad((velocity.y/100))
-	print(velocity)
+	# print(velocity)
 	if velocity.x>vxMax:
 		velocity.x = vxMax
 	elif velocity.y>vyMax:

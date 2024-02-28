@@ -4,6 +4,8 @@ var player = null
 var time = 0
 var state = 0 # 0 = launch, 1 = grapple, 2 = retract
 var length = 0 # grapple cord length, can be changed during grapple by player (rmb contract and shift extend)
+var hooked_body
+var hooked_rel_pos
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,13 +17,19 @@ func _ready():
 func _process(delta):
 	time += delta
 	if state == 0: launch_process(delta)
-	# elif state == 1: grapple_process(delta)
+	elif state == 1: grapple_process(delta)
 	elif state == 2: retract_process(delta)
 	queue_redraw()
 
 func launch_process(delta):
-	if get_contact_count() > 0: enter_grapple()
+	# if get_contact_count() > 0:
+		# hooked_body = get_colliding_bodies()[0]
+		# hooked_rel_pos = position - hooked_body.position
+		# enter_grapple()
 	if dist_player() > player.MAX_LENGTH: enter_retract()
+
+func grapple_process(delta):
+	position = hooked_body.position + hooked_rel_pos
 
 func retract_process(delta):
 	despawn()
@@ -31,9 +39,10 @@ func despawn():
 	queue_free()
 
 func enter_grapple():
-	freeze = true
+	set_freeze_mode(RigidBody2D.FREEZE_MODE_KINEMATIC) # this SHOULD NOT be necessary
+	set_freeze_enabled(true)
+	remove_collision_exception_with(player) # this DOES NOT WORK
 	length = dist_player()
-	remove_collision_exception_with(player)
 	state = 1
 
 func enter_retract():
@@ -44,4 +53,12 @@ func dist_player():
 	return position.distance_to(player.position)
 
 func _draw():
+	if player == null: return
 	draw_line(Vector2.ZERO, (player.position - position).rotated(-rotation), Color(0.3, 0.4, 1), 4)
+
+
+func _on_body_entered(body):
+	if state == 0:
+		hooked_body = body
+		hooked_rel_pos = position - hooked_body.position
+		enter_grapple()
