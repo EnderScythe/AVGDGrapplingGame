@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://cngjmghkejll0"]
+
+[ext_resource type="Script" path="res://Enemies/Spider/Spider.gd" id="1_ikt67"]
+[ext_resource type="Texture2D" uid="uid://bkckcmps4w8ql" path="res://icon.svg" id="1_jcuuu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d13sc"]
+radius = 60.0083
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_um7pu"]
+size = Vector2(453, 176)
+
+[node name="Spider" type="CharacterBody2D"]
+script = ExtResource("1_ikt67")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_jcuuu")
+
+[node name="l_ray" type="RayCast2D" parent="."]
+position = Vector2(1, -1)
+target_position = Vector2(-114, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -1)
+shape = SubResource("CircleShape2D_d13sc")
+
+[node name="detectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detectionArea"]
+position = Vector2(4, -8)
+shape = SubResource("RectangleShape2D_um7pu")
+
+[node name="healthBar" type="ProgressBar" parent="."]
+modulate = Color(0.627451, 0.784314, 0.0862745, 1)
+offset_left = -47.0
+offset_top = -116.0
+offset_right = 143.0
+offset_bottom = -89.0
+scale = Vector2(0.5, 0.5)
+show_percentage = false
+
+[connection signal="body_entered" from="detectionArea" to="." method="_on_detection_area_body_entered"]
