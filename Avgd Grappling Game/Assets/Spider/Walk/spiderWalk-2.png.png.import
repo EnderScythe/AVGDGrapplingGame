@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqx0o86bcm2om"
-path="res://.godot/imported/bat-fly-13.png.png-e87b612720e2c6d735c7f67f796848d6.ctex"
+uid="uid://cqts2gj7mmrwx"
+path="res://.godot/imported/spiderWalk-2.png.png-2a1e5026f770247c2b3311f2b747f09e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Bat/Flying/bat-fly-13.png.png"
-dest_files=["res://.godot/imported/bat-fly-13.png.png-e87b612720e2c6d735c7f67f796848d6.ctex"]
+source_file="res://Assets/Spider/Walk/spiderWalk-2.png.png"
+dest_files=["res://.godot/imported/spiderWalk-2.png.png-2a1e5026f770247c2b3311f2b747f09e.ctex"]
 
 [params]
 

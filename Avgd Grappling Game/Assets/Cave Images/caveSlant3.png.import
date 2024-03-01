@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqx0o86bcm2om"
-path="res://.godot/imported/bat-fly-13.png.png-e87b612720e2c6d735c7f67f796848d6.ctex"
+uid="uid://cx83sd1hfs0w7"
+path="res://.godot/imported/caveSlant3.png-ca75239a2fe6c7e8f72d46d4b5471bba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Bat/Flying/bat-fly-13.png.png"
-dest_files=["res://.godot/imported/bat-fly-13.png.png-e87b612720e2c6d735c7f67f796848d6.ctex"]
+source_file="res://Assets/Cave Images/caveSlant3.png"
+dest_files=["res://.godot/imported/caveSlant3.png-ca75239a2fe6c7e8f72d46d4b5471bba.ctex"]
 
 [params]
 
