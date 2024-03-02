@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7hv4rpyu15ux"
-path="res://.godot/imported/caveBlock.png-ad5f795eeef40efdf5960eba686e1732.ctex"
+uid="uid://d83dbfboe1q"
+path="res://.godot/imported/spiderWalk-5.png.png-e7e4270b2c4a4c9fa356e005d822be18.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Cave Images/caveBlock.png"
-dest_files=["res://.godot/imported/caveBlock.png-ad5f795eeef40efdf5960eba686e1732.ctex"]
+source_file="res://Assets/Spider/Walk/spiderWalk-5.png.png"
+dest_files=["res://.godot/imported/spiderWalk-5.png.png-e7e4270b2c4a4c9fa356e005d822be18.ctex"]
 
 [params]
 
