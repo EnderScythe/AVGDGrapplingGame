@@ -1,0 +1,113 @@
+[gd_scene format=3 uid="uid://dcbggxqv1e6m3"]
+
+[node name="Shop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextShieldUpgrades" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 807.0
+offset_top = 435.0
+offset_right = 948.0
+offset_bottom = 474.0
+text = "Shield Upgrades"
+editable = false
+context_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+
+[node name="TextGrappleUpgrades" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 961.0
+offset_top = 435.0
+offset_right = 1109.0
+offset_bottom = 474.0
+text = "Grapple Upgrades"
+editable = false
+context_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+
+[node name="TextChassisUpgrades" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 1123.0
+offset_top = 435.0
+offset_right = 1271.0
+offset_bottom = 474.0
+text = "Chassis Upgrades"
+editable = false
+context_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+
+[node name="ShieldUpgrades" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 807.0
+offset_top = 485.0
+offset_right = 948.0
+offset_bottom = 586.0
+
+[node name="Shield" type="Button" parent="ShieldUpgrades"]
+layout_mode = 2
+text = "Shield (One time)"
+alignment = 0
+
+[node name="ShieldRecharge" type="Button" parent="ShieldUpgrades"]
+layout_mode = 2
+text = "Shield Recharge"
+alignment = 0
+
+[node name="ShieldStrength" type="Button" parent="ShieldUpgrades"]
+layout_mode = 2
+text = "Shield Strength"
+alignment = 0
+
+[node name="GrappleUpgrades" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 961.0
+offset_top = 485.0
+offset_right = 1109.0
+offset_bottom = 586.0
+
+[node name="GrappleRange" type="Button" parent="GrappleUpgrades"]
+layout_mode = 2
+text = "Grapple Range"
+alignment = 0
+
+[node name="Button" type="Button" parent="GrappleUpgrades"]
+layout_mode = 2
+text = "Grapple Launch"
+alignment = 0
+
+[node name="Button2" type="Button" parent="GrappleUpgrades"]
+layout_mode = 2
+text = "Grapple Reel-in"
+alignment = 0
+
+[node name="ChassisUpgrades" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 1123.0
+offset_top = 485.0
+offset_right = 1271.0
+offset_bottom = 525.0
+
+[node name="Button" type="Button" parent="ChassisUpgrades"]
+layout_mode = 2
+text = "Machine Speed"
+alignment = 0
