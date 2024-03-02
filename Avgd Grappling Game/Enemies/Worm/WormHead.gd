@@ -1,19 +1,33 @@
 extends Area2D
 
-var velocity = Vector2(0, 0);
 var segment = preload("res://Enemies/Worm/WormSegment.tscn")
-var parts = [self]; 
+var segments = [self]
+var velocities = []
+#includes head
+var segmentNum = 7
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	var wormSegment = segment.instantiate()
-	add_sibling.call_deferred(wormSegment);
-	pass # Replace with function body.
+	for i in range(segmentNum - 1):
+		var wormSegment = segment.instantiate()
+		add_sibling.call_deferred(wormSegment)
+		segments.append(wormSegment)
+	for i in range(segmentNum):
+		velocities.append(Vector2(0, 0))
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var mousePosition = get_viewport().get_mouse_position()
-	velocity = (mousePosition - position).normalized() * 500;
-	position += velocity * delta
-	pass
+	velocities[0] = (mousePosition - position).normalized() * 500;
+	position += velocities[0] * delta
+	get_node("Sprite2D").set_rotation(velocities[0].angle())
+	for i in range(1, segmentNum):
+		var segmentVector = segments[i - 1].position - segments[i].position
+		var edgeVector = velocities[i - 1].rotated(PI).normalized()
+		velocities[i] = (segmentVector + edgeVector) * 5
+		segments[i].position += velocities[i] * delta
+		segments[i].get_node("Sprite2D").set_rotation(velocities[i].angle())
+		
+		
+		
+		
+			
+		
