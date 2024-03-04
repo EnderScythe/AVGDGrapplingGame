@@ -56,6 +56,22 @@ drag_and_drop_selection_enabled = false
 virtual_keyboard_enabled = false
 middle_mouse_paste_enabled = false
 
+[node name="TextItems" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 1286.0
+offset_top = 435.0
+offset_right = 1434.0
+offset_bottom = 474.0
+text = "Items (1 Use)"
+editable = false
+context_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+
 [node name="ShieldUpgrades" type="VBoxContainer" parent="."]
 layout_mode = 0
 offset_left = 807.0
@@ -90,12 +106,12 @@ layout_mode = 2
 text = "Grapple Range"
 alignment = 0
 
-[node name="Button" type="Button" parent="GrappleUpgrades"]
+[node name="GrappleLaunch" type="Button" parent="GrappleUpgrades"]
 layout_mode = 2
 text = "Grapple Launch"
 alignment = 0
 
-[node name="Button2" type="Button" parent="GrappleUpgrades"]
+[node name="GrappleReel" type="Button" parent="GrappleUpgrades"]
 layout_mode = 2
 text = "Grapple Reel-in"
 alignment = 0
@@ -107,7 +123,39 @@ offset_top = 485.0
 offset_right = 1271.0
 offset_bottom = 525.0
 
-[node name="Button" type="Button" parent="ChassisUpgrades"]
+[node name="MachineSpeed" type="Button" parent="ChassisUpgrades"]
 layout_mode = 2
 text = "Machine Speed"
+alignment = 0
+
+[node name="PickSwingSpeed" type="Button" parent="ChassisUpgrades"]
+layout_mode = 2
+text = "Pick Swing Speed"
+alignment = 0
+
+[node name="BoosterRocket" type="Button" parent="ChassisUpgrades"]
+layout_mode = 2
+text = "Booster Rocket"
+alignment = 0
+
+[node name="Items" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 1286.0
+offset_top = 485.0
+offset_right = 1434.0
+offset_bottom = 586.0
+
+[node name="DoubleJump" type="Button" parent="Items"]
+layout_mode = 2
+text = "Double Jump"
+alignment = 0
+
+[node name="Repulsor" type="Button" parent="Items"]
+layout_mode = 2
+text = "Repulsor"
+alignment = 0
+
+[node name="Revive" type="Button" parent="Items"]
+layout_mode = 2
+text = "Revive"
 alignment = 0
