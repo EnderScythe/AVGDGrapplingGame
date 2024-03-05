@@ -163,5 +163,57 @@ layout_mode = 2
 text = "Revive"
 alignment = 0
 
+[node name="UpgradeDescription" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 808.0
+offset_top = 626.0
+offset_right = 1438.0
+offset_bottom = 885.0
+theme_override_font_sizes/font_size = 20
+text = "Hover over a button to expand."
+editable = false
+context_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+wrap_mode = 1
+
 [connection signal="mouse_entered" from="ShieldUpgrades/Shield" to="." method="_on_shield_mouse_entered"]
+[connection signal="mouse_exited" from="ShieldUpgrades/Shield" to="." method="_on_shield_mouse_exited"]
 [connection signal="pressed" from="ShieldUpgrades/Shield" to="." method="_on_shield_pressed"]
+[connection signal="mouse_entered" from="ShieldUpgrades/ShieldRecharge" to="." method="_on_shield_recharge_mouse_entered"]
+[connection signal="mouse_exited" from="ShieldUpgrades/ShieldRecharge" to="." method="_on_shield_recharge_mouse_exited"]
+[connection signal="pressed" from="ShieldUpgrades/ShieldRecharge" to="." method="_on_shield_recharge_pressed"]
+[connection signal="mouse_entered" from="ShieldUpgrades/ShieldStrength" to="." method="_on_shield_strength_mouse_entered"]
+[connection signal="mouse_exited" from="ShieldUpgrades/ShieldStrength" to="." method="_on_shield_strength_mouse_exited"]
+[connection signal="pressed" from="ShieldUpgrades/ShieldStrength" to="." method="_on_shield_strength_pressed"]
+[connection signal="mouse_entered" from="GrappleUpgrades/GrappleRange" to="." method="_on_grapple_range_mouse_entered"]
+[connection signal="mouse_exited" from="GrappleUpgrades/GrappleRange" to="." method="_on_grapple_range_mouse_exited"]
+[connection signal="pressed" from="GrappleUpgrades/GrappleRange" to="." method="_on_grapple_range_pressed"]
+[connection signal="mouse_entered" from="GrappleUpgrades/GrappleLaunch" to="." method="_on_grapple_launch_mouse_entered"]
+[connection signal="mouse_exited" from="GrappleUpgrades/GrappleLaunch" to="." method="_on_grapple_launch_mouse_exited"]
+[connection signal="pressed" from="GrappleUpgrades/GrappleLaunch" to="." method="_on_grapple_launch_pressed"]
+[connection signal="mouse_entered" from="GrappleUpgrades/GrappleReel" to="." method="_on_grapple_reel_mouse_entered"]
+[connection signal="mouse_exited" from="GrappleUpgrades/GrappleReel" to="." method="_on_grapple_reel_mouse_exited"]
+[connection signal="pressed" from="GrappleUpgrades/GrappleReel" to="." method="_on_grapple_reel_pressed"]
+[connection signal="mouse_entered" from="ChassisUpgrades/MachineSpeed" to="." method="_on_machine_speed_mouse_entered"]
+[connection signal="mouse_exited" from="ChassisUpgrades/MachineSpeed" to="." method="_on_machine_speed_mouse_exited"]
+[connection signal="pressed" from="ChassisUpgrades/MachineSpeed" to="." method="_on_machine_speed_pressed"]
+[connection signal="mouse_entered" from="ChassisUpgrades/PickSwingSpeed" to="." method="_on_pick_swing_speed_mouse_entered"]
+[connection signal="mouse_exited" from="ChassisUpgrades/PickSwingSpeed" to="." method="_on_pick_swing_speed_mouse_exited"]
+[connection signal="pressed" from="ChassisUpgrades/PickSwingSpeed" to="." method="_on_pick_swing_speed_pressed"]
+[connection signal="mouse_entered" from="ChassisUpgrades/BoosterRocket" to="." method="_on_booster_rocket_mouse_entered"]
+[connection signal="mouse_exited" from="ChassisUpgrades/BoosterRocket" to="." method="_on_booster_rocket_mouse_exited"]
+[connection signal="pressed" from="ChassisUpgrades/BoosterRocket" to="." method="_on_booster_rocket_pressed"]
+[connection signal="mouse_entered" from="Items/DoubleJump" to="." method="_on_double_jump_mouse_entered"]
+[connection signal="mouse_exited" from="Items/DoubleJump" to="." method="_on_double_jump_mouse_exited"]
+[connection signal="pressed" from="Items/DoubleJump" to="." method="_on_double_jump_pressed"]
+[connection signal="mouse_entered" from="Items/Repulsor" to="." method="_on_repulsor_mouse_entered"]
+[connection signal="mouse_exited" from="Items/Repulsor" to="." method="_on_repulsor_mouse_exited"]
+[connection signal="pressed" from="Items/Repulsor" to="." method="_on_repulsor_pressed"]
+[connection signal="mouse_entered" from="Items/Revive" to="." method="_on_revive_mouse_entered"]
+[connection signal="mouse_exited" from="Items/Revive" to="." method="_on_revive_mouse_exited"]
+[connection signal="pressed" from="Items/Revive" to="." method="_on_revive_pressed"]
