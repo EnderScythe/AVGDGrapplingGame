@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://dcbggxqv1e6m3"]
+[gd_scene load_steps=2 format=3 uid="uid://dcbggxqv1e6m3"]
+
+[ext_resource type="Script" path="res://Shop/shop.gd" id="1_wl5t0"]
 
 [node name="Shop" type="Control"]
 layout_mode = 3
@@ -7,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_wl5t0")
 
 [node name="TextShieldUpgrades" type="TextEdit" parent="."]
 layout_mode = 0
@@ -159,3 +162,6 @@ alignment = 0
 layout_mode = 2
 text = "Revive"
 alignment = 0
+
+[connection signal="mouse_entered" from="ShieldUpgrades/Shield" to="." method="_on_shield_mouse_entered"]
+[connection signal="pressed" from="ShieldUpgrades/Shield" to="." method="_on_shield_pressed"]
