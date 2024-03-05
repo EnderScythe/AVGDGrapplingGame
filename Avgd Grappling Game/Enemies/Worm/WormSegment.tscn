@@ -6,6 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s1b6f"]
 
 [node name="WormSegment" type="Area2D"]
+scale = Vector2(2, 2)
 script = ExtResource("1_pm3ul")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
