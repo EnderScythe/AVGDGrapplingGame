@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1ki3xt5xwhsq"]
+
+[ext_resource type="Texture2D" uid="uid://bkckcmps4w8ql" path="res://icon.svg" id="1_6tdko"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wlqmu"]
+size = Vector2(468, 241.5)
+
+[node name="SendToMarket" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wlqmu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3.64844, 1.88281)
+texture = ExtResource("1_6tdko")

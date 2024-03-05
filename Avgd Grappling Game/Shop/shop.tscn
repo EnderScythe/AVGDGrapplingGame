@@ -181,6 +181,25 @@ virtual_keyboard_enabled = false
 middle_mouse_paste_enabled = false
 wrap_mode = 1
 
+[node name="PurchaseHistory" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 1448.0
+offset_top = 435.0
+offset_right = 1670.0
+offset_bottom = 885.0
+theme_override_font_sizes/font_size = 20
+text = "Purchase History:
+"
+editable = false
+context_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+wrap_mode = 1
+
 [connection signal="mouse_entered" from="ShieldUpgrades/Shield" to="." method="_on_shield_mouse_entered"]
 [connection signal="mouse_exited" from="ShieldUpgrades/Shield" to="." method="_on_shield_mouse_exited"]
 [connection signal="pressed" from="ShieldUpgrades/Shield" to="." method="_on_shield_pressed"]
