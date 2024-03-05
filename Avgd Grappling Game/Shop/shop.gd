@@ -66,7 +66,7 @@ func _on_machine_speed_mouse_exited():
 func _on_pick_swing_speed_pressed():
 	print("Increased swing speed!")
 func _on_pick_swing_speed_mouse_entered():
-	get_node("UpgradeDescription").text = "Decreases the time between pickaxe swings"
+	get_node("UpgradeDescription").text = "Decreases the time between pickaxe swings!"
 func _on_pick_swing_speed_mouse_exited():
 	get_node("UpgradeDescription").text = "Hover over a button to expand."
 
