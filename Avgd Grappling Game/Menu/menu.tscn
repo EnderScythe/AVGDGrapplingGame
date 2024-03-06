@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://c1ecjxi7w7ff8"]
 
 [ext_resource type="Script" path="res://Menu/Menu.gd" id="1_ax8nx"]
-[ext_resource type="Texture2D" uid="uid://jvlotbrssin5" path="res://ParallaxBackground.png" id="2_ajdjl"]
+[ext_resource type="Texture2D" uid="uid://dsj8xd5waljks" path="res://FWG_2560x1440.jpg" id="2_46y4l"]
 [ext_resource type="Script" path="res://Menu/Camera2D.gd" id="3_803cc"]
 [ext_resource type="Script" path="res://Menu/VBoxContainer.gd" id="4_fp2sj"]
 [ext_resource type="Texture2D" uid="uid://b2n1er5ags1fv" path="res://Untitled drawing.png" id="5_q4yt7"]
@@ -20,13 +20,11 @@ script = ExtResource("1_ax8nx")
 [node name="Background" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(-1, 0)
 motion_scale = Vector2(0.1, 0.1)
-motion_mirroring = Vector2(2200, 2.08165e-12)
+motion_mirroring = Vector2(2560, 2.08165e-12)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Background"]
-texture_filter = 1
-position = Vector2(913.5, 598)
-scale = Vector2(3.82344, 4.984)
-texture = ExtResource("2_ajdjl")
+position = Vector2(1281, 720)
+texture = ExtResource("2_46y4l")
 
 [node name="Camera2D" type="Camera2D" parent="ParallaxBackground"]
 position = Vector2(900, 602)
