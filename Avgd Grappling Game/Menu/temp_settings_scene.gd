@@ -3,7 +3,8 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	$ParallaxBackground/MenuList/VBoxContainer/Volume.grab_focus()
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -15,5 +16,9 @@ func _on_back_pressed():
 	get_tree().change_scene_to_file("res://Menu/menu.tscn")
 
 
-func _on_diff_options_pressed():
-	print("Hehehehehe")
+func _on_volume_pressed():
+	print("Changing volume")
+
+
+func _on_controls_pressed():
+	print("Changing controls")
