@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dse5mhptrraod"]
+[gd_scene load_steps=8 format=3 uid="uid://dse5mhptrraod"]
 
 [ext_resource type="PackedScene" uid="uid://cjlcm3gj7pmgf" path="res://Game/Player.tscn" id="1_chibw"]
 [ext_resource type="Texture2D" uid="uid://bkckcmps4w8ql" path="res://icon.svg" id="2_grvmt"]
 [ext_resource type="PackedScene" uid="uid://qajqqd2gk71l" path="res://Enemies/Bat/Bat.tscn" id="2_s661b"]
 [ext_resource type="PackedScene" uid="uid://d1ki3xt5xwhsq" path="res://Shop/SendToMarket.tscn" id="4_gl0x0"]
+[ext_resource type="PackedScene" uid="uid://8htvqj06xg2w" path="res://Enemies/Worm/WormHead.tscn" id="5_jihwq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3whor"]
 texture = ExtResource("2_grvmt")
@@ -244,3 +245,6 @@ position = Vector2(5106, 290)
 
 [node name="SendToMarket" parent="." instance=ExtResource("4_gl0x0")]
 position = Vector2(9791, 5104)
+
+[node name="Worm" parent="." instance=ExtResource("5_jihwq")]
+position = Vector2(4057, 5459)

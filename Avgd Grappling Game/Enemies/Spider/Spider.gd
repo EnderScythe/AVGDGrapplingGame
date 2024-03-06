@@ -3,7 +3,7 @@ extends CharacterBody2D
 # Spider Statistics
 
 var maxSpeed = 200
-var acceleration = 2
+var acceleration = 5
 
 var health = 100
 
@@ -35,16 +35,19 @@ func _physics_process(delta):
 			scale.x = -scale.x
 		else:
 			spiderState = "climb"
+			rotation_degrees += 90 
 	
 	if (spiderState == "wander"):
 		movement()
+		$AnimatedSprite2D.play("walk")
 	
 	elif (spiderState == "climb"):
 		wallClimb()
+		$AnimatedSprite2D.play("walk")
 		pass
 	
 	elif (spiderState == "chase"):
-		
+		$AnimatedSprite2D.play("walk")
 		targetPos = playerPosition
 		
 		var currentAcc = position.direction_to(targetPos) * acceleration
@@ -65,14 +68,10 @@ func movement():
 func wallClimb():
 	velocity.y = -maxSpeed
 	
-
 func _on_detection_area_body_entered(body):
-	spiderState = "chase"
+	if body.get_name() == "Player":
+		spiderState = "chase"
 
 func update_health():
 	var healthBar = $healthBar
 	healthBar.value = health
-	
-	
-
-
