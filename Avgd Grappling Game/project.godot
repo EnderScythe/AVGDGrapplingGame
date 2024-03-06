@@ -82,7 +82,7 @@ avoidance/layer_3="walls"
 
 [physics]
 
-2d/default_gravity=1800.0
+2d/default_gravity=2000.0
 
 [rendering]
 

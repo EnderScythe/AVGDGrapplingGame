@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://8htvqj06xg2w"]
+
+[ext_resource type="Script" path="res://Enemies/Worm/WormHead.gd" id="1_jig1m"]
+[ext_resource type="Texture2D" uid="uid://bkckcmps4w8ql" path="res://icon.svg" id="2_jhy1p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sxjpn"]
+size = Vector2(29.5, 28.3333)
+
+[node name="Worm" type="Area2D"]
+script = ExtResource("1_jig1m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.500001, -2)
+scale = Vector2(6, 6)
+shape = SubResource("RectangleShape2D_sxjpn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_jhy1p")
