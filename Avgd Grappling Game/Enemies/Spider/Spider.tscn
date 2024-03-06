@@ -1,10 +1,49 @@
-[gd_scene load_steps=5 format=3 uid="uid://cngjmghkejll0"]
+[gd_scene load_steps=13 format=3 uid="uid://cngjmghkejll0"]
 
 [ext_resource type="Script" path="res://Enemies/Spider/Spider.gd" id="1_ikt67"]
-[ext_resource type="Texture2D" uid="uid://bkckcmps4w8ql" path="res://icon.svg" id="1_jcuuu"]
+[ext_resource type="Texture2D" uid="uid://bfri8vhwbs85g" path="res://Assets/Spider/Walk/spiderWalk-1.png.png" id="2_k1ysf"]
+[ext_resource type="Texture2D" uid="uid://cqts2gj7mmrwx" path="res://Assets/Spider/Walk/spiderWalk-2.png.png" id="3_47gm6"]
+[ext_resource type="Texture2D" uid="uid://4px33mw053jo" path="res://Assets/Spider/Walk/spiderWalk-3.png.png" id="4_75j7v"]
+[ext_resource type="Texture2D" uid="uid://2bb7d4j2dkmk" path="res://Assets/Spider/Walk/spiderWalk-4.png.png" id="5_jn2f2"]
+[ext_resource type="Texture2D" uid="uid://d83dbfboe1q" path="res://Assets/Spider/Walk/spiderWalk-5.png.png" id="6_dansl"]
+[ext_resource type="Texture2D" uid="uid://b4nd7tteywxtk" path="res://Assets/Spider/Walk/spiderWalk-6.png.png" id="7_ycama"]
+[ext_resource type="Texture2D" uid="uid://bdqagia5n6r0b" path="res://Assets/Spider/Walk/spiderWalk-7.png.png" id="8_fnqfv"]
+[ext_resource type="Texture2D" uid="uid://ce0qwky5gtr4b" path="res://Assets/Spider/Walk/spiderWalk-8.png.png" id="9_3qp51"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_d13sc"]
-radius = 60.0083
+[sub_resource type="SpriteFrames" id="SpriteFrames_dix5e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_k1ysf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_47gm6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_75j7v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_jn2f2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_dansl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ycama")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_fnqfv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_3qp51")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hkl3a"]
+size = Vector2(236, 167)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_um7pu"]
 size = Vector2(453, 176)
@@ -12,25 +51,31 @@ size = Vector2(453, 176)
 [node name="Spider" type="CharacterBody2D"]
 script = ExtResource("1_ikt67")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_jcuuu")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-57, -39)
+scale = Vector2(5.63333, 5.63333)
+sprite_frames = SubResource("SpriteFrames_dix5e")
+animation = &"walk"
+frame = 2
+frame_progress = 0.498606
 
 [node name="l_ray" type="RayCast2D" parent="."]
+visible = false
 position = Vector2(1, -1)
 target_position = Vector2(-114, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, -1)
-shape = SubResource("CircleShape2D_d13sc")
+position = Vector2(-4, -4.5)
+shape = SubResource("RectangleShape2D_hkl3a")
 
 [node name="detectionArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detectionArea"]
-position = Vector2(4, -8)
+position = Vector2(1, -4)
 shape = SubResource("RectangleShape2D_um7pu")
 
 [node name="healthBar" type="ProgressBar" parent="."]
-modulate = Color(0.627451, 0.784314, 0.0862745, 1)
+modulate = Color(1, 0.12549, 0, 1)
 offset_left = -47.0
 offset_top = -116.0
 offset_right = 143.0
