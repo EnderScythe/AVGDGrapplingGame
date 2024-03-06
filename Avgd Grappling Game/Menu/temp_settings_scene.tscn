@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://dcks4wldf2hrr"]
+[gd_scene load_steps=5 format=3 uid="uid://dcks4wldf2hrr"]
 
 [ext_resource type="Script" path="res://Menu/temp_settings_scene.gd" id="1_munns"]
+[ext_resource type="Texture2D" uid="uid://dsj8xd5waljks" path="res://FWG_2560x1440.jpg" id="2_43742"]
+[ext_resource type="Script" path="res://Menu/Camera2D.gd" id="3_oj8qp"]
+[ext_resource type="Script" path="res://Menu/VBoxContainer.gd" id="4_ri6cn"]
 
 [node name="Settings" type="Control"]
 layout_mode = 3
@@ -11,27 +14,55 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_munns")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Background" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(-1, 0)
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(2560, 2.08165e-12)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Background"]
+position = Vector2(1281, 720)
+texture = ExtResource("2_43742")
+
+[node name="Camera2D" type="Camera2D" parent="ParallaxBackground"]
+position = Vector2(900, 602)
+script = ExtResource("3_oj8qp")
+
+[node name="MenuList" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ParallaxBackground/MenuList"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -96.0
-offset_top = -50.5
-offset_right = 96.0
-offset_bottom = 50.5
+offset_left = 840.0
+offset_top = 551.0
+offset_right = 966.0
+offset_bottom = 660.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("4_ri6cn")
 
-[node name="DiffOptions" type="Button" parent="VBoxContainer"]
+[node name="Volume" type="Button" parent="ParallaxBackground/MenuList/VBoxContainer"]
 layout_mode = 2
-text = "List of various options"
+text = "Volume
+"
 
-[node name="Back" type="Button" parent="VBoxContainer"]
+[node name="Controls" type="Button" parent="ParallaxBackground/MenuList/VBoxContainer"]
+layout_mode = 2
+text = "Controls
+"
+
+[node name="Back" type="Button" parent="ParallaxBackground/MenuList/VBoxContainer"]
 layout_mode = 2
 text = "Back"
 
-[connection signal="pressed" from="VBoxContainer/DiffOptions" to="." method="_on_diff_options_pressed"]
-[connection signal="pressed" from="VBoxContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="ParallaxBackground/MenuList/VBoxContainer/Volume" to="." method="_on_volume_pressed"]
+[connection signal="pressed" from="ParallaxBackground/MenuList/VBoxContainer/Volume" to="." method="_on_diff_options_pressed"]
+[connection signal="pressed" from="ParallaxBackground/MenuList/VBoxContainer/Controls" to="." method="_on_volume_pressed"]
+[connection signal="pressed" from="ParallaxBackground/MenuList/VBoxContainer/Controls" to="." method="_on_diff_options_pressed"]
+[connection signal="pressed" from="ParallaxBackground/MenuList/VBoxContainer/Back" to="." method="_on_back_pressed"]

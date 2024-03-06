@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jvlotbrssin5"
-path="res://.godot/imported/ParallaxBackground.png-69c9c91db076348d30b01f2ff329d0ab.ctex"
+uid="uid://ce1svxiaimw2m"
+path="res://.godot/imported/caveSlope.png-797a78abdf96bfb359d20e3b8cf21afb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ParallaxBackground.png"
-dest_files=["res://.godot/imported/ParallaxBackground.png-69c9c91db076348d30b01f2ff329d0ab.ctex"]
+source_file="res://Assets/Cave Images/caveSlope.png"
+dest_files=["res://.godot/imported/caveSlope.png-797a78abdf96bfb359d20e3b8cf21afb.ctex"]
 
 [params]
 
