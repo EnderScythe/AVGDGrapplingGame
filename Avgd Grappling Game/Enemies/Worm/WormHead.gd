@@ -11,7 +11,7 @@ var startAttack = false
 var accel
 var playerPosition
 var lastPosition
-var SPEED = 3000
+var INITIAL_SPEED = 3000
 var ACCELERATION = 1250
 var OSCILLATION = 50
 var SEGMENT_GAP = 170
@@ -37,14 +37,13 @@ func _ready():
 
 func _process(delta):
 	var mousePosition = get_viewport().get_mouse_position()
-	#lastPosition = playerPosition
 	playerPosition = get_parent().get_node("Player").position
 	if state == states.idle:
 		if playerPosition.distance_to(position) <= 2000:
 			state = states.aggro
 	if state == states.aggro:
 		if !startAttack:
-			velocities[0] = (playerPosition - position).normalized() * SPEED
+			velocities[0] = (playerPosition - position).normalized() * INITIAL_SPEED
 			startAttack = true
 		else:
 			velocities[0] += (playerPosition - position).normalized() * ACCELERATION * delta
@@ -62,4 +61,3 @@ func _process(delta):
 				segments[i].position += velocities[i] * delta
 				segments[i].get_node("AnimatedSprite2D").play("worm_segment_anim")
 				segments[i].get_node("AnimatedSprite2D").set_rotation(velocities[i].angle())
-			
