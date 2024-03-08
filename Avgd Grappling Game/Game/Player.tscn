@@ -9,6 +9,7 @@ size = Vector2(126, 126)
 [sub_resource type="CircleShape2D" id="CircleShape2D_t7e88"]
 
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 3
 script = ExtResource("1_0hqw1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
