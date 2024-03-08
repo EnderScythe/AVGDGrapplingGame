@@ -1,19 +1,126 @@
-[gd_scene load_steps=4 format=3 uid="uid://8htvqj06xg2w"]
+[gd_scene load_steps=28 format=3 uid="uid://8htvqj06xg2w"]
 
 [ext_resource type="Script" path="res://Enemies/Worm/WormHead.gd" id="1_jig1m"]
-[ext_resource type="Texture2D" uid="uid://bkckcmps4w8ql" path="res://icon.svg" id="2_jhy1p"]
+[ext_resource type="Texture2D" uid="uid://bomip3fmuhhw1" path="res://Assets/Worm/Head/wormHeadBlink-1.png.png" id="2_hfkn2"]
+[ext_resource type="Texture2D" uid="uid://i4xf7knoi6ga" path="res://Assets/Worm/Head/wormHeadBlink-2.png.png" id="3_cxx5i"]
+[ext_resource type="Texture2D" uid="uid://wgllgiakeies" path="res://Assets/Worm/Head/wormHeadBlink-3.png.png" id="4_of0tb"]
+[ext_resource type="Texture2D" uid="uid://dgvrd74noskem" path="res://Assets/Worm/Head/wormHeadBlink-4.png.png" id="5_tcwp0"]
+[ext_resource type="Texture2D" uid="uid://it88rxe8uuwf" path="res://Assets/Worm/Head/wormHeadBlink-5.png.png" id="6_qyqq4"]
+[ext_resource type="Texture2D" uid="uid://2gsrmxw6amvl" path="res://Assets/Worm/Head/wormHeadBlink-6.png.png" id="7_ehedj"]
+[ext_resource type="Texture2D" uid="uid://b2ewru3rwwdf" path="res://Assets/Worm/Head/wormHeadBlink-7.png.png" id="8_3dv5u"]
+[ext_resource type="Texture2D" uid="uid://c12bmsbtm1lls" path="res://Assets/Worm/Head/wormHeadBlink-8.png.png" id="9_to1gi"]
+[ext_resource type="Texture2D" uid="uid://0jpa6xutfffp" path="res://Assets/Worm/Head/wormHeadBlink-9.png.png" id="10_qiqup"]
+[ext_resource type="Texture2D" uid="uid://8esj1j5v2haq" path="res://Assets/Worm/Head/wormHeadBlink-10.png.png" id="11_b4bsi"]
+[ext_resource type="Texture2D" uid="uid://b3jrky8ut3jn6" path="res://Assets/Worm/Head/wormHeadBlink-11.png.png" id="12_yiasf"]
+[ext_resource type="Texture2D" uid="uid://cguwwjrysoojv" path="res://Assets/Worm/Head/wormHeadBlink-12.png.png" id="13_et0j4"]
+[ext_resource type="Texture2D" uid="uid://nq6v42xtueag" path="res://Assets/Worm/Head/wormHeadBlink-13.png.png" id="14_lxqx6"]
+[ext_resource type="Texture2D" uid="uid://d0rdfo3w5vxbb" path="res://Assets/Worm/Head/wormHeadBlink-14.png.png" id="15_ib7pm"]
+[ext_resource type="Texture2D" uid="uid://fbkb4stofb86" path="res://Assets/Worm/Head/wormHeadBlink-15.png.png" id="16_yuej6"]
+[ext_resource type="Texture2D" uid="uid://bwshd1s0cji54" path="res://Assets/Worm/Head/wormHeadBlink-16.png.png" id="17_t3ymy"]
+[ext_resource type="Texture2D" uid="uid://dodjldgk1oar" path="res://Assets/Worm/Head/wormHeadBlink-17.png.png" id="18_4gw8c"]
+[ext_resource type="Texture2D" uid="uid://cvgelccqgjoox" path="res://Assets/Worm/Head/wormHeadBlink-18.png.png" id="19_e5hsf"]
+[ext_resource type="Texture2D" uid="uid://dk0hkfhoyivqp" path="res://Assets/Worm/Head/wormHeadBlink-19.png.png" id="20_kcgww"]
+[ext_resource type="Texture2D" uid="uid://brasqymyv3ckb" path="res://Assets/Worm/Head/wormHeadBlink-20.png.png" id="21_kxvtj"]
+[ext_resource type="Texture2D" uid="uid://liu3m14qh7gy" path="res://Assets/Worm/Head/wormHeadBlink-21.png.png" id="22_uj1fh"]
+[ext_resource type="Texture2D" uid="uid://c7w2ra1qeyxf2" path="res://Assets/Worm/Head/wormHeadBlink-22.png.png" id="23_vhw3o"]
+[ext_resource type="Texture2D" uid="uid://bn88jqhvbgua5" path="res://Assets/Worm/Head/wormHeadBlink-23.png.png" id="24_l258s"]
+[ext_resource type="Texture2D" uid="uid://cppodxlo7a6bo" path="res://Assets/Worm/Head/wormHeadBlink-24.png.png" id="25_tudjs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sxjpn"]
-size = Vector2(29.5, 28.3333)
+size = Vector2(30, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ip5oq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hfkn2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_cxx5i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_of0tb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_tcwp0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_qyqq4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ehedj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_3dv5u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_to1gi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_qiqup")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_b4bsi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_yiasf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_et0j4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_lxqx6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_ib7pm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_yuej6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_t3ymy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_4gw8c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_e5hsf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_kcgww")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_kxvtj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_uj1fh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_vhw3o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_l258s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_tudjs")
+}],
+"loop": true,
+"name": &"worm_head_anim",
+"speed": 12.0
+}]
 
 [node name="Worm" type="Area2D"]
 script = ExtResource("1_jig1m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.500001, -2)
+position = Vector2(2, 3.00005)
 scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_sxjpn")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("2_jhy1p")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+position = Vector2(4.02268, 2.02267)
+scale = Vector2(3.91761, 3.91761)
+sprite_frames = SubResource("SpriteFrames_ip5oq")
+animation = &"worm_head_anim"
+frame_progress = 0.762333
