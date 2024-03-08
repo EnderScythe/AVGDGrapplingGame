@@ -78,8 +78,8 @@ escape={
 [layer_names]
 
 2d_physics/layer_1="Player"
-2d_physics/layer_2="Ground"
-2d_physics/layer_3="Enemies"
+2d_physics/layer_2="Enemies"
+2d_physics/layer_3="Ground"
 avoidance/layer_1="enemies"
 avoidance/layer_2="player"
 avoidance/layer_3="walls"
