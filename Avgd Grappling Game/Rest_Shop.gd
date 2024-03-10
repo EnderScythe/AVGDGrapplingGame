@@ -4,9 +4,7 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 var Selected_Upgrades = []
 func _ready():
-	$Description_1.visible = false
-	$Description_2.visible = false
-	$Description_3.visible = false
+	$Upgrade_Description.visible = false
 	
 	var _rng = RandomNumberGenerator.new()
 	var Has_Shield = get_parent().get_node("Player").get_node("Shield_Area").is_monitoring() # This line causes game to crash if run in market rather than rest_area
@@ -59,19 +57,16 @@ var Upgrade_Descriptions = ["A shield will take some damage for you!\n\nYou can 
 	"Place a bubble which creates an area which redirects enemies elsewhere (useful when trying to mine ores with monsters around)!\n\nThe bubble has a limited duration and placing a bubble consumes one instance.",
 	"Place a respawn beacon in a location of your choosing. If you get destroyed, you will be reconstructed at this location after a brief period of time!\n\nONLY ONE REVIVE IS AVAILABLE PER SHOP. REVIVE IS CONSUMED WHEN PLACED."]
 func _on_option_1_area_area_entered(area):
-	get_node("Description_1").text = Upgrade_Descriptions[Selected_Upgrades[0]]
-	$Description_1.visible = true
-func _on_option_1_area_area_exited(area):
-	$Description_1.visible = false
+	get_node("Upgrade_Description").text = Upgrade_Descriptions[Selected_Upgrades[0]]
+	$Upgrade_Description.visible = true
 
 func _on_option_2_area_area_entered(area):
-	get_node("Description_2").text = Upgrade_Descriptions[Selected_Upgrades[1]]
-	$Description_2.visible = true
-func _on_option_2_area_area_exited(area):
-	$Description_2.visible = false
+	get_node("Upgrade_Description").text = Upgrade_Descriptions[Selected_Upgrades[1]]
+	$Upgrade_Description.visible = true
 
 func _on_option_3_area_area_entered(area):
-	get_node("Description_3").text = Upgrade_Descriptions[Selected_Upgrades[2]]
-	$Description_3.visible = true
-func _on_option_3_area_area_exited(area):
-	$Description_3.visible = false
+	get_node("Upgrade_Description").text = Upgrade_Descriptions[Selected_Upgrades[2]]
+	$Upgrade_Description.visible = true
+
+func _on_area_2d_area_exited(area):
+	$Upgrade_Description.visible = false
