@@ -75,3 +75,21 @@ scale = Vector2(5, 5)
 shape = SubResource("RectangleShape2D_3qx6k")
 
 [node name="Sprite2D" type="Sprite2D" parent="Option_3_Area"]
+
+[node name="Upgrade_Description_Option_1" type="TextEdit" parent="."]
+offset_left = -42.0
+offset_top = -96.0
+offset_right = 187.0
+offset_bottom = -24.0
+
+[node name="Upgrade_Description_Option_2" type="TextEdit" parent="."]
+offset_left = 187.0
+offset_top = -96.0
+offset_right = 416.0
+offset_bottom = -24.0
+
+[node name="Upgrade_Description_Option_3" type="TextEdit" parent="."]
+offset_left = 416.0
+offset_top = -96.0
+offset_right = 645.0
+offset_bottom = -24.0
