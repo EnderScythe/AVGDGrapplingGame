@@ -3,17 +3,17 @@ extends CharacterBody2D
 const HOOK_RES = preload("res://Game/Hook.tscn")
 var hook = null
 
-const SPEED = 600.0 # maximum horizontal speed from normal movement
-const JUMP_VELOCITY = -1200.0 # velocity at start of jump
-const ACCL = 4000.0 # how fast the player horizontally accelerates using normal movement
-const AIR_ACCL_FAC = 0.5 # coefficient of ACCL when player is in the air
-const FRIC = 800.0 # friction when on the ground
-const LAUNCH_VEL = 3000.0 # velocity of launched hook
-const HOOK_FRIC = 200.0 # affects hook tangential velocity when >= max range
-const HOOK_PULL = 4800.0 # acceleration towards hook when player is outside range
-const MAX_LENGTH = 1600.0 # maximum tether length (range)
-const REEL_SPEED = 1200.0 # affects the rate at which tether length changes and the maximum centripetal velocity when pulling in
-const PULL_BOOST_X = 1000.0 # p where Fc *= 1 + 2x/(x+p) and x is how much dist_to_hook exceeds tether length; p is the amount of extra distance such that Fc is doubled
+var SPEED = 600.0 # maximum horizontal speed from normal movement
+var JUMP_VELOCITY = -1200.0 # velocity at start of jump
+var ACCL = 4000.0 # how fast the player horizontally accelerates using normal movement
+var AIR_ACCL_FAC = 0.5 # coefficient of ACCL when player is in the air
+var FRIC = 800.0 # friction when on the ground
+var LAUNCH_VEL = 3000.0 # velocity of launched hook
+var HOOK_FRIC = 200.0 # affects hook tangential velocity when >= max range
+var HOOK_PULL = 4800.0 # acceleration towards hook when player is outside range
+var MAX_LENGTH = 1600.0 # maximum tether length (range)
+var REEL_SPEED = 1200.0 # affects the rate at which tether length changes and the maximum centripetal velocity when pulling in
+var PULL_BOOST_X = 1000.0 # p where Fc *= 1 + 2x/(x+p) and x is how much dist_to_hook exceeds tether length; p is the amount of extra distance such that Fc is doubled
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
