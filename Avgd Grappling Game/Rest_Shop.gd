@@ -59,6 +59,8 @@ var Upgrade_Descriptions = ["A shield will take some damage for you!\n\nYou can 
 func _on_option_1_area_area_entered(area):
 	get_node("Upgrade_Description").text = Upgrade_Descriptions[Selected_Upgrades[0]]
 	$Upgrade_Description.visible = true
+	if Input.is_action_pressed("interact"):
+		print("Purchased!")
 
 func _on_option_2_area_area_entered(area):
 	get_node("Upgrade_Description").text = Upgrade_Descriptions[Selected_Upgrades[1]]

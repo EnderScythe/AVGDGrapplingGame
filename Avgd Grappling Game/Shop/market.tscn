@@ -9,6 +9,7 @@ size = Vector2(15.8, 16)
 size = Vector2(685, 352)
 
 [node name="market" type="Node2D"]
+scale = Vector2(3, 3)
 script = ExtResource("1_dvqgb")
 
 [node name="Option_1" type="TextEdit" parent="."]
@@ -27,7 +28,7 @@ metadata/_edit_use_anchors_ = true
 collision_layer = 0
 
 [node name="Option_1_Size" type="CollisionShape2D" parent="Option_1_Area"]
-position = Vector2(63.5, 93)
+position = Vector2(63.5, 105)
 scale = Vector2(2.5, 2.5)
 shape = SubResource("RectangleShape2D_3qx6k")
 
@@ -52,7 +53,7 @@ position = Vector2(232, 0)
 collision_layer = 0
 
 [node name="Option_2_Size" type="CollisionShape2D" parent="Option_2_Area"]
-position = Vector2(74, 103)
+position = Vector2(74, 105)
 scale = Vector2(2.5, 2.5)
 shape = SubResource("RectangleShape2D_3qx6k")
 
@@ -77,7 +78,7 @@ position = Vector2(464, 0)
 collision_layer = 0
 
 [node name="Option_3_Size" type="CollisionShape2D" parent="Option_3_Area"]
-position = Vector2(74, 103)
+position = Vector2(74, 105)
 scale = Vector2(2.5, 2.5)
 shape = SubResource("RectangleShape2D_3qx6k")
 
