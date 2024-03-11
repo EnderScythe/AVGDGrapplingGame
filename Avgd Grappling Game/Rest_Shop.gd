@@ -3,6 +3,21 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 var Selected_Upgrades = []
+var Upgrade_Descriptions = ["A shield will take some damage for you!\n\nYou can only buy ONE SHIELD, feel free to upgrade it though!",
+	"Upgrade to decrease the time it takes for the shield to start recharging!",
+	"Upgrade to increase the amount of [unit] the shield can take before breaking!",
+	"Upgrade to increase the distance which the end of the grapple hook can travel before automatically terminating!",
+	"Upgrade to increase the speed the end of the grapple hook travels!",
+	"Increases the speed you move towards the end of the grapple hook after it has attached to something!",
+	"Increases your base move speed!",
+	"Decreases the time between pickaxe swings!",
+	"Press [key] to activate a rocket propelled booster! Achive insane velocities with this bad boy!",
+	"Place a pad (able to be placed in the middle of air) to jump again; the pad can be used multiple times!\n\nYou can JUMP ON THE PAD multiple times however you can only PLACE DOWN the pad ONCE.",
+	"Place a bubble which creates an area which redirects enemies elsewhere (useful when trying to mine ores with monsters around)!\n\nThe bubble has a limited duration and placing a bubble consumes one instance.",
+	"Place a respawn beacon in a location of your choosing. If you get destroyed, you will be reconstructed at this location after a brief period of time!\n\nONLY ONE REVIVE IS AVAILABLE PER SHOP. REVIVE IS CONSUMED WHEN PLACED."]
+var In_Option_1 = false
+var In_Option_2 = false
+var In_Option_3 = false
 func _ready():
 	$Upgrade_Description.visible = false
 	
@@ -42,33 +57,42 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if Input.is_action_just_pressed("interact"):
+		if In_Option_1 == true:
+			print("Active 1!")
+		if In_Option_2 == true:
+			print("Active 2!")
+		if In_Option_3 == true:
+			print("Active 3!")
 
-var Upgrade_Descriptions = ["A shield will take some damage for you!\n\nYou can only buy ONE SHIELD, feel free to upgrade it though!",
-	"Upgrade to decrease the time it takes for the shield to start recharging!",
-	"Upgrade to increase the amount of [unit] the shield can take before breaking!",
-	"Upgrade to increase the distance which the end of the grapple hook can travel before automatically terminating!",
-	"Upgrade to increase the speed the end of the grapple hook travels!",
-	"Increases the speed you move towards the end of the grapple hook after it has attached to something!",
-	"Increases your base move speed!",
-	"Decreases the time between pickaxe swings!",
-	"Press [key] to activate a rocket propelled booster! Achive insane velocities with this bad boy!",
-	"Place a pad (able to be placed in the middle of air) to jump again; the pad can be used multiple times!\n\nYou can JUMP ON THE PAD multiple times however you can only PLACE DOWN the pad ONCE.",
-	"Place a bubble which creates an area which redirects enemies elsewhere (useful when trying to mine ores with monsters around)!\n\nThe bubble has a limited duration and placing a bubble consumes one instance.",
-	"Place a respawn beacon in a location of your choosing. If you get destroyed, you will be reconstructed at this location after a brief period of time!\n\nONLY ONE REVIVE IS AVAILABLE PER SHOP. REVIVE IS CONSUMED WHEN PLACED."]
+
 func _on_option_1_area_area_entered(area):
+	In_Option_1 = true
 	get_node("Upgrade_Description").text = Upgrade_Descriptions[Selected_Upgrades[0]]
 	$Upgrade_Description.visible = true
-	if Input.is_action_pressed("interact"):
-		print("Purchased!")
 
 func _on_option_2_area_area_entered(area):
+	In_Option_2 = true
 	get_node("Upgrade_Description").text = Upgrade_Descriptions[Selected_Upgrades[1]]
 	$Upgrade_Description.visible = true
 
 func _on_option_3_area_area_entered(area):
+	In_Option_3 = true
 	get_node("Upgrade_Description").text = Upgrade_Descriptions[Selected_Upgrades[2]]
 	$Upgrade_Description.visible = true
 
 func _on_area_2d_area_exited(area):
 	$Upgrade_Description.visible = false
+
+
+func _on_option_1_area_area_exited(area):
+	In_Option_1 = false
+	get_node("Upgrade_Description").text = ""
+
+func _on_option_2_area_area_exited(area):
+	In_Option_2 = false
+	get_node("Upgrade_Description").text = ""
+
+func _on_option_3_area_area_exited(area):
+	In_Option_3 = false
+	get_node("Upgrade_Description").text = ""
