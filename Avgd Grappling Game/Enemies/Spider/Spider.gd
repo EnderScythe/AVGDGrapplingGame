@@ -16,6 +16,7 @@ var spiderState = "wander"
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var random = RandomNumberGenerator.new();
+var VENOM: PackedScene = preload("res://Enemies/Spider/venom.tscn")
 
 func _ready():
 	currentPos = position
@@ -80,3 +81,14 @@ func _on_detection_area_body_entered(body):
 func update_health():
 	var healthBar = $healthBar
 	healthBar.value = health
+
+func shootVenom():
+	if (VENOM):
+			var venom = VENOM.instantiate()
+			get_tree().current_scene.add_child(venom)
+			venom.global_position = self.global_position
+
+func _on_venow_throw_detection_area_entered(area):
+	$AnimatedSprite2D.play("spit")
+	shootVenom()
+

@@ -1,17 +1,54 @@
-[gd_scene load_steps=13 format=3 uid="uid://cngjmghkejll0"]
+[gd_scene load_steps=22 format=3 uid="uid://cngjmghkejll0"]
 
 [ext_resource type="Script" path="res://Enemies/Spider/Spider.gd" id="1_ikt67"]
+[ext_resource type="Texture2D" uid="uid://1mwmtkp5pk88" path="res://Assets/Spider/Spit/spiderSpit-1.png.png" id="2_fq61k"]
 [ext_resource type="Texture2D" uid="uid://bfri8vhwbs85g" path="res://Assets/Spider/Walk/spiderWalk-1.png.png" id="2_k1ysf"]
+[ext_resource type="Texture2D" uid="uid://22th5i1fxkkq" path="res://Assets/Spider/Spit/spiderSpit-2.png.png" id="3_8xe4c"]
 [ext_resource type="Texture2D" uid="uid://cqts2gj7mmrwx" path="res://Assets/Spider/Walk/spiderWalk-2.png.png" id="3_47gm6"]
+[ext_resource type="Texture2D" uid="uid://bdxtpp76f5b6h" path="res://Assets/Spider/Spit/spiderSpit-3.png.png" id="4_8npik"]
 [ext_resource type="Texture2D" uid="uid://4px33mw053jo" path="res://Assets/Spider/Walk/spiderWalk-3.png.png" id="4_75j7v"]
+[ext_resource type="Texture2D" uid="uid://dwqk4wflc7lmf" path="res://Assets/Spider/Spit/spiderSpit-4.png.png" id="5_gt0tf"]
 [ext_resource type="Texture2D" uid="uid://2bb7d4j2dkmk" path="res://Assets/Spider/Walk/spiderWalk-4.png.png" id="5_jn2f2"]
 [ext_resource type="Texture2D" uid="uid://d83dbfboe1q" path="res://Assets/Spider/Walk/spiderWalk-5.png.png" id="6_dansl"]
+[ext_resource type="Texture2D" uid="uid://dbpn6k2aw6ji" path="res://Assets/Spider/Spit/spiderSpit-5.png.png" id="6_doh5p"]
+[ext_resource type="Texture2D" uid="uid://b2016mn14wjhj" path="res://Assets/Spider/Spit/spiderSpit-6.png.png" id="7_krv6m"]
 [ext_resource type="Texture2D" uid="uid://b4nd7tteywxtk" path="res://Assets/Spider/Walk/spiderWalk-6.png.png" id="7_ycama"]
 [ext_resource type="Texture2D" uid="uid://bdqagia5n6r0b" path="res://Assets/Spider/Walk/spiderWalk-7.png.png" id="8_fnqfv"]
+[ext_resource type="Texture2D" uid="uid://csbjkl6jlyf70" path="res://Assets/Spider/Spit/spiderSpit-7.png.png" id="8_ijy0h"]
 [ext_resource type="Texture2D" uid="uid://ce0qwky5gtr4b" path="res://Assets/Spider/Walk/spiderWalk-8.png.png" id="9_3qp51"]
+[ext_resource type="Texture2D" uid="uid://dor3hyc6euuqc" path="res://Assets/Spider/Spit/spiderSpit-8.png.png" id="9_cqrns"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dix5e"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_fq61k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8xe4c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8npik")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_gt0tf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_doh5p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_krv6m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ijy0h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_cqrns")
+}],
+"loop": true,
+"name": &"spit",
+"speed": 8.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_k1ysf")
@@ -46,7 +83,10 @@ animations = [{
 size = Vector2(236, 167)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_um7pu"]
-size = Vector2(453, 176)
+size = Vector2(611.5, 176)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2c8j8"]
+size = Vector2(973, 79)
 
 [node name="Spider" type="CharacterBody2D"]
 script = ExtResource("1_ikt67")
@@ -55,9 +95,8 @@ script = ExtResource("1_ikt67")
 position = Vector2(-57, -39)
 scale = Vector2(5.63333, 5.63333)
 sprite_frames = SubResource("SpriteFrames_dix5e")
-animation = &"walk"
-frame = 2
-frame_progress = 0.498606
+animation = &"spit"
+frame_progress = 0.949239
 
 [node name="l_ray" type="RayCast2D" parent="."]
 visible = false
@@ -71,7 +110,7 @@ shape = SubResource("RectangleShape2D_hkl3a")
 [node name="detectionArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detectionArea"]
-position = Vector2(1, -4)
+position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_um7pu")
 
 [node name="healthBar" type="ProgressBar" parent="."]
@@ -83,4 +122,11 @@ offset_bottom = -89.0
 scale = Vector2(0.5, 0.5)
 show_percentage = false
 
+[node name="venowThrowDetection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="venowThrowDetection"]
+position = Vector2(-587.5, -1)
+shape = SubResource("RectangleShape2D_2c8j8")
+
 [connection signal="body_entered" from="detectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="area_entered" from="venowThrowDetection" to="." method="_on_venow_throw_detection_area_entered"]
