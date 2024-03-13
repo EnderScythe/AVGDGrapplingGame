@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://dse5mhptrraod"]
+[gd_scene load_steps=10 format=3 uid="uid://dse5mhptrraod"]
 
 [ext_resource type="PackedScene" uid="uid://cjlcm3gj7pmgf" path="res://Game/Player.tscn" id="1_chibw"]
 [ext_resource type="Texture2D" uid="uid://bkckcmps4w8ql" path="res://icon.svg" id="2_grvmt"]
 [ext_resource type="PackedScene" uid="uid://qajqqd2gk71l" path="res://Enemies/Bat/Bat.tscn" id="2_s661b"]
 [ext_resource type="PackedScene" uid="uid://8htvqj06xg2w" path="res://Enemies/Worm/WormHead.tscn" id="5_jihwq"]
 [ext_resource type="PackedScene" uid="uid://cngjmghkejll0" path="res://Enemies/Spider/Spider.tscn" id="6_5o83b"]
+[ext_resource type="PackedScene" uid="uid://d1u2owg2s1pq4" path="res://Enviornmental Hazards/Lava/Lava.tscn" id="7_dp1gv"]
+[ext_resource type="PackedScene" uid="uid://it708vpxsog3" path="res://Enviornmental Hazards/Stalactite/Stalactite.tscn" id="7_svpki"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3whor"]
 texture = ExtResource("2_grvmt")
@@ -214,9 +216,6 @@ sources/2 = SubResource("TileSetAtlasSource_3whor")
 [node name="Player" parent="." instance=ExtResource("1_chibw")]
 position = Vector2(194, 133)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(0.5, 0.5)
-
 [node name="Bat" parent="." instance=ExtResource("2_s661b")]
 position = Vector2(1829, 530)
 
@@ -248,3 +247,9 @@ position = Vector2(4057, 5459)
 
 [node name="Spider" parent="." instance=ExtResource("6_5o83b")]
 position = Vector2(628, 1586)
+
+[node name="Lava" parent="." instance=ExtResource("7_dp1gv")]
+position = Vector2(1370, 5213)
+
+[node name="Stalactite" parent="." instance=ExtResource("7_svpki")]
+position = Vector2(1605, -186)

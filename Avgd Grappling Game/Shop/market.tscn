@@ -1,15 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://b3e788l2qcir0"]
+[gd_scene load_steps=5 format=3 uid="uid://b3e788l2qcir0"]
 
 [ext_resource type="Script" path="res://Rest_Shop.gd" id="1_dvqgb"]
+[ext_resource type="Texture2D" uid="uid://bkckcmps4w8ql" path="res://icon.svg" id="2_ftoq4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xt4k8"]
+size = Vector2(684.667, 310.667)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3qx6k"]
 size = Vector2(15.8, 16)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xt4k8"]
-size = Vector2(685, 352)
-
 [node name="market" type="Node2D"]
+scale = Vector2(3, 3)
 script = ExtResource("1_dvqgb")
+
+[node name="Exit_Checker" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit_Checker"]
+position = Vector2(301.667, -21.6667)
+shape = SubResource("RectangleShape2D_xt4k8")
 
 [node name="Option_1" type="TextEdit" parent="."]
 offset_right = 144.0
@@ -27,11 +36,14 @@ metadata/_edit_use_anchors_ = true
 collision_layer = 0
 
 [node name="Option_1_Size" type="CollisionShape2D" parent="Option_1_Area"]
-position = Vector2(63.5, 93)
+position = Vector2(63.5, 105)
 scale = Vector2(2.5, 2.5)
 shape = SubResource("RectangleShape2D_3qx6k")
 
 [node name="Option_1_Sprite" type="Sprite2D" parent="Option_1_Area"]
+position = Vector2(63.7917, 105.125)
+scale = Vector2(0.320964, 0.320964)
+texture = ExtResource("2_ftoq4")
 
 [node name="Option_2" type="TextEdit" parent="."]
 offset_left = 232.0
@@ -52,11 +64,14 @@ position = Vector2(232, 0)
 collision_layer = 0
 
 [node name="Option_2_Size" type="CollisionShape2D" parent="Option_2_Area"]
-position = Vector2(74, 103)
+position = Vector2(74, 105)
 scale = Vector2(2.5, 2.5)
 shape = SubResource("RectangleShape2D_3qx6k")
 
 [node name="Sprite2D" type="Sprite2D" parent="Option_2_Area"]
+position = Vector2(74.1667, 104.833)
+scale = Vector2(0.321, 0.321)
+texture = ExtResource("2_ftoq4")
 
 [node name="Option_3" type="TextEdit" parent="."]
 offset_left = 464.0
@@ -77,11 +92,14 @@ position = Vector2(464, 0)
 collision_layer = 0
 
 [node name="Option_3_Size" type="CollisionShape2D" parent="Option_3_Area"]
-position = Vector2(74, 103)
+position = Vector2(74, 105)
 scale = Vector2(2.5, 2.5)
 shape = SubResource("RectangleShape2D_3qx6k")
 
 [node name="Sprite2D" type="Sprite2D" parent="Option_3_Area"]
+position = Vector2(74, 105.333)
+scale = Vector2(0.321, 0.321)
+texture = ExtResource("2_ftoq4")
 
 [node name="Upgrade_Description" type="TextEdit" parent="."]
 offset_left = -41.0
@@ -98,14 +116,10 @@ virtual_keyboard_enabled = false
 middle_mouse_paste_enabled = false
 wrap_mode = 1
 
-[node name="Exit_Checker" type="Area2D" parent="."]
-collision_layer = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit_Checker"]
-position = Vector2(301.5, -1)
-shape = SubResource("RectangleShape2D_xt4k8")
-
-[connection signal="area_entered" from="Option_1_Area" to="." method="_on_option_1_area_area_entered"]
-[connection signal="area_entered" from="Option_2_Area" to="." method="_on_option_2_area_area_entered"]
-[connection signal="area_entered" from="Option_3_Area" to="." method="_on_option_3_area_area_entered"]
 [connection signal="area_exited" from="Exit_Checker" to="." method="_on_area_2d_area_exited"]
+[connection signal="area_entered" from="Option_1_Area" to="." method="_on_option_1_area_area_entered"]
+[connection signal="area_exited" from="Option_1_Area" to="." method="_on_option_1_area_area_exited"]
+[connection signal="area_entered" from="Option_2_Area" to="." method="_on_option_2_area_area_entered"]
+[connection signal="area_exited" from="Option_2_Area" to="." method="_on_option_2_area_area_exited"]
+[connection signal="area_entered" from="Option_3_Area" to="." method="_on_option_3_area_area_entered"]
+[connection signal="area_exited" from="Option_3_Area" to="." method="_on_option_3_area_area_exited"]
