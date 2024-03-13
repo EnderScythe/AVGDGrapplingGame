@@ -1,6 +1,5 @@
 extends Node2D
 
-
 # Called when the node enters the scene tree for the first time.
 var Selected_Upgrades = []
 var Upgrade_Descriptions = ["A shield will take some damage for you!\n\nYou can only buy ONE SHIELD, feel free to upgrade it though!",
@@ -53,6 +52,12 @@ func _ready():
 	get_node("Option_1").text = Possible_Upgrades[Selected_Upgrades[0]]
 	get_node("Option_2").text = Possible_Upgrades[Selected_Upgrades[1]]
 	get_node("Option_3").text = Possible_Upgrades[Selected_Upgrades[2]]
+	var img1 = preload("res://Assets/Shop/Shop0.png")
+	var img2 = preload("res://Assets/Shop/Shop1.png")
+	var img3 = preload("res://Assets/Shop/Shop2.png")
+	$Option_1_Area/Option_1_Sprite.set_texture(img1)
+	$Option_1_Area/Option_2_Sprite.set_texture(img2)
+	$Option_1_Area/Option_3_Sprite.set_texture(img3)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
