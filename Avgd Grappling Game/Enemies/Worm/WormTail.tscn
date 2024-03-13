@@ -1,0 +1,60 @@
+[gd_scene load_steps=12 format=3 uid="uid://bcofx8keod13v"]
+
+[ext_resource type="Texture2D" uid="uid://dwv8g7av6urhd" path="res://Assets/Worm/Tail/wormTail-1.png.png" id="1_fxh0r"]
+[ext_resource type="Texture2D" uid="uid://bpsbkxkjwforq" path="res://Assets/Worm/Tail/wormTail-2.png.png" id="2_uajub"]
+[ext_resource type="Texture2D" uid="uid://bkmtyo2k7va8a" path="res://Assets/Worm/Tail/wormTail-3.png.png" id="3_4u7g3"]
+[ext_resource type="Texture2D" uid="uid://ck4n0nr5i5ior" path="res://Assets/Worm/Tail/wormTail-4.png.png" id="4_lagxc"]
+[ext_resource type="Texture2D" uid="uid://c2gnoaurkmx11" path="res://Assets/Worm/Tail/wormTail-5.png.png" id="5_2ksf7"]
+[ext_resource type="Texture2D" uid="uid://dyl8vh7rnfdxk" path="res://Assets/Worm/Tail/wormTail-6.png.png" id="6_gw2bj"]
+[ext_resource type="Texture2D" uid="uid://cyugb5ddw53b" path="res://Assets/Worm/Tail/wormTail-7.png.png" id="7_l3j3o"]
+[ext_resource type="Texture2D" uid="uid://cvp4ks3u4hpg5" path="res://Assets/Worm/Tail/wormTail-8.png.png" id="8_g33bh"]
+[ext_resource type="Texture2D" uid="uid://d0bf0beuookbk" path="res://Assets/Worm/Tail/wormTail-9.png.png" id="9_epo30"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q8rad"]
+size = Vector2(166, 180.5)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kyoi0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_fxh0r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_uajub")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4u7g3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_lagxc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2ksf7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_gw2bj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_l3j3o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_g33bh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_epo30")
+}],
+"loop": true,
+"name": &"worm_tail_anim",
+"speed": 12.0
+}]
+
+[node name="WormTail" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_q8rad")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_kyoi0")
+animation = &"worm_tail_anim"
+frame_progress = 0.7712

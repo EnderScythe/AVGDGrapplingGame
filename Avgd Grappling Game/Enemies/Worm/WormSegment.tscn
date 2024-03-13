@@ -59,4 +59,4 @@ position = Vector2(-0.499995, 0.499997)
 scale = Vector2(2.10417, 2.10417)
 sprite_frames = SubResource("SpriteFrames_ibtar")
 animation = &"worm_segment_anim"
-frame_progress = 0.518492
+frame_progress = 0.57111
