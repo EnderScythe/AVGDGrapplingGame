@@ -28,6 +28,7 @@ texture = ExtResource("1_chl1w")
 shape = SubResource("RectangleShape2D_j1f3m")
 
 [node name="Shield_Area" type="Area2D" parent="."]
+monitorable = false
 
 [node name="Shield_Collision" type="CollisionShape2D" parent="Shield_Area"]
 scale = Vector2(10, 10)

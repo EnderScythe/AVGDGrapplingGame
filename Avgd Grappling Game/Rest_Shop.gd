@@ -2,6 +2,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 var Selected_Upgrades = []
+var Possible_Upgrades = ["Shield", "Shield Regen", "Shield Strength", "Grapple Range", "Grapple Launch", "Grapple Reel", "Machine Speed", "Pick Swing Speed", "Booster Rocket", "Double Jump", "Repulsor", "Revive"]
 var Upgrade_Descriptions = ["A shield will take some damage for you!\n\nYou can only buy ONE SHIELD, feel free to upgrade it though!",
 	"Upgrade to decrease the time it takes for the shield to start recharging!",
 	"Upgrade to increase the amount of [unit] the shield can take before breaking!",
@@ -23,10 +24,8 @@ func _ready():
 	var _rng = RandomNumberGenerator.new()
 	var Has_Shield = get_parent().get_node("Player").get_node("Shield_Area").is_monitoring() # This line causes game to crash if run in market rather than rest_area
 	print(Has_Shield)
-	# Create an array with all of the possible upgrades
-	var Possible_Upgrades = ["Shield", "Shield Regen", "Shield Strength", "Grapple Range", "Grapple Launch", "Grapple Reel", "Machine Speed", "Pick Swing Speed", "Booster Rocket", "Double Jump", "Repulsor", "Revive"]
 	
-	# Randomly select 3 integers from the bounds [0, array.size()]
+	# Randomly select 3 integers from the bounds [0, n_upgrades]
 	while Selected_Upgrades.size() < 3:
 		# While randomly selecting integers, check if it's already been used and re-generate if it has
 		var num = randi_range(0, Possible_Upgrades.size()-1)
@@ -64,11 +63,14 @@ func _ready():
 func _process(delta):
 	if Input.is_action_just_pressed("interact"):
 		if In_Option_1 == true:
-			print("Active 1!")
+			var Upgrade = Possible_Upgrades[Selected_Upgrades[0]]
+			print("Purchased " + Upgrade)
 		if In_Option_2 == true:
-			print("Active 2!")
+			var Upgrade = Possible_Upgrades[Selected_Upgrades[1]]
+			print("Purchased " + Upgrade)
 		if In_Option_3 == true:
-			print("Active 3!")
+			var Upgrade = Possible_Upgrades[Selected_Upgrades[2]]
+			print("Purchased " + Upgrade)
 
 
 func _on_option_1_area_area_entered(area):
