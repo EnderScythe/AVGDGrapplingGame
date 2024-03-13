@@ -214,9 +214,6 @@ sources/2 = SubResource("TileSetAtlasSource_3whor")
 [node name="Player" parent="." instance=ExtResource("1_chibw")]
 position = Vector2(194, 133)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(0.5, 0.5)
-
 [node name="Bat" parent="." instance=ExtResource("2_s661b")]
 position = Vector2(1829, 530)
 
