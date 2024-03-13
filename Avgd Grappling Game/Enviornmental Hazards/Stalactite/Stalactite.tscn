@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://it708vpxsog3"]
+
+[ext_resource type="Script" path="res://Enviornmental Hazards/Stalactite/Stalactite.gd" id="1_4fuuv"]
+[ext_resource type="Texture2D" uid="uid://bkckcmps4w8ql" path="res://icon.svg" id="1_mfx1q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vrjqv"]
+size = Vector2(120, 378)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yne21"]
+size = Vector2(120, 8384)
+
+[node name="Stalactite" type="RigidBody2D"]
+script = ExtResource("1_4fuuv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 1)
+scale = Vector2(1, 2.98438)
+texture = ExtResource("1_mfx1q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_vrjqv")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 4001)
+shape = SubResource("RectangleShape2D_yne21")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

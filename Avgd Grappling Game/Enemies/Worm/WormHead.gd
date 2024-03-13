@@ -5,7 +5,7 @@ var segments = [self]
 var velocities = []
 #includes head
 enum states {idle, aggro}
-var segmentNum = 10
+var segmentNum = 11
 var state
 var startAttack = false
 var accel
