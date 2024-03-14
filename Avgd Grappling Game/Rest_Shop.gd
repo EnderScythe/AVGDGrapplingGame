@@ -51,23 +51,102 @@ func _ready():
 	get_node("Option_1").text = Possible_Upgrades[Selected_Upgrades[0]]
 	get_node("Option_2").text = Possible_Upgrades[Selected_Upgrades[1]]
 	get_node("Option_3").text = Possible_Upgrades[Selected_Upgrades[2]]
-	# Make the preload string be "res://Assets/Shop/Shop" + str(Selected_Upgrades[x]) + ".png"
-	# below is just for testing
-	var img1 = preload("res://Assets/Shop/Shop0.png")
-	var img2 = preload("res://Assets/Shop/Shop1.png")
-	var img3 = preload("res://Assets/Shop/Shop2.png")
-	var img4 = preload("res://Assets/Shop/Shop3.png")
-	var img5 = preload("res://Assets/Shop/Shop4.png")
-	var img6 = preload("res://Assets/Shop/Shop5.png")
-	var img7 = preload("res://Assets/Shop/Shop6.png")
-	var img8 = preload("res://Assets/Shop/Shop7.png")
-	var img9 = preload("res://Assets/Shop/Shop8.png")
-	var img10 = preload("res://Assets/Shop/Shop9.png")
-	var img11 = preload("res://Assets/Shop/Shop10.png")
-	var img12 = preload("res://Assets/Shop/Shop11.png")
-	$Option_1_Area/Sprite2D.set_texture(img10)
-	$Option_2_Area/Sprite2D.set_texture(img11)
-	$Option_3_Area/Sprite2D.set_texture(img12)
+	
+	# below is just for preloading a constant string
+	var img0 = preload("res://Assets/Shop/Shop0.png")
+	var img1 = preload("res://Assets/Shop/Shop1.png")
+	var img2 = preload("res://Assets/Shop/Shop2.png")
+	var img3 = preload("res://Assets/Shop/Shop3.png")
+	var img4 = preload("res://Assets/Shop/Shop4.png")
+	var img5 = preload("res://Assets/Shop/Shop5.png")
+	var img6 = preload("res://Assets/Shop/Shop6.png")
+	var img7 = preload("res://Assets/Shop/Shop7.png")
+	var img8 = preload("res://Assets/Shop/Shop8.png")
+	var img9 = preload("res://Assets/Shop/Shop9.png")
+	var img10 = preload("res://Assets/Shop/Shop10.png")
+	var img11 = preload("res://Assets/Shop/Shop11.png")
+	
+	for x in 3:
+		if x == 0:
+			if Selected_Upgrades[x] == 0:
+				$Option_1_Area/Sprite2D.set_texture(img0)
+			if Selected_Upgrades[x] == 1:
+				$Option_1_Area/Sprite2D.set_texture(img1)
+			if Selected_Upgrades[x] == 2:
+				$Option_1_Area/Sprite2D.set_texture(img2)
+			if Selected_Upgrades[x] == 3:
+				$Option_1_Area/Sprite2D.set_texture(img3)
+			if Selected_Upgrades[x] == 4:
+				$Option_1_Area/Sprite2D.set_texture(img4)
+			if Selected_Upgrades[x] == 5:
+				$Option_1_Area/Sprite2D.set_texture(img5)
+			if Selected_Upgrades[x] == 6:
+				$Option_1_Area/Sprite2D.set_texture(img6)
+			if Selected_Upgrades[x] == 7:
+				$Option_1_Area/Sprite2D.set_texture(img7)
+			if Selected_Upgrades[x] == 8:
+				$Option_1_Area/Sprite2D.set_texture(img8)
+			if Selected_Upgrades[x] == 9:
+				$Option_1_Area/Sprite2D.set_texture(img9)
+			if Selected_Upgrades[x] == 10:
+				$Option_1_Area/Sprite2D.set_texture(img10)
+			if Selected_Upgrades[x] == 11:
+				$Option_1_Area/Sprite2D.set_texture(img11)
+	
+		if x == 1:
+			if Selected_Upgrades[x] == 0:
+				$Option_2_Area/Sprite2D.set_texture(img0)
+			if Selected_Upgrades[x] == 1:
+				$Option_2_Area/Sprite2D.set_texture(img1)
+			if Selected_Upgrades[x] == 2:
+				$Option_2_Area/Sprite2D.set_texture(img2)
+			if Selected_Upgrades[x] == 3:
+				$Option_2_Area/Sprite2D.set_texture(img3)
+			if Selected_Upgrades[x] == 4:
+				$Option_2_Area/Sprite2D.set_texture(img4)
+			if Selected_Upgrades[x] == 5:
+				$Option_2_Area/Sprite2D.set_texture(img5)
+			if Selected_Upgrades[x] == 6:
+				$Option_2_Area/Sprite2D.set_texture(img6)
+			if Selected_Upgrades[x] == 7:
+				$Option_2_Area/Sprite2D.set_texture(img7)
+			if Selected_Upgrades[x] == 8:
+				$Option_2_Area/Sprite2D.set_texture(img8)
+			if Selected_Upgrades[x] == 9:
+				$Option_2_Area/Sprite2D.set_texture(img9)
+			if Selected_Upgrades[x] == 10:
+				$Option_2_Area/Sprite2D.set_texture(img10)
+			if Selected_Upgrades[x] == 11:
+				$Option_2_Area/Sprite2D.set_texture(img11)
+	
+		if x == 2:
+			if Selected_Upgrades[x] == 0:
+				$Option_3_Area/Sprite2D.set_texture(img0)
+			if Selected_Upgrades[x] == 1:
+				$Option_3_Area/Sprite2D.set_texture(img1)
+			if Selected_Upgrades[x] == 2:
+				$Option_3_Area/Sprite2D.set_texture(img2)
+			if Selected_Upgrades[x] == 3:
+				$Option_3_Area/Sprite2D.set_texture(img3)
+			if Selected_Upgrades[x] == 4:
+				$Option_3_Area/Sprite2D.set_texture(img4)
+			if Selected_Upgrades[x] == 5:
+				$Option_3_Area/Sprite2D.set_texture(img5)
+			if Selected_Upgrades[x] == 6:
+				$Option_3_Area/Sprite2D.set_texture(img6)
+			if Selected_Upgrades[x] == 7:
+				$Option_3_Area/Sprite2D.set_texture(img7)
+			if Selected_Upgrades[x] == 8:
+				$Option_3_Area/Sprite2D.set_texture(img8)
+			if Selected_Upgrades[x] == 9:
+				$Option_3_Area/Sprite2D.set_texture(img9)
+			if Selected_Upgrades[x] == 10:
+				$Option_3_Area/Sprite2D.set_texture(img10)
+			if Selected_Upgrades[x] == 11:
+				$Option_3_Area/Sprite2D.set_texture(img11)
+	#$Option_1_Area/Sprite2D.set_texture(img10)
+	#$Option_2_Area/Sprite2D.set_texture(img11)
+	#$Option_3_Area/Sprite2D.set_texture(img12)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
