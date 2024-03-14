@@ -1,25 +1,78 @@
-[gd_scene load_steps=22 format=3 uid="uid://cngjmghkejll0"]
+[gd_scene load_steps=34 format=3 uid="uid://cngjmghkejll0"]
 
 [ext_resource type="Script" path="res://Enemies/Spider/Spider.gd" id="1_ikt67"]
 [ext_resource type="Texture2D" uid="uid://1mwmtkp5pk88" path="res://Assets/Spider/Spit/spiderSpit-1.png.png" id="2_fq61k"]
 [ext_resource type="Texture2D" uid="uid://bfri8vhwbs85g" path="res://Assets/Spider/Walk/spiderWalk-1.png.png" id="2_k1ysf"]
+[ext_resource type="Texture2D" uid="uid://b8wq27urhyjkv" path="res://Assets/Spider/Lunge/spiderLunge-1.png.png" id="2_qu6j5"]
 [ext_resource type="Texture2D" uid="uid://22th5i1fxkkq" path="res://Assets/Spider/Spit/spiderSpit-2.png.png" id="3_8xe4c"]
 [ext_resource type="Texture2D" uid="uid://cqts2gj7mmrwx" path="res://Assets/Spider/Walk/spiderWalk-2.png.png" id="3_47gm6"]
+[ext_resource type="Texture2D" uid="uid://cksy03hwjflx4" path="res://Assets/Spider/Lunge/spiderLunge-2.png.png" id="3_whjjp"]
 [ext_resource type="Texture2D" uid="uid://bdxtpp76f5b6h" path="res://Assets/Spider/Spit/spiderSpit-3.png.png" id="4_8npik"]
 [ext_resource type="Texture2D" uid="uid://4px33mw053jo" path="res://Assets/Spider/Walk/spiderWalk-3.png.png" id="4_75j7v"]
+[ext_resource type="Texture2D" uid="uid://bxn3crokeqpvs" path="res://Assets/Spider/Lunge/spiderLunge-3.png.png" id="4_tig03"]
+[ext_resource type="Texture2D" uid="uid://bliydcql7k8sc" path="res://Assets/Spider/Lunge/spiderLunge-4.png.png" id="5_7sxbn"]
 [ext_resource type="Texture2D" uid="uid://dwqk4wflc7lmf" path="res://Assets/Spider/Spit/spiderSpit-4.png.png" id="5_gt0tf"]
 [ext_resource type="Texture2D" uid="uid://2bb7d4j2dkmk" path="res://Assets/Spider/Walk/spiderWalk-4.png.png" id="5_jn2f2"]
+[ext_resource type="Texture2D" uid="uid://kf0dw6gte65e" path="res://Assets/Spider/Lunge/spiderLunge-5.png.png" id="6_718n4"]
 [ext_resource type="Texture2D" uid="uid://d83dbfboe1q" path="res://Assets/Spider/Walk/spiderWalk-5.png.png" id="6_dansl"]
 [ext_resource type="Texture2D" uid="uid://dbpn6k2aw6ji" path="res://Assets/Spider/Spit/spiderSpit-5.png.png" id="6_doh5p"]
+[ext_resource type="Texture2D" uid="uid://1j8wmwpwo3wj" path="res://Assets/Spider/Lunge/spiderLunge-6.png.png" id="7_6qnwf"]
 [ext_resource type="Texture2D" uid="uid://b2016mn14wjhj" path="res://Assets/Spider/Spit/spiderSpit-6.png.png" id="7_krv6m"]
 [ext_resource type="Texture2D" uid="uid://b4nd7tteywxtk" path="res://Assets/Spider/Walk/spiderWalk-6.png.png" id="7_ycama"]
+[ext_resource type="Texture2D" uid="uid://dxecexvhd7stw" path="res://Assets/Spider/Lunge/spiderLunge-7.png.png" id="8_clwwt"]
 [ext_resource type="Texture2D" uid="uid://bdqagia5n6r0b" path="res://Assets/Spider/Walk/spiderWalk-7.png.png" id="8_fnqfv"]
 [ext_resource type="Texture2D" uid="uid://csbjkl6jlyf70" path="res://Assets/Spider/Spit/spiderSpit-7.png.png" id="8_ijy0h"]
 [ext_resource type="Texture2D" uid="uid://ce0qwky5gtr4b" path="res://Assets/Spider/Walk/spiderWalk-8.png.png" id="9_3qp51"]
 [ext_resource type="Texture2D" uid="uid://dor3hyc6euuqc" path="res://Assets/Spider/Spit/spiderSpit-8.png.png" id="9_cqrns"]
+[ext_resource type="Texture2D" uid="uid://ile73c4u1b4g" path="res://Assets/Spider/Lunge/spiderLunge-8.png.png" id="9_dt1kr"]
+[ext_resource type="Texture2D" uid="uid://5q23olr8tbnq" path="res://Assets/Spider/Lunge/spiderLunge-9.png.png" id="10_j1qvj"]
+[ext_resource type="Texture2D" uid="uid://c2l33xvxrv35e" path="res://Assets/Spider/Lunge/spiderLunge-10.png.png" id="11_pgcdg"]
+[ext_resource type="Texture2D" uid="uid://cy23845n1g4ie" path="res://Assets/Spider/Lunge/spiderLunge-11.png.png" id="12_tqejp"]
+[ext_resource type="Texture2D" uid="uid://c820vx1p6kqoa" path="res://Assets/Spider/Lunge/spiderLunge-12.png.png" id="13_mant4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dix5e"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qu6j5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_whjjp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_tig03")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_7sxbn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_718n4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_6qnwf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_clwwt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_dt1kr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_j1qvj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_pgcdg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_tqejp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_mant4")
+}],
+"loop": true,
+"name": &"lung",
+"speed": 8.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_fq61k")
@@ -86,7 +139,7 @@ size = Vector2(236, 167)
 size = Vector2(611.5, 176)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2c8j8"]
-size = Vector2(973, 79)
+size = Vector2(2122, 175.5)
 
 [node name="Spider" type="CharacterBody2D"]
 script = ExtResource("1_ikt67")
@@ -95,8 +148,8 @@ script = ExtResource("1_ikt67")
 position = Vector2(-57, -39)
 scale = Vector2(5.63333, 5.63333)
 sprite_frames = SubResource("SpriteFrames_dix5e")
-animation = &"spit"
-frame_progress = 0.949239
+animation = &"lung"
+frame_progress = 0.384133
 
 [node name="l_ray" type="RayCast2D" parent="."]
 visible = false
@@ -110,7 +163,7 @@ shape = SubResource("RectangleShape2D_hkl3a")
 [node name="detectionArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detectionArea"]
-position = Vector2(0, -3)
+position = Vector2(-177, -3)
 shape = SubResource("RectangleShape2D_um7pu")
 
 [node name="healthBar" type="ProgressBar" parent="."]
@@ -125,8 +178,10 @@ show_percentage = false
 [node name="venowThrowDetection" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="venowThrowDetection"]
-position = Vector2(-587.5, -1)
+position = Vector2(-1545, -5.75)
 shape = SubResource("RectangleShape2D_2c8j8")
 
 [connection signal="body_entered" from="detectionArea" to="." method="_on_detection_area_body_entered"]
-[connection signal="area_entered" from="venowThrowDetection" to="." method="_on_venow_throw_detection_area_entered"]
+[connection signal="body_exited" from="detectionArea" to="." method="_on_detection_area_body_exited"]
+[connection signal="body_entered" from="venowThrowDetection" to="." method="_on_venow_throw_detection_body_entered"]
+[connection signal="body_exited" from="venowThrowDetection" to="." method="_on_venow_throw_detection_body_exited"]

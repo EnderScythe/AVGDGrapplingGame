@@ -4,7 +4,6 @@ extends CharacterBody2D
 
 var maxSpeed = 300
 var acceleration = 10
-
 var health = 100
 
 var currentPos = 0
@@ -16,7 +15,7 @@ var spiderState = "wander"
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var random = RandomNumberGenerator.new();
-var VENOM: PackedScene = preload("res://Enemies/Spider/venom.tscn")
+const venom = preload("res://Enemies/Spider/venom.tscn")
 
 func _ready():
 	currentPos = position
@@ -29,6 +28,8 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	
+	# Preventing Wall Collision and Falling
+	
 	if $l_ray.is_colliding():
 		var randomMovement = random.randi_range(0,1)
 		if (randomMovement == 0):
@@ -37,14 +38,20 @@ func _physics_process(delta):
 			spiderState = "climb"
 			rotation_degrees += 90 
 	
+	# Wander State: Random Movement
+	
 	if (spiderState == "wander"):
 		movement()
 	
+	# Climb State: Climbs up the wall
+	
 	elif (spiderState == "climb"):
 		wallClimb()
-		pass
+	
+	# Chase State: Follow the player
 	
 	elif (spiderState == "chase"):
+		
 		$AnimatedSprite2D.play("walk")
 		targetPos = playerPosition
 		
@@ -62,6 +69,16 @@ func _physics_process(delta):
 		elif (velocity.x < -maxSpeed):
 			velocity.x = -maxSpeed
 	
+	elif (spiderState == "lung"):
+		$AnimatedSprite2D.play("lung")
+		if (velocity.x > 0):
+			velocity.x += 50
+		elif (velocity.x < 0):
+			velocity.x -= 50
+	
+	elif (spiderState == "shoot"):
+		$AnimatedSprite2D.play("spit")
+
 	update_health()
 	move_and_slide()
 	
@@ -73,22 +90,29 @@ func movement():
 
 func wallClimb():
 	velocity.y = -maxSpeed
-	
+
+# Changing the Spider States
+
 func _on_detection_area_body_entered(body):
-	if body.get_name() == "Player":
+	if (body.name == "Player"):
+		spiderState = "lung"
+
+func _on_detection_area_body_exited(body):
+	if (body.name == "Player"):
 		spiderState = "chase"
 
 func update_health():
 	var healthBar = $healthBar
 	healthBar.value = health
 
-func shootVenom():
-	if (VENOM):
-			var venom = VENOM.instantiate()
-			get_tree().current_scene.add_child(venom)
-			venom.global_position = self.global_position
+#func _on_venow_throw_detection_body_exited(body):
+	#if (body.name == "Player"):
+		#spiderState = "chase"
 
-func _on_venow_throw_detection_area_entered(area):
-	$AnimatedSprite2D.play("spit")
-	shootVenom()
-
+func _on_venow_throw_detection_body_entered(body):
+	if (body.name == "Player"):
+		spiderState = "shoot"
+		
+		var oneVenom = venom.instantiate()
+		get_parent().add_child(oneVenom)
+		oneVenom.velocity.x += 100

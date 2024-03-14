@@ -1,11 +1,12 @@
 extends Area2D
 
 var segment = preload("res://Enemies/Worm/WormSegment.tscn")
+var tail = preload("res://Enemies/Worm/WormTail.tscn")
 var segments = [self]
 var velocities = []
 #includes head
 enum states {idle, aggro}
-var segmentNum = 10
+var segmentNum = 12
 var state
 var startAttack = false
 var accel
@@ -21,7 +22,7 @@ func _ready():
 	self.z_index = segmentNum - 1
 	self.rotate(PI/2)
 	state = states.idle
-	for i in range(segmentNum - 1):
+	for i in range(segmentNum - 2):
 		var wormSegment = segment.instantiate()
 		add_sibling.call_deferred(wormSegment)
 		segments.append(wormSegment)
@@ -31,6 +32,12 @@ func _ready():
 			wormSegment.rotate(3*PI/2)
 		else:
 			wormSegment.rotate(PI/2)
+	var wormTail = tail.instantiate()
+	add_sibling.call_deferred(wormTail)
+	segments.append(wormTail)
+	wormTail.position = position
+	wormTail.z_index = 0
+	wormTail.rotate(PI/2)
 	for i in range(segmentNum):
 		velocities.append(Vector2(0, 0))
 	
@@ -59,5 +66,9 @@ func _process(delta):
 				if(velocities[i].length() >= SPEED_CAP):
 					velocities[i] = velocities[i].normalized() * SPEED_CAP
 				segments[i].position += velocities[i] * delta
-				segments[i].get_node("AnimatedSprite2D").play("worm_segment_anim")
+				if(i == segmentNum):
+					segments[i].get_node("AnimatedSprite2D").play("worm_tail_anim")
+				else:
+					segments[i].get_node("AnimatedSprite2D").play("worm_segment_anim")
 				segments[i].get_node("AnimatedSprite2D").set_rotation(velocities[i].angle())
+				

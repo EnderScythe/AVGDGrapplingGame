@@ -1,19 +1,17 @@
 extends Area2D
 
-var speed = 100
+const speed = 100
+var velocity = Vector2()
+
+func _ready():
+	pass
 
 func _physics_process(delta):
-	var direction = Vector2.RIGHT.rotated(rotation)
-	global_position += speed * direction * delta 
+	velocity.x = speed * delta
+	translate(velocity)
+	$AnimatedSprite2D.play("spit")
 
-func destroy():
-	queue_free()
-	
-func _on_area_entered(area):
-	destroy()
-
-func _on_area_exited(area):
-	destroy()
-	
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	queue_free()
+
+
