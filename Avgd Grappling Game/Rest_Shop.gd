@@ -23,7 +23,6 @@ func _ready():
 	
 	var _rng = RandomNumberGenerator.new()
 	var Has_Shield = get_parent().get_node("Player").get_node("Shield_Area").is_monitoring() # This line causes game to crash if run in market rather than rest_area
-	print(Has_Shield)
 	
 	# Randomly select 3 integers from the bounds [0, n_upgrades]
 	while Selected_Upgrades.size() < 3:
@@ -65,7 +64,7 @@ func _ready():
 	var img9 = preload("res://Assets/Shop/Shop9.png")
 	var img10 = preload("res://Assets/Shop/Shop10.png")
 	var img11 = preload("res://Assets/Shop/Shop11.png")
-	
+	# Giant for + if loop to put the images in correctly
 	for x in 3:
 		if x == 0:
 			if Selected_Upgrades[x] == 0:
@@ -144,9 +143,7 @@ func _ready():
 				$Option_3_Area/Sprite2D.set_texture(img10)
 			if Selected_Upgrades[x] == 11:
 				$Option_3_Area/Sprite2D.set_texture(img11)
-	#$Option_1_Area/Sprite2D.set_texture(img10)
-	#$Option_2_Area/Sprite2D.set_texture(img11)
-	#$Option_3_Area/Sprite2D.set_texture(img12)
+	#$Option_1_Area/Sprite2D.set_texture(imgx)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
