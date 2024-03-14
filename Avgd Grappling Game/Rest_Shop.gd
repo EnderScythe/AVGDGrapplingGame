@@ -54,9 +54,9 @@ func _ready():
 	var img1 = preload("res://Assets/Shop/Shop0.png")
 	var img2 = preload("res://Assets/Shop/Shop1.png")
 	var img3 = preload("res://Assets/Shop/Shop2.png")
-	$Option_1_Area/Option_1_Sprite.set_texture(img1)
-	$Option_1_Area/Option_2_Sprite.set_texture(img2)
-	$Option_1_Area/Option_3_Sprite.set_texture(img3)
+	$Option_1_Area/Sprite2D.set_texture(img1)
+	$Option_2_Area/Sprite2D.set_texture(img2)
+	$Option_3_Area/Sprite2D.set_texture(img3)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
