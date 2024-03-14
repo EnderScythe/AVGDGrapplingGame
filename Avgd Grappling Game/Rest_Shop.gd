@@ -2,7 +2,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 var Selected_Upgrades = []
-var Possible_Upgrades = ["Shield", "Shield Regen", "Shield Strength", "Grapple Range", "Grapple Launch", "Grapple Reel", "Machine Speed", "Pick Swing Speed", "Booster Rocket", "Double Jump", "Repulsor", "Revive"]
+var Possible_Upgrades = ["Shield", "Shield Regen", "Shield Strength", "Grapple Range", "Grapple Launch", "Grapple Reel", "Machine Speed", "Pick Swing", "Booster Rocket", "Double Jump", "Repulsor", "Revive"]
 var Upgrade_Descriptions = ["A shield will take some damage for you!\n\nYou can only buy ONE SHIELD, feel free to upgrade it though!",
 	"Upgrade to decrease the time it takes for the shield to start recharging!",
 	"Upgrade to increase the amount of [unit] the shield can take before breaking!",
@@ -51,12 +51,23 @@ func _ready():
 	get_node("Option_1").text = Possible_Upgrades[Selected_Upgrades[0]]
 	get_node("Option_2").text = Possible_Upgrades[Selected_Upgrades[1]]
 	get_node("Option_3").text = Possible_Upgrades[Selected_Upgrades[2]]
+	# Make the preload string be "res://Assets/Shop/Shop" + str(Selected_Upgrades[x]) + ".png"
+	# below is just for testing
 	var img1 = preload("res://Assets/Shop/Shop0.png")
 	var img2 = preload("res://Assets/Shop/Shop1.png")
 	var img3 = preload("res://Assets/Shop/Shop2.png")
-	$Option_1_Area/Sprite2D.set_texture(img1)
-	$Option_2_Area/Sprite2D.set_texture(img2)
-	$Option_3_Area/Sprite2D.set_texture(img3)
+	var img4 = preload("res://Assets/Shop/Shop3.png")
+	var img5 = preload("res://Assets/Shop/Shop4.png")
+	var img6 = preload("res://Assets/Shop/Shop5.png")
+	var img7 = preload("res://Assets/Shop/Shop6.png")
+	var img8 = preload("res://Assets/Shop/Shop7.png")
+	var img9 = preload("res://Assets/Shop/Shop8.png")
+	var img10 = preload("res://Assets/Shop/Shop9.png")
+	var img11 = preload("res://Assets/Shop/Shop10.png")
+	var img12 = preload("res://Assets/Shop/Shop11.png")
+	$Option_1_Area/Sprite2D.set_texture(img10)
+	$Option_2_Area/Sprite2D.set_texture(img11)
+	$Option_3_Area/Sprite2D.set_texture(img12)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
