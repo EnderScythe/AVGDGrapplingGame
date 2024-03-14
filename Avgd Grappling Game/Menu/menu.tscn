@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Menu/Menu.gd" id="1_ax8nx"]
 [ext_resource type="Texture2D" uid="uid://dsj8xd5waljks" path="res://FWG_2560x1440.jpg" id="2_46y4l"]
 [ext_resource type="Script" path="res://Menu/Camera2D.gd" id="3_803cc"]
-[ext_resource type="Script" path="res://Menu/VBoxContainer.gd" id="4_fp2sj"]
+[ext_resource type="Script" path="res://Menu/MenuOptions.gd" id="4_2wxol"]
 [ext_resource type="Texture2D" uid="uid://b2n1er5ags1fv" path="res://Untitled drawing.png" id="5_q4yt7"]
 
 [node name="Menu" type="Control"]
@@ -44,7 +44,7 @@ offset_right = 996.0
 offset_bottom = 650.5
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("4_fp2sj")
+script = ExtResource("4_2wxol")
 
 [node name="StartButton" type="Button" parent="ParallaxBackground/MenuList/VBoxContainer"]
 layout_mode = 2
