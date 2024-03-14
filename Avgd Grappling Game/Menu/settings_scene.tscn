@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://bw8c03yqjhcb0"]
+
+[ext_resource type="Script" path="res://Game/PauseOptions.gd" id="1_btqsj"]
+
+[node name="settings" type="Node2D"]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 840.0
+offset_top = 551.0
+offset_right = 966.0
+offset_bottom = 660.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_btqsj")
+
+[node name="Volume" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Volume
+"
+
+[node name="Controls" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Controls
+"
+
+[node name="Back" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Back"

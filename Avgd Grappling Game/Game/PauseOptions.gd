@@ -1,14 +1,26 @@
 extends Control
 
+var cam
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#$ParallaxBackground/MenuList/VBoxContainer/Volume.grab_focus()
-	pass
-
+	cam = get_viewport().get_camera_2d()
+	$Volume.grab_focus()
+	hide()
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	position = cam.get_target_position()+Vector2(-500,-250)
+
+func _input(event):
+	if event.is_action_pressed("escape"):
+		get_tree().paused = true
+		show()
+
+func _on_back_pressed():
+	get_tree().paused = false
+	hide()
+
 
 func _on_volume_pressed():
 	print("Changing volume")
@@ -16,7 +28,3 @@ func _on_volume_pressed():
 
 func _on_controls_pressed():
 	print("Changing controls")
-
-
-func _on_back_pressed():
-	get_tree().change_scene_to_file("res://Menu/menu.tscn")
