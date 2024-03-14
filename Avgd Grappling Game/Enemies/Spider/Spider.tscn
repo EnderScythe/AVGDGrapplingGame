@@ -149,7 +149,7 @@ position = Vector2(-57, -39)
 scale = Vector2(5.63333, 5.63333)
 sprite_frames = SubResource("SpriteFrames_dix5e")
 animation = &"lung"
-frame_progress = 0.26833
+frame_progress = 0.384133
 
 [node name="l_ray" type="RayCast2D" parent="."]
 visible = false
