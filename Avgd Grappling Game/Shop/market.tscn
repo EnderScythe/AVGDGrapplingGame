@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3e788l2qcir0"]
+[gd_scene load_steps=4 format=3 uid="uid://b3e788l2qcir0"]
 
 [ext_resource type="Script" path="res://Rest_Shop.gd" id="1_dvqgb"]
-[ext_resource type="Texture2D" uid="uid://bkckcmps4w8ql" path="res://icon.svg" id="2_ftoq4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xt4k8"]
 size = Vector2(684.667, 310.667)
@@ -40,10 +39,8 @@ position = Vector2(63.5, 105)
 scale = Vector2(2.5, 2.5)
 shape = SubResource("RectangleShape2D_3qx6k")
 
-[node name="Option_1_Sprite" type="Sprite2D" parent="Option_1_Area"]
+[node name="Sprite2D" type="Sprite2D" parent="Option_1_Area"]
 position = Vector2(63.7917, 105.125)
-scale = Vector2(0.320964, 0.320964)
-texture = ExtResource("2_ftoq4")
 
 [node name="Option_2" type="TextEdit" parent="."]
 offset_left = 232.0
@@ -70,8 +67,6 @@ shape = SubResource("RectangleShape2D_3qx6k")
 
 [node name="Sprite2D" type="Sprite2D" parent="Option_2_Area"]
 position = Vector2(74.1667, 104.833)
-scale = Vector2(0.321, 0.321)
-texture = ExtResource("2_ftoq4")
 
 [node name="Option_3" type="TextEdit" parent="."]
 offset_left = 464.0
@@ -98,8 +93,6 @@ shape = SubResource("RectangleShape2D_3qx6k")
 
 [node name="Sprite2D" type="Sprite2D" parent="Option_3_Area"]
 position = Vector2(74, 105.333)
-scale = Vector2(0.321, 0.321)
-texture = ExtResource("2_ftoq4")
 
 [node name="Upgrade_Description" type="TextEdit" parent="."]
 offset_left = -41.0

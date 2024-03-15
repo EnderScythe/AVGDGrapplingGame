@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dse5mhptrraod"]
+[gd_scene load_steps=25 format=3 uid="uid://dse5mhptrraod"]
 
 [ext_resource type="PackedScene" uid="uid://cjlcm3gj7pmgf" path="res://Game/Player.tscn" id="1_chibw"]
 [ext_resource type="Texture2D" uid="uid://bkckcmps4w8ql" path="res://icon.svg" id="2_grvmt"]
@@ -7,6 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://cngjmghkejll0" path="res://Enemies/Spider/Spider.tscn" id="6_5o83b"]
 [ext_resource type="PackedScene" uid="uid://d1u2owg2s1pq4" path="res://Enviornmental Hazards/Lava/Lava.tscn" id="7_dp1gv"]
 [ext_resource type="PackedScene" uid="uid://it708vpxsog3" path="res://Enviornmental Hazards/Stalactite/Stalactite.tscn" id="7_svpki"]
+[ext_resource type="Texture2D" uid="uid://ffjtjihwohcd" path="res://Assets/Gray_Dank Cave Images/grayConnect.png" id="8_umyxx"]
+[ext_resource type="Texture2D" uid="uid://cqd0i04mwln6k" path="res://Assets/Gray_Dank Cave Images/grayCurve.png" id="9_f4vrh"]
+[ext_resource type="Texture2D" uid="uid://deieyvmkcmm4r" path="res://Assets/Gray_Dank Cave Images/grayDiagonal.png" id="10_btatg"]
+[ext_resource type="Texture2D" uid="uid://cf2il727sggeq" path="res://Assets/Gray_Dank Cave Images/grayFilling.png" id="11_f5e6s"]
+[ext_resource type="Texture2D" uid="uid://b8dphq7s7mw47" path="res://Assets/Gray_Dank Cave Images/grayFlat.png" id="12_p2bsp"]
+[ext_resource type="Texture2D" uid="uid://jilw2g3pr70c" path="res://Assets/Gray_Dank Cave Images/grayIslandBody.png" id="13_2tyn1"]
+[ext_resource type="Texture2D" uid="uid://b2ehf5j4l378r" path="res://Assets/Gray_Dank Cave Images/grayIslandEdge.png" id="14_da1os"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3whor"]
 texture = ExtResource("2_grvmt")
@@ -211,6 +218,46 @@ physics_layer_0/collision_layer = 3
 physics_layer_0/collision_mask = 3
 sources/2 = SubResource("TileSetAtlasSource_3whor")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g7tbq"]
+texture = ExtResource("8_umyxx")
+texture_region_size = Vector2i(48, 48)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p7jmf"]
+texture = ExtResource("9_f4vrh")
+texture_region_size = Vector2i(48, 48)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jdxe4"]
+texture = ExtResource("10_btatg")
+texture_region_size = Vector2i(48, 48)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_85rjn"]
+texture = ExtResource("11_f5e6s")
+texture_region_size = Vector2i(48, 48)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jj56y"]
+texture = ExtResource("12_p2bsp")
+texture_region_size = Vector2i(48, 48)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rqub4"]
+texture = ExtResource("13_2tyn1")
+texture_region_size = Vector2i(48, 48)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nawsw"]
+texture = ExtResource("14_da1os")
+texture_region_size = Vector2i(48, 48)
+
+[sub_resource type="TileSet" id="TileSet_fbq5v"]
+tile_size = Vector2i(48, 48)
+physics_layer_0/collision_layer = 4
+physics_layer_0/collision_mask = 15
+sources/0 = SubResource("TileSetAtlasSource_g7tbq")
+sources/1 = SubResource("TileSetAtlasSource_p7jmf")
+sources/2 = SubResource("TileSetAtlasSource_jdxe4")
+sources/3 = SubResource("TileSetAtlasSource_85rjn")
+sources/4 = SubResource("TileSetAtlasSource_jj56y")
+sources/5 = SubResource("TileSetAtlasSource_rqub4")
+sources/6 = SubResource("TileSetAtlasSource_nawsw")
+
 [node name="TestRoom" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_chibw")]
@@ -253,3 +300,7 @@ position = Vector2(1370, 5213)
 
 [node name="Stalactite" parent="." instance=ExtResource("7_svpki")]
 position = Vector2(1605, -186)
+
+[node name="TileMap2" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_fbq5v")
+format = 2
