@@ -61,7 +61,6 @@ func _process(delta):
 	if Input.is_action_just_pressed("interact"):
 		if In_Option_1 == true:
 			var upgrade = selected_upgrades[0]
-			_upgrade(upgrade)
 			print("Purchased " + str(upgrade))
 		if In_Option_2 == true:
 			var upgrade = selected_upgrades[1]
@@ -69,33 +68,6 @@ func _process(delta):
 		if In_Option_3 == true:
 			var upgrade = selected_upgrades[2]
 			print("Purchased " + str(upgrade))
-
-func _upgrade(num):
-	match num:
-		0:
-			pass
-		1:
-			pass
-		2:
-			pass
-		3:
-			pass
-		4:
-			pass
-		5:
-			pass
-		6:
-			pass
-		7:
-			pass
-		8:
-			pass
-		9:
-			pass
-		10:
-			pass
-		11:
-			pass
 
 
 func _on_option_1_area_area_entered(area):
