@@ -43,7 +43,6 @@ func _ready():
 	
 
 func _process(delta):
-	var mousePosition = get_viewport().get_mouse_position()
 	playerPosition = get_parent().get_node("Player").position
 	if state == states.idle:
 		if playerPosition.distance_to(position) <= 2000:
@@ -66,7 +65,7 @@ func _process(delta):
 				if(velocities[i].length() >= SPEED_CAP):
 					velocities[i] = velocities[i].normalized() * SPEED_CAP
 				segments[i].position += velocities[i] * delta
-				if(i == segmentNum):
+				if(i == segmentNum - 1):
 					segments[i].get_node("AnimatedSprite2D").play("worm_tail_anim")
 				else:
 					segments[i].get_node("AnimatedSprite2D").play("worm_segment_anim")
