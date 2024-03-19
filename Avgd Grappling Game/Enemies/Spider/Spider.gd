@@ -10,6 +10,7 @@ var currentPos = 0
 var targetPos = 0
 
 var movingLeft = true
+var spiderShootOnce = false
 var spiderState = "wander"
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -77,12 +78,15 @@ func _physics_process(delta):
 			velocity.x -= 50
 	
 	elif (spiderState == "shoot"):
-		$AnimatedSprite2D.play("spit")
+		spiderShoot()
 
 	update_health()
 	move_and_slide()
 	
+	#print($VenomTimer.time_left)
+	
 func movement():
+	$AnimatedSprite2D.play("walk")
 	if (movingLeft):
 		velocity.x = -maxSpeed
 	else:
@@ -90,6 +94,43 @@ func movement():
 
 func wallClimb():
 	velocity.y = -maxSpeed
+
+# Handle the spider venom throwing function
+
+func spiderShoot():
+	if ($VenomTimer.time_left == 0):
+		
+		$AnimatedSprite2D.play("spit")
+		
+		var direction = 0
+		
+		if (velocity.x > 0):
+			direction = 1
+		elif (velocity.x < 0):
+			direction = -1
+		
+		self.velocity.x = 0
+		
+		await get_tree().create_timer(0.6).timeout
+		
+		if (spiderShootOnce):
+			var oneVenom = venom.instantiate()
+			get_parent().add_child(oneVenom)
+			oneVenom.global_position = self.global_position
+			
+			if (direction > 0):
+				oneVenom.velocity.x += 100
+				oneVenom.scale.x =  scale.y * -1
+			elif (direction < 0):
+				oneVenom.velocity.x -= 100
+				oneVenom.scale.x =  scale.y * -1
+			spiderShootOnce = false
+		
+		await get_tree().create_timer(0.4).timeout
+		
+		spiderState = "chase"
+		$VenomTimer.start()
+
 
 # Changing the Spider States
 
@@ -105,14 +146,8 @@ func update_health():
 	var healthBar = $healthBar
 	healthBar.value = health
 
-#func _on_venow_throw_detection_body_exited(body):
-	#if (body.name == "Player"):
-		#spiderState = "chase"
-
 func _on_venow_throw_detection_body_entered(body):
 	if (body.name == "Player"):
 		spiderState = "shoot"
+		spiderShootOnce = true
 		
-		var oneVenom = venom.instantiate()
-		get_parent().add_child(oneVenom)
-		oneVenom.velocity.x += 100
