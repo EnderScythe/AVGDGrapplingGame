@@ -144,6 +144,10 @@ size = Vector2(2122, 175.5)
 [node name="Spider" type="CharacterBody2D"]
 script = ExtResource("1_ikt67")
 
+[node name="VenomTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-57, -39)
 scale = Vector2(5.63333, 5.63333)
@@ -161,6 +165,7 @@ position = Vector2(-4, -4.5)
 shape = SubResource("RectangleShape2D_hkl3a")
 
 [node name="detectionArea" type="Area2D" parent="."]
+position = Vector2(0, -2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detectionArea"]
 position = Vector2(-177, -3)
