@@ -1,4 +1,5 @@
 extends Node2D
+class_name Item
 # Base class for player Items. Includes various methods for applying item effects that can be implemented
 
 var inventory
@@ -21,8 +22,5 @@ func apply_effect(): # applies initial effects of picking up the item, such as s
 func deapply_effect(): # inverse of apply_effect, completely reverting the changes made
 	pass
 
-
-
-# to be added - more functions to connect item effects e.g. on_take_damage, on_jump, etc. whatever the items need
 
 

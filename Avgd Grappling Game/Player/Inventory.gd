@@ -14,6 +14,11 @@ func _process(delta):
 	pass
 
 
+func call_trigger(trigger):
+	for item in inventory:
+		if item.has_method(trigger): item.call(trigger)
+
+
 func add_item(item):
 	add_child(item)
 	inventory.append(item)

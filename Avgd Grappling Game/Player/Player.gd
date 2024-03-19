@@ -3,6 +3,8 @@ extends CharacterBody2D
 const HOOK_RES = preload("res://Player/Hook.tscn")
 var hook = null
 
+@onready var inventory = get_node("Inventory")
+
 var SPEED = 600.0 # maximum horizontal speed from normal movement
 var JUMP_VELOCITY = -1200.0 # velocity at start of jump
 var ACCL = 4000.0 # how fast the player horizontally accelerates using normal movement
@@ -60,6 +62,8 @@ func launch_grapple(angle):
 	hook.apply_central_impulse(initial_impulse * (1 + inertia_fac))
 	hook.translate(Vector2(80,0).rotated(angle))
 	add_sibling(hook)
+	
+	inventory.call_trigger("on_grapple")
 
 func _input(event):
 	if event.is_action_pressed("launch_grapple"):
