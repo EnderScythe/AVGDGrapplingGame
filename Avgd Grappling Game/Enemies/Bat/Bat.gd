@@ -19,6 +19,7 @@ var damage;
 var playerPos;
 var atkSpd;
 var atkTimer = 0;
+var atkDir = Vector2(0,0);
 #var MAX_SPEED = 2000;
 
 # Called when the node enters the scene tree for the first time.
@@ -37,17 +38,8 @@ func _physics_process(delta):
 		scale.y=1
 		
 	#print(velocity.x)
-		
-	if attack == true:
-		if(position.distance_to(playerPos) <= 1):
-			atkTimer = 0
-			attack = false
-			aggro = true
-			accel = 5
-		else:
-			velocity = position.direction_to(playerPos)*1000
 
-	elif idle == true:
+	if idle == true:
 		if position.distance_to(newPos) < 100 or timeSinceNewPos > 5:
 			var newRotation = rng.randf_range(0, TAU)
 			newPos = position + Vector2(0, rng.randf_range(150, 450)).rotated(newRotation)
@@ -56,11 +48,12 @@ func _physics_process(delta):
 		if atkTimer >= 5:
 			aggro = false
 			attack = true
+			atkDir = position.direction_to(playerPos)
+			velocity = Vector2(0,0) + atkDir*10
 			accel = 1
 			velocity = Vector2(0,0)
 		elif(position.distance_to(playerPos) > 2000):
 			escapeTimer+=delta
-			# print(escapeTimer)
 			if escapeTimer >= 5:
 				aggro=false
 				idle=true
@@ -87,6 +80,7 @@ func _physics_process(delta):
 	elif velocity.y>vyMax:
 		velocity.y=vyMax
 	atkTimer = atkTimer + delta
+	print(atkTimer)
 	move_and_slide()
 
 func _on_area_2d_body_entered(body):
