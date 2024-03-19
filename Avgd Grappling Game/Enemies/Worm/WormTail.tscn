@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://d0bf0beuookbk" path="res://Assets/Worm/Tail/wormTail-9.png.png" id="9_epo30"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q8rad"]
-size = Vector2(166, 180.5)
+size = Vector2(181, 197)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kyoi0"]
 animations = [{
@@ -54,7 +54,7 @@ animations = [{
 shape = SubResource("RectangleShape2D_q8rad")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(4, 4)
+scale = Vector2(4.2, 4.2)
 sprite_frames = SubResource("SpriteFrames_kyoi0")
 animation = &"worm_tail_anim"
 frame_progress = 0.7712

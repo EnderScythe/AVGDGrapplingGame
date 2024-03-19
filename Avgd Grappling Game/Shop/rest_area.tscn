@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dhcrxgqww2rky" path="res://Assets/Cave Images/caveSlant2.png" id="3_n2hyx"]
 [ext_resource type="Texture2D" uid="uid://cmw8s41hjj3kn" path="res://Assets/Cave Images/caveSlant3.png" id="4_xy2cp"]
 [ext_resource type="Texture2D" uid="uid://bxyld0xmti1g" path="res://Assets/Cave Images/caveSlope.png" id="5_d03ov"]
-[ext_resource type="PackedScene" uid="uid://cjlcm3gj7pmgf" path="res://Game/Player.tscn" id="6_i2asr"]
+[ext_resource type="PackedScene" uid="uid://cjlcm3gj7pmgf" path="res://Player/Player.tscn" id="6_i2asr"]
 [ext_resource type="PackedScene" uid="uid://b3e788l2qcir0" path="res://Shop/market.tscn" id="7_obg3h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rnq5b"]

@@ -1,5 +1,6 @@
-extends Node
+extends TileMap
 
+var player = get_parent().get_node("Player")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -8,4 +9,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	var map = self.tile_map
+	var tileIndex = map.getcellv(map.world_to_map(player.position))
+	
+	
+
