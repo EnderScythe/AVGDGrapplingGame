@@ -8,6 +8,7 @@ func _ready():
 
 func _process(delta):
 	pass
+
 func goto_scene(path):
 	call_deferred("_deferred_goto_scene", path)
 

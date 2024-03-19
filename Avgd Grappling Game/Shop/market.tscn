@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b3e788l2qcir0"]
 
-[ext_resource type="Script" path="res://Rest_Shop.gd" id="1_dvqgb"]
+[ext_resource type="Script" path="res://Shop/market.gd" id="1_w2jjg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xt4k8"]
 size = Vector2(684.667, 310.667)
@@ -10,7 +10,7 @@ size = Vector2(15.8, 16)
 
 [node name="market" type="Node2D"]
 scale = Vector2(3, 3)
-script = ExtResource("1_dvqgb")
+script = ExtResource("1_w2jjg")
 
 [node name="Exit_Checker" type="Area2D" parent="."]
 collision_layer = 0
