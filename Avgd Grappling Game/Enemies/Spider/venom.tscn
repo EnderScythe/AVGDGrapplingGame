@@ -31,27 +31,29 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s7fx6"]
-size = Vector2(73, 56)
+size = Vector2(127, 100)
 
 [node name="Venom" type="Area2D"]
 script = ExtResource("1_m1ig7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -1.90735e-06)
+position = Vector2(24.8758, 24.876)
 rotation = 1.5708
-scale = Vector2(4.68856, 4.68856)
+scale = Vector2(7.79804, 7.79804)
 sprite_frames = SubResource("SpriteFrames_4s4yk")
 animation = &"spit"
 frame = 2
 frame_progress = 0.345906
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 1)
+position = Vector2(19, 22)
 shape = SubResource("RectangleShape2D_s7fx6")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(0.75, 1.90789)
-scale = Vector2(4.325, 3.40921)
+position = Vector2(20.75, 22.8551)
+scale = Vector2(6.325, 5.50393)
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
