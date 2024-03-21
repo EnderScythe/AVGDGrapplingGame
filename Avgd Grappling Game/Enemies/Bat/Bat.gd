@@ -80,7 +80,7 @@ func _physics_process(delta):
 	elif velocity.y>vyMax:
 		velocity.y=vyMax
 	atkTimer = atkTimer + delta
-	print(atkTimer)
+	#print(atkTimer)
 	move_and_slide()
 
 func _on_area_2d_body_entered(body):
