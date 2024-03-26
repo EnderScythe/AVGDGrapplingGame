@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://orni5fywrks2"]
+
+[ext_resource type="Script" path="res://Items/DoubleJump.gd" id="1_b2s4q"]
+
+[node name="DoubleJump" type="Node2D"]
+script = ExtResource("1_b2s4q")

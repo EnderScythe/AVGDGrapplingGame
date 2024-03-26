@@ -17,7 +17,7 @@ var vyMax = 500
 var escapeTimer = 0;
 var damage;
 var playerPos;
-var atkSpd;
+var atkSpd = 50;
 var atkTimer = 0;
 var atkDir = Vector2(0,0);
 #var MAX_SPEED = 2000;
@@ -45,13 +45,12 @@ func _physics_process(delta):
 			newPos = position + Vector2(0, rng.randf_range(150, 450)).rotated(newRotation)
 			timeSinceNewPos=0
 	elif aggro == true:
-		if atkTimer >= 5:
+		print(position.distance_to(playerPos))
+		if atkTimer <= 0 and position.distance_to(playerPos) < 1000:
+			#velocity *= 0.25
 			aggro = false
 			attack = true
-			atkDir = position.direction_to(playerPos)
-			velocity = Vector2(0,0) + atkDir*10
-			accel = 1
-			velocity = Vector2(0,0)
+			atkTimer = 1
 		elif(position.distance_to(playerPos) > 2000):
 			escapeTimer+=delta
 			if escapeTimer >= 5:
@@ -60,8 +59,16 @@ func _physics_process(delta):
 				accel=5 	
 			newPos=playerPos
 		else:
-			escapeTimer=0
-			newPos = playerPos
+			atkDir = position.direction_to(playerPos)
+			atkDir += Vector2(atkSpd, atkSpd)
+			#velocity = atkDir
+	elif attack == true:
+	#	atkDir = position.direction_to(playerPos)
+		velocity += position.direction_to(playerPos)*Vector2(atkSpd, atkSpd)
+		print("attacking")
+		if atkTimer <= 0:
+			attack = false
+			aggro = true
 		
 	timeSinceNewPos+=delta
 	if(attack == false):
@@ -69,17 +76,12 @@ func _physics_process(delta):
 		velocity += accl
 	lastPos = position
 	playerPos = get_parent().get_node("Player").position
-	#$Sprite2D.rotation_degrees+= atan((accl.y-position.y)/(accl.x/position.x))
-	#print(atan((accl.y-position.y)/(accl.x/position.x)))
-	#print(-(velocity.y/10))
-	#rotation = deg_to_rad(-(velocity.y/10))
-	#$Sprite2d.rotation_degrees = deg_to_rad((velocity.y/100))
-	# print(velocity)
 	if velocity.x>vxMax:
 		velocity.x = vxMax
 	elif velocity.y>vyMax:
-		velocity.y=vyMax
-	atkTimer = atkTimer + delta
+		velocity.y = vyMax
+	if atkTimer > 0:
+		atkTimer -= delta
 	print(atkTimer)
 	move_and_slide()
 

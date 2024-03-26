@@ -11,12 +11,12 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-  if player.is_on_floor():
-    cur_jump = max_jump
+	if player.is_on_floor():
+		cur_jump = max_jump
 
 
 func _input(event):
-  if event.is_action__pressed("jump") and !player.is_on_floor() and cur_jump > 0:
+	if event.is_action_pressed("jump") and !player.is_on_floor() and cur_jump > 0:
 		player.velocity.y = jump_velocity
-    cur_jump -= 1
+		cur_jump -= 1
 
