@@ -114,6 +114,7 @@ sources/10 = SubResource("TileSetAtlasSource_8gfgt")
 sources/11 = SubResource("TileSetAtlasSource_cydat")
 
 [node name="TileMap" type="TileMap"]
+scale = Vector2(3, 3)
 tile_set = SubResource("TileSet_317bh")
 format = 2
 script = ExtResource("1_66cvj")
