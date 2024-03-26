@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dse5mhptrraod"]
+[gd_scene load_steps=26 format=3 uid="uid://dse5mhptrraod"]
 
 [ext_resource type="PackedScene" uid="uid://cjlcm3gj7pmgf" path="res://Player/Player.tscn" id="1_chibw"]
 [ext_resource type="Texture2D" uid="uid://bkckcmps4w8ql" path="res://icon.svg" id="2_grvmt"]
@@ -7,13 +7,14 @@
 [ext_resource type="PackedScene" uid="uid://cngjmghkejll0" path="res://Enemies/Spider/Spider.tscn" id="6_5o83b"]
 [ext_resource type="PackedScene" uid="uid://d1u2owg2s1pq4" path="res://Enviornmental Hazards/Lava/Lava.tscn" id="7_dp1gv"]
 [ext_resource type="PackedScene" uid="uid://it708vpxsog3" path="res://Enviornmental Hazards/Stalactite/Stalactite.tscn" id="7_svpki"]
-[ext_resource type="Texture2D" uid="uid://bq7tg1sljhr3m" path="res://Assets/Gray_Dank Cave Images/grayConnect.png" id="8_umyxx"]
-[ext_resource type="Texture2D" uid="uid://c8goeyfpmlc3u" path="res://Assets/Gray_Dank Cave Images/grayCurve.png" id="9_f4vrh"]
-[ext_resource type="Texture2D" uid="uid://cc723dm8kp76n" path="res://Assets/Gray_Dank Cave Images/grayDiagonal.png" id="10_btatg"]
-[ext_resource type="Texture2D" uid="uid://ccolx207hrvuk" path="res://Assets/Gray_Dank Cave Images/grayFilling.png" id="11_f5e6s"]
-[ext_resource type="Texture2D" uid="uid://cqgqpmmrhwpex" path="res://Assets/Gray_Dank Cave Images/grayFlat.png" id="12_p2bsp"]
-[ext_resource type="Texture2D" uid="uid://d3jn6jxyvf4nb" path="res://Assets/Gray_Dank Cave Images/grayIslandBody.png" id="13_2tyn1"]
-[ext_resource type="Texture2D" uid="uid://1y1151eg5e1v" path="res://Assets/Gray_Dank Cave Images/grayIslandEdge.png" id="14_da1os"]
+[ext_resource type="Texture2D" uid="uid://xamqdd71h0t2" path="res://Assets/Gray_Dank Cave Images/grayConnect.png" id="8_umyxx"]
+[ext_resource type="Texture2D" uid="uid://cx7lmnjto0njl" path="res://Assets/Gray_Dank Cave Images/grayCurve.png" id="9_f4vrh"]
+[ext_resource type="Texture2D" uid="uid://dkpncf72vaaym" path="res://Assets/Gray_Dank Cave Images/grayDiagonal.png" id="10_btatg"]
+[ext_resource type="Texture2D" uid="uid://csi0p5ma5hyt3" path="res://Assets/Gray_Dank Cave Images/grayFilling.png" id="11_f5e6s"]
+[ext_resource type="Texture2D" uid="uid://h8hmf65gtqkd" path="res://Assets/Gray_Dank Cave Images/grayFlat.png" id="12_p2bsp"]
+[ext_resource type="Texture2D" uid="uid://dqr5mu6ctr3e4" path="res://Assets/Gray_Dank Cave Images/grayIslandBody.png" id="13_2tyn1"]
+[ext_resource type="Texture2D" uid="uid://drmwdwv2nbkcv" path="res://Assets/Gray_Dank Cave Images/grayIslandEdge.png" id="14_da1os"]
+[ext_resource type="PackedScene" uid="uid://bi1ridl1wi85d" path="res://Levels/TileMap.tscn" id="15_oc0tg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3whor"]
 texture = ExtResource("2_grvmt")
@@ -295,3 +296,8 @@ position = Vector2(1605, -186)
 [node name="TileMap2" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_fbq5v")
 format = 2
+
+[node name="TileMap3" parent="." instance=ExtResource("15_oc0tg")]
+scale = Vector2(3, 3)
+layer_0/name = "Hello"
+layer_0/tile_data = PackedInt32Array(2293774, 11, 0, 2293775, 11, 0, 2293776, 11, 0, 1966097, 0, 0, 1966098, 0, 0, 2031634, 0, 0, 2031633, 0, 0, 2359310, 10, 0, 2359311, 10, 0, 2359312, 10, 0, 2359309, 10, 0, 2293773, 11, 0)
