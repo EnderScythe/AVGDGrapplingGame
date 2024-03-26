@@ -1,5 +1,7 @@
 extends Node2D
 
+const temp_item_res = preload("res://Items/GrappleRangeBoost.tscn") # just to test if items work
+
 # Called when the node enters the scene tree for the first time.
 var selected_upgrades = []
 var possible_upgrades = ["Shield", "Shield Regen", "Shield Strength", "Grapple Range", "Grapple Launch", "Grapple Reel", "Machine Speed", "Pick Swing", "Booster Rocket", "Double Jump", "Repulsor", "Revive"]
@@ -22,7 +24,7 @@ func _ready():
 	$Upgrade_Description.visible = false
 	
 	var _rng = RandomNumberGenerator.new()
-	var Has_Shield = get_parent().get_node("Player").get_node("Shield_Area").is_monitoring() # This line causes game to crash if run in market rather than rest_area
+	#var Has_Shield = get_parent().get_node("Player").get_node("Shield_Area").is_monitoring() # This line causes game to crash if run in market rather than rest_area
 	
 	# Randomly select 3 integers from the bounds [0, n_upgrades]
 	while selected_upgrades.size() < 3:
@@ -32,8 +34,8 @@ func _ready():
 		if num < 3:
 			# Check if it's a valid upgrade (the shields (probably going to be values 1-3) need to be double checked)
 			Selected = randi_range(1, 2)
-			if Has_Shield == false:
-				Selected = 0
+			#if Has_Shield == false:
+			Selected = 0
 		else:
 			Selected = num
 		var Already_Selected = false
@@ -47,6 +49,7 @@ func _ready():
 	#for x in 3:
 		#print(Selected_Upgrades[x])
 		#print(Possible_Upgrades[Selected_Upgrades[x]])
+	selected_upgrades[0] = 3
 	get_node("Option_1").text = possible_upgrades[selected_upgrades[0]]
 	get_node("Option_2").text = possible_upgrades[selected_upgrades[1]]
 	get_node("Option_3").text = possible_upgrades[selected_upgrades[2]]
@@ -60,42 +63,14 @@ func _ready():
 func _process(delta):
 	if Input.is_action_just_pressed("interact"):
 		if In_Option_1 == true:
-			var upgrade = selected_upgrades[0]
-			_upgrade(upgrade)
-			print("Purchased " + str(upgrade))
+			var upgrade = possible_upgrades[selected_upgrades[0]]
+			#player.inventory.add_item(upgrade)
 		if In_Option_2 == true:
 			var upgrade = selected_upgrades[1]
 			print("Purchased " + str(upgrade))
 		if In_Option_3 == true:
 			var upgrade = selected_upgrades[2]
 			print("Purchased " + str(upgrade))
-
-func _upgrade(num):
-	match num:
-		0:
-			pass
-		1:
-			pass
-		2:
-			pass
-		3:
-			pass
-		4:
-			pass
-		5:
-			pass
-		6:
-			pass
-		7:
-			pass
-		8:
-			pass
-		9:
-			pass
-		10:
-			pass
-		11:
-			pass
 
 
 func _on_option_1_area_area_entered(area):
