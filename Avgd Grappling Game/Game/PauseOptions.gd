@@ -14,8 +14,8 @@ func _process(delta):
 
 func _input(event):
 	if event.is_action_pressed("escape"):
-		get_tree().paused = true
-		show()
+		get_tree().paused = !get_tree().paused
+		visible = !visible
 
 func _on_back_pressed():
 	get_tree().paused = false
