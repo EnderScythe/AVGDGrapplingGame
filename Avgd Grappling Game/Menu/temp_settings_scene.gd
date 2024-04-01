@@ -10,13 +10,8 @@ func _ready():
 func _process(delta):
 	pass
 
-func _on_volume_pressed():
-	print("Changing volume")
 
+func _on_tab_container_tab_clicked(tab):
+	if tab == 2:
+		get_tree().change_scene_to_file("res://Menu/menu.tscn")
 
-func _on_controls_pressed():
-	print("Changing controls")
-
-
-func _on_back_pressed():
-	get_tree().change_scene_to_file("res://Menu/menu.tscn")

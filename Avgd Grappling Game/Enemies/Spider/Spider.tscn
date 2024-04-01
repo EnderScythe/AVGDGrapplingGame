@@ -133,13 +133,13 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hkl3a"]
-size = Vector2(236, 167)
+size = Vector2(267, 167)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_um7pu"]
-size = Vector2(611.5, 176)
+size = Vector2(1215, 176)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2c8j8"]
-size = Vector2(2122, 175.5)
+size = Vector2(2122, 179)
 
 [node name="Spider" type="CharacterBody2D"]
 script = ExtResource("1_ikt67")
@@ -161,31 +161,32 @@ position = Vector2(1, -1)
 target_position = Vector2(-114, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-4, -4.5)
+position = Vector2(-19.5, -4.5)
 shape = SubResource("RectangleShape2D_hkl3a")
 
 [node name="detectionArea" type="Area2D" parent="."]
 position = Vector2(0, -2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detectionArea"]
-position = Vector2(-177, -3)
+position = Vector2(11.5, -3)
 shape = SubResource("RectangleShape2D_um7pu")
 
 [node name="healthBar" type="ProgressBar" parent="."]
 modulate = Color(1, 0.12549, 0, 1)
-offset_left = -47.0
-offset_top = -116.0
-offset_right = 143.0
-offset_bottom = -89.0
+offset_left = -91.0
+offset_top = -124.0
+offset_right = 275.0
+offset_bottom = -81.0
 scale = Vector2(0.5, 0.5)
 show_percentage = false
 
 [node name="venowThrowDetection" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="venowThrowDetection"]
-position = Vector2(-1545, -5.75)
+position = Vector2(-1658, -8)
 shape = SubResource("RectangleShape2D_2c8j8")
 
+[connection signal="area_entered" from="detectionArea" to="." method="_on_detection_area_area_entered"]
 [connection signal="body_entered" from="detectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detectionArea" to="." method="_on_detection_area_body_exited"]
 [connection signal="body_entered" from="venowThrowDetection" to="." method="_on_venow_throw_detection_body_entered"]
