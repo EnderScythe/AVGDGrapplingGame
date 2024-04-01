@@ -2,8 +2,8 @@ extends CharacterBody2D
 
 # Spider Statistics
 
-var maxSpeed = 300
-var acceleration = 10
+var maxSpeed = 400
+var acceleration = 20
 var health = 100
 
 var currentPos = 0
@@ -102,9 +102,9 @@ func spiderShoot():
 		
 		$AnimatedSprite2D.play("spit")
 		
-		var direction = 0
+		var direction =0
 		
-		if (velocity.x > 0):
+		if (velocity.x >= 0):
 			direction = 1
 		elif (velocity.x < 0):
 			direction = -1
@@ -112,18 +112,25 @@ func spiderShoot():
 		self.velocity.x = 0
 		
 		await get_tree().create_timer(0.6).timeout
+		var playerPosition = get_parent().get_node("Player").position
+		var currentAcc = position.direction_to(playerPosition) * 50
 		
 		if (spiderShootOnce):
 			var oneVenom = venom.instantiate()
 			get_parent().add_child(oneVenom)
+			print("new venom")
 			oneVenom.global_position = self.global_position
 			
-			if (direction > 0):
-				oneVenom.velocity.x += 100
-				oneVenom.scale.x =  scale.y * -1
-			elif (direction < 0):
-				oneVenom.velocity.x -= 100
-				oneVenom.scale.x =  scale.y * -1
+			oneVenom.start(get_parent().get_node("Player"))
+			
+			#oneVenom.velocity += currentAcc 
+			#
+			#if (direction > 0):
+				##oneVenom.velocity.x += 100
+				#oneVenom.scale.x =  scale.y * -1
+			#elif (direction < 0):
+				##oneVenom.velocity.x -= 100
+				#oneVenom.scale.x =  scale.y * -1
 			spiderShootOnce = false
 		
 		await get_tree().create_timer(0.4).timeout
@@ -150,4 +157,3 @@ func _on_venow_throw_detection_body_entered(body):
 	if (body.name == "Player"):
 		spiderState = "shoot"
 		spiderShootOnce = true
-		
