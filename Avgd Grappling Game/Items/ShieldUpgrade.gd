@@ -11,6 +11,7 @@ const increment = 300
 func _ready():
 	super._ready()
 	# Will probably change some value to turn on some collision/checks for the shield
+	item_name = "Shield"
 	description = "A shield will take some damage for you!\n\nYou can only buy ONE SHIELD, feel free to upgrade it though!"
 
 
