@@ -1,6 +1,7 @@
 extends Node2D
 
 const temp_item_res = preload("res://Items/GrappleRangeBoost.tscn") # just to test if items work
+@onready var player = get_parent().get_node("Player")
 
 # Called when the node enters the scene tree for the first time.
 var selected_upgrades = []
@@ -64,7 +65,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("interact"):
 		if In_Option_1 == true:
 			var upgrade = possible_upgrades[selected_upgrades[0]]
-			#player.inventory.add_item(upgrade)
+			player.inventory.add_item(upgrade)
 		if In_Option_2 == true:
 			var upgrade = selected_upgrades[1]
 			print("Purchased " + str(upgrade))
@@ -72,34 +73,34 @@ func _process(delta):
 			var upgrade = selected_upgrades[2]
 			print("Purchased " + str(upgrade))
 
-
-func _on_option_1_area_area_entered(area):
+func _on_option_1_area_body_entered(body):
 	In_Option_1 = true
 	get_node("Upgrade_Description").text = upgrade_descriptions[selected_upgrades[0]]
 	$Upgrade_Description.visible = true
 
-func _on_option_2_area_area_entered(area):
+func _on_option_2_area_body_entered(body):
 	In_Option_2 = true
 	get_node("Upgrade_Description").text = upgrade_descriptions[selected_upgrades[1]]
 	$Upgrade_Description.visible = true
 
-func _on_option_3_area_area_entered(area):
+func _on_option_3_area_body_entered(body):
 	In_Option_3 = true
 	get_node("Upgrade_Description").text = upgrade_descriptions[selected_upgrades[2]]
 	$Upgrade_Description.visible = true
 
-func _on_area_2d_area_exited(area):
-	$Upgrade_Description.visible = false
 
-
-func _on_option_1_area_area_exited(area):
+func _on_option_1_area_body_exited(body):
 	In_Option_1 = false
 	get_node("Upgrade_Description").text = ""
 
-func _on_option_2_area_area_exited(area):
+func _on_option_2_area_body_exited(body):
 	In_Option_2 = false
 	get_node("Upgrade_Description").text = ""
 
-func _on_option_3_area_area_exited(area):
+func _on_option_3_area_body_exited(body):
 	In_Option_3 = false
 	get_node("Upgrade_Description").text = ""
+
+
+func _on_exit_checker_body_exited(body):
+	$Upgrade_Description.visible = false
