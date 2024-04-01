@@ -133,10 +133,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hkl3a"]
-size = Vector2(236, 167)
+size = Vector2(267, 167)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_um7pu"]
-size = Vector2(611.5, 176)
+size = Vector2(1215, 176)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2c8j8"]
 size = Vector2(2122, 179)
@@ -161,14 +161,14 @@ position = Vector2(1, -1)
 target_position = Vector2(-114, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-4, -4.5)
+position = Vector2(-19.5, -4.5)
 shape = SubResource("RectangleShape2D_hkl3a")
 
 [node name="detectionArea" type="Area2D" parent="."]
 position = Vector2(0, -2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detectionArea"]
-position = Vector2(-177, -3)
+position = Vector2(11.5, -3)
 shape = SubResource("RectangleShape2D_um7pu")
 
 [node name="healthBar" type="ProgressBar" parent="."]
@@ -183,7 +183,7 @@ show_percentage = false
 [node name="venowThrowDetection" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="venowThrowDetection"]
-position = Vector2(-1545, -5)
+position = Vector2(-1658, -8)
 shape = SubResource("RectangleShape2D_2c8j8")
 
 [connection signal="area_entered" from="detectionArea" to="." method="_on_detection_area_area_entered"]
