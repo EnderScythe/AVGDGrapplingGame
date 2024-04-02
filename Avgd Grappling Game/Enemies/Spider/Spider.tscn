@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cngjmghkejll0"]
+[gd_scene load_steps=35 format=3 uid="uid://cngjmghkejll0"]
 
 [ext_resource type="Script" path="res://Enemies/Spider/Spider.gd" id="1_ikt67"]
 [ext_resource type="Texture2D" uid="uid://1mwmtkp5pk88" path="res://Assets/Spider/Spit/spiderSpit-1.png.png" id="2_fq61k"]
@@ -135,17 +135,20 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hkl3a"]
 size = Vector2(267, 167)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_um7pu"]
-size = Vector2(1215, 176)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2c8j8"]
 size = Vector2(2122, 179)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dwgb5"]
+size = Vector2(2504.5, 177)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_um7pu"]
+size = Vector2(1191, 176)
 
 [node name="Spider" type="CharacterBody2D"]
 script = ExtResource("1_ikt67")
 
 [node name="VenomTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 3.0
 one_shot = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -155,39 +158,45 @@ sprite_frames = SubResource("SpriteFrames_dix5e")
 animation = &"lung"
 frame_progress = 0.384133
 
-[node name="l_ray" type="RayCast2D" parent="."]
-visible = false
-position = Vector2(1, -1)
-target_position = Vector2(-114, 1)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-19.5, -4.5)
 shape = SubResource("RectangleShape2D_hkl3a")
 
-[node name="detectionArea" type="Area2D" parent="."]
-position = Vector2(0, -2)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="detectionArea"]
-position = Vector2(11.5, -3)
-shape = SubResource("RectangleShape2D_um7pu")
-
 [node name="healthBar" type="ProgressBar" parent="."]
 modulate = Color(1, 0.12549, 0, 1)
-offset_left = -91.0
+offset_left = -99.0
 offset_top = -124.0
-offset_right = 275.0
+offset_right = 267.0
 offset_bottom = -81.0
 scale = Vector2(0.5, 0.5)
 show_percentage = false
 
 [node name="venowThrowDetection" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="venowThrowDetection"]
 position = Vector2(-1658, -8)
 shape = SubResource("RectangleShape2D_2c8j8")
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="venowThrowDetection"]
+position = Vector2(1849, -5)
+shape = SubResource("RectangleShape2D_dwgb5")
+disabled = true
+
+[node name="detectionArea" type="Area2D" parent="."]
+visible = false
+position = Vector2(0, -2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detectionArea"]
+position = Vector2(-0.5, -3)
+shape = SubResource("RectangleShape2D_um7pu")
+
+[node name="l_ray" type="RayCast2D" parent="."]
+position = Vector2(1, -1)
+target_position = Vector2(-195, 0)
+
+[connection signal="body_entered" from="venowThrowDetection" to="." method="_on_venow_throw_detection_body_entered"]
+[connection signal="body_exited" from="venowThrowDetection" to="." method="_on_venow_throw_detection_body_exited"]
 [connection signal="area_entered" from="detectionArea" to="." method="_on_detection_area_area_entered"]
 [connection signal="body_entered" from="detectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detectionArea" to="." method="_on_detection_area_body_exited"]
-[connection signal="body_entered" from="venowThrowDetection" to="." method="_on_venow_throw_detection_body_entered"]
-[connection signal="body_exited" from="venowThrowDetection" to="." method="_on_venow_throw_detection_body_exited"]

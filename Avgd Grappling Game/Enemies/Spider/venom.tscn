@@ -54,7 +54,7 @@ position = Vector2(20.75, 22.8551)
 scale = Vector2(6.325, 5.50393)
 
 [node name="Lifetime" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 5.0
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
