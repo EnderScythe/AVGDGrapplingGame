@@ -1,6 +1,6 @@
 extends Node
 
-const temp_item_res = preload("res://Items/GrappleRangeBoost.tscn") # just to test if items work
+#const temp_item_res = preload("res://Items/GrappleRangeBoost.tscn") # just to test if items work
 
 var inventory = []
 

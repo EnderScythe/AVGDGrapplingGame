@@ -4,6 +4,7 @@ class_name Item
 
 var inventory
 var player
+var cost
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

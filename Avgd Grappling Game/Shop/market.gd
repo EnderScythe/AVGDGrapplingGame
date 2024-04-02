@@ -18,7 +18,6 @@ var rocket = preload("res://Items/Rocket.tscn")
 var double_jump = preload("res://Items/DoubleJump.tscn")
 var repulsor = preload("res://Items/Repulsor.tscn")
 var revive = preload("res://Items/Revive.tscn")
-
 var UPGRADES = [
 	shield,
 	shield_regen,
@@ -33,6 +32,7 @@ var UPGRADES = [
 	repulsor,
 	revive
 ]
+
 var In_Option_1 = false
 var In_Option_2 = false
 var In_Option_3 = false

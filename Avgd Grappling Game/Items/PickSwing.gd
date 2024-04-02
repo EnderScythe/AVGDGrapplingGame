@@ -37,3 +37,6 @@ func get_descript():
 
 func get_img_path():
 	return "res://Assets/Shop/Shop7.png"
+
+func get_cost():
+	return 3
