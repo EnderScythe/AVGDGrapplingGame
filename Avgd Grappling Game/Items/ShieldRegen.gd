@@ -1,6 +1,6 @@
 extends Item
 
-var boost_value = 500
+var boost_value = .8
 const increment = 300
 
 # this is an example script for an item that increases the player's 
@@ -10,7 +10,6 @@ const increment = 300
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	super._ready()
-	# Will probably change some value to turn on some collision/checks for the shield
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -19,15 +18,15 @@ func _process(delta):
 
 func apply_effect():
 	# Values for shields have not been worked out yet and cannot be implemented
-	player.MAX_LENGTH += boost_value
+	PlayerVariables.shield_recharge *= boost_value
 
 func deapply_effect():
-	player.MAX_LENGTH -= boost_value
+	PlayerVariables.shield_recharge /= boost_value
 
-func on_grapple():
-	player.MAX_LENGTH += increment
-	boost_value += increment
-	print(boost_value)
+#func on_grapple():
+	#player.MAX_LENGTH += increment
+	#boost_value += increment
+	#print(boost_value)
 
 func get_upgrade():
 	return "Shield Regen"

@@ -23,10 +23,10 @@ func apply_effect():
 func deapply_effect():
 	player.REEL_SPEED -= boost_value
 
-func on_grapple():
-	player.REEL_SPEED += increment
-	boost_value += increment
-	print(boost_value)
+#func on_grapple():
+	#player.REEL_SPEED += increment
+	#boost_value += increment
+	#print(boost_value)
 
 func get_upgrade():
 	return "Grapple Reel"

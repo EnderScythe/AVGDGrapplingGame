@@ -62,6 +62,7 @@ func _ready():
 		if already_selected == false:
 			selected_upgrades.append(selected)
 	
+	selected_upgrades[0] = 8
 	selected.append(UPGRADES[selected_upgrades[0]].instantiate())
 	selected.append(UPGRADES[selected_upgrades[1]].instantiate())
 	selected.append(UPGRADES[selected_upgrades[2]].instantiate())

@@ -22,10 +22,10 @@ func apply_effect():
 func deapply_effect():
 	player.LAUNCH_VEL -= boost_value
 
-func on_grapple():
-	player.LAUNCH_VEL += increment
-	boost_value += increment
-	print(boost_value)
+#func on_grapple():
+	#player.LAUNCH_VEL += increment
+	#boost_value += increment
+	#print(boost_value)
 
 func get_upgrade():
 	return "Grapple Launch"

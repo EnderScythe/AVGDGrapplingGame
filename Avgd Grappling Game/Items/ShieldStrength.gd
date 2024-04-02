@@ -1,6 +1,6 @@
 extends Item
 
-var boost_value = 500
+var boost_value = 2
 const increment = 300
 
 # this is an example script for an item that increases the player's 
@@ -19,15 +19,15 @@ func _process(delta):
 
 func apply_effect():
 	# Values for shields have not been worked out yet and cannot be implemented
-	player.MAX_LENGTH += boost_value
+	PlayerVariables.shield_strength += boost_value
 
 func deapply_effect():
 	player.MAX_LENGTH -= boost_value
 
-func on_grapple():
-	player.MAX_LENGTH += increment
-	boost_value += increment
-	print(boost_value)
+#func on_grapple():
+	#player.MAX_LENGTH += increment
+	#boost_value += increment
+	#print(boost_value)
 
 func get_upgrade():
 	return "Shield Strength"

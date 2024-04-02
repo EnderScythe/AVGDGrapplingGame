@@ -1,6 +1,6 @@
 extends Item
 
-var boost_value = 500
+var boost_value = .75
 const increment = 300
 
 # this is an example script for an item that increases the player's 
@@ -19,15 +19,15 @@ func _process(delta):
 
 func apply_effect():
 	#There's no actual value for this yet
-	player.MAX_LENGTH += boost_value
+	PlayerVariables.swingspeed *= boost_value # we have nothing that utilizes this, so there's no way to test if this works
 
 func deapply_effect():
-	player.MAX_LENGTH -= boost_value
+	PlayerVariables.swingspeed /= boost_value
 
-func on_grapple():
-	player.MAX_LENGTH += increment
-	boost_value += increment
-	print(boost_value)
+#func on_grapple():
+	#player.MAX_LENGTH += increment
+	#boost_value += increment
+	#print(boost_value)
 
 func get_upgrade():
 	return "Swing Speed"
