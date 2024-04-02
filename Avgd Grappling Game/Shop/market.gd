@@ -5,7 +5,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 var selected_upgrades = []
-var selected = []
+var buyable = ["", "", ""]
 var shield = preload("res://Items/ShieldUpgrade.tscn")
 var shield_regen = preload("res://Items/ShieldRegen.tscn")
 var shield_strength = preload("res://Items/ShieldStrength.tscn")
@@ -36,22 +36,24 @@ var UPGRADES = [
 var In_Option_1 = false
 var In_Option_2 = false
 var In_Option_3 = false
+var in_reroll = false
 func _ready():
 	$Upgrade_Description.visible = false
-	
-	var _rng = RandomNumberGenerator.new()
-	#var Has_Shield = get_parent().get_node("Player").get_node("Shield_Area").is_monitoring() # This line causes game to crash if run in market rather than rest_area
-	
+	var _rng = RandomNumberGenerator.new
+	roll_shop()
+
+func roll_shop():
 	# Randomly select 3 integers from the bounds [0, n_upgrades]
 	while selected_upgrades.size() < 3:
 		# While randomly selecting integers, check if it's already been used and re-generate if it has
 		var num = randi_range(0, UPGRADES.size()-1)
+		print(num)
 		var selected
 		if num < 3:
 			# Check if it's a valid upgrade (the shields (probably going to be values 1-3) need to be double checked)
 			selected = randi_range(1, 2)
-			#if Has_Shield == false:
-			selected = 0
+			if PlayerVariables.has_shield == false:
+				selected = 0
 		else:
 			selected = num
 		var already_selected = false
@@ -62,45 +64,47 @@ func _ready():
 		if already_selected == false:
 			selected_upgrades.append(selected)
 	
-	selected_upgrades[0] = 8
-	selected.append(UPGRADES[selected_upgrades[0]].instantiate())
-	selected.append(UPGRADES[selected_upgrades[1]].instantiate())
-	selected.append(UPGRADES[selected_upgrades[2]].instantiate())
-	get_node("Option_1").text = selected[0].get_upgrade()
-	get_node("Option_2").text = selected[1].get_upgrade()
-	get_node("Option_3").text = selected[2].get_upgrade()
+	buyable[0] = UPGRADES[selected_upgrades[0]].instantiate()
+	buyable[1] = UPGRADES[selected_upgrades[1]].instantiate()
+	buyable[2] = UPGRADES[selected_upgrades[2]].instantiate()
+	selected_upgrades = []
+	get_node("Option_1").text = buyable[0].get_upgrade()
+	get_node("Option_2").text = buyable[1].get_upgrade()
+	get_node("Option_3").text = buyable[2].get_upgrade()
 	
-	$Option_1_Area/Sprite2D.set_texture(load(selected[0].get_img_path()))
-	$Option_2_Area/Sprite2D.set_texture(load(selected[1].get_img_path()))
-	$Option_3_Area/Sprite2D.set_texture(load(selected[2].get_img_path()))
-
+	$Option_1_Area/Sprite2D.set_texture(load(buyable[0].get_img_path()))
+	$Option_2_Area/Sprite2D.set_texture(load(buyable[1].get_img_path()))
+	$Option_3_Area/Sprite2D.set_texture(load(buyable[2].get_img_path()))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_just_pressed("interact"):
+		if in_reroll == true:
+			print("Rerolled!")
+			roll_shop()
 		if In_Option_1 == true:
-			player.inventory.add_item(selected[0])
-			print("Purchased " + selected[0].get_upgrade())
+			player.inventory.add_item(buyable[0])
+			print("Purchased " + buyable[0].get_upgrade())
 		if In_Option_2 == true:
-			player.inventory.add_item(selected[1])
-			print("Purchased " + selected[1].get_upgrade())
+			player.inventory.add_item(buyable[1])
+			print("Purchased " + buyable[1].get_upgrade())
 		if In_Option_3 == true:
-			player.inventory.add_item(selected[2])
-			print("Purchased " + selected[2].get_upgrade())
+			player.inventory.add_item(buyable[2])
+			print("Purchased " + buyable[2].get_upgrade())
 
 func _on_option_1_area_body_entered(body):
 	In_Option_1 = true
-	get_node("Upgrade_Description").text = selected[0].get_descript()
+	get_node("Upgrade_Description").text = buyable[0].get_descript()
 	$Upgrade_Description.visible = true
 
 func _on_option_2_area_body_entered(body):
 	In_Option_2 = true
-	get_node("Upgrade_Description").text = selected[1].get_descript()
+	get_node("Upgrade_Description").text = buyable[1].get_descript()
 	$Upgrade_Description.visible = true
 
 func _on_option_3_area_body_entered(body):
 	In_Option_3 = true
-	get_node("Upgrade_Description").text = selected[2].get_descript()
+	get_node("Upgrade_Description").text = buyable[2].get_descript()
 	$Upgrade_Description.visible = true
 
 
@@ -119,3 +123,13 @@ func _on_option_3_area_body_exited(body):
 
 func _on_exit_checker_body_exited(body):
 	$Upgrade_Description.visible = false
+
+
+func _on_reroll_area_body_entered(body):
+	in_reroll = true
+	get_node("Upgrade_Description").text = "Press 'E' to reroll the shop items!"
+	$Upgrade_Description.visible = true
+
+func _on_reroll_area_body_exited(body):
+	in_reroll = false
+	get_node("Upgrade_Description").text = ""
