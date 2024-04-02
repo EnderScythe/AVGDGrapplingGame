@@ -11,8 +11,6 @@ const increment = 300
 func _ready():
 	super._ready()
 	# Will probably change some value to turn on some collision/checks for the shield
-	item_name = "Machine Speed"
-	description = "Increases your base move speed!"
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -20,12 +18,22 @@ func _process(delta):
 	pass
 
 func apply_effect():
-	player.SPEED += boost_value
+	#There's no actual value for this yet
+	player.MAX_LENGTH += boost_value
 
 func deapply_effect():
-	player.SPEED -= boost_value
+	player.MAX_LENGTH -= boost_value
 
 func on_grapple():
-	player.SPEED += increment
+	player.MAX_LENGTH += increment
 	boost_value += increment
 	print(boost_value)
+
+func get_upgrade():
+	return "Swing Speed"
+
+func get_descript():
+	return "Decreases the time between pickaxe swings!"
+
+func get_img_path():
+	return "res://Assets/Shop/Shop7.png"

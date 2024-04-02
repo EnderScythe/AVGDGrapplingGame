@@ -16,7 +16,7 @@ script = ExtResource("1_w2jjg")
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit_Checker"]
-position = Vector2(301.667, -21.6667)
+position = Vector2(302, -21)
 shape = SubResource("RectangleShape2D_xt4k8")
 
 [node name="Option_1" type="TextEdit" parent="."]
@@ -32,7 +32,8 @@ middle_mouse_paste_enabled = false
 metadata/_edit_use_anchors_ = true
 
 [node name="Option_1_Area" type="Area2D" parent="."]
-collision_layer = 0
+collision_layer = 7
+collision_mask = 7
 
 [node name="Option_1_Size" type="CollisionShape2D" parent="Option_1_Area"]
 position = Vector2(63.5, 105)
@@ -58,7 +59,8 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Option_2_Area" type="Area2D" parent="."]
 position = Vector2(232, 0)
-collision_layer = 0
+collision_layer = 7
+collision_mask = 7
 
 [node name="Option_2_Size" type="CollisionShape2D" parent="Option_2_Area"]
 position = Vector2(74, 105)
@@ -84,7 +86,8 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Option_3_Area" type="Area2D" parent="."]
 position = Vector2(464, 0)
-collision_layer = 0
+collision_layer = 7
+collision_mask = 7
 
 [node name="Option_3_Size" type="CollisionShape2D" parent="Option_3_Area"]
 position = Vector2(74, 105)
@@ -109,10 +112,10 @@ virtual_keyboard_enabled = false
 middle_mouse_paste_enabled = false
 wrap_mode = 1
 
-[connection signal="area_exited" from="Exit_Checker" to="." method="_on_area_2d_area_exited"]
-[connection signal="area_entered" from="Option_1_Area" to="." method="_on_option_1_area_area_entered"]
-[connection signal="area_exited" from="Option_1_Area" to="." method="_on_option_1_area_area_exited"]
-[connection signal="area_entered" from="Option_2_Area" to="." method="_on_option_2_area_area_entered"]
-[connection signal="area_exited" from="Option_2_Area" to="." method="_on_option_2_area_area_exited"]
-[connection signal="area_entered" from="Option_3_Area" to="." method="_on_option_3_area_area_entered"]
-[connection signal="area_exited" from="Option_3_Area" to="." method="_on_option_3_area_area_exited"]
+[connection signal="body_exited" from="Exit_Checker" to="." method="_on_exit_checker_body_exited"]
+[connection signal="body_entered" from="Option_1_Area" to="." method="_on_option_1_area_body_entered"]
+[connection signal="body_exited" from="Option_1_Area" to="." method="_on_option_1_area_body_exited"]
+[connection signal="body_entered" from="Option_2_Area" to="." method="_on_option_2_area_body_entered"]
+[connection signal="body_exited" from="Option_2_Area" to="." method="_on_option_2_area_body_exited"]
+[connection signal="body_entered" from="Option_3_Area" to="." method="_on_option_3_area_body_entered"]
+[connection signal="body_exited" from="Option_3_Area" to="." method="_on_option_3_area_body_exited"]

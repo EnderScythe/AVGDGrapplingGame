@@ -3,7 +3,6 @@ extends TileMap
 @onready var player = get_parent().get_node("Player")
 
 func _ready():
-	
 	print(get_used_cells(0))
 
 

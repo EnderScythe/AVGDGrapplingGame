@@ -11,8 +11,6 @@ const increment = 300
 func _ready():
 	super._ready()
 	# Will probably change some value to turn on some collision/checks for the shield
-	description = "A shield will take some damage for you!\n\nYou can only buy ONE SHIELD, feel free to upgrade it though!"
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -29,4 +27,11 @@ func on_grapple():
 	boost_value += increment
 	print(boost_value)
 
+func get_upgrade():
+	return "Shield"
 
+func get_descript():
+	return "A shield will take some damage for you!\n\nYou can only buy ONE SHIELD, feel free to upgrade it though!"
+
+func get_img_path():
+	return "res://Assets/Shop/Shop0.png"
