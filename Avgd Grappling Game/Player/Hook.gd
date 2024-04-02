@@ -40,7 +40,7 @@ func despawn():
 
 func enter_grapple():
 	set_freeze_mode(RigidBody2D.FREEZE_MODE_KINEMATIC) # this SHOULD NOT be necessary
-	set_freeze_enabled(true)
+	call_deferred("set_freeze_enabled", true)
 	# remove_collision_exception_with(player) # this DOES NOT WORK
 	length = dist_player()
 	state = 1

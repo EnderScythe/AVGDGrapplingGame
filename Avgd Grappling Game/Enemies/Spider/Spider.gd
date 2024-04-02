@@ -32,12 +32,15 @@ func _physics_process(delta):
 	# Preventing Wall Collision and Falling
 	
 	if $l_ray.is_colliding():
-		var randomMovement = random.randi_range(0,1)
-		if (randomMovement == 0):
-			movingLeft = !movingLeft
-		else:
+		if $l_ray.get_collider().name != "Player":	
 			spiderState = "climb"
-			rotation_degrees += 90 
+		
+		#var randomMovement = random.randi_range(0,1)
+		#if (randomMovement == 0):
+			#movingLeft = !movingLeft
+		#else:
+			#spiderState = "climb"
+			#rotation_degrees += 90 
 	
 	# Wander State: Random Movement
 	
@@ -83,8 +86,6 @@ func _physics_process(delta):
 	update_health()
 	move_and_slide()
 	
-	#print($VenomTimer.time_left)
-	
 func movement():
 	$AnimatedSprite2D.play("walk")
 	if (movingLeft):
@@ -94,6 +95,8 @@ func movement():
 
 func wallClimb():
 	velocity.y = -maxSpeed
+	rotation_degrees += 90
+	
 
 # Handle the spider venom throwing function
 
@@ -118,19 +121,8 @@ func spiderShoot():
 		if (spiderShootOnce):
 			var oneVenom = venom.instantiate()
 			get_parent().add_child(oneVenom)
-			print("new venom")
 			oneVenom.global_position = self.global_position
-			
 			oneVenom.start(get_parent().get_node("Player"))
-			
-			#oneVenom.velocity += currentAcc 
-			#
-			#if (direction > 0):
-				##oneVenom.velocity.x += 100
-				#oneVenom.scale.x =  scale.y * -1
-			#elif (direction < 0):
-				##oneVenom.velocity.x -= 100
-				#oneVenom.scale.x =  scale.y * -1
 			spiderShootOnce = false
 		
 		await get_tree().create_timer(0.4).timeout
@@ -157,3 +149,5 @@ func _on_venow_throw_detection_body_entered(body):
 	if (body.name == "Player"):
 		spiderState = "shoot"
 		spiderShootOnce = true
+
+
