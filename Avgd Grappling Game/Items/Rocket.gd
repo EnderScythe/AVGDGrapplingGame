@@ -10,8 +10,6 @@ const increment = 300
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	super._ready()
-	# Will probably change some value to turn on some collision/checks for the shield
-	description = "Press [key] to activate a rocket propelled booster! Achive insane velocities with this bad boy!"
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -29,3 +27,12 @@ func on_grapple():
 	player.MAX_LENGTH += increment
 	boost_value += increment
 	print(boost_value)
+
+func get_upgrade():
+	return "Rocket"
+
+func get_descript():
+	return "Press [key] to activate a rocket propelled booster! Achive insane velocities with this bad boy!"
+
+func get_img_path():
+	return "res://Assets/Shop/Shop8.png"

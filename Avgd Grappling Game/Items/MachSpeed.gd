@@ -11,8 +11,6 @@ const increment = 300
 func _ready():
 	super._ready()
 	# Will probably change some value to turn on some collision/checks for the shield
-	item_name = "Machine Speed"
-	description = "Increases your base move speed!"
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -29,3 +27,12 @@ func on_grapple():
 	player.SPEED += increment
 	boost_value += increment
 	print(boost_value)
+
+func get_upgrade():
+	return "Machine Speed"
+
+func get_descript():
+	return "Increases your base move speed!"
+
+func get_img_path():
+	return "res://Assets/Shop/Shop6.png"

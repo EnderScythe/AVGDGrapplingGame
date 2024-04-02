@@ -5,19 +5,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 var selected_upgrades = []
-#var possible_upgrades = ["Shield", "Shield Regen", "Shield Strength", "Grapple Range", "Grapple Launch", "Grapple Reel", "Machine Speed", "Pick Swing", "Booster Rocket", "Double Jump", "Repulsor", "Revive"]
-var upgrade_descriptions = ["A shield will take some damage for you!\n\nYou can only buy ONE SHIELD, feel free to upgrade it though!",
-	"Upgrade to decrease the time it takes for the shield to start recharging!",
-	"Upgrade to increase the amount of [unit] the shield can take before breaking!",
-	"Upgrade to increase the distance which the end of the grapple hook can travel before automatically terminating!",
-	"Upgrade to increase the speed the end of the grapple hook travels!",
-	"Increases the speed you move towards the end of the grapple hook after it has attached to something!",
-	"Increases your base move speed!",
-	"Decreases the time between pickaxe swings!",
-	"Press [key] to activate a rocket propelled booster! Achive insane velocities with this bad boy!",
-	"Place a pad (able to be placed in the middle of air) to jump again; the pad can be used multiple times!\n\nYou can JUMP ON THE PAD multiple times however you can only PLACE DOWN the pad ONCE.",
-	"Place a bubble which creates an area which redirects enemies elsewhere (useful when trying to mine ores with monsters around)!\n\nThe bubble has a limited duration and placing a bubble consumes one instance.",
-	"Place a respawn beacon in a location of your choosing. If you get destroyed, you will be reconstructed at this location after a brief period of time!\n\nONLY ONE REVIVE IS AVAILABLE PER SHOP. REVIVE IS CONSUMED WHEN PLACED."]
+var selected = []
 var shield = preload("res://Items/ShieldUpgrade.tscn")
 var shield_regen = preload("res://Items/ShieldRegen.tscn")
 var shield_strength = preload("res://Items/ShieldStrength.tscn")
@@ -74,45 +62,44 @@ func _ready():
 		if already_selected == false:
 			selected_upgrades.append(selected)
 	
-	selected_upgrades[0] = 3
-	#get_node("Option_1").text = possible_upgrades[selected_upgrades[0]]
-	#get_node("Option_2").text = possible_upgrades[selected_upgrades[1]]
-	#get_node("Option_3").text = possible_upgrades[selected_upgrades[2]]
-	get_node("Option_1").text = UPGRADES[selected_upgrades[0]].item_name
-	get_node("Option_1").text = UPGRADES[selected_upgrades[1]].item_name
-	get_node("Option_1").text = UPGRADES[selected_upgrades[2]].item_name
+	selected.append(UPGRADES[selected_upgrades[0]].instantiate())
+	selected.append(UPGRADES[selected_upgrades[1]].instantiate())
+	selected.append(UPGRADES[selected_upgrades[2]].instantiate())
+	get_node("Option_1").text = selected[0].get_upgrade()
+	get_node("Option_2").text = selected[1].get_upgrade()
+	get_node("Option_3").text = selected[2].get_upgrade()
 	
-	$Option_1_Area/Sprite2D.set_texture(load("res://Assets/Shop/Shop" + str(selected_upgrades[0]) + ".png"))
-	$Option_2_Area/Sprite2D.set_texture(load("res://Assets/Shop/Shop" + str(selected_upgrades[1]) + ".png"))
-	$Option_3_Area/Sprite2D.set_texture(load("res://Assets/Shop/Shop" + str(selected_upgrades[2]) + ".png"))
+	$Option_1_Area/Sprite2D.set_texture(load(selected[0].get_img_path()))
+	$Option_2_Area/Sprite2D.set_texture(load(selected[1].get_img_path()))
+	$Option_3_Area/Sprite2D.set_texture(load(selected[2].get_img_path()))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_just_pressed("interact"):
 		if In_Option_1 == true:
-			player.inventory.add_item(UPGRADES[selected_upgrades[0]])
+			player.inventory.add_item(selected[0])
+			print("Purchased " + selected[0].get_upgrade())
 		if In_Option_2 == true:
-			player.inventory.add_item(UPGRADES[selected_upgrades[1]])
+			player.inventory.add_item(selected[1])
+			print("Purchased " + selected[1].get_upgrade())
 		if In_Option_3 == true:
-			player.inventory.add_item(UPGRADES[selected_upgrades[2]])
+			player.inventory.add_item(selected[2])
+			print("Purchased " + selected[2].get_upgrade())
 
 func _on_option_1_area_body_entered(body):
 	In_Option_1 = true
-	get_node("Upgrade_Description").text = UPGRADES[selected_upgrades[0]].description
-	#get_node("Upgrade_Description").text = upgrade_descriptions[selected_upgrades[0]]
+	get_node("Upgrade_Description").text = selected[0].get_descript()
 	$Upgrade_Description.visible = true
 
 func _on_option_2_area_body_entered(body):
 	In_Option_2 = true
-	get_node("Upgrade_Description").text = UPGRADES[selected_upgrades[1]].description
-	#get_node("Upgrade_Description").text = upgrade_descriptions[selected_upgrades[1]]
+	get_node("Upgrade_Description").text = selected[1].get_descript()
 	$Upgrade_Description.visible = true
 
 func _on_option_3_area_body_entered(body):
 	In_Option_3 = true
-	get_node("Upgrade_Description").text = UPGRADES[selected_upgrades[2]].description
-	#get_node("Upgrade_Description").text = upgrade_descriptions[selected_upgrades[2]]
+	get_node("Upgrade_Description").text = selected[2].get_descript()
 	$Upgrade_Description.visible = true
 
 
