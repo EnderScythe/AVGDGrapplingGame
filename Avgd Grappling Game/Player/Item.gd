@@ -23,5 +23,15 @@ func apply_effect(): # applies initial effects of picking up the item, such as s
 func deapply_effect(): # inverse of apply_effect, completely reverting the changes made
 	pass
 
+func get_upgrade():
+	return null
 
+func get_descript():
+	return null
+
+func get_img_path():
+	return null
+
+func get_cost():
+	return null
 

@@ -25,6 +25,7 @@ func get_upgrade():
 
 func get_descript():
 	return "Place a pad (able to be placed in the middle of air) to jump again; the pad can be used multiple times!\n\nYou can JUMP ON THE PAD multiple times however you can only PLACE DOWN the pad ONCE."
+# note: this is not what the item currently does
 
 func get_img_path():
 	return "res://Assets/Shop/Shop9.png"
