@@ -6,18 +6,18 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 var selected_upgrades = []
 var buyable = ["", "", ""]
-var shield = preload("res://Items/ShieldUpgrade.tscn")
-var shield_regen = preload("res://Items/ShieldRegen.tscn")
-var shield_strength = preload("res://Items/ShieldStrength.tscn")
-var grapple_range = preload("res://Items/GrappleRangeBoost.tscn")
-var grapple_launch = preload("res://Items/GrappleLaunch.tscn")
-var grapple_reel = preload("res://Items/GrappleReel.tscn")
-var machine_speed = preload("res://Items/MachSpeed.tscn")
-var pick_swing = preload("res://Items/PickSwing.tscn")
-var rocket = preload("res://Items/Rocket.tscn")
-var double_jump = preload("res://Items/DoubleJump.tscn")
-var repulsor = preload("res://Items/Repulsor.tscn")
-var revive = preload("res://Items/Revive.tscn")
+var shield = preload("res://Buyables/ShieldUpgrade.tscn")
+var shield_regen = preload("res://Buyables/ShieldRegen.tscn")
+var shield_strength = preload("res://Buyables/ShieldStrength.tscn")
+var grapple_range = preload("res://Buyables/GrappleRangeBoost.tscn")
+var grapple_launch = preload("res://Buyables/GrappleLaunch.tscn")
+var grapple_reel = preload("res://Buyables/GrappleReel.tscn")
+var machine_speed = preload("res://Buyables/MachSpeed.tscn")
+var pick_swing = preload("res://Buyables/PickSwing.tscn")
+var rocket = preload("res://Buyables/Rocket.tscn")
+var double_jump = preload("res://Buyables/DoubleJump.tscn")
+var repulsor = preload("res://Buyables/Repulsor.tscn")
+var revive = preload("res://Buyables/Revive.tscn")
 var UPGRADES = [
 	shield,
 	shield_regen,
