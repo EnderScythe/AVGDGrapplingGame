@@ -16,15 +16,15 @@ func _process(delta):
 
 
 func _input(event):
-	if event.is_action__pressed("jump") and !player.is_on_floor() and cur_jump > 0:
+	if event.is_action_pressed("jump") and !player.is_on_floor() and cur_jump > 0:
 		player.velocity.y = jump_velocity
-	cur_jump -= 1
+		cur_jump -= 1
 
 func get_upgrade():
 	return "Double Jump"
 
 func get_descript():
-	return "Place a pad (able to be placed in the middle of air) to jump again; the pad can be used multiple times!\n\nYou can JUMP ON THE PAD multiple times however you can only PLACE DOWN the pad ONCE."
+	return "Tired of only jumping once? Jump more now, with this item!"
 # note: this is not what the item currently does
 
 func get_img_path():
