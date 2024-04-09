@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://cngjmghkejll0"]
+[gd_scene load_steps=36 format=3 uid="uid://cngjmghkejll0"]
 
 [ext_resource type="Script" path="res://Enemies/Spider/Spider.gd" id="1_ikt67"]
 [ext_resource type="Texture2D" uid="uid://1mwmtkp5pk88" path="res://Assets/Spider/Spit/spiderSpit-1.png.png" id="2_fq61k"]
@@ -144,6 +144,9 @@ size = Vector2(2504.5, 177)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_um7pu"]
 size = Vector2(1191, 176)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8hotm"]
+size = Vector2(77.5, 9)
+
 [node name="Spider" type="CharacterBody2D"]
 script = ExtResource("1_ikt67")
 
@@ -191,12 +194,24 @@ position = Vector2(0, -2)
 position = Vector2(-0.5, -3)
 shape = SubResource("RectangleShape2D_um7pu")
 
-[node name="l_ray" type="RayCast2D" parent="."]
+[node name="collisionArea" type="Area2D" parent="."]
 position = Vector2(1, -1)
-target_position = Vector2(-195, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collisionArea"]
+position = Vector2(-192.25, -1)
+shape = SubResource("RectangleShape2D_8hotm")
+
+[node name="l_ray" type="RayCast2D" parent="."]
+visible = false
+position = Vector2(1, -1)
+target_position = Vector2(-228, 0)
 
 [connection signal="body_entered" from="venowThrowDetection" to="." method="_on_venow_throw_detection_body_entered"]
 [connection signal="body_exited" from="venowThrowDetection" to="." method="_on_venow_throw_detection_body_exited"]
 [connection signal="area_entered" from="detectionArea" to="." method="_on_detection_area_area_entered"]
 [connection signal="body_entered" from="detectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detectionArea" to="." method="_on_detection_area_body_exited"]
+[connection signal="area_entered" from="collisionArea" to="." method="_on_collision_area_area_entered"]
+[connection signal="area_shape_entered" from="collisionArea" to="." method="_on_collision_area_area_shape_entered"]
+[connection signal="body_entered" from="collisionArea" to="." method="_on_collision_area_body_entered"]
+[connection signal="visibility_changed" from="l_ray" to="." method="_on_l_ray_visibility_changed"]

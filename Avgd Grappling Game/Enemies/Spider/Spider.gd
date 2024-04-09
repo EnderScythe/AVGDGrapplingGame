@@ -8,12 +8,14 @@ var health = 100
 
 var currentPos = 0
 var targetPos = 0
+var offsetFromGround = 0
 
 var movingLeft = true
 var spiderShootOnce = false
 var spiderState = "wander"
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
+
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var random = RandomNumberGenerator.new();
 const venom = preload("res://Enemies/Spider/venom.tscn")
@@ -26,21 +28,11 @@ func _physics_process(delta):
 	var playerPosition = get_parent().get_node("Player").position
 	
 	# Add the gravity.
-	if not is_on_floor():
+	if not is_on_floor() and not is_on_ceiling() and rotation_degrees != -180:
 		velocity.y += gravity * delta
+		#adjustOffset()
 	
 	# Preventing Wall Collision and Falling
-	
-	if $l_ray.is_colliding():
-		if $l_ray.get_collider().name != "Player":	
-			spiderState = "climb"
-		
-		#var randomMovement = random.randi_range(0,1)
-		#if (randomMovement == 0):
-			#movingLeft = !movingLeft
-		#else:
-			#spiderState = "climb"
-			#rotation_degrees += 90 
 	
 	# Wander State: Random Movement
 	
@@ -51,10 +43,12 @@ func _physics_process(delta):
 	
 	elif (spiderState == "climb"):
 		wallClimb()
+		print(offsetFromGround)
 	
 	# Chase State: Follow the player
 	
 	elif (spiderState == "chase"):
+		adjustOffset()
 		
 		$AnimatedSprite2D.play("walk")
 		targetPos = playerPosition
@@ -88,14 +82,26 @@ func _physics_process(delta):
 	
 func movement():
 	$AnimatedSprite2D.play("walk")
-	if (movingLeft):
-		velocity.x = -maxSpeed
-	else:
-		maxSpeed
+	
+	if (rotation_degrees == 0):
+		if (movingLeft):
+			velocity.x = -maxSpeed
+		else:
+			maxSpeed
+	elif (rotation_degrees == 90):
+		velocity.y = -maxSpeed
+	elif (rotation_degrees == -180):
+		velocity.y = -maxSpeed
+		velocity.x = maxSpeed
+	
 
 func wallClimb():
-	velocity.y = -maxSpeed
 	rotation_degrees += 90
+	offsetFromGround += 90
+	if (offsetFromGround == 360):
+		offsetFromGround = 0
+	if (offsetFromGround == 90):
+		velocity.y = -maxSpeed
 	
 
 # Handle the spider venom throwing function
@@ -129,7 +135,13 @@ func spiderShoot():
 		
 		spiderState = "chase"
 		$VenomTimer.start()
-
+		
+# Fix Rotation Offset
+func adjustOffset():
+	if (offsetFromGround != 0):
+			var change = 360 - offsetFromGround
+			rotation_degrees += change
+			offsetFromGround = 0
 
 # Changing the Spider States
 
@@ -151,3 +163,16 @@ func _on_venow_throw_detection_body_entered(body):
 		spiderShootOnce = true
 
 
+
+func _on_l_ray_visibility_changed():
+	if $l_ray.get_collider().name == "TileMap":	
+			spiderState = "climb"
+			print("climbing")
+
+
+func _on_collision_area_body_entered(body):
+	if (body.name == "TileMap"):
+		if (spiderState != "chase"):
+			wallClimb()
+			spiderState = "wander"
+	
