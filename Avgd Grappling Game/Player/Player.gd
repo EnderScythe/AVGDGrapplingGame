@@ -23,7 +23,11 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 func _physics_process(delta):
 	# Add the gravity.
 	velocity.y += gravity * delta
-
+	
+	# Handle stats
+	get_node("Health").text = str(ceil(PlayerVariables.health))
+	get_node("Coin").text = str(PlayerVariables.coins)
+	
 	# Handle jump.
 		
 		

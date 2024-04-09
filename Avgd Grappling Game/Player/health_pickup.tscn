@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://2u2bsjnto08c"]
+
+[ext_resource type="Script" path="res://Player/Health_Pickup.gd" id="1_7hsk0"]
+[ext_resource type="Texture2D" uid="uid://bkckcmps4w8ql" path="res://icon.svg" id="2_4sb14"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_14kxp"]
+
+[node name="Health_Pickup" type="Area2D"]
+script = ExtResource("1_7hsk0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1, 0.4)
+texture = ExtResource("2_4sb14")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(6.5, 2.5)
+shape = SubResource("RectangleShape2D_14kxp")
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

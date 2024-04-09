@@ -2,8 +2,9 @@ extends Node
 
 const temp_item_res = preload("res://Buyables/DoubleJump.tscn") # just to test if items work
 
-var health = 100
 var max_health = 100
+var health = max_health/2
+var coins = 20
 var inventory = []
 var swing_rate = 1000 # the number is in milliseconds (so default is 1 swing per second)
 var rocket_vel = 0
@@ -20,4 +21,3 @@ func _ready():
 
 func _process(delta):
 	pass
-

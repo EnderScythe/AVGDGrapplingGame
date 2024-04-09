@@ -8,6 +8,7 @@
 size = Vector2(126, 126)
 
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 7
 script = ExtResource("1_0hqw1")
 
 [node name="Inventory" type="Node2D" parent="."]
@@ -21,3 +22,35 @@ texture = ExtResource("1_chl1w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_j1f3m")
+
+[node name="Health" type="TextEdit" parent="."]
+offset_left = -2463.0
+offset_top = -1354.0
+offset_right = -1594.0
+offset_bottom = -1147.0
+theme_override_font_sizes/font_size = 150
+text = "Health"
+editable = false
+context_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+
+[node name="Coin" type="TextEdit" parent="."]
+offset_left = 1498.0
+offset_top = -1360.0
+offset_right = 2397.0
+offset_bottom = -1140.0
+theme_override_font_sizes/font_size = 150
+text = "Coin"
+editable = false
+context_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
