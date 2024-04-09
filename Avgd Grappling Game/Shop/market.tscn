@@ -1,9 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://b3e788l2qcir0"]
+[gd_scene load_steps=5 format=3 uid="uid://b3e788l2qcir0"]
 
 [ext_resource type="Script" path="res://Shop/market.gd" id="1_w2jjg"]
+[ext_resource type="Texture2D" uid="uid://dwp885djr7h15" path="res://Shop/Reroll.png" id="2_n0run"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xt4k8"]
-size = Vector2(684.667, 310.667)
+size = Vector2(922.334, 310.667)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3qx6k"]
 size = Vector2(15.8, 16)
@@ -16,8 +17,37 @@ script = ExtResource("1_w2jjg")
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit_Checker"]
-position = Vector2(301.667, -21.6667)
+position = Vector2(183.167, -21)
 shape = SubResource("RectangleShape2D_xt4k8")
+
+[node name="Reroll" type="TextEdit" parent="."]
+offset_left = -232.0
+offset_right = -88.0
+offset_bottom = 36.0
+text = "Reroll"
+editable = false
+context_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+metadata/_edit_use_anchors_ = true
+
+[node name="Reroll_Area" type="Area2D" parent="."]
+position = Vector2(-232, 0)
+collision_layer = 7
+collision_mask = 7
+
+[node name="Reroll_Size" type="CollisionShape2D" parent="Reroll_Area"]
+position = Vector2(63.5, 105)
+scale = Vector2(2.5, 2.5)
+shape = SubResource("RectangleShape2D_3qx6k")
+
+[node name="Sprite2D" type="Sprite2D" parent="Reroll_Area"]
+position = Vector2(63.7917, 105.125)
+texture = ExtResource("2_n0run")
 
 [node name="Option_1" type="TextEdit" parent="."]
 offset_right = 144.0
@@ -25,6 +55,7 @@ offset_bottom = 36.0
 editable = false
 context_menu_enabled = false
 shortcut_keys_enabled = false
+selecting_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 virtual_keyboard_enabled = false
@@ -32,15 +63,16 @@ middle_mouse_paste_enabled = false
 metadata/_edit_use_anchors_ = true
 
 [node name="Option_1_Area" type="Area2D" parent="."]
-collision_layer = 0
+collision_layer = 7
+collision_mask = 7
 
 [node name="Option_1_Size" type="CollisionShape2D" parent="Option_1_Area"]
-position = Vector2(63.5, 105)
+position = Vector2(74, 105)
 scale = Vector2(2.5, 2.5)
 shape = SubResource("RectangleShape2D_3qx6k")
 
 [node name="Sprite2D" type="Sprite2D" parent="Option_1_Area"]
-position = Vector2(63.7917, 105.125)
+position = Vector2(74, 105)
 
 [node name="Option_2" type="TextEdit" parent="."]
 offset_left = 232.0
@@ -49,6 +81,7 @@ offset_bottom = 36.0
 editable = false
 context_menu_enabled = false
 shortcut_keys_enabled = false
+selecting_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 virtual_keyboard_enabled = false
@@ -58,7 +91,8 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Option_2_Area" type="Area2D" parent="."]
 position = Vector2(232, 0)
-collision_layer = 0
+collision_layer = 7
+collision_mask = 7
 
 [node name="Option_2_Size" type="CollisionShape2D" parent="Option_2_Area"]
 position = Vector2(74, 105)
@@ -75,6 +109,7 @@ offset_bottom = 36.0
 editable = false
 context_menu_enabled = false
 shortcut_keys_enabled = false
+selecting_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 virtual_keyboard_enabled = false
@@ -84,7 +119,8 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Option_3_Area" type="Area2D" parent="."]
 position = Vector2(464, 0)
-collision_layer = 0
+collision_layer = 7
+collision_mask = 7
 
 [node name="Option_3_Size" type="CollisionShape2D" parent="Option_3_Area"]
 position = Vector2(74, 105)
@@ -95,7 +131,7 @@ shape = SubResource("RectangleShape2D_3qx6k")
 position = Vector2(74, 105.333)
 
 [node name="Upgrade_Description" type="TextEdit" parent="."]
-offset_left = -41.0
+offset_left = -278.0
 offset_top = -177.0
 offset_right = 645.0
 offset_bottom = -24.0
@@ -109,10 +145,12 @@ virtual_keyboard_enabled = false
 middle_mouse_paste_enabled = false
 wrap_mode = 1
 
-[connection signal="area_exited" from="Exit_Checker" to="." method="_on_area_2d_area_exited"]
-[connection signal="area_entered" from="Option_1_Area" to="." method="_on_option_1_area_area_entered"]
-[connection signal="area_exited" from="Option_1_Area" to="." method="_on_option_1_area_area_exited"]
-[connection signal="area_entered" from="Option_2_Area" to="." method="_on_option_2_area_area_entered"]
-[connection signal="area_exited" from="Option_2_Area" to="." method="_on_option_2_area_area_exited"]
-[connection signal="area_entered" from="Option_3_Area" to="." method="_on_option_3_area_area_entered"]
-[connection signal="area_exited" from="Option_3_Area" to="." method="_on_option_3_area_area_exited"]
+[connection signal="body_exited" from="Exit_Checker" to="." method="_on_exit_checker_body_exited"]
+[connection signal="body_entered" from="Reroll_Area" to="." method="_on_reroll_area_body_entered"]
+[connection signal="body_exited" from="Reroll_Area" to="." method="_on_reroll_area_body_exited"]
+[connection signal="body_entered" from="Option_1_Area" to="." method="_on_option_1_area_body_entered"]
+[connection signal="body_exited" from="Option_1_Area" to="." method="_on_option_1_area_body_exited"]
+[connection signal="body_entered" from="Option_2_Area" to="." method="_on_option_2_area_body_entered"]
+[connection signal="body_exited" from="Option_2_Area" to="." method="_on_option_2_area_body_exited"]
+[connection signal="body_entered" from="Option_3_Area" to="." method="_on_option_3_area_body_entered"]
+[connection signal="body_exited" from="Option_3_Area" to="." method="_on_option_3_area_body_exited"]

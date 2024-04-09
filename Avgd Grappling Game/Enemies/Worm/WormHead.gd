@@ -17,8 +17,19 @@ var ACCELERATION = 1250
 var OSCILLATION = 50
 var SEGMENT_GAP = 170
 var SPEED_CAP = 2000
+#var STANDARD_DEVIATION = 4
+#var MEAN = 9
+var rng = RandomNumberGenerator.new()
+
+ 
 
 func _ready():
+	#var rand = randf() - 0.5
+	#for i in range(1, MEAN):
+		#if rand > integrate(MEAN, i):
+			#segmentNum = i;
+			#break
+	segmentNum = rng.randi_range(2, 15);
 	self.z_index = segmentNum - 1
 	self.rotate(PI/2)
 	state = states.idle
@@ -71,3 +82,18 @@ func _process(delta):
 					segments[i].get_node("AnimatedSprite2D").play("worm_segment_anim")
 				segments[i].get_node("AnimatedSprite2D").set_rotation(velocities[i].angle())
 				
+
+#func integrate(lower_bound, upper_bound):
+	#var dx = 0.1
+	#var sum = 0;
+	#if lower_bound > upper_bound:
+		#dx *= -1
+	#for i in range(lower_bound * 10, upper_bound * 10, dx * 10):
+		#sum += dx * normaldist(i / 10, STANDARD_DEVIATION, MEAN)
+	#return sum
+#func normaldist(x, stdev, mean):
+	#var e = 2.71828
+	#var p1 = 1 / (stdev * sqrt(2 * PI))
+	#var p2 = -0.5 * ((x - mean) / stdev) ** 2
+	#return p1 * e ** p2
+	
