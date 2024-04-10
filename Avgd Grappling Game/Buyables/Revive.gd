@@ -10,7 +10,7 @@ func _ready():
 func _process(delta):
 	pass
 
-func _died():
+func on_death():
 	print("Would you lose? Nah, I'd win")
 	PlayerVariables.health = PlayerVariables.max_health
 

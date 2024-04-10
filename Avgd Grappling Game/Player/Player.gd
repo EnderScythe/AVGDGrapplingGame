@@ -88,7 +88,10 @@ func grapple_process(delta):
 		var centripetal_force = position.direction_to(hook.position) * HOOK_PULL * (1 + 2*(to_hook.length()-hook.length)/(to_hook.length()-hook.length+PULL_BOOST_X)) * delta
 		velocity = tangential_vel + to_hook * centripetal_vel_fac + centripetal_force
 
-
-
-
-
+func take_dmg(dmg):
+	PlayerVariables.health -= dmg
+	if PlayerVariables.health <= 0:
+		inventory.call_trigger("on_death")
+	if PlayerVariables.health <= 0:
+		PlayerVariables.health = PlayerVariables.max_health/2
+		get_tree().reload_current_scene()
