@@ -162,17 +162,13 @@ func _on_venow_throw_detection_body_entered(body):
 		spiderState = "shoot"
 		spiderShootOnce = true
 
-
-
 func _on_l_ray_visibility_changed():
 	if $l_ray.get_collider().name == "TileMap":	
 			spiderState = "climb"
 			print("climbing")
-
 
 func _on_collision_area_body_entered(body):
 	if (body.name == "TileMap"):
 		if (spiderState != "chase"):
 			wallClimb()
 			spiderState = "wander"
-	
