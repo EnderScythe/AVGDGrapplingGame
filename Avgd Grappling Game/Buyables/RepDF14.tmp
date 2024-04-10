@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cuk6p35u5y6ob"]
+
+[ext_resource type="Script" path="res://Buyables/Repulsor.gd" id="1_i3kmd"]
+
+[node name="Repulsor" type="Node2D"]
+script = ExtResource("1_i3kmd")

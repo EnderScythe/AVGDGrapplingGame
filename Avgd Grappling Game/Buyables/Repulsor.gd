@@ -1,7 +1,6 @@
 extends Item
 
-var boost_value = 500
-const increment = 300
+var num_repel = 0
 
 # this is an example script for an item that increases the player's 
 # grapple range by 500px + an additional 300px every time they use the grappling hook
@@ -16,17 +15,12 @@ func _ready():
 func _process(delta):
 	pass
 
-func apply_effect():
-	#There's no actual value for this yet
-	player.MAX_LENGTH += boost_value
-
-func deapply_effect():
-	player.MAX_LENGTH -= boost_value
-
-func on_grapple():
-	player.MAX_LENGTH += increment
-	boost_value += increment
-	print(boost_value)
+func _input(event):
+	if event.is_action_pressed("throw") and num_repel > 0:
+		print("throw")
+		inventory.remove_item(self)
+		num_repel -= 1
+		inventory.thrown_trigger()
 
 func get_upgrade():
 	return "Repulsor"
