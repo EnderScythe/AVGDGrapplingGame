@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://26xhp7aohe2o"]
+[gd_scene load_steps=15 format=3 uid="uid://26xhp7aohe2o"]
 
 [ext_resource type="Texture2D" uid="uid://c7hv4rpyu15ux" path="res://Assets/Cave Images/caveBlock.png" id="1_7bgmb"]
 [ext_resource type="Texture2D" uid="uid://dhgqkyhb8d0cr" path="res://Assets/Cave Images/caveSlant1.png" id="2_qnn5p"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bxyld0xmti1g" path="res://Assets/Cave Images/caveSlope.png" id="5_d03ov"]
 [ext_resource type="PackedScene" uid="uid://cjlcm3gj7pmgf" path="res://Player/Player.tscn" id="6_i2asr"]
 [ext_resource type="PackedScene" uid="uid://b3e788l2qcir0" path="res://Shop/market.tscn" id="7_obg3h"]
+[ext_resource type="PackedScene" uid="uid://2u2bsjnto08c" path="res://Player/health_pickup.tscn" id="8_xw2vr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rnq5b"]
 texture = ExtResource("1_7bgmb")
@@ -46,8 +47,8 @@ texture_region_size = Vector2i(48, 48)
 
 [sub_resource type="TileSet" id="TileSet_bh3gq"]
 tile_size = Vector2i(48, 48)
-physics_layer_0/collision_layer = 7
-physics_layer_0/collision_mask = 7
+physics_layer_0/collision_layer = 4
+physics_layer_0/collision_mask = 255
 sources/10 = SubResource("TileSetAtlasSource_rnq5b")
 sources/11 = SubResource("TileSetAtlasSource_pt6ql")
 sources/12 = SubResource("TileSetAtlasSource_u8m0p")
@@ -67,3 +68,9 @@ position = Vector2(1546, 866)
 
 [node name="Player" parent="." instance=ExtResource("6_i2asr")]
 position = Vector2(-1184, 1190)
+
+[node name="Health_Pickup" parent="." instance=ExtResource("8_xw2vr")]
+position = Vector2(-747, 1262)
+
+[node name="Health_Pickup2" parent="." instance=ExtResource("8_xw2vr")]
+position = Vector2(-513, 1276)

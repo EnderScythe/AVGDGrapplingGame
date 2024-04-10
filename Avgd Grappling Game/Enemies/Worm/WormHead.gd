@@ -17,8 +17,8 @@ var ACCELERATION = 1250
 var OSCILLATION = 50
 var SEGMENT_GAP = 170
 var SPEED_CAP = 2000
-#var STANDARD_DEVIATION = 4
-#var MEAN = 9
+var STANDARD_DEVIATION = 4
+var MEAN = 9
 var rng = RandomNumberGenerator.new()
 
  
@@ -29,7 +29,7 @@ func _ready():
 		#if rand > integrate(MEAN, i):
 			#segmentNum = i;
 			#break
-	segmentNum = rng.randi_range(2, 15);
+	segmentNum = rng.randi_range(6, 15)
 	self.z_index = segmentNum - 1
 	self.rotate(PI/2)
 	state = states.idle
