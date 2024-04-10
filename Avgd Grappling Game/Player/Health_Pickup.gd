@@ -13,6 +13,6 @@ func _process(delta):
 
 func _on_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
 	if PlayerVariables.health < PlayerVariables.max_health:
-		PlayerVariables.health += 20
-		#body.take_dmg(45)
+		PlayerVariables.health += 15
+		body.take_dmg(100)
 		queue_free()

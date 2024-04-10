@@ -12,7 +12,8 @@ func _process(delta):
 
 func on_death():
 	print("Would you lose? Nah, I'd win")
-	PlayerVariables.health = PlayerVariables.max_health
+	PlayerVariables.health = PlayerVariables.max_health/2
+	inventory.remove_item(self)
 
 func get_upgrade():
 	return "Revive"

@@ -25,8 +25,8 @@ func _physics_process(delta):
 	velocity.y += gravity * delta
 	
 	# Handle stats
-	get_node("Health").text = str(ceil(PlayerVariables.health))
-	get_node("Coin").text = str(PlayerVariables.coins)
+	get_node("Health").text = "Health: " + str(ceil(PlayerVariables.health))
+	get_node("Coin").text = "Coin: " + str(PlayerVariables.coins)
 	
 	# Handle jump.
 		
