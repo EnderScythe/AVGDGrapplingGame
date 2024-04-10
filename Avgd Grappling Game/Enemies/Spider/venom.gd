@@ -28,22 +28,12 @@ func seek():
 		steer = (desired - velocity).normalized() * steer_force
 	return steer
 
-#func _physics_process(delta): 
-	#
-	##velocity.x = speed * delta
-	#translate(velocity)
-	#$AnimatedSprite2D.play("spit")
-	#
-	#if (velocity.x == 0):
-		#queue_free()
-
 		
 func explode():
 	queue_free()
 
 func _on_body_entered(body):
 	if (body.name == "Player"):
-		body.velocity.x = 1000
 		explode()
 
 func _on_lifetime_timeout():
