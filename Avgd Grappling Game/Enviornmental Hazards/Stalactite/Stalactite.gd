@@ -18,7 +18,6 @@ func _process(delta):
 func _on_body_entered(body):
 	if !(body is TileMap):
 		gravity_scale = 2
-		print(body)
 
 
 func _on_area_2d_body_entered(body):
