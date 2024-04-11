@@ -18,9 +18,12 @@ func _process(delta):
 func _input(event):
 	if event.is_action_pressed("throw") and num_repel > 0:
 		print("throw")
+		player.get_parent().add_child(preload("res://Buyables/Repulse.tscn").instantiate())
 		inventory.remove_item(self)
 		num_repel -= 1
-		inventory.thrown_trigger()
+
+func apply_effect():
+	num_repel += 1
 
 func get_upgrade():
 	return "Repulsor"

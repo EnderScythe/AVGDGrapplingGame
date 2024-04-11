@@ -67,7 +67,7 @@ func launch_grapple(angle):
 	hook.translate(Vector2(80,0).rotated(angle))
 	add_sibling(hook)
 	
-	inventory.call_trigger("on_grapple")
+	#inventory.call_trigger("on_grapple")
 
 func _input(event):
 	if event.is_action_pressed("launch_grapple"):

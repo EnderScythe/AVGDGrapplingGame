@@ -10,6 +10,6 @@ func _ready():
 func _process(delta):
 	pass
 
-func thrown_trigger():
-	print("triggered")
-	get_node("res://Player/Player.tscn").get_root().add_child(preload("res://Buyables/Repulsor.tscn").instantiate())
+
+func _on_timer_timeout():
+	queue_free()
