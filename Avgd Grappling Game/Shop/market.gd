@@ -79,7 +79,6 @@ func roll_shop():
 func _process(delta):
 	if Input.is_action_just_pressed("interact"):
 		if in_reroll == true:
-			print("Rerolled!")
 			roll_shop()
 		if In_Option_1 == true:
 			if PlayerVariables.coins >= buyable[0].get_cost():

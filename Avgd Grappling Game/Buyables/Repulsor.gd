@@ -19,7 +19,6 @@ func _process(delta):
 
 func _input(event):
 	if event.is_action_pressed("throw") and num_repel > 0:
-		print("throw")
 		player.get_parent().add_child(repulse)
 		repulse.position = player.position
 		repulse.translate(Vector2(0,-250))
