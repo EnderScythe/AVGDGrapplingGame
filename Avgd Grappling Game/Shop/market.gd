@@ -82,20 +82,20 @@ func _process(delta):
 			print("Rerolled!")
 			roll_shop()
 		if In_Option_1 == true:
-			if PlayerVariables.coins > buyable[0].cost:
-				PlayerVariables.coins -= buyable[0].cost
+			if PlayerVariables.coins >= buyable[0].get_cost():
+				PlayerVariables.coins -= buyable[0].get_cost()
 				player.inventory.add_item(buyable[0])
 				buyable[0] = UPGRADES[selected_upgrades[0]].instantiate()
 				print("Purchased " + buyable[0].get_upgrade())
 		if In_Option_2 == true:
-			if PlayerVariables.coins > buyable[1].cost:
-				PlayerVariables.coins -= buyable[1].cost
+			if PlayerVariables.coins >= buyable[1].get_cost():
+				PlayerVariables.coins -= buyable[1].get_cost()
 				player.inventory.add_item(buyable[1])
 				buyable[1] = UPGRADES[selected_upgrades[1]].instantiate()
 				print("Purchased " + buyable[1].get_upgrade())
 		if In_Option_3 == true:
-			if PlayerVariables.coins > buyable[2].cost:
-				PlayerVariables.coins -= buyable[2].cost
+			if PlayerVariables.coins >= buyable[2].get_cost():
+				PlayerVariables.coins -= buyable[2].get_cost()
 				player.inventory.add_item(buyable[2])
 				buyable[2] = UPGRADES[selected_upgrades[2]].instantiate()
 				print("Purchased " + buyable[2].get_upgrade())
