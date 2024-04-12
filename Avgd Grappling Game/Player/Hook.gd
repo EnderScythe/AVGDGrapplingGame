@@ -29,6 +29,9 @@ func launch_process(delta):
 	if dist_player() > player.MAX_LENGTH: enter_retract()
 
 func grapple_process(delta):
+	if hooked_body == null:
+		enter_retract()
+		return
 	position = hooked_body.position + hooked_rel_pos
 
 func retract_process(delta):

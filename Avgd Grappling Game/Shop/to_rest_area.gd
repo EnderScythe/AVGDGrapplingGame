@@ -1,5 +1,5 @@
 extends Area2D
-
+@onready var player = get_parent().get_node("Player")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -11,5 +11,5 @@ func _process(delta):
 	pass
 
 
-func _on_area_entered(area):
-	Player.reparent("rest_area")
+func _on_body_entered(body):
+	get_tree().change_scene_to_file("res://Shop/rest_area.tscn")
