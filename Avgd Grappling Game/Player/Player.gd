@@ -23,7 +23,11 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 func _physics_process(delta):
 	# Add the gravity.
 	velocity.y += gravity * delta
-
+	
+	# Handle stats
+	get_node("Health").text = "Health: " + str(ceil(PlayerVariables.health))
+	get_node("Coin").text = "Coin: " + str(PlayerVariables.coins)
+	
 	# Handle jump.
 		
 		
@@ -63,7 +67,7 @@ func launch_grapple(angle):
 	hook.translate(Vector2(80,0).rotated(angle))
 	add_sibling(hook)
 	
-	inventory.call_trigger("on_grapple")
+	#inventory.call_trigger("on_grapple")
 
 func _input(event):
 	if event.is_action_pressed("launch_grapple"):
@@ -84,7 +88,10 @@ func grapple_process(delta):
 		var centripetal_force = position.direction_to(hook.position) * HOOK_PULL * (1 + 2*(to_hook.length()-hook.length)/(to_hook.length()-hook.length+PULL_BOOST_X)) * delta
 		velocity = tangential_vel + to_hook * centripetal_vel_fac + centripetal_force
 
-
-
-
-
+func take_dmg(dmg):
+	PlayerVariables.health -= dmg
+	if PlayerVariables.health <= 0:
+		inventory.call_trigger("on_death")
+	if PlayerVariables.health <= 0:
+		PlayerVariables.health = PlayerVariables.max_health/2
+		get_tree().reload_current_scene()

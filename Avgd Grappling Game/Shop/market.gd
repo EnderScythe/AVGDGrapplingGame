@@ -43,11 +43,11 @@ func _ready():
 	roll_shop()
 
 func roll_shop():
+	selected_upgrades = []
 	# Randomly select 3 integers from the bounds [0, n_upgrades]
 	while selected_upgrades.size() < 3:
 		# While randomly selecting integers, check if it's already been used and re-generate if it has
 		var num = randi_range(0, UPGRADES.size()-1)
-		print(num)
 		var selected
 		if num < 3:
 			# Check if it's a valid upgrade (the shields (probably going to be values 1-3) need to be double checked)
@@ -67,7 +67,6 @@ func roll_shop():
 	buyable[0] = UPGRADES[selected_upgrades[0]].instantiate()
 	buyable[1] = UPGRADES[selected_upgrades[1]].instantiate()
 	buyable[2] = UPGRADES[selected_upgrades[2]].instantiate()
-	selected_upgrades = []
 	get_node("Option_1").text = buyable[0].get_upgrade()
 	get_node("Option_2").text = buyable[1].get_upgrade()
 	get_node("Option_3").text = buyable[2].get_upgrade()
@@ -83,14 +82,23 @@ func _process(delta):
 			print("Rerolled!")
 			roll_shop()
 		if In_Option_1 == true:
-			player.inventory.add_item(buyable[0])
-			print("Purchased " + buyable[0].get_upgrade())
+			if PlayerVariables.coins > buyable[0].cost:
+				PlayerVariables.coins -= buyable[0].cost
+				player.inventory.add_item(buyable[0])
+				buyable[0] = UPGRADES[selected_upgrades[0]].instantiate()
+				print("Purchased " + buyable[0].get_upgrade())
 		if In_Option_2 == true:
-			player.inventory.add_item(buyable[1])
-			print("Purchased " + buyable[1].get_upgrade())
+			if PlayerVariables.coins > buyable[1].cost:
+				PlayerVariables.coins -= buyable[1].cost
+				player.inventory.add_item(buyable[1])
+				buyable[1] = UPGRADES[selected_upgrades[1]].instantiate()
+				print("Purchased " + buyable[1].get_upgrade())
 		if In_Option_3 == true:
-			player.inventory.add_item(buyable[2])
-			print("Purchased " + buyable[2].get_upgrade())
+			if PlayerVariables.coins > buyable[2].cost:
+				PlayerVariables.coins -= buyable[2].cost
+				player.inventory.add_item(buyable[2])
+				buyable[2] = UPGRADES[selected_upgrades[2]].instantiate()
+				print("Purchased " + buyable[2].get_upgrade())
 
 func _on_option_1_area_body_entered(body):
 	In_Option_1 = true
