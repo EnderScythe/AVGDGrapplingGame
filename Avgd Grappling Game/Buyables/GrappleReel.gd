@@ -1,5 +1,6 @@
 extends Item
 
+
 var boost_value = 500
 const increment = 300
 

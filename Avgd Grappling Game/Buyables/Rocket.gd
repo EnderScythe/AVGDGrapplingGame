@@ -2,6 +2,7 @@ extends Item
 
 var boost_value = 1000
 const increment = 300
+var time = PlayerVariables.rocket_timer
 
 # this is an example script for an item that increases the player's 
 # grapple range by 500px + an additional 300px every time they use the grappling hook
@@ -14,11 +15,14 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_just_pressed("interact"):
-		if Input.is_action_pressed("move_left"):
-			player.velocity.x -= PlayerVariables.rocket_vel
-		if Input.is_action_pressed("move_right"):
-			player.velocity.x += PlayerVariables.rocket_vel
+	time += delta
+	if time <= 5:
+		if Input.is_action_just_pressed("interact"):
+			if Input.is_action_pressed("move_left"):
+				player.velocity.x -= PlayerVariables.rocket_vel
+			if Input.is_action_pressed("move_right"):
+				player.velocity.x += PlayerVariables.rocket_vel
+			time = 0
 
 func apply_effect():
 	if PlayerVariables.rocket_vel == 0:

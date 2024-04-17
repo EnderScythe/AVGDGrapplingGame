@@ -37,6 +37,8 @@ var In_Option_1 = false
 var In_Option_2 = false
 var In_Option_3 = false
 var in_reroll = false
+var money = PlayerVariables.coins
+var reroll_cost = 1 + ceil(1 * PlayerVariables.cost_inc)
 func _ready():
 	$Upgrade_Description.visible = false
 	var _rng = RandomNumberGenerator.new
@@ -78,26 +80,26 @@ func roll_shop():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_just_pressed("interact"):
-		if in_reroll == true:
+		if in_reroll == true and money >= reroll_cost:
+			money -= reroll_cost
+			reroll_cost += 1
 			roll_shop()
-		if In_Option_1 == true:
-			if PlayerVariables.coins >= buyable[0].get_cost():
-				PlayerVariables.coins -= buyable[0].get_cost()
-				player.inventory.add_item(buyable[0])
-				buyable[0] = UPGRADES[selected_upgrades[0]].instantiate()
-				print("Purchased " + buyable[0].get_upgrade())
-		if In_Option_2 == true:
-			if PlayerVariables.coins >= buyable[1].get_cost():
-				PlayerVariables.coins -= buyable[1].get_cost()
-				player.inventory.add_item(buyable[1])
-				buyable[1] = UPGRADES[selected_upgrades[1]].instantiate()
-				print("Purchased " + buyable[1].get_upgrade())
-		if In_Option_3 == true:
-			if PlayerVariables.coins >= buyable[2].get_cost():
-				PlayerVariables.coins -= buyable[2].get_cost()
-				player.inventory.add_item(buyable[2])
-				buyable[2] = UPGRADES[selected_upgrades[2]].instantiate()
-				print("Purchased " + buyable[2].get_upgrade())
+		if In_Option_1 == true and money >= buyable[0].get_cost():
+			money -= buyable[0].get_cost()
+			player.inventory.add_item(buyable[0])
+			buyable[0] = UPGRADES[selected_upgrades[0]].instantiate()
+			print("Purchased " + buyable[0].get_upgrade())
+		if In_Option_2 == true and money >= buyable[1].get_cost():
+			money -= buyable[1].get_cost()
+			player.inventory.add_item(buyable[1])
+			buyable[1] = UPGRADES[selected_upgrades[1]].instantiate()
+			print("Purchased " + buyable[1].get_upgrade())
+		if In_Option_3 == true and money >= buyable[2].get_cost():
+			money -= buyable[2].get_cost()
+			player.inventory.add_item(buyable[2])
+			buyable[2] = UPGRADES[selected_upgrades[2]].instantiate()
+			print("Purchased " + buyable[2].get_upgrade())
+	PlayerVariables.coins = money
 
 func _on_option_1_area_body_entered(body):
 	In_Option_1 = true

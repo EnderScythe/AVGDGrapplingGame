@@ -19,10 +19,10 @@ func _process(delta):
 
 func apply_effect():
 	#There's no actual value for this yet
-	PlayerVariables.swingspeed *= boost_value # we have nothing that utilizes this, so there's no way to test if this works
+	PlayerVariables.swing_rate *= boost_value # we have nothing that utilizes this, so there's no way to test if this works
 
 func deapply_effect():
-	PlayerVariables.swingspeed /= boost_value
+	PlayerVariables.swing_rate /= boost_value
 
 #func on_grapple():
 	#player.MAX_LENGTH += increment
