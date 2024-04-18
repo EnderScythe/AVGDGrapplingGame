@@ -38,11 +38,11 @@ func phase_zero():
 		$"Phase_0/Text".visible = false
 		$"Phase_0/Sprite2D".visible = false
 		$"Player".visible = true
-		phase += 1
+		phase = 1
 		$"Phase_0/Blocker".queue_free()
 
 func phase_one():
-	$Phase_1/Lore.text = "[system] you are an autonomous excavator. your sole purpose is to mine deliver ores. this is a test set up by [redacted] to see if you are fit for real scenarios."
+	$Phase_1/Lore.text = "[system] you are an autonomous excavator. your sole purpose is to mine and deliver ores. this is a test set up by [redacted] to assess different scenarios."
 	$Phase_1/Lore.visible = true
 	if time > 7.5:
 		$Phase_1/Move.visible = true

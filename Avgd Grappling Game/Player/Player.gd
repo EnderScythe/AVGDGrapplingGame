@@ -27,6 +27,7 @@ func _physics_process(delta):
 	# Handle stats
 	get_node("Health").text = "Health: " + str(ceil(PlayerVariables.health))
 	get_node("Coin").text = "Coin: " + str(PlayerVariables.coins)
+	$Ores.text = "Ores: " + str(PlayerVariables.ores_carried)
 	
 	# Handle jump.
 		

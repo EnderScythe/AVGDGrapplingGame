@@ -52,3 +52,18 @@ deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 virtual_keyboard_enabled = false
 middle_mouse_paste_enabled = false
+
+[node name="Ores" type="TextEdit" parent="."]
+offset_left = 1498.0
+offset_top = -1072.0
+offset_right = 2396.0
+offset_bottom = -852.0
+theme_override_font_sizes/font_size = 150
+editable = false
+context_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
