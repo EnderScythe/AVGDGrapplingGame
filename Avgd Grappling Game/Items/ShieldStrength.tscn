@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://5qrnsd0ojjsh"]
 
-[ext_resource type="Script" path="res://Buyables/ShieldStrength.gd" id="1_c2xyp"]
+[ext_resource type="Script" path="res://Items/ShieldStrength.gd" id="1_c2xyp"]
 
 [node name="ShieldStrength" type="Node2D"]
 script = ExtResource("1_c2xyp")

@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bi1ridl1wi85d" path="res://Levels/TileMap.tscn" id="3_p621m"]
 [ext_resource type="PackedScene" uid="uid://c48eij35gvjxs" path="res://Game/molly.tscn" id="4_v2alb"]
 [ext_resource type="PackedScene" uid="uid://0okr5mo734jw" path="res://Game/ore.tscn" id="7_byro4"]
-[ext_resource type="PackedScene" uid="uid://it708vpxsog3" path="res://Enviornmental Hazards/Stalactite/Stalactite.tscn" id="11_xaj7t"]
+[ext_resource type="PackedScene" uid="uid://it708vpxsog3" path="res://Environmental Hazards/Stalactite/Stalactite.tscn" id="11_xaj7t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4aig6"]
 size = Vector2(46, 1837)

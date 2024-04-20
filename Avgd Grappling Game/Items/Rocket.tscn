@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dgmhn75080kji"]
 
-[ext_resource type="Script" path="res://Buyables/Rocket.gd" id="1_atkg6"]
+[ext_resource type="Script" path="res://Items/Rocket.gd" id="1_atkg6"]
 
 [node name="Rocket" type="Node2D"]
 script = ExtResource("1_atkg6")

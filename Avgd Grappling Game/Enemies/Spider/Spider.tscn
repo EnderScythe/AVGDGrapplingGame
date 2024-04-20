@@ -148,6 +148,8 @@ size = Vector2(1191, 176)
 size = Vector2(77.5, 9)
 
 [node name="Spider" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 4
 script = ExtResource("1_ikt67")
 
 [node name="VenomTimer" type="Timer" parent="."]

@@ -12,4 +12,5 @@ func _process(delta):
 
 
 func _on_body_entered(body):
-	get_tree().change_scene_to_file("res://Levels/Design1.tscn") # This and to_rest_area are temps
+	# get_tree().change_scene_to_file("res://Levels/Design1.tscn") # This and to_rest_area are temps
+	get_tree().call_deferred("change_scene_to_file", "res://Levels/Design1.tscn")

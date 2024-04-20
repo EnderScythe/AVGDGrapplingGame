@@ -34,7 +34,9 @@ func load_inventory(saved_inv):
 		add_item(item)
 
 func save_inventory():
-	player_vars.inventory = inventory
+	player_vars.inventory = []
+	for item in inventory:
+		player_vars.inventory.append(item.duplicate())
 
 func _exit_tree():
 	save_inventory()

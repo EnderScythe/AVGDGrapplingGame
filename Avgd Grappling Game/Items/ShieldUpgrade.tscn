@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ct7ru17puy5ba"]
 
-[ext_resource type="Script" path="res://Buyables/ShieldUpgrade.gd" id="1_aubp5"]
+[ext_resource type="Script" path="res://Items/ShieldUpgrade.gd" id="1_aubp5"]
 
 [node name="ShieldUpgrade" type="Node2D"]
 script = ExtResource("1_aubp5")

@@ -1,0 +1,81 @@
+[gd_scene load_steps=16 format=3 uid="uid://26xhp7aohe2o"]
+
+[ext_resource type="Texture2D" uid="uid://c7hv4rpyu15ux" path="res://Assets/Cave Images/caveBlock.png" id="1_7bgmb"]
+[ext_resource type="Texture2D" uid="uid://dhgqkyhb8d0cr" path="res://Assets/Cave Images/caveSlant1.png" id="2_qnn5p"]
+[ext_resource type="Texture2D" uid="uid://dhcrxgqww2rky" path="res://Assets/Cave Images/caveSlant2.png" id="3_n2hyx"]
+[ext_resource type="Texture2D" uid="uid://cmw8s41hjj3kn" path="res://Assets/Cave Images/caveSlant3.png" id="4_xy2cp"]
+[ext_resource type="Texture2D" uid="uid://bxyld0xmti1g" path="res://Assets/Cave Images/caveSlope.png" id="5_d03ov"]
+[ext_resource type="PackedScene" uid="uid://cjlcm3gj7pmgf" path="res://Player/Player.tscn" id="6_i2asr"]
+[ext_resource type="PackedScene" uid="uid://b3e788l2qcir0" path="res://Shop/market.tscn" id="7_obg3h"]
+[ext_resource type="PackedScene" uid="uid://2u2bsjnto08c" path="res://Player/health_pickup.tscn" id="8_xw2vr"]
+[ext_resource type="PackedScene" uid="uid://dk7xsmdv58oib" path="res://Shop/portal.tscn" id="9_5uk0e"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rnq5b"]
+texture = ExtResource("1_7bgmb")
+texture_region_size = Vector2i(48, 48)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, -24, 24, -24, 24, 24, -24, 24)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pt6ql"]
+texture = ExtResource("2_qnn5p")
+texture_region_size = Vector2i(48, 48)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u8m0p"]
+texture = ExtResource("3_n2hyx")
+texture_region_size = Vector2i(48, 48)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x326x"]
+texture = ExtResource("4_xy2cp")
+texture_region_size = Vector2i(48, 48)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w5lmc"]
+texture = ExtResource("5_d03ov")
+texture_region_size = Vector2i(48, 48)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSet" id="TileSet_bh3gq"]
+tile_size = Vector2i(48, 48)
+physics_layer_0/collision_layer = 4
+physics_layer_0/collision_mask = 255
+sources/10 = SubResource("TileSetAtlasSource_rnq5b")
+sources/11 = SubResource("TileSetAtlasSource_pt6ql")
+sources/12 = SubResource("TileSetAtlasSource_u8m0p")
+sources/13 = SubResource("TileSetAtlasSource_x326x")
+sources/14 = SubResource("TileSetAtlasSource_w5lmc")
+
+[node name="Rest_Area" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2(3, 3)
+tile_set = SubResource("TileSet_bh3gq")
+format = 2
+layer_0/tile_data = PackedInt32Array(589824, 10, 0, 589825, 10, 0, 589826, 10, 0, 589827, 10, 0, 589828, 10, 0, 589829, 10, 0, 589830, 10, 0, 589831, 10, 0, 589832, 10, 0, 589833, 10, 0, 589834, 10, 0, 589835, 10, 0, 589836, 10, 0, 589837, 10, 0, 589838, 10, 0, 589839, 10, 0, 589840, 10, 0, 589841, 10, 0, -262144, 10, 0, -262127, 10, 0, 589842, 10, 0, 589843, 10, 0, -262125, 10, 0, -262126, 10, 0, -262128, 10, 0, -262129, 10, 0, -262130, 10, 0, -262131, 10, 0, -262132, 10, 0, -262133, 10, 0, -262134, 10, 0, -262135, 10, 0, -262136, 10, 0, -262137, 10, 0, -262138, 10, 0, -262139, 10, 0, -262140, 10, 0, -262141, 10, 0, -262142, 10, 0, -262143, 10, 0, 655359, 10, 0, 655357, 10, 0, 655358, 10, 0, -196611, 10, 0, -196610, 10, 0, -196609, 10, 0, 655356, 10, 0, 655355, 10, 0, 655354, 10, 0, 655353, 10, 0, 655352, 10, 0, 655351, 10, 0, 589845, 10, 0, 589846, 10, 0, 589844, 10, 0, 589847, 10, 0, 589848, 10, 0, 589849, 10, 0, -196618, 10, 0, -131082, 10, 0, -65546, 10, 0, -10, 10, 0, 65526, 10, 0, 131062, 10, 0, 196598, 10, 0, 262134, 10, 0, 327670, 10, 0, 393206, 10, 0, 458742, 10, 0, 524278, 10, 0, 589814, 10, 0, 655350, 10, 0, -262119, 10, 0, -262120, 10, 0, -262121, 10, 0, -262122, 10, 0, -262123, 10, 0, -262124, 10, 0, -196612, 10, 0, -196613, 10, 0, -196614, 10, 0, -196615, 10, 0, -196616, 10, 0, -196617, 10, 0, -262118, 10, 0, -262117, 10, 0, -262116, 10, 0, -262115, 10, 0, -262114, 10, 0, -262113, 10, 0, -262112, 10, 0, -262111, 10, 0, -262110, 10, 0, -196574, 10, 0, -131038, 10, 0, -65502, 10, 0, 34, 10, 0, 65570, 10, 0, 131106, 10, 0, 196642, 10, 0, 262178, 10, 0, 327714, 10, 0, 393250, 10, 0, 458786, 10, 0, 524322, 10, 0, 589858, 10, 0, 589851, 10, 0, 589852, 10, 0, 589853, 10, 0, 589854, 10, 0, 589855, 10, 0, 589856, 10, 0, 589857, 10, 0, 589850, 10, 0)
+
+[node name="Market" parent="." instance=ExtResource("7_obg3h")]
+position = Vector2(1546, 866)
+
+[node name="Player" parent="." instance=ExtResource("6_i2asr")]
+position = Vector2(-1184, 1190)
+
+[node name="Health_Pickup" parent="." instance=ExtResource("8_xw2vr")]
+position = Vector2(-747, 1262)
+
+[node name="Health_Pickup2" parent="." instance=ExtResource("8_xw2vr")]
+position = Vector2(-513, 1276)
+
+[node name="Portal" parent="." instance=ExtResource("9_5uk0e")]
+position = Vector2(4733, 463)
+scale = Vector2(10, 20)

@@ -8,6 +8,7 @@
 size = Vector2(126, 126)
 
 [node name="Player" type="CharacterBody2D"]
+z_index = 1
 collision_mask = 5
 script = ExtResource("1_0hqw1")
 
@@ -24,6 +25,7 @@ texture = ExtResource("1_chl1w")
 shape = SubResource("RectangleShape2D_j1f3m")
 
 [node name="Health" type="TextEdit" parent="."]
+z_index = 2
 offset_left = -2463.0
 offset_top = -1354.0
 offset_right = -1594.0
@@ -39,6 +41,7 @@ virtual_keyboard_enabled = false
 middle_mouse_paste_enabled = false
 
 [node name="Coin" type="TextEdit" parent="."]
+z_index = 2
 offset_left = 1498.0
 offset_top = -1360.0
 offset_right = 2397.0
@@ -54,6 +57,7 @@ virtual_keyboard_enabled = false
 middle_mouse_paste_enabled = false
 
 [node name="Ores" type="TextEdit" parent="."]
+z_index = 2
 offset_left = 1498.0
 offset_top = -1072.0
 offset_right = 2396.0

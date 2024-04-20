@@ -1,7 +1,7 @@
 extends Item
 
 var num_repel = 0
-var repulse = preload("res://Buyables/Repulse.tscn").instantiate()
+var repulse = preload("res://Items/Repulse.tscn").instantiate()
 var throw_vel = 1500
 
 # this is an example script for an item that increases the player's 
