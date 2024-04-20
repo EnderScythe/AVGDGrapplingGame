@@ -30,19 +30,19 @@ position = Vector2(5328, -362)
 position = Vector2(11398, 1521)
 
 [node name="Bat3" parent="." instance=ExtResource("4_waqbe")]
-position = Vector2(8810, 2644)
+position = Vector2(8837, 3135)
 
 [node name="Bat4" parent="." instance=ExtResource("4_waqbe")]
 position = Vector2(14823, 1598)
 
 [node name="Bat5" parent="." instance=ExtResource("4_waqbe")]
-position = Vector2(11360, -419)
+position = Vector2(11381, -291)
 
 [node name="Spider2" parent="." instance=ExtResource("5_bhfkb")]
 position = Vector2(14256, 2531)
 
 [node name="Bat6" parent="." instance=ExtResource("4_waqbe")]
-position = Vector2(16475, -266)
+position = Vector2(16512, 203)
 
 [node name="Stalactite" parent="." instance=ExtResource("6_0psk6")]
 position = Vector2(2913, -234)

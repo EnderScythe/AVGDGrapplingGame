@@ -1,10 +1,13 @@
 extends CharacterBody2D
+class_name Player
 
 const HOOK_RES = preload("res://Player/Hook.tscn")
 var hook = null
 
 @onready var inventory = get_node("Inventory")
 
+# Get the gravity from the project settings to be synced with RigidBody nodes.
+var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var SPEED = 600.0 # maximum horizontal speed from normal movement
 var JUMP_VELOCITY = -1200.0 # velocity at start of jump
 var ACCL = 4000.0 # how fast the player horizontally accelerates using normal movement
@@ -16,9 +19,9 @@ var HOOK_PULL = 4800.0 # acceleration towards hook when player is outside range
 var MAX_LENGTH = 1600.0 # maximum tether length (range)
 var REEL_SPEED = 1200.0 # affects the rate at which tether length changes and the maximum centripetal velocity when pulling in
 var PULL_BOOST_X = 1000.0 # p where Fc *= 1 + 2x/(x+p) and x is how much dist_to_hook exceeds tether length; p is the amount of extra distance such that Fc is doubled
-
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var IMMUNE_TIME = 0.5 # time the player is immune after receiving external damage
+var STOP_FORCE = 1500 # flat reduction in current velocity upon taking a hit
+var itime = 0 # remaining immune time, in seconds
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -30,8 +33,6 @@ func _physics_process(delta):
 	$Ores.text = "Ores: " + str(PlayerVariables.ores_carried)
 	
 	# Handle jump.
-		
-		
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
@@ -56,6 +57,9 @@ func _physics_process(delta):
 	
 	move_and_slide()
 
+func _process(delta):
+	itime -= delta
+
 func launch_grapple(angle):
 	if hook != null: return
 	hook = HOOK_RES.instantiate()
@@ -68,7 +72,7 @@ func launch_grapple(angle):
 	hook.translate(Vector2(80,0).rotated(angle))
 	add_sibling(hook)
 	
-	#inventory.call_trigger("on_grapple")
+	inventory.call_trigger("on_grapple")
 
 func _input(event):
 	if event.is_action_pressed("launch_grapple"):
@@ -90,9 +94,25 @@ func grapple_process(delta):
 		velocity = tangential_vel + to_hook * centripetal_vel_fac + centripetal_force
 
 func take_dmg(dmg):
+	inventory.call_trigger("on_take_dmg", dmg)
 	PlayerVariables.health -= dmg
 	if PlayerVariables.health <= 0:
 		inventory.call_trigger("on_death")
 	if PlayerVariables.health <= 0:
 		PlayerVariables.health = PlayerVariables.max_health/2
 		get_tree().reload_current_scene()
+
+func take_hit(dmg, kb):
+	if itime >= 0: return
+	take_dmg(dmg)
+	
+	if velocity.length() <= STOP_FORCE:
+		velocity = Vector2.ZERO
+	else:
+		velocity -= velocity.normalized() * STOP_FORCE
+	velocity += kb
+	
+	itime = IMMUNE_TIME
+
+
+

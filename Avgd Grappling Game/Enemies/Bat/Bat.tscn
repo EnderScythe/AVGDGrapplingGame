@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://qajqqd2gk71l"]
+[gd_scene load_steps=19 format=3 uid="uid://qajqqd2gk71l"]
 
 [ext_resource type="Script" path="res://Enemies/Bat/Bat.gd" id="1_aym0i"]
 [ext_resource type="Texture2D" uid="uid://bn8ejp02boyx0" path="res://Assets/Bat/Flying/bat-fly-1.png.png" id="2_3rcr4"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://c23vnje0j3du2" path="res://Assets/Bat/Flying/bat-fly-12.png.png" id="13_vg4eu"]
 [ext_resource type="Texture2D" uid="uid://d2se76obql5qf" path="res://Assets/Bat/Flying/bat-fly-13.png.png" id="14_78thh"]
 [ext_resource type="Texture2D" uid="uid://dy2tf57cf02xo" path="res://Assets/Bat/Flying/bat-fly-14.png.png" id="15_7yxqx"]
+[ext_resource type="PackedScene" uid="uid://dtug7lvorv25n" path="res://Enemies/Hurtbox.tscn" id="16_b4xb2"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b7g86"]
 animations = [{
@@ -91,6 +92,12 @@ position = Vector2(-21, 17)
 polygon = PackedVector2Array(-629, -231, -751, 78, -549, 348, -56, 209, 25, -15, -105, -196)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_37vpw")
+
+[node name="Hurtbox" parent="." instance=ExtResource("16_b4xb2")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_37vpw")
 

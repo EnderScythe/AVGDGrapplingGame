@@ -41,3 +41,6 @@ func get_img_path():
 
 func get_cost():
 	return 7
+
+
+
