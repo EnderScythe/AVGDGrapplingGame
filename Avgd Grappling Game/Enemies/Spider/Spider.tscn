@@ -29,7 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://c2l33xvxrv35e" path="res://Assets/Spider/Lunge/spiderLunge-10.png.png" id="11_pgcdg"]
 [ext_resource type="Texture2D" uid="uid://cy23845n1g4ie" path="res://Assets/Spider/Lunge/spiderLunge-11.png.png" id="12_tqejp"]
 [ext_resource type="Texture2D" uid="uid://c820vx1p6kqoa" path="res://Assets/Spider/Lunge/spiderLunge-12.png.png" id="13_mant4"]
-[ext_resource type="PackedScene" uid="uid://dtug7lvorv25n" path="res://Enemies/Hurtbox.tscn" id="30_ey1aa"]
+[ext_resource type="PackedScene" uid="uid://dhlisoh50xh2n" path="res://Enemies/Hurtbox.tscn" id="30_ey1aa"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dix5e"]
 animations = [{
@@ -210,6 +210,8 @@ position = Vector2(1, -1)
 target_position = Vector2(-228, 0)
 
 [node name="Hurtbox" parent="." instance=ExtResource("30_ey1aa")]
+dmg = 7
+kb_scale = 1200
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(-19.5, -4.5)

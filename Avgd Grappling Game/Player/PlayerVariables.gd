@@ -17,7 +17,7 @@ var ores_carried = 0
 var cost_inc = 0
 
 func _ready():
-	inventory.append(temp_item_res.instantiate())
+	# inventory.append(temp_item_res.instantiate())
 	pass
 
 func _process(delta):

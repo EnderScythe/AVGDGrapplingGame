@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dts4kfus1e3qr" path="res://Assets/Worm/Body1/wormBody1-5.png.png" id="7_rsqvy"]
 [ext_resource type="Texture2D" uid="uid://2ljjjdvqoewt" path="res://Assets/Worm/Body1/wormBody1-6.png.png" id="8_1wui0"]
 [ext_resource type="Texture2D" uid="uid://c32qlnqbg8ik" path="res://Assets/Worm/Body1/wormBody1-7.png.png" id="9_ybx6y"]
-[ext_resource type="PackedScene" uid="uid://dtug7lvorv25n" path="res://Enemies/Hurtbox.tscn" id="10_xuvx3"]
+[ext_resource type="PackedScene" uid="uid://dhlisoh50xh2n" path="res://Enemies/Hurtbox.tscn" id="10_xuvx3"]
 [ext_resource type="Texture2D" uid="uid://byjcs2lj3ijvu" path="res://Assets/Worm/Body1/wormBody1-8.png.png" id="10_yrw67"]
 [ext_resource type="Texture2D" uid="uid://d3cvck4p5ktu6" path="res://Assets/Worm/Body1/wormBody1-9.png.png" id="11_8vq6t"]
 
@@ -64,6 +64,8 @@ animation = &"worm_segment_anim"
 frame_progress = 0.57111
 
 [node name="Hurtbox" parent="." instance=ExtResource("10_xuvx3")]
+dmg = 4
+kb_scale = 750
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 scale = Vector2(4, 4)

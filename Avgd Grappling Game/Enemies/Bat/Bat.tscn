@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://c23vnje0j3du2" path="res://Assets/Bat/Flying/bat-fly-12.png.png" id="13_vg4eu"]
 [ext_resource type="Texture2D" uid="uid://d2se76obql5qf" path="res://Assets/Bat/Flying/bat-fly-13.png.png" id="14_78thh"]
 [ext_resource type="Texture2D" uid="uid://dy2tf57cf02xo" path="res://Assets/Bat/Flying/bat-fly-14.png.png" id="15_7yxqx"]
-[ext_resource type="PackedScene" uid="uid://dtug7lvorv25n" path="res://Enemies/Hurtbox.tscn" id="16_b4xb2"]
+[ext_resource type="PackedScene" uid="uid://dhlisoh50xh2n" path="res://Enemies/Hurtbox.tscn" id="16_b4xb2"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b7g86"]
 animations = [{
@@ -96,6 +96,8 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_37vpw")
 
 [node name="Hurtbox" parent="." instance=ExtResource("16_b4xb2")]
+dmg = 5
+kb_scale = 1000
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 rotation = 1.5708

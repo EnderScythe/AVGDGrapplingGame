@@ -45,7 +45,7 @@ func _physics_process(delta):
 			newPos = position + Vector2(0, rng.randf_range(150, 450)).rotated(newRotation)
 			timeSinceNewPos=0
 	elif aggro == true:
-		print(position.distance_to(playerPos))
+		# print(position.distance_to(playerPos))
 		if atkTimer <= 0 and position.distance_to(playerPos) < 1000:
 			#velocity *= 0.25
 			aggro = false
@@ -65,7 +65,7 @@ func _physics_process(delta):
 	elif attack == true:
 	#	atkDir = position.direction_to(playerPos)
 		velocity += position.direction_to(playerPos)*Vector2(atkSpd, atkSpd)
-		print("attacking")
+		# print("attacking")
 		if atkTimer <= 0:
 			attack = false
 			aggro = true
@@ -82,7 +82,7 @@ func _physics_process(delta):
 		velocity.y = vyMax
 	if atkTimer > 0:
 		atkTimer -= delta
-	print(atkTimer)
+	# print(atkTimer)
 	move_and_slide()
 
 func _on_area_2d_body_entered(body):

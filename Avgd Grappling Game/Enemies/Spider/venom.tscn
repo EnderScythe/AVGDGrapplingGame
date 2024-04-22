@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dyauvrtv5jx1s" path="res://Assets/Spider/SpitProjectile/spit-3.png.png" id="4_spxws"]
 [ext_resource type="Texture2D" uid="uid://cdu6uvie4ouwm" path="res://Assets/Spider/SpitProjectile/spit-4.png.png" id="5_c80et"]
 [ext_resource type="Texture2D" uid="uid://bviehmrepx85x" path="res://Assets/Spider/SpitProjectile/spit-5.png.png" id="6_dj0ws"]
-[ext_resource type="PackedScene" uid="uid://dtug7lvorv25n" path="res://Enemies/Hurtbox.tscn" id="7_db2an"]
+[ext_resource type="PackedScene" uid="uid://dhlisoh50xh2n" path="res://Enemies/Hurtbox.tscn" id="7_db2an"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4s4yk"]
 animations = [{
@@ -46,12 +46,15 @@ frame = 2
 frame_progress = 0.345906
 
 [node name="Hurtbox" parent="." instance=ExtResource("7_db2an")]
+dmg = 3
+kb_scale = 600
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-scale = Vector2(1.1, 1.1)
+scale = Vector2(1.15, 1.15)
 shape = SubResource("RectangleShape2D_s7fx6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.95, 0.95)
 shape = SubResource("RectangleShape2D_s7fx6")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
