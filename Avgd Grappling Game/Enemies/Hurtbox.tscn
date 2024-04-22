@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://dtug7lvorv25n"]
+[gd_scene load_steps=2 format=3 uid="uid://dhlisoh50xh2n"]
 
 [ext_resource type="Script" path="res://Enemies/Hurtbox.gd" id="1_a3wa5"]
 

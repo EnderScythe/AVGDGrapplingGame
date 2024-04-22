@@ -25,4 +25,4 @@ func _deferred_goto_scene(path):
 	get_tree().current_scene = current_scene
 	
 
-
+"res://Global.gd"

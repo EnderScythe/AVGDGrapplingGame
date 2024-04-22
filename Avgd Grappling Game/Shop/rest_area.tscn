@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://bxyld0xmti1g" path="res://Assets/Cave Images/caveSlope.png" id="5_d03ov"]
 [ext_resource type="PackedScene" uid="uid://cjlcm3gj7pmgf" path="res://Player/Player.tscn" id="6_i2asr"]
 [ext_resource type="PackedScene" uid="uid://b3e788l2qcir0" path="res://Shop/market.tscn" id="7_obg3h"]
-[ext_resource type="PackedScene" uid="uid://2u2bsjnto08c" path="res://Player/health_pickup.tscn" id="8_xw2vr"]
-[ext_resource type="PackedScene" uid="uid://dk7xsmdv58oib" path="res://Shop/portal.tscn" id="9_5uk0e"]
+[ext_resource type="PackedScene" uid="uid://bar8t1wo8wmaa" path="res://Player/health_pickup.tscn" id="8_xw2vr"]
+[ext_resource type="PackedScene" path="res://Shop/portal.tscn" id="9_5uk0e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rnq5b"]
 texture = ExtResource("1_7bgmb")

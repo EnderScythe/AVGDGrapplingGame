@@ -17,5 +17,4 @@ func _process(delta):
 							   # Fair seemed to be 15 dmg every .75 dmg = 30 dmg every 1.5 secs => 20 dmg per sec => 1 dmg per .05 secs
 		dmgable = time + .05
 	
-	
 
