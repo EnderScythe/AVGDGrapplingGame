@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Menu/hotkey_rebind_button.gd" id="1_l0cpn"]
 
-[node name="HotkeyRebindButton" type="Control"]
+[node name="HotkeyRebindButton" type="Control" groups=["hotkey_button"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,9 +23,9 @@ grow_vertical = 2
 alignment = 1
 
 [node name="Label" type="Label" parent="HBoxContainer"]
-custom_minimum_size = Vector2(400, 30)
+custom_minimum_size = Vector2(450, 30)
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 50
 text = "ACTION "
 vertical_alignment = 1
 
@@ -35,6 +35,10 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 200
 
 [node name="Button" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(300, 2.08165e-12)
 layout_mode = 2
+theme_override_font_sizes/font_size = 35
 toggle_mode = true
 text = "ACTION_KEY"
+
+[connection signal="toggled" from="HBoxContainer/Button" to="." method="_on_button_toggled"]
