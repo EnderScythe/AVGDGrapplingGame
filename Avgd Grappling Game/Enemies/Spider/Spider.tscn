@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://cngjmghkejll0"]
+[gd_scene load_steps=37 format=3 uid="uid://cngjmghkejll0"]
 
 [ext_resource type="Script" path="res://Enemies/Spider/Spider.gd" id="1_ikt67"]
 [ext_resource type="Texture2D" uid="uid://1mwmtkp5pk88" path="res://Assets/Spider/Spit/spiderSpit-1.png.png" id="2_fq61k"]
@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://c2l33xvxrv35e" path="res://Assets/Spider/Lunge/spiderLunge-10.png.png" id="11_pgcdg"]
 [ext_resource type="Texture2D" uid="uid://cy23845n1g4ie" path="res://Assets/Spider/Lunge/spiderLunge-11.png.png" id="12_tqejp"]
 [ext_resource type="Texture2D" uid="uid://c820vx1p6kqoa" path="res://Assets/Spider/Lunge/spiderLunge-12.png.png" id="13_mant4"]
+[ext_resource type="PackedScene" uid="uid://dtug7lvorv25n" path="res://Enemies/Hurtbox.tscn" id="30_ey1aa"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dix5e"]
 animations = [{
@@ -148,6 +149,8 @@ size = Vector2(1191, 176)
 size = Vector2(77.5, 9)
 
 [node name="Spider" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 4
 script = ExtResource("1_ikt67")
 
 [node name="VenomTimer" type="Timer" parent="."]
@@ -205,6 +208,12 @@ shape = SubResource("RectangleShape2D_8hotm")
 visible = false
 position = Vector2(1, -1)
 target_position = Vector2(-228, 0)
+
+[node name="Hurtbox" parent="." instance=ExtResource("30_ey1aa")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(-19.5, -4.5)
+shape = SubResource("RectangleShape2D_hkl3a")
 
 [connection signal="body_entered" from="venowThrowDetection" to="." method="_on_venow_throw_detection_body_entered"]
 [connection signal="body_exited" from="venowThrowDetection" to="." method="_on_venow_throw_detection_body_exited"]

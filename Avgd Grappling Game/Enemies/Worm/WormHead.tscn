@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://8htvqj06xg2w"]
+[gd_scene load_steps=29 format=3 uid="uid://8htvqj06xg2w"]
 
 [ext_resource type="Script" path="res://Enemies/Worm/WormHead.gd" id="1_jig1m"]
 [ext_resource type="Texture2D" uid="uid://bomip3fmuhhw1" path="res://Assets/Worm/Head/wormHeadBlink-1.png.png" id="2_hfkn2"]
@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://c7w2ra1qeyxf2" path="res://Assets/Worm/Head/wormHeadBlink-22.png.png" id="23_vhw3o"]
 [ext_resource type="Texture2D" uid="uid://bn88jqhvbgua5" path="res://Assets/Worm/Head/wormHeadBlink-23.png.png" id="24_l258s"]
 [ext_resource type="Texture2D" uid="uid://cppodxlo7a6bo" path="res://Assets/Worm/Head/wormHeadBlink-24.png.png" id="25_tudjs"]
+[ext_resource type="PackedScene" uid="uid://dtug7lvorv25n" path="res://Enemies/Hurtbox.tscn" id="26_msvmh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sxjpn"]
 size = Vector2(30, 30)
@@ -110,6 +111,7 @@ animations = [{
 }]
 
 [node name="Worm" type="Area2D"]
+collision_layer = 2
 script = ExtResource("1_jig1m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -124,3 +126,10 @@ scale = Vector2(3.91761, 3.91761)
 sprite_frames = SubResource("SpriteFrames_ip5oq")
 animation = &"worm_head_anim"
 frame_progress = 0.762333
+
+[node name="Hurtbox" parent="." instance=ExtResource("26_msvmh")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(2, 3.00005)
+scale = Vector2(6, 6)
+shape = SubResource("RectangleShape2D_sxjpn")

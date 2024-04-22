@@ -13,5 +13,6 @@ func _process(delta):
 
 func _on_tab_container_tab_clicked(tab):
 	if tab == 2:
+		print("wtf")
 		get_tree().change_scene_to_file("res://Menu/menu.tscn")
 

@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://c23vnje0j3du2" path="res://Assets/Bat/Flying/bat-fly-12.png.png" id="13_vg4eu"]
 [ext_resource type="Texture2D" uid="uid://d2se76obql5qf" path="res://Assets/Bat/Flying/bat-fly-13.png.png" id="14_78thh"]
 [ext_resource type="Texture2D" uid="uid://dy2tf57cf02xo" path="res://Assets/Bat/Flying/bat-fly-14.png.png" id="15_7yxqx"]
+[ext_resource type="PackedScene" uid="uid://dtug7lvorv25n" path="res://Enemies/Hurtbox.tscn" id="16_b4xb2"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b7g86"]
 animations = [{
@@ -66,27 +67,13 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="GDScript" id="GDScript_cptdn"]
-script/source = "extends CollisionPolygon2D
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-"
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_37vpw"]
 radius = 45.0
 height = 146.0
 
 [node name="Bat" type="CharacterBody2D"]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 4
 script = ExtResource("1_aym0i")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -103,9 +90,14 @@ position = Vector2(-25, 26)
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
 position = Vector2(-21, 17)
 polygon = PackedVector2Array(-629, -231, -751, 78, -549, 348, -56, 209, 25, -15, -105, -196)
-script = SubResource("GDScript_cptdn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_37vpw")
+
+[node name="Hurtbox" parent="." instance=ExtResource("16_b4xb2")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_37vpw")
 

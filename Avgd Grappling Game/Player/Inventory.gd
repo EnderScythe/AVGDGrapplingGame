@@ -14,9 +14,9 @@ func _process(delta):
 	pass
 
 
-func call_trigger(trigger):
+func call_trigger(trigger, data=null):
 	for item in inventory:
-		if item.has_method(trigger): item.call(trigger)
+		if item.has_method(trigger): item.call(trigger) if data==null else item.call(trigger, data)
 
 
 func add_item(item):
@@ -34,7 +34,9 @@ func load_inventory(saved_inv):
 		add_item(item)
 
 func save_inventory():
-	player_vars.inventory = inventory
+	player_vars.inventory = []
+	for item in inventory:
+		player_vars.inventory.append(item.duplicate())
 
 func _exit_tree():
 	save_inventory()
