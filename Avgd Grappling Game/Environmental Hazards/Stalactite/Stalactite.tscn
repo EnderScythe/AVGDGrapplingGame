@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://it708vpxsog3"]
 
 [ext_resource type="Script" path="res://Environmental Hazards/Stalactite/Stalactite.gd" id="1_4fuuv"]
-[ext_resource type="Texture2D" uid="uid://b0q178s7trx50" path="res://Assets/Stalactite/stalactiteSerrated.png.png" id="2_ucxt6"]
+[ext_resource type="Texture2D" uid="uid://845j60ko5cml" path="res://Assets/Stalactite/stalactiteSerrated.png.png" id="2_ucxt6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yne21"]
 size = Vector2(120, 4412)
@@ -34,4 +34,3 @@ polygon = PackedVector2Array(-36, -202, 15, 212, 40, -200)
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="DmgArea" to="." method="_on_dmg_area_body_entered"]
-[connection signal="body_exited" from="DmgArea" to="." method="_on_dmg_area_body_exited"]
