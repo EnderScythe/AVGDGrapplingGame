@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://it708vpxsog3"]
 
 [ext_resource type="Script" path="res://Environmental Hazards/Stalactite/Stalactite.gd" id="1_4fuuv"]
-[ext_resource type="Texture2D" uid="uid://845j60ko5cml" path="res://Assets/Stalactite/stalactiteSerrated.png.png" id="2_ucxt6"]
+[ext_resource type="Texture2D" uid="uid://b0q178s7trx50" path="res://Assets/Stalactite/stalactiteSerrated.png.png" id="2_ucxt6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yne21"]
 size = Vector2(120, 4412)
 
 [node name="Stalactite" type="RigidBody2D"]
-collision_layer = 4
+collision_layer = 0
 collision_mask = 7
 script = ExtResource("1_4fuuv")
 
@@ -25,5 +25,13 @@ shape = SubResource("RectangleShape2D_yne21")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-35, -203, 39, -201, 15, 206)
 
+[node name="DmgArea" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DmgArea"]
+polygon = PackedVector2Array(-36, -204, 15, 212, 40, -202)
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="DmgArea" to="." method="_on_dmg_area_body_entered"]
+[connection signal="body_exited" from="DmgArea" to="." method="_on_dmg_area_body_exited"]
