@@ -7,7 +7,7 @@
 size = Vector2(120, 4412)
 
 [node name="Stalactite" type="RigidBody2D"]
-collision_layer = 0
+collision_layer = 16
 collision_mask = 7
 script = ExtResource("1_4fuuv")
 
@@ -29,7 +29,7 @@ polygon = PackedVector2Array(-35, -203, 39, -201, 15, 206)
 collision_layer = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DmgArea"]
-polygon = PackedVector2Array(-36, -204, 15, 212, 40, -202)
+polygon = PackedVector2Array(-36, -202, 15, 212, 40, -200)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

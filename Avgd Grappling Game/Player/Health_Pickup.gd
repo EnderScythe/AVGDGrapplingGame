@@ -1,4 +1,4 @@
-extends Area2D
+extends RigidBody2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -10,7 +10,7 @@ func _process(delta):
 	pass
 
 
-func _on_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
+func _on_area_2d_body_entered(body):
 	if PlayerVariables.health < PlayerVariables.max_health:
 		PlayerVariables.health += 15
 		queue_free()
