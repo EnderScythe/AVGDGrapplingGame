@@ -22,8 +22,11 @@ var PULL_BOOST_X = 1000.0 # p where Fc *= 1 + 2x/(x+p) and x is how much dist_to
 var IMMUNE_TIME = 0.5 # time the player is immune after receiving external damage
 var STOP_FORCE = 1500 # flat reduction in current velocity upon taking a hit
 var itime = 0 # remaining immune time, in seconds
+var hurt_time = 0;
+var HURT_ANIMATION_TIME = 1;
 
 func _physics_process(delta):
+	#$AnimatedSprite2D.play("idle")
 	# Add the gravity.
 	velocity.y += gravity * delta
 	
@@ -35,16 +38,32 @@ func _physics_process(delta):
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis("move_left", "move_right")
+	if $AnimatedSprite2D.get_animation() != "hurt":
+		if Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
+			$AnimatedSprite2D.play("walk")
+			if Input.is_action_pressed("move_left"):
+				$AnimatedSprite2D.flip_h = true
+			else:
+				$AnimatedSprite2D.flip_h = false
+		else:
+			$AnimatedSprite2D.play("idle")
+	else:
+		hurt_time += delta;
+		if hurt_time >= HURT_ANIMATION_TIME:
+			$AnimatedSprite2D.play("idle")
+			hurt_time = 0;
+	$AnimatedSprite2D.centered = true	
 	if (direction > 0 and velocity.x < SPEED) or (direction < 0 and velocity.x > -SPEED):
 		velocity.x += direction * ACCL * delta * (1 if is_on_floor() else AIR_ACCL_FAC)
+		#if $AnimatedSprite2D.get_animation() != "walk":
+			#$AnimatedSprite2D.stop()	
 	
 	if is_on_floor():
 		velocity.x = move_toward(velocity.x, 0, FRIC * delta)
-	#else:
+	#else
 		#velocity.x = move_toward(velocity.x, 0, FRIC/5 * delta * abs(velocity.x / velocity.length()))
 		#velocity.y = move_toward(velocity.y, 0, FRIC/5 * delta * abs(velocity.y / velocity.length()))
 	
@@ -56,6 +75,7 @@ func _physics_process(delta):
 		grapple_process(delta)
 	
 	move_and_slide()
+
 
 func _process(delta):
 	itime -= delta
@@ -96,6 +116,7 @@ func grapple_process(delta):
 func take_dmg(dmg):
 	inventory.call_trigger("on_take_dmg", dmg)
 	PlayerVariables.health -= dmg
+	$AnimatedSprite2D.play("hurt")
 	if PlayerVariables.health <= 0:
 		inventory.call_trigger("on_death")
 	if PlayerVariables.health <= 0:

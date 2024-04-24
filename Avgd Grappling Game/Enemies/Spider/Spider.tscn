@@ -210,8 +210,6 @@ position = Vector2(1, -1)
 target_position = Vector2(-228, 0)
 
 [node name="Hurtbox" parent="." instance=ExtResource("30_ey1aa")]
-dmg = 7
-kb_scale = 1200
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(-19.5, -4.5)
