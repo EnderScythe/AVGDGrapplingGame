@@ -27,8 +27,26 @@ layer_0/tile_data = PackedInt32Array(720998, 11, 0, 720999, 11, 0, 721000, 11, 0
 position = Vector2(16959, 868)
 scale = Vector2(5, 17.5)
 
+[node name="Portal_Help" type="TextEdit" parent="."]
+offset_left = 17082.0
+offset_top = 257.0
+offset_right = 17672.0
+offset_bottom = 572.0
+theme_override_font_sizes/font_size = 50
+text = "[system] portals move you onto the next section of the cave. move along."
+wrap_mode = 1
+
 [node name="MOLLY" parent="." instance=ExtResource("4_v2alb")]
 position = Vector2(16670, 1378)
+
+[node name="Molly_Help" type="TextEdit" parent="."]
+offset_left = 15836.0
+offset_top = 1292.0
+offset_right = 16434.0
+offset_bottom = 1551.0
+theme_override_font_sizes/font_size = 50
+text = "[system] use the e_press() function to interact with objects."
+wrap_mode = 1
 
 [node name="Ore" parent="." instance=ExtResource("7_byro4")]
 position = Vector2(11356, 1456)

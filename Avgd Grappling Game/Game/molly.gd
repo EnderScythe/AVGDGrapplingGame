@@ -12,7 +12,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	time += delta
-	if in_molly == true && time >= deposit && PlayerVariables.ores_carried > 0:
+	if in_molly == true && time >= deposit && PlayerVariables.ores_carried > 0 and Input.is_action_pressed("interact") == true:
 		PlayerVariables.ores_carried -= 1
 		PlayerVariables.coins += 4
 		deposit = time + cooldown
