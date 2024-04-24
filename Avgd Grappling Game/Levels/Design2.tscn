@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bvjntygqn06fy"]
+[gd_scene load_steps=7 format=3 uid="uid://bvjntygqn06fy"]
 
-[ext_resource type="PackedScene" uid="uid://bi1ridl1wi85d" path="res://Levels/TileMap.tscn" id="1_e75u8"]
+[ext_resource type="PackedScene" path="res://Levels/TileMap.tscn" id="1_e75u8"]
 [ext_resource type="PackedScene" uid="uid://cjlcm3gj7pmgf" path="res://Player/Player.tscn" id="2_mvwam"]
 [ext_resource type="PackedScene" uid="uid://8htvqj06xg2w" path="res://Enemies/Worm/WormHead.tscn" id="3_lt3lt"]
 [ext_resource type="PackedScene" uid="uid://qajqqd2gk71l" path="res://Enemies/Bat/Bat.tscn" id="4_k3ltx"]
 [ext_resource type="PackedScene" uid="uid://cngjmghkejll0" path="res://Enemies/Spider/Spider.tscn" id="5_a2sik"]
+[ext_resource type="PackedScene" uid="uid://bw8c03yqjhcb0" path="res://Menu/settings_scene.tscn" id="6_sdnx6"]
 
 [node name="Design2" type="Node2D"]
 
@@ -28,3 +29,6 @@ position = Vector2(16178, 2053)
 
 [node name="Spider2" parent="." instance=ExtResource("5_a2sik")]
 position = Vector2(17216, 3629)
+
+[node name="settings" parent="." instance=ExtResource("6_sdnx6")]
+process_mode = 3
