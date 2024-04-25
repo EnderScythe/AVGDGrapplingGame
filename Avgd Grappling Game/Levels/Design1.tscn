@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://oue7cxlo22v"]
+[gd_scene load_steps=6 format=3 uid="uid://oue7cxlo22v"]
 
 [ext_resource type="PackedScene" uid="uid://cjlcm3gj7pmgf" path="res://Player/Player.tscn" id="1_sxmqo"]
 [ext_resource type="PackedScene" uid="uid://bi1ridl1wi85d" path="res://Levels/TileMap.tscn" id="2_wtesr"]
 [ext_resource type="PackedScene" uid="uid://djnme3fdbjo55" path="res://Levels/EnemySpawner.tscn" id="4_wj3qm"]
+[ext_resource type="PackedScene" uid="uid://bl26f3l21o0qj" path="res://gay.tscn" id="5_u56tn"]
 [ext_resource type="PackedScene" uid="uid://it708vpxsog3" path="res://Environmental Hazards/Stalactite/Stalactite.tscn" id="6_0psk6"]
 
 [node name="Design1" type="Node2D"]
@@ -32,3 +33,6 @@ position = Vector2(14528, -96)
 
 [node name="EnemySpawner6" parent="." instance=ExtResource("4_wj3qm")]
 position = Vector2(6094, 1087)
+
+[node name="gay" parent="." instance=ExtResource("5_u56tn")]
+position = Vector2(6035, 3023)

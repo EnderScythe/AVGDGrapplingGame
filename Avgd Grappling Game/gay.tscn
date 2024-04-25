@@ -1,0 +1,70 @@
+[gd_scene load_steps=7 format=3 uid="uid://bl26f3l21o0qj"]
+
+[ext_resource type="Script" path="res://gayser.gd" id="1_aaptn"]
+[ext_resource type="Texture2D" uid="uid://bkckcmps4w8ql" path="res://icon.svg" id="2_jurau"]
+[ext_resource type="Texture2D" uid="uid://cunjwqqbgiii1" path="res://Assets/Gayser/menacing (1).png" id="3_og5te"]
+[ext_resource type="Texture2D" uid="uid://bq6cje4xj4yrh" path="res://Assets/Gayser/menacingDarke2.png" id="4_gkr2f"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qtdkl"]
+radius = 131.0
+height = 942.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5kqdi"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+angle_min = -60.0
+angle_max = -60.0
+direction = Vector3(2.08165e-12, -10, 2.08165e-12)
+spread = 30.0
+initial_velocity_min = 30.0
+initial_velocity_max = 1300.0
+gravity = Vector3(2.08165e-12, 100, 2.08165e-12)
+damping_min = 10.0
+damping_max = 40.0
+scale_max = 2.0
+sub_emitter_mode = 1
+sub_emitter_frequency = 4.0
+sub_emitter_keep_velocity = true
+
+[node name="gay" type="Node2D"]
+script = ExtResource("1_aaptn")
+
+[node name="DectectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DectectionArea"]
+position = Vector2(0, -336)
+shape = SubResource("CapsuleShape2D_qtdkl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_jurau")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 600
+sub_emitter = NodePath("../GPUParticles2DSub")
+process_material = SubResource("ParticleProcessMaterial_5kqdi")
+texture = ExtResource("3_og5te")
+lifetime = 10.0
+one_shot = true
+speed_scale = 6.0
+explosiveness = 0.5
+trail_enabled = true
+trail_lifetime = 3.0
+trail_sections = 24
+
+[node name="GPUParticles2DSub" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 727
+process_material = SubResource("ParticleProcessMaterial_5kqdi")
+texture = ExtResource("4_gkr2f")
+lifetime = 0.75
+one_shot = true
+speed_scale = 6.0
+explosiveness = 0.5
+trail_lifetime = 0.05
+trail_sections = 2
+trail_section_subdivisions = 1
+
+[connection signal="body_entered" from="DectectionArea" to="." method="_on_area_2d_body_entered"]
+[connection signal="finished" from="GPUParticles2D" to="." method="_on_gpu_particles_2d_finished"]
+[connection signal="finished" from="GPUParticles2DSub" to="." method="_on_gpu_particles_2d_finished"]
