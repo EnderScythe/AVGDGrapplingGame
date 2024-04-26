@@ -40,3 +40,4 @@ func save_inventory():
 
 func _exit_tree():
 	save_inventory()
+

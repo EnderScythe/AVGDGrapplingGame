@@ -27,6 +27,6 @@ func _on_area_2d_body_entered(body):
 
 
 func _on_dmg_area_body_entered(body):
-	if can_dmg == true && abs(rotation_degrees) < 50:
+	if body is Player and can_dmg == true and abs(rotation_degrees) < 50:
 		player.take_hit(15, Vector2.ZERO)
 		can_dmg = false
