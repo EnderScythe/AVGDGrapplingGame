@@ -8,6 +8,9 @@ var velocity = Vector2.ZERO
 var accl = 6000
 var maxspd = 3000
 
+var rotspd = 0
+var color = Color(1, 1, 0)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
@@ -26,6 +29,24 @@ func _process(delta):
 	position += velocity * delta
 	
 	
+	rotspd *= pow(0.9, delta)
+	rotspd += velocity.length() / 400 * (1 if velocity.x >= 0 else -1)
+	rotspd = clamp(rotspd, -PI*4, PI*4)
+	
+	sprite.rotate(rotspd*delta)
+	
+	
+	color.h += 0.3*delta + rotspd*0.1*delta
+	if color.h >= 1: color.h = 0
+	sprite.modulate = color
+	
+	
+	
+
+
+
+
+
 
 
 
