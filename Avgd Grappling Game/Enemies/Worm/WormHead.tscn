@@ -25,7 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://c7w2ra1qeyxf2" path="res://Assets/Worm/Head/wormHeadBlink-22.png.png" id="23_vhw3o"]
 [ext_resource type="Texture2D" uid="uid://bn88jqhvbgua5" path="res://Assets/Worm/Head/wormHeadBlink-23.png.png" id="24_l258s"]
 [ext_resource type="Texture2D" uid="uid://cppodxlo7a6bo" path="res://Assets/Worm/Head/wormHeadBlink-24.png.png" id="25_tudjs"]
-[ext_resource type="PackedScene" uid="uid://dhlisoh50xh2n" path="res://Enemies/Hurtbox.tscn" id="26_msvmh"]
+[ext_resource type="PackedScene" path="res://Enemies/Hurtbox.tscn" id="26_msvmh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sxjpn"]
 size = Vector2(30, 30)
