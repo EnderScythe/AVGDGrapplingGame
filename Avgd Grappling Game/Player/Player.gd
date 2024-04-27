@@ -5,6 +5,7 @@ const HOOK_RES = preload("res://Player/Hook.tscn")
 var hook = null
 
 @onready var inventory = get_node("Inventory")
+@onready var hit = false
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -22,8 +23,7 @@ var PULL_BOOST_X = 1000.0 # p where Fc *= 1 + 2x/(x+p) and x is how much dist_to
 var IMMUNE_TIME = 0.5 # time the player is immune after receiving external damage
 var STOP_FORCE = 1500 # flat reduction in current velocity upon taking a hit
 var itime = 0 # remaining immune time, in seconds
-var hurt_time = 0;
-var HURT_ANIMATION_TIME = 1;
+
 
 func _physics_process(delta):
 	#$AnimatedSprite2D.play("idle")
@@ -40,22 +40,7 @@ func _physics_process(delta):
 		velocity.y = JUMP_VELOCITY
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction = Input.get_axis("move_left", "move_right")
-	if $AnimatedSprite2D.get_animation() != "hurt":
-		if Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
-			$AnimatedSprite2D.play("walk")
-			if Input.is_action_pressed("move_left"):
-				$AnimatedSprite2D.flip_h = true
-			else:
-				$AnimatedSprite2D.flip_h = false
-		else:
-			$AnimatedSprite2D.play("idle")
-	else:
-		hurt_time += delta;
-		if hurt_time >= HURT_ANIMATION_TIME:
-			$AnimatedSprite2D.play("idle")
-			hurt_time = 0;
-	$AnimatedSprite2D.centered = true	
+	var direction = Input.get_axis("move_left", "move_right")	
 	if (direction > 0 and velocity.x < SPEED) or (direction < 0 and velocity.x > -SPEED):
 		velocity.x += direction * ACCL * delta * (1 if is_on_floor() else AIR_ACCL_FAC)
 		#if $AnimatedSprite2D.get_animation() != "walk":
@@ -114,9 +99,9 @@ func grapple_process(delta):
 		velocity = tangential_vel + to_hook * centripetal_vel_fac + centripetal_force
 
 func take_dmg(dmg):
+	hit = true
 	inventory.call_trigger("on_take_dmg", dmg)
 	PlayerVariables.health -= dmg
-	$AnimatedSprite2D.play("hurt")
 	if PlayerVariables.health <= 0:
 		inventory.call_trigger("on_death")
 	if PlayerVariables.health <= 0:
