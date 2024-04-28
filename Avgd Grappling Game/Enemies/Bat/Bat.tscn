@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://qajqqd2gk71l"]
+[gd_scene load_steps=20 format=3 uid="uid://qajqqd2gk71l"]
 
 [ext_resource type="Script" path="res://Enemies/Bat/Bat.gd" id="1_aym0i"]
 [ext_resource type="Texture2D" uid="uid://bn8ejp02boyx0" path="res://Assets/Bat/Flying/bat-fly-1.png.png" id="2_3rcr4"]
@@ -15,7 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://c23vnje0j3du2" path="res://Assets/Bat/Flying/bat-fly-12.png.png" id="13_vg4eu"]
 [ext_resource type="Texture2D" uid="uid://d2se76obql5qf" path="res://Assets/Bat/Flying/bat-fly-13.png.png" id="14_78thh"]
 [ext_resource type="Texture2D" uid="uid://dy2tf57cf02xo" path="res://Assets/Bat/Flying/bat-fly-14.png.png" id="15_7yxqx"]
-[ext_resource type="PackedScene" path="res://Enemies/Hurtbox.tscn" id="16_b4xb2"]
+[ext_resource type="PackedScene" uid="uid://dhlisoh50xh2n" path="res://Enemies/Hurtbox.tscn" id="16_b4xb2"]
+[ext_resource type="PackedScene" uid="uid://bmyvjd7iv4ce7" path="res://Enemies/HPComponent.tscn" id="17_d6w5c"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b7g86"]
 animations = [{
@@ -102,6 +103,9 @@ kb_scale = 1000
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_37vpw")
+
+[node name="HpComponent" parent="." instance=ExtResource("17_d6w5c")]
+hp = 2
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

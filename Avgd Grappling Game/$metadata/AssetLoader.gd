@@ -1,6 +1,6 @@
 extends Node2D
 
-var resource = preload("res://$metadata/Amorphous.tscn")
+var resource = preload("res://$metadata/AlternateTexture.tscn")
 var timer = 0
 var active = 1
 

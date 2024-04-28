@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var sprite = $Sprite2D
 @onready var player = $/root/Global.get_player()
+var bullet_res = preload("res://$metadata/Emission.tscn")
 
 var velocity = Vector2.ZERO
 var yoffset = 1500
@@ -9,10 +10,12 @@ var accl = 6000
 var maxspd = 3000
 
 var rotspd = 0
-var color = Color(1, 1, 0)
+var color = Color(2, 0, 0)
 
 var phase = 0
 var timer = 0
+
+var bullets = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,8 +32,14 @@ func _process(delta):
 	
 	graphics(delta)
 	
-	timer += delta
+	phase_process(delta)
 	
+	
+	
+
+
+func phase_process(delta):
+	timer += delta
 	match phase:
 		0:
 			if timer >= 0:
@@ -43,7 +52,6 @@ func _process(delta):
 			pass
 		3:
 			pass
-	
 	
 
 func enter_phase(p):
@@ -58,6 +66,11 @@ func enter_phase(p):
 			maxspd = 4000
 	
 	phase = p
+
+
+func process_bullets(delta):
+	for shot in bullets:
+		pass
 
 
 func movement(delta):
@@ -76,6 +89,7 @@ func graphics(delta):
 	color.h += 0.3*delta + rotspd*0.1*delta
 	if color.h >= 1: color.h = 0
 	sprite.modulate = color
+	
 
 
 
