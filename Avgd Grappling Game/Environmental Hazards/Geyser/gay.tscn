@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://bl26f3l21o0qj"]
 
-[ext_resource type="Script" path="res://gayser.gd" id="1_aaptn"]
+[ext_resource type="Script" path="res://Environmental Hazards/Geyser/gayser.gd" id="1_aaptn"]
 [ext_resource type="Texture2D" uid="uid://bkckcmps4w8ql" path="res://icon.svg" id="2_jurau"]
-[ext_resource type="Texture2D" uid="uid://cunjwqqbgiii1" path="res://Assets/Gayser/menacing (1).png" id="3_og5te"]
-[ext_resource type="Texture2D" uid="uid://bq6cje4xj4yrh" path="res://Assets/Gayser/menacingDarke2.png" id="4_gkr2f"]
+[ext_resource type="Texture2D" uid="uid://b3c61kus0nusn" path="res://Assets/Gayser/menacing (1).png" id="3_og5te"]
+[ext_resource type="Texture2D" uid="uid://ifr3gw08b6oa" path="res://Assets/Gayser/menacingDarke2.png" id="4_gkr2f"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qtdkl"]
 radius = 131.0
