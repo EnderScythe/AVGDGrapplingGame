@@ -1,7 +1,7 @@
 extends Node2D
 # Hosts all player Item interactions
 
-@onready var player_vars = get_node("/root/PlayerVariables")
+@onready var player_vars = $"/root/PlayerVariables"
 @onready var player = get_parent()
 var inventory = [] # when modifying the inventory, make sure to use add_item and remove_item
 
