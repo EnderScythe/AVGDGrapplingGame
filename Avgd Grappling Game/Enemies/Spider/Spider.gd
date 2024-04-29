@@ -26,7 +26,7 @@ func _ready():
 
 func _physics_process(delta):
 	var playerPosition = get_parent().get_node("Player").position
-	get_tree().current_scene.get_node("TileMap").deal_enemy_damage(position, self, delta)
+	#get_tree().current_scene.get_node("TileMap").deal_enemy_damage(position, self, delta)
 	
 	# Add the gravity.
 	if not is_on_floor() and not is_on_ceiling() and rotation_degrees != -180:
