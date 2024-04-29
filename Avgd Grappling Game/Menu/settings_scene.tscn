@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Game/PauseOptions.gd" id="1_btqsj"]
 
 [node name="settings" type="Node2D"]
+z_index = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchors_preset = 8
@@ -10,12 +11,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 840.0
-offset_top = 551.0
-offset_right = 966.0
-offset_bottom = 660.0
+offset_left = 914.0
+offset_top = 445.0
+offset_right = 1031.0
+offset_bottom = 546.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(5, 5)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_btqsj")
@@ -33,3 +35,7 @@ text = "Controls
 [node name="Back" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Back"
+
+[connection signal="pressed" from="VBoxContainer/Volume" to="VBoxContainer" method="_on_volume_pressed"]
+[connection signal="pressed" from="VBoxContainer/Controls" to="VBoxContainer" method="_on_controls_pressed"]
+[connection signal="pressed" from="VBoxContainer/Back" to="VBoxContainer" method="_on_back_pressed"]

@@ -1,5 +1,4 @@
 extends Control
-
 var cam
 
 # Called when the node enters the scene tree for the first time.
@@ -14,6 +13,7 @@ func _process(delta):
 
 func _input(event):
 	if event.is_action_pressed("escape"):
+		print("1")
 		get_tree().paused = !get_tree().paused
 		visible = !visible
 

@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://b3aduqf8ceeun"]
+
+[ext_resource type="Script" path="res://Player/MeleeAtk.gd" id="1_fh5wn"]
+[ext_resource type="Texture2D" uid="uid://bkckcmps4w8ql" path="res://icon.svg" id="2_j5wls"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8wvj8"]
+size = Vector2(52, 70)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tv1np"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(10, -30, 0)
+emission_shape = 3
+emission_box_extents = Vector3(10, 10, 1)
+angle_min = -120.0
+angle_max = -60.0
+direction = Vector3(1, 1, 0)
+spread = 20.0
+initial_velocity_min = 75.0
+initial_velocity_max = 75.0
+orbit_velocity_min = -0.4
+orbit_velocity_max = -0.4
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="Gradient" id="Gradient_txyff"]
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mucsy"]
+gradient = SubResource("Gradient_txyff")
+width = 10
+
+[node name="MeleeAtk" type="Area2D"]
+scale = Vector2(5, 5)
+collision_mask = 2
+script = ExtResource("1_fh5wn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(26.3333, -5)
+shape = SubResource("RectangleShape2D_8wvj8")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(-6.66667, -17)
+emitting = false
+amount = 12
+process_material = SubResource("ParticleProcessMaterial_tv1np")
+texture = SubResource("GradientTexture1D_mucsy")
+lifetime = 0.6
+one_shot = true
+speed_scale = 1.5
+explosiveness = 0.75
+local_coords = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.0980392)
+position = Vector2(28, -4.66667)
+scale = Vector2(0.346354, 0.528646)
+texture = ExtResource("2_j5wls")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

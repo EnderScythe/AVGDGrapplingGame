@@ -2,12 +2,15 @@ extends CharacterBody2D
 class_name Player
 
 const HOOK_RES = preload("res://Player/Hook.tscn")
-var hook = null
+const MELEE_RES = preload("res://Player/MeleeAtk.tscn")
 
-@onready var inventory = get_node("Inventory")
+@onready var variables = $/root/PlayerVariables
+@onready var inventory = $Inventory
+@onready var sprite = $AnimatedSprite2D
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var hook = null
 var SPEED = 600.0 # maximum horizontal speed from normal movement
 var JUMP_VELOCITY = -1200.0 # velocity at start of jump
 var ACCL = 4000.0 # how fast the player horizontally accelerates using normal movement
@@ -22,29 +25,33 @@ var PULL_BOOST_X = 1000.0 # p where Fc *= 1 + 2x/(x+p) and x is how much dist_to
 var IMMUNE_TIME = 0.5 # time the player is immune after receiving external damage
 var STOP_FORCE = 1500 # flat reduction in current velocity upon taking a hit
 var itime = 0 # remaining immune time, in seconds
+var melee_cd = 0 # cooldown for melee attack
+
 
 func _physics_process(delta):
+	#$AnimatedSprite2D.play("idle")
 	# Add the gravity.
 	velocity.y += gravity * delta
 	
 	# Handle stats
 	get_node("Health").text = "Health: " + str(ceil(PlayerVariables.health))
-	get_node("Coin").text = "Coin: " + str(PlayerVariables.coins)
-	$Ores.text = "Ores: " + str(PlayerVariables.ores_carried)
+	get_node("Coin").text = "Coin: " + str(floor(PlayerVariables.coins))
+	$Ores.text = "Ores: " + str(floor(PlayerVariables.ores_carried))
 	
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction = Input.get_axis("move_left", "move_right")
+	var direction = Input.get_axis("move_left", "move_right")	
 	if (direction > 0 and velocity.x < SPEED) or (direction < 0 and velocity.x > -SPEED):
 		velocity.x += direction * ACCL * delta * (1 if is_on_floor() else AIR_ACCL_FAC)
+		#if $AnimatedSprite2D.get_animation() != "walk":
+			#$AnimatedSprite2D.stop()	
 	
 	if is_on_floor():
 		velocity.x = move_toward(velocity.x, 0, FRIC * delta)
-	#else:
+	#else
 		#velocity.x = move_toward(velocity.x, 0, FRIC/5 * delta * abs(velocity.x / velocity.length()))
 		#velocity.y = move_toward(velocity.y, 0, FRIC/5 * delta * abs(velocity.y / velocity.length()))
 	
@@ -57,8 +64,10 @@ func _physics_process(delta):
 	
 	move_and_slide()
 
+
 func _process(delta):
 	itime -= delta
+	melee_cd -= delta
 
 func launch_grapple(angle):
 	if hook != null: return
@@ -80,6 +89,11 @@ func _input(event):
 			launch_grapple(get_angle_to(get_global_mouse_position()))
 		elif hook.state == 1:
 			hook.enter_retract()
+	elif event.is_action_pressed("attack"):
+		if melee_cd <= 0:
+			spawn_melee()
+			melee_cd = variables.swing_cd
+	
 
 func grapple_process(delta):
 	if hook == null: return
@@ -94,6 +108,7 @@ func grapple_process(delta):
 		velocity = tangential_vel + to_hook * centripetal_vel_fac + centripetal_force
 
 func take_dmg(dmg):
+	sprite.play_hurt()
 	inventory.call_trigger("on_take_dmg", dmg)
 	PlayerVariables.health -= dmg
 	if PlayerVariables.health <= 0:
@@ -102,9 +117,12 @@ func take_dmg(dmg):
 		PlayerVariables.health = PlayerVariables.max_health/2
 		get_tree().reload_current_scene()
 
-func take_hit(dmg, kb):
+func take_hit(dmg, kb=null):
 	if itime >= 0: return
+	itime = IMMUNE_TIME
 	take_dmg(dmg)
+	
+	if kb == null: return
 	
 	if velocity.length() <= STOP_FORCE:
 		velocity = Vector2.ZERO
@@ -112,7 +130,13 @@ func take_hit(dmg, kb):
 		velocity -= velocity.normalized() * STOP_FORCE
 	velocity += kb
 	
-	itime = IMMUNE_TIME
+
+func spawn_melee():
+	var atk = MELEE_RES.instantiate()
+	if sprite.flip_h:
+		atk.scale.x *= -1
+	add_child.call_deferred(atk)
+
 
 
 

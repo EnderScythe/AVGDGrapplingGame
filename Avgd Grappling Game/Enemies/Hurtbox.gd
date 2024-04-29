@@ -12,6 +12,6 @@ func _ready():
 func _process(delta):
 	for body in get_overlapping_bodies():
 		if body is Player:
-			body.take_hit(dmg, global_position.direction_to(body.global_position) * kb_scale)
+			body.take_hit(dmg, (global_position.direction_to(body.global_position) * kb_scale) if kb_scale != null else null)
 
 

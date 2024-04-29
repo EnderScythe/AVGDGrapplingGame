@@ -5,6 +5,11 @@ var current_scene = null
 func _ready():
 	var root = get_tree().root
 	current_scene = root.get_child(root.get_child_count() - 1)
+	
+
+func _enter_tree():
+	get_tree().current_scene.add_child.call_deferred(load("res://$metadata/AssetLoader.tscn").instantiate())
+	pass
 
 func _process(delta):
 	pass
@@ -25,4 +30,7 @@ func _deferred_goto_scene(path):
 	get_tree().current_scene = current_scene
 	
 
-"res://Global.gd"
+func get_player():
+	return get_tree().current_scene.get_node("Player")
+
+# "res://Global.gd"
