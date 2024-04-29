@@ -26,16 +26,13 @@ func _ready():
 
 func _physics_process(delta):
 	var playerPosition = get_parent().get_node("Player").position
+	get_tree().current_scene.get_node("TileMap").deal_enemy_damage(position, self, delta)
 	
 	# Add the gravity.
 	if not is_on_floor() and not is_on_ceiling() and rotation_degrees != -180:
 		velocity.y += gravity * delta
-		#adjustOffset()
-	
-	# Preventing Wall Collision and Falling
 	
 	# Wander State: Random Movement
-	
 	if (spiderState == "wander"):
 		movement()
 	
@@ -103,7 +100,6 @@ func wallClimb():
 	if (offsetFromGround == 90):
 		velocity.y = -maxSpeed
 	
-
 # Handle the spider venom throwing function
 
 func spiderShoot():
@@ -122,7 +118,7 @@ func spiderShoot():
 		
 		await get_tree().create_timer(0.6).timeout
 		var playerPosition = get_parent().get_node("Player").position
-		var currentAcc = position.direction_to(playerPosition) * 50
+		var currentAcc = position.direction_to(playerPosition) * 50	
 		
 		if (spiderShootOnce):
 			var oneVenom = venom.instantiate()
@@ -131,17 +127,23 @@ func spiderShoot():
 			oneVenom.start(get_parent().get_node("Player"))
 			spiderShootOnce = false
 		
-		await get_tree().create_timer(0.4).timeout
+		await get_tree().create_timer(.4).timeout
 		
 		spiderState = "chase"
 		$VenomTimer.start()
-		
+	
 # Fix Rotation Offset
 func adjustOffset():
 	if (offsetFromGround != 0):
 			var change = 360 - offsetFromGround
 			rotation_degrees += change
 			offsetFromGround = 0
+
+# Take Damage
+func take_dmg(amount):
+	health -= amount
+	if (health <= 0):
+		queue_free()
 
 # Changing the Spider States
 
@@ -168,7 +170,7 @@ func _on_l_ray_visibility_changed():
 			print("climbing")
 
 func _on_collision_area_body_entered(body):
-	if (body.name == "TileMap"):
+	if (body is TileMap):
 		if (spiderState != "chase"):
 			wallClimb()
 			spiderState = "wander"
