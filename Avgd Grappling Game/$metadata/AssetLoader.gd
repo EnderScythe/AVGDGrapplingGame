@@ -9,6 +9,7 @@ var active = 1
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	timer = 3
+	if Global.get_player() == null: return
 	asset.position = $/root/Global.get_player().position + Vector2.UP*1200
 	
 	if get_tree().current_scene.name == "Arena": queue_free()

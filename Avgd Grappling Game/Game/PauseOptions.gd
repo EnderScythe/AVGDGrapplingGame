@@ -9,7 +9,7 @@ func _ready():
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	position = cam.get_target_position()+Vector2(-500,-250)
+	pass#position = cam.get_target_position()+Vector2(-500,-250)
 
 func _input(event):
 	if event.is_action_pressed("escape"):
