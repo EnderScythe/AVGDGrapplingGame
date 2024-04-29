@@ -147,7 +147,7 @@ size = Vector2(2504.5, 177)
 size = Vector2(1191, 176)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8hotm"]
-size = Vector2(77.5, 9)
+size = Vector2(86.5, 9)
 
 [node name="Spider" type="CharacterBody2D"]
 collision_layer = 2
@@ -200,9 +200,10 @@ shape = SubResource("RectangleShape2D_um7pu")
 
 [node name="collisionArea" type="Area2D" parent="."]
 position = Vector2(1, -1)
+collision_mask = 15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="collisionArea"]
-position = Vector2(-192.25, -1)
+position = Vector2(-197, 2)
 shape = SubResource("RectangleShape2D_8hotm")
 
 [node name="l_ray" type="RayCast2D" parent="."]
@@ -229,4 +230,5 @@ hp = 3
 [connection signal="area_entered" from="collisionArea" to="." method="_on_collision_area_area_entered"]
 [connection signal="area_shape_entered" from="collisionArea" to="." method="_on_collision_area_area_shape_entered"]
 [connection signal="body_entered" from="collisionArea" to="." method="_on_collision_area_body_entered"]
+[connection signal="body_shape_entered" from="collisionArea" to="." method="_on_collision_area_body_shape_entered"]
 [connection signal="visibility_changed" from="l_ray" to="." method="_on_l_ray_visibility_changed"]

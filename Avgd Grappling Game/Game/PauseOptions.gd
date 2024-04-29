@@ -9,7 +9,7 @@ func _ready():
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	position = cam.get_target_position()+Vector2(-500,-250)
+	pass#position = cam.get_target_position()+Vector2(-500,-250)
 
 func _input(event):
 	if event.is_action_pressed("escape"):
@@ -28,3 +28,4 @@ func _on_volume_pressed():
 
 func _on_controls_pressed():
 	print("Changing controls")
+	get_tree().change_scene_to_file("res://Menu/temp_settings_scene.tscn")

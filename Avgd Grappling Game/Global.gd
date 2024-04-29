@@ -8,7 +8,7 @@ func _ready():
 	
 
 func _enter_tree():
-	#get_tree().current_scene.add_child.call_deferred(load("res://$metadata/AssetLoader.tscn").instantiate())
+	# dget_tree().current_scene.add_child.call_deferred(load("res://$metadata/AssetLoader.tscn").instantiate())
 	pass
 
 func _process(delta):

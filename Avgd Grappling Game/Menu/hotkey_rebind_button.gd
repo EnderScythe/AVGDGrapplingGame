@@ -44,7 +44,7 @@ func set_text_for_key() -> void:
 		#if action_event 
 		#print(action_event)
 		
-func on_button_toggled(button_pressed):
+func _on_button_toggled(button_pressed):
 	print("toggled")
 	if button_pressed:
 		button.text = "Press any key..."
@@ -67,7 +67,7 @@ func _unhandled_key_input(event):
 	rebind_action_key(event)
 	button.button_pressed = false
 	
-func rebind_action_key(event):
+func rebind_action_key(event) -> void:
 	InputMap.action_erase_events(action_name)
 	InputMap.action_add_event(action_name, event)
 	
@@ -76,4 +76,5 @@ func rebind_action_key(event):
 	set_action_name()
 		
 	
+
 
