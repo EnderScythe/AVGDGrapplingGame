@@ -51,7 +51,7 @@ func superjump():
 
 func _on_area_2d_body_entered(body):
 	if body is Player:
-		get_tree().change_scene_to_file("res://$metadata/Arena.tscn")
+		get_tree().call_deferred("change_scene_to_file", "res://$metadata/Arena.tscn")
 
 
 
