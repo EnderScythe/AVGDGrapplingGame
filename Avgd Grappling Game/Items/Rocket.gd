@@ -1,12 +1,13 @@
 extends Item
 
+var in_boost = false
+var can_boost = false
+var press_len = 0
 var boost_value = 1000
 const increment = 300
 var time = PlayerVariables.rocket_timer
 
-# this is an example script for an item that increases the player's 
-# grapple range by 500px + an additional 300px every time they use the grappling hook
-# this can be used as a template or reference for future item scripts
+# I'm turning this item into Crystal dash from Hollow Knight
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,13 +17,30 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	time += delta
-	if time <= 5:
-		if Input.is_action_just_pressed("interact"):
-			if Input.is_action_pressed("move_left"):
-				player.velocity.x -= PlayerVariables.rocket_vel
-			if Input.is_action_pressed("move_right"):
-				player.velocity.x += PlayerVariables.rocket_vel
-			time = 0
+	if Input.is_action_pressed("interact") && in_boost == false:
+		press_len += delta
+		if press_len >= PlayerVariables.rocket_timer:
+			can_boost = true
+	if Input.is_action_just_released("interact") && can_boost == true:
+		in_boost = true
+		can_boost = false
+	
+	if in_boost == true:
+		if player.sprite.flip_h == true: # if true, left; if false, right
+			player.velocity.x = -PlayerVariables.rocket_vel
+		else:
+			player.velocity.x = PlayerVariables.rocket_vel
+	
+	if Input.is_action_just_pressed("interact") && in_boost == true:
+		player.velocity.x = 0
+		in_boost = false
+	#if time <= 5:
+		#if Input.is_action_just_pressed("interact"):
+			#if Input.is_action_pressed("move_left"):
+				#player.velocity.x -= PlayerVariables.rocket_vel
+			#if Input.is_action_pressed("move_right"):
+				#player.velocity.x += PlayerVariables.rocket_vel
+			#time = 0
 
 func apply_effect():
 	if PlayerVariables.rocket_vel == 0:

@@ -8,7 +8,11 @@ func _ready():
 	
 
 func _enter_tree():
+<<<<<<< Updated upstream
 	# dget_tree().current_scene.add_child.call_deferred(load("res://$metadata/AssetLoader.tscn").instantiate())
+=======
+	#get_tree().current_scene.add_child.call_deferred(load("res://$metadata/AssetLoader.tscn").instantiate())
+>>>>>>> Stashed changes
 	pass
 
 func _process(delta):

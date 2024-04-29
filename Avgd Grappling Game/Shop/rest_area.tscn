@@ -1,69 +1,17 @@
-[gd_scene load_steps=17 format=3 uid="uid://26xhp7aohe2o"]
+[gd_scene load_steps=8 format=3 uid="uid://26xhp7aohe2o"]
 
-[ext_resource type="Texture2D" uid="uid://c7hv4rpyu15ux" path="res://Assets/Cave Images/caveBlock.png" id="1_7bgmb"]
-[ext_resource type="Texture2D" uid="uid://dhgqkyhb8d0cr" path="res://Assets/Cave Images/caveSlant1.png" id="2_qnn5p"]
-[ext_resource type="Texture2D" uid="uid://dhcrxgqww2rky" path="res://Assets/Cave Images/caveSlant2.png" id="3_n2hyx"]
-[ext_resource type="Texture2D" uid="uid://cmw8s41hjj3kn" path="res://Assets/Cave Images/caveSlant3.png" id="4_xy2cp"]
-[ext_resource type="Texture2D" uid="uid://bxyld0xmti1g" path="res://Assets/Cave Images/caveSlope.png" id="5_d03ov"]
+[ext_resource type="PackedScene" uid="uid://bi1ridl1wi85d" path="res://Levels/TileMap.tscn" id="1_2caih"]
 [ext_resource type="PackedScene" uid="uid://cjlcm3gj7pmgf" path="res://Player/Player.tscn" id="6_i2asr"]
 [ext_resource type="PackedScene" uid="uid://b3e788l2qcir0" path="res://Shop/market.tscn" id="7_obg3h"]
+[ext_resource type="PackedScene" uid="uid://0okr5mo734jw" path="res://Game/Large_Crystal.tscn" id="7_tlrem"]
 [ext_resource type="PackedScene" uid="uid://bar8t1wo8wmaa" path="res://Player/health_pickup.tscn" id="8_xw2vr"]
 [ext_resource type="PackedScene" uid="uid://dk7xsmdv58oib" path="res://Shop/portal.tscn" id="9_5uk0e"]
 [ext_resource type="PackedScene" uid="uid://bl26f3l21o0qj" path="res://Environmental Hazards/Geyser/gay.tscn" id="10_4mvqr"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rnq5b"]
-texture = ExtResource("1_7bgmb")
-texture_region_size = Vector2i(48, 48)
-0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, -24, 24, -24, 24, 24, -24, 24)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pt6ql"]
-texture = ExtResource("2_qnn5p")
-texture_region_size = Vector2i(48, 48)
-0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u8m0p"]
-texture = ExtResource("3_n2hyx")
-texture_region_size = Vector2i(48, 48)
-0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x326x"]
-texture = ExtResource("4_xy2cp")
-texture_region_size = Vector2i(48, 48)
-0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w5lmc"]
-texture = ExtResource("5_d03ov")
-texture_region_size = Vector2i(48, 48)
-0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-
-[sub_resource type="TileSet" id="TileSet_bh3gq"]
-tile_size = Vector2i(48, 48)
-physics_layer_0/collision_layer = 4
-physics_layer_0/collision_mask = 255
-sources/10 = SubResource("TileSetAtlasSource_rnq5b")
-sources/11 = SubResource("TileSetAtlasSource_pt6ql")
-sources/12 = SubResource("TileSetAtlasSource_u8m0p")
-sources/13 = SubResource("TileSetAtlasSource_x326x")
-sources/14 = SubResource("TileSetAtlasSource_w5lmc")
-
 [node name="Rest_Area" type="Node2D"]
 
-[node name="TileMap" type="TileMap" parent="."]
-scale = Vector2(3, 3)
-tile_set = SubResource("TileSet_bh3gq")
-format = 2
-layer_0/tile_data = PackedInt32Array(589824, 10, 0, 589825, 10, 0, 589826, 10, 0, 589827, 10, 0, 589828, 10, 0, 589829, 10, 0, 589830, 10, 0, 589831, 10, 0, 589832, 10, 0, 589833, 10, 0, 589834, 10, 0, 589835, 10, 0, 589836, 10, 0, 589837, 10, 0, 589838, 10, 0, 589839, 10, 0, 589840, 10, 0, 589841, 10, 0, -262144, 10, 0, -262127, 10, 0, 589842, 10, 0, 589843, 10, 0, -262125, 10, 0, -262126, 10, 0, -262128, 10, 0, -262129, 10, 0, -262130, 10, 0, -262131, 10, 0, -262132, 10, 0, -262133, 10, 0, -262134, 10, 0, -262135, 10, 0, -262136, 10, 0, -262137, 10, 0, -262138, 10, 0, -262139, 10, 0, -262140, 10, 0, -262141, 10, 0, -262142, 10, 0, -262143, 10, 0, 655359, 10, 0, 655357, 10, 0, 655358, 10, 0, -196611, 10, 0, -196610, 10, 0, -196609, 10, 0, 655356, 10, 0, 655355, 10, 0, 655354, 10, 0, 655353, 10, 0, 655352, 10, 0, 655351, 10, 0, 589845, 10, 0, 589846, 10, 0, 589844, 10, 0, 589847, 10, 0, 589848, 10, 0, 589849, 10, 0, -196618, 10, 0, -131082, 10, 0, -65546, 10, 0, -10, 10, 0, 65526, 10, 0, 131062, 10, 0, 196598, 10, 0, 262134, 10, 0, 327670, 10, 0, 393206, 10, 0, 458742, 10, 0, 524278, 10, 0, 589814, 10, 0, 655350, 10, 0, -262119, 10, 0, -262120, 10, 0, -262121, 10, 0, -262122, 10, 0, -262123, 10, 0, -262124, 10, 0, -196612, 10, 0, -196613, 10, 0, -196614, 10, 0, -196615, 10, 0, -196616, 10, 0, -196617, 10, 0, -262118, 10, 0, -262117, 10, 0, -262116, 10, 0, -262115, 10, 0, -262114, 10, 0, -262113, 10, 0, -262112, 10, 0, -262111, 10, 0, -262110, 10, 0, -196574, 10, 0, -131038, 10, 0, -65502, 10, 0, 34, 10, 0, 65570, 10, 0, 131106, 10, 0, 196642, 10, 0, 262178, 10, 0, 327714, 10, 0, 393250, 10, 0, 458786, 10, 0, 524322, 10, 0, 589858, 10, 0, 589851, 10, 0, 589852, 10, 0, 589853, 10, 0, 589854, 10, 0, 589855, 10, 0, 589856, 10, 0, 589857, 10, 0, 589850, 10, 0)
+[node name="TileMap" parent="." instance=ExtResource("1_2caih")]
+layer_0/tile_data = PackedInt32Array(655351, 3, 0, 655352, 3, 0, 655353, 3, 0, 655354, 3, 0, 655355, 3, 0, 655356, 3, 0, 655357, 3, 0, 655358, 3, 0, 655359, 3, 0, 589824, 3, 0, 589825, 3, 0, 589826, 3, 0, 589827, 3, 0, 589828, 3, 0, 589829, 3, 0, 589830, 3, 0, 589831, 3, 0, 589832, 3, 0, 589833, 3, 0, 589834, 3, 0, 589835, 3, 0, 589836, 3, 0, 589837, 3, 0, 589838, 3, 0, 589839, 3, 0, 589840, 3, 0, 589841, 3, 0, 589842, 3, 0, 589858, 4, 1610612736, 589857, 3, 0, 589856, 3, 0, 589855, 3, 0, 589854, 3, 0, 589853, 3, 0, 589852, 3, 0, 589851, 3, 0, 589850, 3, 0, 589849, 3, 0, 589848, 3, 0, 589847, 3, 0, 589846, 3, 0, 589845, 3, 0, 589844, 3, 0, 524322, 3, 1610612736, 458786, 3, 1610612736, 393250, 3, 1610612736, 327714, 3, 1610612736, 262178, 3, 1610612736, 196642, 3, 1610612736, 131106, 3, 1610612736, 65570, 3, 1610612736, 34, 3, 1610612736, -65502, 3, 1610612736, -131038, 3, 1610612736, -196574, 3, 1610612736, -262110, 4, 805306368, -262111, 3, 805306368, -262112, 3, 805306368, -262113, 3, 805306368, -262114, 3, 805306368, -262115, 3, 805306368, -262116, 3, 805306368, -262117, 3, 805306368, -262118, 3, 805306368, -262119, 3, 805306368, -262120, 3, 805306368, -262121, 3, 805306368, -262122, 3, 805306368, -262123, 3, 805306368, -262124, 3, 805306368, -262125, 3, 805306368, -262126, 3, 805306368, -262127, 3, 805306368, -262128, 3, 805306368, -262129, 3, 805306368, -262130, 3, 805306368, -262131, 3, 805306368, -262132, 3, 805306368, -262133, 3, 805306368, -262134, 3, 805306368, -262135, 3, 805306368, -262136, 3, 805306368, -262137, 3, 805306368, -262138, 3, 805306368, -262139, 3, 805306368, -262140, 3, 805306368, -262141, 3, 805306368, -262142, 3, 805306368, -262143, 3, 805306368, -262144, 3, 805306368, -196609, 3, 805306368, -196610, 3, 805306368, -196611, 3, 805306368, -196612, 3, 805306368, -196613, 3, 805306368, -196614, 3, 805306368, -196615, 3, 805306368, -196616, 3, 805306368, -196617, 3, 805306368, -196618, 4, 1342177280, -131082, 3, 1342177280, -65546, 3, 1342177280, -10, 3, 1342177280, 65526, 3, 1342177280, 131062, 3, 1342177280, 196598, 3, 1342177280, 262134, 3, 1342177280, 327670, 3, 1342177280, 655350, 4, 0, 589814, 3, 1342177280, 524278, 3, 1342177280, 458742, 3, 1342177280, 393206, 3, 1342177280, 589843, 3, 0)
 
 [node name="Market" parent="." instance=ExtResource("7_obg3h")]
 position = Vector2(1546, 866)
@@ -83,3 +31,6 @@ scale = Vector2(10, 20)
 
 [node name="gay" parent="." instance=ExtResource("10_4mvqr")]
 position = Vector2(102, 1286)
+
+[node name="Ore" parent="." instance=ExtResource("7_tlrem")]
+position = Vector2(3944, 1167)

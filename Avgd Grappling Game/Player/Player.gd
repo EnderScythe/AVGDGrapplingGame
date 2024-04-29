@@ -114,8 +114,13 @@ func take_dmg(dmg):
 	if PlayerVariables.health <= 0:
 		inventory.call_trigger("on_death")
 	if PlayerVariables.health <= 0:
-		PlayerVariables.health = PlayerVariables.max_health/2
+		PlayerVariables.health = PlayerVariables.max_health
 		get_tree().reload_current_scene()
+
+func heal(amt):
+	PlayerVariables.health += amt
+	if PlayerVariables.health >= PlayerVariables.max_health:
+		PlayerVariables.health = PlayerVariables.max_health
 
 func take_hit(dmg, kb=null):
 	if itime >= 0: return

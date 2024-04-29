@@ -1,12 +1,19 @@
 [gd_scene load_steps=4 format=3 uid="uid://ictrkea1qqrn"]
 
+<<<<<<< Updated upstream:Avgd Grappling Game/Game/ore.tscn
 [ext_resource type="Script" path="res://Game/Ore.gd" id="1_c878j"]
 [ext_resource type="Texture2D" uid="uid://cyjibg0t35ulr" path="res://Assets/Minerals/minerals_large.png.png" id="2_6ux7l"]
+=======
+[ext_resource type="Script" path="res://Game/Large_Crystal.gd" id="1_c878j"]
+[ext_resource type="Texture2D" uid="uid://cwntwloeuqp6a" path="res://Assets/Minerals/minerals_large.png.png" id="2_6ux7l"]
+>>>>>>> Stashed changes:Avgd Grappling Game/Game/Large_Crystal.tscn
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ily5s"]
 size = Vector2(128, 128)
 
-[node name="Ore" type="Area2D"]
+[node name="Large_Crystal" type="Area2D"]
+collision_layer = 0
+collision_mask = 32
 script = ExtResource("1_c878j")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

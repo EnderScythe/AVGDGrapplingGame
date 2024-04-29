@@ -1,7 +1,7 @@
 extends Area2D
 
 @onready var player = get_node("res://Player/Player.tscn")
-var max_hits = 5
+var max_hits = 7
 var hits_left = max_hits
 
 # Called when the node enters the scene tree for the first time.
