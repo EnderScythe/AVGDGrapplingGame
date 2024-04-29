@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@onready var global = $"/root/Global"
+@onready var global = $/root/Global
 @onready var player = global.get_player()
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.

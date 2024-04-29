@@ -4,9 +4,9 @@ class_name Player
 const HOOK_RES = preload("res://Player/Hook.tscn")
 const MELEE_RES = preload("res://Player/MeleeAtk.tscn")
 
-@onready var variables = $"/root/PlayerVariables"
-@onready var inventory = $"Inventory"
-@onready var sprite = $"AnimatedSprite2D"
+@onready var variables = $/root/PlayerVariables
+@onready var inventory = $Inventory
+@onready var sprite = $AnimatedSprite2D
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -35,8 +35,8 @@ func _physics_process(delta):
 	
 	# Handle stats
 	get_node("Health").text = "Health: " + str(ceil(PlayerVariables.health))
-	get_node("Coin").text = "Coin: " + str(PlayerVariables.coins)
-	$Ores.text = "Ores: " + str(PlayerVariables.ores_carried)
+	get_node("Coin").text = "Coin: " + str(floor(PlayerVariables.coins))
+	$Ores.text = "Ores: " + str(floor(PlayerVariables.ores_carried))
 	
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():

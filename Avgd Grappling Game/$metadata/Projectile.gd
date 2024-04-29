@@ -1,27 +1,64 @@
 extends Area2D
 
-@onready var trail = $"Trail"
+@onready var core = $CoreParticles
+@onready var aura = $AuraParticles
+@onready var hurtbox = $Hurtbox
 
-var trail_len = 16
-var trail_pt_cd = 0
+var velocity = Vector2.ZERO
+var c = Color(3, 0, 0)
+var id = ""
+var time = 0
+var fade_time = 0.8
+var lifespan = 60
+var active = 0 # 0, 1, 2
+var data = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	apply_color(c, 0)
+	hurtbox.set_collision_mask_value(1, false)
+	# hurtbox.kb_scale = null
 	
-	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	hurtbox.set_collision_mask_value(1, active==1)
+	time += delta
+	if active != 2 and time > lifespan: destroy()
+	
+	match active:
+		0:
+			if time < fade_time:
+				apply_color(c, time/fade_time)
+			else:
+				active = 1
+				apply_color(c)
+		1:
+			pass
+		2:
+			var a = (lifespan-time)/fade_time
+			if a < 0:
+				queue_free()
+				return
+			apply_color(c, a)
+		_:
+			queue_free()
+	
+	position += velocity * delta
+	
 
 
-func trail_process(delta):
-	trail.position = -position
-	trail_pt_cd -= delta
-	if trail_pt_cd <= 0:
-		trail.add_point(position)
-		trail_pt_cd = 0.01
-		while trail.get_point_count() > trail_len:
-			trail.remove_point(0)
+func destroy():
+	lifespan = time + 0.6
+	active = 2
+
+
+func apply_color(color, a=1, coef=1):
+	c = color * Color(coef, coef, coef)
+	core.process_material.color = c
+	core.process_material.color.a = a
+	aura.process_material.color = c
+	aura.process_material.color.a = a * 0.6
+
 

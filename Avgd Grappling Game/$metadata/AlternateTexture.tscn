@@ -7,6 +7,7 @@
 radius = 63.3877
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tg5gj"]
+resource_local_to_scene = true
 particle_flag_disable_z = true
 emission_shape = 6
 emission_ring_axis = Vector3(0, 0, 1)
@@ -25,6 +26,7 @@ scale_max = 0.6
 color = Color(0, 0, 0, 1)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kcy87"]
+resource_local_to_scene = true
 particle_flag_disable_z = true
 emission_shape = 6
 emission_ring_axis = Vector3(0, 0, 1)
@@ -60,6 +62,7 @@ local_coords = true
 amount = 12
 process_material = SubResource("ParticleProcessMaterial_kcy87")
 texture = ExtResource("2_1aedd")
+visibility_rect = Rect2(-500, -500, 500, 500)
 
 [node name="Area2D" type="Area2D" parent="."]
 
