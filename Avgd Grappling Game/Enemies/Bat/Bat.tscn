@@ -98,7 +98,6 @@ shape = SubResource("CapsuleShape2D_37vpw")
 
 [node name="Hurtbox" parent="." instance=ExtResource("16_b4xb2")]
 dmg = 5
-kb_scale = 1000
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 rotation = 1.5708
