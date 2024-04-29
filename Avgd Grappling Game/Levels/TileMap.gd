@@ -23,3 +23,10 @@ func _process(delta):
 		if id in ORE_ID:
 			PlayerVariables.ores_carried += 4
 			minable = time + PlayerVariables.swing_rate
+
+func deal_enemy_damage(position, body, delta):
+	time += delta
+	var id = get_cell_source_id(0, Vector2i(position) / 144, true)
+	if time > dmgable:
+		if id in LAVA_ID:
+			body.take_dmg(1) 
