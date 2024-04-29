@@ -44,11 +44,11 @@ func set_text_for_key() -> void:
 		#if action_event 
 		#print(action_event)
 		
-func on_button_toggled(button_pressed):
+func _on_button_toggled(toggled_on):
 	print("toggled")
-	if button_pressed:
+	if toggled_on:
 		button.text = "Press any key..."
-		set_process_unhandled_key_input(button_pressed)
+		set_process_unhandled_key_input(toggled_on)
 		
 		for i in get_tree().get_nodes_in_group("hotkey_button"):
 			if i.action_name != self.action_name:
@@ -65,7 +65,7 @@ func on_button_toggled(button_pressed):
 		
 func _unhandled_key_input(event):
 	rebind_action_key(event)
-	button.button_pressed = false
+	button.toggled_on = false
 	
 func rebind_action_key(event):
 	InputMap.action_erase_events(action_name)
@@ -76,4 +76,5 @@ func rebind_action_key(event):
 	set_action_name()
 		
 	
+
 

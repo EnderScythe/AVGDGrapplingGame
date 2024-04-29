@@ -28,3 +28,4 @@ func _on_volume_pressed():
 
 func _on_controls_pressed():
 	print("Changing controls")
+	get_tree().change_scene_to_file("res://Menu/temp_settings_scene.tscn")
