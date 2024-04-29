@@ -100,7 +100,6 @@ attack={
 2d_physics/layer_3="Ground"
 2d_physics/layer_4="Hook"
 2d_physics/layer_5="Stalactite"
-2d_physics/layer_6="Attack"
 avoidance/layer_1="enemies"
 avoidance/layer_2="player"
 avoidance/layer_3="walls"

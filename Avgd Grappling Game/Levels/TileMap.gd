@@ -4,12 +4,8 @@ var time = 0
 var dmgable = -1
 var minable = -1
 const LAVA_ID = [10, 11]
-<<<<<<< Updated upstream
 const ORE_ID = [7, 8]
 var rng = RandomNumberGenerator.new()
-=======
-# const ORE_ID = [7, 8]
->>>>>>> Stashed changes
 @onready var player = get_parent().get_node("Player")
 var geyser = preload("res://Environmental Hazards/Geyser/gay.tscn")
 
@@ -25,7 +21,6 @@ func _process(delta):
 			player.take_dmg(1) # Takes 2 dmg every instance of damage
 							   # Fair seemed to be 15 dmg every .75 dmg = 30 dmg every 1.5 secs => 20 dmg per sec => 1 dmg per .05 secs
 			dmgable = time + .05
-<<<<<<< Updated upstream
 	if time > minable:
 		if id in ORE_ID:
 			PlayerVariables.ores_carried += 4
@@ -77,5 +72,3 @@ func proceduralGeneration():
 					
 		
 #>>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes

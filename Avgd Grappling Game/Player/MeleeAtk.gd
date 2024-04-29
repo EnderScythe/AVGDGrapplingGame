@@ -25,3 +25,10 @@ func _on_body_entered(body):
 	if body.has_node("HpComponent"):
 		var hp = body.get_node("HpComponent")
 		hp.take_dmg(dmg)
+	
+	
+
+
+
+
+
