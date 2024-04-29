@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://djnme3fdbjo55"]
+[gd_scene load_steps=2 format=3 uid="uid://c7cohfwjmdbq6"]
 
 [ext_resource type="Script" path="res://Levels/EnemySpawner.gd" id="1_tpqik"]
 

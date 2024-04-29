@@ -35,6 +35,8 @@ animations = [{
 size = Vector2(127, 100)
 
 [node name="Venom" type="Area2D"]
+collision_layer = 5
+collision_mask = 15
 script = ExtResource("1_m1ig7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

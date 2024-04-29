@@ -33,8 +33,11 @@ func explode():
 	queue_free()
 
 func _on_body_entered(body):
-	if (body.name == "Player"):
+	if (body.name == "TileMap"):
 		explode()
+	elif (body.name == "Player"):
+		explode()
+		PlayerVariables.health -= 10
 
 func _on_lifetime_timeout():
 	explode()

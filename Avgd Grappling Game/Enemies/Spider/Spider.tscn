@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://cngjmghkejll0"]
+[gd_scene load_steps=38 format=3 uid="uid://cngjmghkejll0"]
 
 [ext_resource type="Script" path="res://Enemies/Spider/Spider.gd" id="1_ikt67"]
 [ext_resource type="Texture2D" uid="uid://1mwmtkp5pk88" path="res://Assets/Spider/Spit/spiderSpit-1.png.png" id="2_fq61k"]
@@ -30,6 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://cy23845n1g4ie" path="res://Assets/Spider/Lunge/spiderLunge-11.png.png" id="12_tqejp"]
 [ext_resource type="Texture2D" uid="uid://c820vx1p6kqoa" path="res://Assets/Spider/Lunge/spiderLunge-12.png.png" id="13_mant4"]
 [ext_resource type="PackedScene" uid="uid://dhlisoh50xh2n" path="res://Enemies/Hurtbox.tscn" id="30_ey1aa"]
+[ext_resource type="PackedScene" uid="uid://bmyvjd7iv4ce7" path="res://Enemies/HPComponent.tscn" id="31_o8sys"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dix5e"]
 animations = [{
@@ -146,7 +147,7 @@ size = Vector2(2504.5, 177)
 size = Vector2(1191, 176)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8hotm"]
-size = Vector2(77.5, 9)
+size = Vector2(86.5, 9)
 
 [node name="Spider" type="CharacterBody2D"]
 collision_layer = 2
@@ -199,9 +200,10 @@ shape = SubResource("RectangleShape2D_um7pu")
 
 [node name="collisionArea" type="Area2D" parent="."]
 position = Vector2(1, -1)
+collision_mask = 15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="collisionArea"]
-position = Vector2(-192.25, -1)
+position = Vector2(-197, 2)
 shape = SubResource("RectangleShape2D_8hotm")
 
 [node name="l_ray" type="RayCast2D" parent="."]
@@ -217,6 +219,9 @@ kb_scale = 1200
 position = Vector2(-19.5, -4.5)
 shape = SubResource("RectangleShape2D_hkl3a")
 
+[node name="HpComponent" parent="." instance=ExtResource("31_o8sys")]
+hp = 3
+
 [connection signal="body_entered" from="venowThrowDetection" to="." method="_on_venow_throw_detection_body_entered"]
 [connection signal="body_exited" from="venowThrowDetection" to="." method="_on_venow_throw_detection_body_exited"]
 [connection signal="area_entered" from="detectionArea" to="." method="_on_detection_area_area_entered"]
@@ -225,4 +230,5 @@ shape = SubResource("RectangleShape2D_hkl3a")
 [connection signal="area_entered" from="collisionArea" to="." method="_on_collision_area_area_entered"]
 [connection signal="area_shape_entered" from="collisionArea" to="." method="_on_collision_area_area_shape_entered"]
 [connection signal="body_entered" from="collisionArea" to="." method="_on_collision_area_body_entered"]
+[connection signal="body_shape_entered" from="collisionArea" to="." method="_on_collision_area_body_shape_entered"]
 [connection signal="visibility_changed" from="l_ray" to="." method="_on_l_ray_visibility_changed"]
