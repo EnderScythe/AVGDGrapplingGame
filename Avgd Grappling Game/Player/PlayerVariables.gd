@@ -3,7 +3,7 @@ extends Node
 const temp_item_res = preload("res://Items/DoubleJump.tscn") # just to test if items work
 
 var max_health = 100
-var health = max_health/2
+var health = max_health
 var coins = 9999
 var inventory = []
 var swing_cd = 0.6 # in seconds (so default is 1 swing per .6 seconds)

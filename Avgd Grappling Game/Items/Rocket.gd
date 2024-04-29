@@ -31,23 +31,16 @@ func _process(delta):
 		boost_ready = false
 		e_held = 0
 		boosting = true
+		mult = 1
 		if player.sprite.flip_h:
 			mult = -1
-		else:
-			mult = 1
 	if boosting == true:
 		player.velocity.x = PlayerVariables.rocket_vel * mult
+		player.velocity.y = 0
 	
 	if boosting == true && Input.is_action_just_pressed("interact"):
 		boosting = false
 		player.velocity.x = 0
-	#if time <= 5:
-		#if Input.is_action_just_pressed("interact"):
-			#if Input.is_action_pressed("move_left"):
-				#player.velocity.x -= PlayerVariables.rocket_vel
-			#if Input.is_action_pressed("move_right"):
-				#player.velocity.x += PlayerVariables.rocket_vel
-			#time = 0
 
 func apply_effect():
 	if PlayerVariables.rocket_vel == 0:
