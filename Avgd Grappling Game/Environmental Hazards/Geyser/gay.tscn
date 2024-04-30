@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bl26f3l21o0qj"]
+[gd_scene load_steps=7 format=3 uid="uid://bl26f3l21o0qj"]
 
 [ext_resource type="Script" path="res://Environmental Hazards/Geyser/gayser.gd" id="1_aaptn"]
 [ext_resource type="Texture2D" uid="uid://bkckcmps4w8ql" path="res://icon.svg" id="2_jurau"]
 [ext_resource type="Texture2D" uid="uid://cunjwqqbgiii1" path="res://Assets/Gayser/menacing (1).png" id="3_og5te"]
 [ext_resource type="Texture2D" uid="uid://bq6cje4xj4yrh" path="res://Assets/Gayser/menacingDarke2.png" id="4_gkr2f"]
-[ext_resource type="PackedScene" uid="uid://dhlisoh50xh2n" path="res://Enemies/Hurtbox.tscn" id="5_a4djh"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qtdkl"]
 radius = 48.0
@@ -19,7 +18,9 @@ direction = Vector3(2.08165e-12, -10, 2.08165e-12)
 spread = 6.0
 initial_velocity_min = 360.0
 initial_velocity_max = 727.0
-gravity = Vector3(2.08165e-12, 300, 2.08165e-12)
+gravity = Vector3(2.08165e-12, 150, 2.08165e-12)
+radial_accel_min = -180.0
+radial_accel_max = -120.0
 damping_min = 10.0
 damping_max = 40.0
 scale_max = 2.0
@@ -66,13 +67,6 @@ fixed_fps = 60
 trail_lifetime = 0.05
 trail_sections = 2
 trail_section_subdivisions = 1
-
-[node name="Hurtbox" parent="." instance=ExtResource("5_a4djh")]
-dmg = 8
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(0, -280)
-shape = SubResource("CapsuleShape2D_qtdkl")
 
 [connection signal="body_entered" from="DectectionArea" to="." method="_on_area_2d_body_entered"]
 [connection signal="finished" from="GPUParticles2D" to="." method="_on_gpu_particles_2d_finished"]

@@ -81,5 +81,9 @@ position = Vector2(-513, 1276)
 position = Vector2(4733, 463)
 scale = Vector2(10, 20)
 
+[node name="gay2" parent="." instance=ExtResource("10_4mvqr")]
+position = Vector2(-1682, 1354)
+rotation = 0.792379
+
 [node name="gay" parent="." instance=ExtResource("10_4mvqr")]
 position = Vector2(102, 1286)

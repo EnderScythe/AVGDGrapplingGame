@@ -8,7 +8,7 @@ var inc = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	skewVal = 0
-	$Hurtbox.set_deferred("disabled", true)
+	# $Hurtbox.set_deferred("disabled", false)
 	pass # Replace with function body.
 
 
@@ -19,20 +19,19 @@ func _process(delta):
 
 
 func _on_area_2d_body_entered(body):
-	fire()
+	fire(body)
 	firing = true
 
 
-func fire():
+func fire(body):
 	if(!cooldown):
 		$DectectionArea/CollisionShape2D.set_deferred("disabled", true)
-		$Hurtbox.set_deferred("disabled", false)
 		$GPUParticles2D.set_deferred("emitting", true)
+		if body is Player: body.take_hit(8, position.direction_to(body.position)*2400)
 		cooldown = true
 
 func _on_gpu_particles_2d_finished():
 	$DectectionArea/CollisionShape2D.set_deferred("disabled", false)
-	$Hurtbox.set_deferred("disabled", false)
 	cooldown = false
 	
 
