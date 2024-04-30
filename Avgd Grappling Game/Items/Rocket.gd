@@ -1,11 +1,13 @@
 extends Item
 
-var boosting = false
-var boost_ready = false
-var e_held = 0
 var mult
+var l_start = -1
+var l_ready = false
+var r_start = -1
+var r_ready = false
+var on_cd = -1
 
-var boost_value = 1000
+var boost_value = 500
 const increment = 300
 var time = 0
 
@@ -21,26 +23,50 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	time += delta
-	if Input.is_action_pressed("interact"):
-		player.velocity.x = 0
-		e_held += delta
-	if e_held > PlayerVariables.rocket_timer:
-		boost_ready = true
+	if Input.is_action_just_pressed("move_left") && l_ready == false:
+		l_start = time
+		l_ready = true
+	elif Input.is_action_just_pressed("move_left") && l_ready == true:
+		player.velocity.x = -PlayerVariables.rocket_vel
+		on_cd = time + PlayerVariables.rocket_timer
+		r_ready = false
+	if Input.is_action_just_pressed("move_right") && r_ready == false:
+		r_start = time
+		r_ready = true
+	elif Input.is_action_just_pressed("move_right") && r_ready == true:
+		player.velocity.x = PlayerVariables.rocket_vel
+		on_cd = time + PlayerVariables.rocket_timer
+		r_ready = false
 	
-	if boost_ready == true && Input.is_action_just_released("interact"):
-		boost_ready = false
-		e_held = 0
-		boosting = true
-		mult = 1
-		if player.sprite.flip_h:
-			mult = -1
-	if boosting == true:
-		player.velocity.x = PlayerVariables.rocket_vel * mult
-		player.velocity.y = 0
+	if time > l_start + .15:
+		l_ready = false
+	if time > r_start + .15:
+		r_ready = false
 	
-	if boosting == true && Input.is_action_just_pressed("interact"):
-		boosting = false
-		player.velocity.x = 0
+	
+	#if Input.is_action_pressed("interact"):
+		#player.velocity.x = 0
+		#e_held += delta
+	#if e_held > PlayerVariables.rocket_timer:
+		#boost_ready = true
+	#
+	#if boost_ready == true && Input.is_action_just_released("interact"):
+		#boost_ready = false
+		#e_held = 0
+		#boosting = true
+		#mult = 1
+		#start_boost = time
+		#if player.sprite.flip_h:
+			#mult = -1
+	#
+	#if player.velocity.x == 0 && time > start_boost + .1:
+		#boosting = false
+	#if boosting == true:
+		#player.velocity.x = PlayerVariables.rocket_vel * mult
+	#if boosting == true && Input.is_action_just_pressed("interact"):
+		#boosting = false
+		#player.velocity.x = 0
+	
 
 func apply_effect():
 	if PlayerVariables.rocket_vel == 0:
