@@ -4,7 +4,7 @@ extends CharacterBody2D
 
 var maxSpeed = 400
 var acceleration = 20
-var health = 100
+@onready var health = $HpComponent
 
 var currentPos = 0
 var targetPos = 0
@@ -13,6 +13,8 @@ var offsetFromGround = 0
 var movingLeft = true
 var spiderShootOnce = false
 var spiderState = "wander"
+
+var forcedGravity = false
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 
@@ -28,7 +30,13 @@ func _physics_process(delta):
 	var playerPosition = get_parent().get_node("Player").position
 	get_tree().current_scene.get_node("TileMap").deal_enemy_damage(position, self, delta)
 	
+	#if not is_on_floor() and not is_on_ceiling():
+		#adjustOffset()
+	
 	# Add the gravity.
+	if forcedGravity:
+		velocity.y += gravity * delta
+	
 	if not is_on_floor() and not is_on_ceiling() and rotation_degrees != -180:
 		velocity.y += gravity * delta
 	
@@ -136,13 +144,15 @@ func spiderShoot():
 func adjustOffset():
 	if (offsetFromGround != 0):
 			var change = 360 - offsetFromGround
+			print(change)
 			rotation_degrees += change
 			offsetFromGround = 0
+	print(offsetFromGround)
 
 # Take Damage
 func take_dmg(amount):
-	health -= amount
-	if (health <= 0):
+	health.hp -= amount
+	if (health.hp <= 0):
 		queue_free()
 
 # Changing the Spider States
@@ -157,7 +167,7 @@ func _on_detection_area_body_exited(body):
 
 func update_health():
 	var healthBar = $healthBar
-	healthBar.value = health
+	healthBar.value = health.hp
 
 func _on_venow_throw_detection_body_entered(body):
 	if (body.name == "Player"):
@@ -173,4 +183,18 @@ func _on_collision_area_body_entered(body):
 	if (body is TileMap):
 		if (spiderState != "chase"):
 			wallClimb()
+			forcedGravity = false
 			spiderState = "wander"
+
+
+func _on_bottom_collision_area_body_exited(body):	
+	print("off ground")
+	print(offsetFromGround)
+	if (offsetFromGround != 0):
+		forcedGravity = true
+		#adjustOffset()
+	
+
+func _on_bottom_collision_area_body_entered(body):
+	if (body is TileMap):
+		forcedGravity = true

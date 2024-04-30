@@ -1,17 +1,15 @@
-[gd_scene load_steps=25 format=3 uid="uid://bi1ridl1wi85d"]
+[gd_scene load_steps=21 format=3 uid="uid://bi1ridl1wi85d"]
 
 [ext_resource type="Script" path="res://Levels/TileMap.gd" id="1_66cvj"]
-[ext_resource type="Texture2D" uid="uid://d23y3xrrsty2r" path="res://Assets/Gray_Dank Cave Images/grayCurve.png" id="1_wcapu"]
-[ext_resource type="Texture2D" uid="uid://dndl7qholgsk0" path="res://Assets/Gray_Dank Cave Images/grayDiagonal.png" id="2_f14k7"]
-[ext_resource type="Texture2D" uid="uid://ca8m8k84s3w0w" path="res://Assets/Lava/Body/lavabodySpritesheet.png" id="3_6jv64"]
-[ext_resource type="Texture2D" uid="uid://bp44udc0dn8op" path="res://Assets/Gray_Dank Cave Images/grayFilling.png" id="3_732fh"]
-[ext_resource type="Texture2D" uid="uid://by7j5y6w8356e" path="res://Assets/Lava/Surface/lavaSurfaceSpritesheet.png" id="4_khif1"]
-[ext_resource type="Texture2D" uid="uid://dxg7c4ivht237" path="res://Assets/Gray_Dank Cave Images/grayFlat.png" id="4_u04k1"]
-[ext_resource type="Texture2D" uid="uid://65lpocsy61xn" path="res://Assets/Gray_Dank Cave Images/grayInnerCorner.png" id="5_5v5cj"]
-[ext_resource type="Texture2D" uid="uid://cudq25ohntbyv" path="res://Assets/Gray_Dank Cave Images/grayIslandBody.png" id="6_0npmo"]
-[ext_resource type="Texture2D" uid="uid://dmg3d17trgevx" path="res://Assets/Gray_Dank Cave Images/grayIslandLedge.png" id="7_c4jv6"]
-[ext_resource type="Texture2D" uid="uid://cyjibg0t35ulr" path="res://Assets/Minerals/minerals_large.png.png" id="10_7x6gj"]
-[ext_resource type="Texture2D" uid="uid://dllbcsn7f03yt" path="res://Assets/Minerals/minerals_small.png.png" id="11_vyd6i"]
+[ext_resource type="Texture2D" uid="uid://dujmd5xyhx0x0" path="res://Assets/Gray_Dank Cave Images/grayCurve.png" id="1_wcapu"]
+[ext_resource type="Texture2D" uid="uid://ek2v51fxp68c" path="res://Assets/Gray_Dank Cave Images/grayDiagonal.png" id="2_f14k7"]
+[ext_resource type="Texture2D" uid="uid://cyhvtdqw2whcq" path="res://Assets/Lava/Body/lavabodySpritesheet.png" id="3_6jv64"]
+[ext_resource type="Texture2D" uid="uid://c5alarhqlbvfj" path="res://Assets/Gray_Dank Cave Images/grayFilling.png" id="3_732fh"]
+[ext_resource type="Texture2D" uid="uid://qjv5rk8k5qsy" path="res://Assets/Lava/Surface/lavaSurfaceSpritesheet.png" id="4_khif1"]
+[ext_resource type="Texture2D" uid="uid://cwtgsg8nsa8w" path="res://Assets/Gray_Dank Cave Images/grayFlat.png" id="4_u04k1"]
+[ext_resource type="Texture2D" uid="uid://kc0nx8khkuxj" path="res://Assets/Gray_Dank Cave Images/grayInnerCorner.png" id="5_5v5cj"]
+[ext_resource type="Texture2D" uid="uid://dwfg6jmyic86u" path="res://Assets/Gray_Dank Cave Images/grayIslandBody.png" id="6_0npmo"]
+[ext_resource type="Texture2D" uid="uid://vsy365bnoj0w" path="res://Assets/Gray_Dank Cave Images/grayIslandLedge.png" id="7_c4jv6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d841q"]
 texture = ExtResource("1_wcapu")
@@ -102,20 +100,6 @@ texture_region_size = Vector2i(48, 48)
 0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, -24, 24, -24, 24, 24, 19.799, 14.8492, 3.88909, 11.3137, -5.65685, 7.07107, -15.2028, -5.65686)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4p7yl"]
-texture = ExtResource("10_7x6gj")
-texture_region_size = Vector2i(48, 48)
-0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yigkw"]
-texture = ExtResource("11_vyd6i")
-texture_region_size = Vector2i(48, 48)
-0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-
 [sub_resource type="TileSet" id="TileSet_317bh"]
 tile_size = Vector2i(48, 48)
 physics_layer_0/collision_layer = 4
@@ -129,8 +113,6 @@ sources/5 = SubResource("TileSetAtlasSource_5y157")
 sources/6 = SubResource("TileSetAtlasSource_2oe7o")
 sources/10 = SubResource("TileSetAtlasSource_8gfgt")
 sources/11 = SubResource("TileSetAtlasSource_cydat")
-sources/7 = SubResource("TileSetAtlasSource_4p7yl")
-sources/8 = SubResource("TileSetAtlasSource_yigkw")
 
 [node name="TileMap" type="TileMap"]
 scale = Vector2(3, 3)

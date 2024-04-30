@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://8htvqj06xg2w" path="res://Enemies/Worm/WormHead.tscn" id="3_lt3lt"]
 [ext_resource type="PackedScene" uid="uid://qajqqd2gk71l" path="res://Enemies/Bat/Bat.tscn" id="4_k3ltx"]
 [ext_resource type="PackedScene" uid="uid://cngjmghkejll0" path="res://Enemies/Spider/Spider.tscn" id="5_a2sik"]
-[ext_resource type="PackedScene" path="res://Menu/settings_scene.tscn" id="6_sdnx6"]
+[ext_resource type="PackedScene" uid="uid://bw8c03yqjhcb0" path="res://Menu/settings_scene.tscn" id="6_sdnx6"]
 
 [node name="Design2" type="Node2D"]
 
