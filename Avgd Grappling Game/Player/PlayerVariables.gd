@@ -11,8 +11,10 @@ var rocket_vel = 0
 var rocket_timer = 1
 var has_shield = false
 var shield_recharge = 5 # in seconds (starts at 5 seconds)
-var shield_strength = 3 # tanks 3 hits of any dmg?
+var shield_max = 3 # tanks 3 hits of any dmg?
+var shield_health = shield_max
 var ores_carried = 0
+var shield_broken = false
 
 var cost_inc = 0
 

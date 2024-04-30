@@ -7,7 +7,7 @@ var r_start = -1
 var r_ready = false
 var on_cd = -1
 
-var boost_value = 500
+var boost_value = 1000
 const increment = 300
 var time = 0
 

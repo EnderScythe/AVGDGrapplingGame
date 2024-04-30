@@ -7,6 +7,7 @@ const MELEE_RES = preload("res://Player/MeleeAtk.tscn")
 @onready var variables = $/root/PlayerVariables
 @onready var inventory = $Inventory
 @onready var sprite = $AnimatedSprite2D
+var shield_time = 0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -33,10 +34,7 @@ func _physics_process(delta):
 	# Add the gravity.
 	velocity.y += gravity * delta
 	
-	# Handle stats
-	get_node("Health").text = "Health: " + str(ceil(PlayerVariables.health))
-	get_node("Coin").text = "Coin: " + str(floor(PlayerVariables.coins))
-	$Ores.text = "Ores: " + str(floor(PlayerVariables.ores_carried))
+	
 	
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
@@ -66,8 +64,15 @@ func _physics_process(delta):
 
 
 func _process(delta):
+	get_node("Health").text = "Health: " + str(ceil(PlayerVariables.health))
+	get_node("Coin").text = "Coin: " + str(floor(PlayerVariables.coins))
+	$Ores.text = "Ores: " + str(floor(PlayerVariables.ores_carried))
+	
 	itime -= delta
 	melee_cd -= delta
+	
+	if PlayerVariables.shield_broken == true:
+		regen_shield(delta)
 
 func launch_grapple(angle):
 	if hook != null: return
@@ -114,21 +119,27 @@ func take_dmg(dmg):
 	if PlayerVariables.health <= 0:
 		inventory.call_trigger("on_death")
 	if PlayerVariables.health <= 0:
-		PlayerVariables.health = PlayerVariables.max_health/2
+		PlayerVariables.health = PlayerVariables.max_health
 		get_tree().reload_current_scene()
 
 func take_hit(dmg, kb=null):
-	if itime >= 0: return
-	itime = IMMUNE_TIME
-	take_dmg(dmg)
+	if PlayerVariables.shield_health > 0 && PlayerVariables.has_shield == true:
+		PlayerVariables.shield_health -= 1
+		itime = IMMUNE_TIME
+		if PlayerVariables.shield_health == 0:
+			PlayerVariables.shield_broken = true
+	if PlayerVariables.shield_health == 0 || PlayerVariables.has_shield == false:
+		if itime >= 0: return
+		itime = IMMUNE_TIME
+		take_dmg(dmg)
 	
-	if kb == null: return
+		if kb == null: return
 	
-	if velocity.length() <= STOP_FORCE:
-		velocity = Vector2.ZERO
-	else:
-		velocity -= velocity.normalized() * STOP_FORCE
-	velocity += kb
+		if velocity.length() <= STOP_FORCE:
+			velocity = Vector2.ZERO
+		else:
+			velocity -= velocity.normalized() * STOP_FORCE
+		velocity += kb
 	
 
 func spawn_melee():
@@ -138,5 +149,11 @@ func spawn_melee():
 	add_child.call_deferred(atk)
 
 
+func regen_shield(delta):
+	shield_time += delta
+	if shield_time >= PlayerVariables.shield_recharge:
+		PlayerVariables.shield_broken = false
+		PlayerVariables.shield_health = PlayerVariables.shield_max
+		shield_time = 0
 
 
