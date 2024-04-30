@@ -53,6 +53,7 @@ amount = 5
 process_material = SubResource("ParticleProcessMaterial_x0jwo")
 texture = ExtResource("2_unb2t")
 lifetime = 0.7
+visibility_rect = Rect2(-300, -300, 300, 300)
 local_coords = true
 
 [node name="AuraParticles" type="GPUParticles2D" parent="."]
@@ -60,7 +61,7 @@ amount = 12
 process_material = SubResource("ParticleProcessMaterial_86uq3")
 texture = ExtResource("2_unb2t")
 lifetime = 0.4
-visibility_rect = Rect2(-500, -500, 500, 500)
+visibility_rect = Rect2(-1000, -1000, 1000, 1000)
 
 [node name="Hurtbox" parent="." instance=ExtResource("3_h6a0s")]
 dmg = 5

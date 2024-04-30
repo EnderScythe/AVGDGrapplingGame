@@ -9,6 +9,7 @@ var c = Color(3, 0, 0)
 var id = ""
 var time = 0
 var fade_time = 0.8
+var fade_out_time = 0.8
 var lifespan = 60
 var active = 0 # 0, 1, 2
 var data = []
@@ -37,7 +38,7 @@ func _process(delta):
 		1:
 			pass
 		2:
-			var a = (lifespan-time)/fade_time
+			var a = (lifespan-time)/fade_out_time
 			if a < 0:
 				queue_free()
 				return
@@ -50,7 +51,7 @@ func _process(delta):
 
 
 func destroy():
-	lifespan = time + 0.6
+	lifespan = time + fade_out_time
 	active = 2
 
 
