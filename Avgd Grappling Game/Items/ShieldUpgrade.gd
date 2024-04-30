@@ -1,5 +1,5 @@
 extends Item
-
+@onready var shield = get_parent().get_parent().get_node("Shield_Sprite")
 # this is an example script for an item that increases the player's 
 # grapple range by 500px + an additional 300px every time they use the grappling hook
 # this can be used as a template or reference for future item scripts
@@ -15,6 +15,7 @@ func _process(delta):
 
 func apply_effect():
 	PlayerVariables.has_shield = true
+	shield.trigger_shield_sprite()
 
 func deapply_effect():
 	PlayerVariables.has_Shield = false

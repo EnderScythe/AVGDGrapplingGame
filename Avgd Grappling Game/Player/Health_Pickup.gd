@@ -1,4 +1,5 @@
 extends RigidBody2D
+@onready var player = get_parent().get_node("Player")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,5 +13,5 @@ func _process(delta):
 
 func _on_area_2d_body_entered(body):
 	if PlayerVariables.health < PlayerVariables.max_health:
-		PlayerVariables.health += 15
+		player.heal(15)
 		queue_free()

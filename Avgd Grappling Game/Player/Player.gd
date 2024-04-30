@@ -7,6 +7,7 @@ const MELEE_RES = preload("res://Player/MeleeAtk.tscn")
 @onready var variables = $/root/PlayerVariables
 @onready var inventory = $Inventory
 @onready var sprite = $AnimatedSprite2D
+@onready var shield = $Shield_Sprite
 var shield_time = 0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -128,6 +129,7 @@ func take_hit(dmg, kb=null):
 		itime = IMMUNE_TIME
 		if PlayerVariables.shield_health == 0:
 			PlayerVariables.shield_broken = true
+			shield.trigger_shield_sprite()
 	if PlayerVariables.shield_health == 0 || PlayerVariables.has_shield == false:
 		if itime >= 0: return
 		itime = IMMUNE_TIME
@@ -140,7 +142,11 @@ func take_hit(dmg, kb=null):
 		else:
 			velocity -= velocity.normalized() * STOP_FORCE
 		velocity += kb
-	
+
+func heal(amt):
+	PlayerVariables.health += amt
+	if PlayerVariables.health > PlayerVariables.max_health:
+		PlayerVariables.health = PlayerVariables.max_health
 
 func spawn_melee():
 	var atk = MELEE_RES.instantiate()
@@ -154,6 +160,7 @@ func regen_shield(delta):
 	if shield_time >= PlayerVariables.shield_recharge:
 		PlayerVariables.shield_broken = false
 		PlayerVariables.shield_health = PlayerVariables.shield_max
+		shield.trigger_shield_sprite()
 		shield_time = 0
 
 
