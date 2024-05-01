@@ -18,8 +18,8 @@ func _process(delta):
 	pass
 
 func apply_effect():
-	# Values for shields have not been worked out yet and cannot be implemented
-	PlayerVariables.shield_strength += boost_value
+	PlayerVariables.shield_max += boost_value
+	PlayerVariables.shield_health = PlayerVariables.shield_max
 
 func deapply_effect():
 	player.MAX_LENGTH -= boost_value
@@ -36,7 +36,7 @@ func get_descript():
 	return "Upgrade to increase the amount of [unit] the shield can take before breaking!"
 
 func get_img_path():
-	return "res://Assets/Shop/Shop3.png"
+	return "res://Assets/Shop/Shop2.png"
 
 func get_cost():
 	return 4

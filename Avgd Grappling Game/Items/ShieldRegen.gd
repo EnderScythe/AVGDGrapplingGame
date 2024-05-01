@@ -35,7 +35,7 @@ func get_descript():
 	return "Upgrade to decrease the time it takes for the shield to start recharging!"
 
 func get_img_path():
-	return "res://Assets/Shop/Shop2.png"
+	return "res://Assets/Shop/Shop1.png"
 
 func get_cost():
 	return 4

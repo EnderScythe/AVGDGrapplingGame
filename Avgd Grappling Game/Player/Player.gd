@@ -163,5 +163,3 @@ func regen_shield(delta):
 		PlayerVariables.shield_health = PlayerVariables.shield_max
 		shield.trigger_shield_sprite()
 		shield_time = 0
-
-
