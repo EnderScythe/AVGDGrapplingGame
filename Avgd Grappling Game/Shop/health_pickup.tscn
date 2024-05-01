@@ -1,13 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://bar8t1wo8wmaa"]
 
-[ext_resource type="Script" path="res://Player/Health_Pickup.gd" id="1_7hsk0"]
-[ext_resource type="Texture2D" uid="uid://bkckcmps4w8ql" path="res://icon.svg" id="2_4sb14"]
+[ext_resource type="Script" path="res://Shop/Health_Pickup.gd" id="1_7hsk0"]
+[ext_resource type="Texture2D" uid="uid://cd1froeeq77oy" path="res://Assets/Shop/Health_Pickup.png" id="2_tv7o2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_khnui"]
 size = Vector2(0, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_14kxp"]
-size = Vector2(20, 19.6)
+size = Vector2(20, 38.4)
 
 [node name="Health_Pickup" type="RigidBody2D"]
 collision_layer = 0
@@ -15,18 +15,18 @@ collision_mask = 5
 script = ExtResource("1_7hsk0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 26)
 shape = SubResource("RectangleShape2D_khnui")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -0.5)
+position = Vector2(0, -48)
 scale = Vector2(6.5, 2.5)
 shape = SubResource("RectangleShape2D_14kxp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(1, 0.4)
-texture = ExtResource("2_4sb14")
+position = Vector2(0, -65)
+scale = Vector2(2.7, 2.7)
+texture = ExtResource("2_tv7o2")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
