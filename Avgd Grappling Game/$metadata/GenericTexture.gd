@@ -85,12 +85,12 @@ func phase_process(delta):
 					shot.apply_color(c)
 					data.append(shot)
 			elif timer < 4: pass
-			elif timer < 8:
+			elif timer < 7:
 				accl = 1800
 				maxspd = 2400
 				target_offset = Vector2.ZERO
 				if data[0] < 0:
-					data[0] = 1.2 #- sclnum(0.8, 300)
+					data[0] = 0.8 #- sclnum(0.6, 300)
 					if data.size() > 2:
 						var shot = data[2]
 						shot.data = [1, 0]
@@ -119,19 +119,8 @@ func phase_process(delta):
 					var ring_spd = ring_dist/4
 					var ring_rot = 1 if data[0] % 2 == 0 else -1
 					var wheels_per_ring = 3 + 2*data[0]
-					for i in range(wheels_per_ring):
-						var p_angle_offset = PI*2/wheels_per_ring*i
-						var c = Color(3, 0, 0)
-						c.h += randf()
-						for j in range(shots_per_wheel):
-							var angle_offset = PI*2/shots_per_wheel*j
-							var shot = bullet_res.instantiate()
-							# data: pivot, p_pivot, [p_radius, p_angle], p_rad_vel, p_rad_target, p_ang_vel, [radius, angle], rad_vel, rad_tg, ang_vel
-							add_bullet(shot, "wheel", [position, position, [0, p_angle_offset], ring_spd, ring_dist, PI/10*ring_rot, [0, angle_offset], 300, 500, PI/8])
-							shot.apply_color(c)
-							shot.fade_time = 5
-							shot.lifespan = 18
-			elif timer < 7.5: # - sclnum(10, 800)
+					spawn_wheel_ring(position, wheels_per_ring, shots_per_wheel, ring_dist, ring_spd, ring_rot*PI/10, PI/8, 300, 500, 5, 15)
+			elif timer < 6: # - sclnum(2, 400)
 				accl = 6000
 				maxspd = 3000
 			else:
@@ -148,25 +137,10 @@ func phase_process(delta):
 					data[2] = 1
 					var fire_dir = position.direction_to(player.position)
 					var saw_spd = 1200
-					var vel = fire_dir * saw_spd
-					var ang_vel = PI*3 * 1 if position.x < player.position.x else -1
+					var ang_vel = PI*4 * 1 if position.x < player.position.x else -1
 					var c = Color(3, 0, 0)
 					c.h += randf()
-					# data: timer, pivot, pivot_vel, [radius, angle], rad_vel, rad_target, base_ang_vel, max_spd
-					var center = bullet_res.instantiate()
-					add_bullet(center, "saw", [0, position, vel, [0, 0], 0, 0, 0, saw_spd])
-					center.apply_color(c)
-					center.fade_time = 0.2
-					var blade_length = 2
-					var num_blades = 4
-					var spc = 100
-					for i in range(1, blade_length+1):
-						c.h += randf_range(0.08, 0.12)
-						for j in range(num_blades):
-							var shot = bullet_res.instantiate()
-							add_bullet(shot, "saw", [0, position, vel, [spc*i, PI*2*j/num_blades], 0, spc*i, ang_vel, saw_spd])
-							shot.apply_color(c)
-							shot.fade_time = 0.2
+					spawn_saw(position, fire_dir, saw_spd, ang_vel, c)
 					accl = 6000
 					maxspd = 4000
 					velocity = -fire_dir * 4000
@@ -218,10 +192,13 @@ func enter_phase(p):
 
 func process_bullets(delta):
 	var remove_queue = []
-	for shot in bullets:
-		if shot == null or !is_instance_valid(shot):
-			remove_queue.append(shot)
+	var index = 0
+	while index < bullets.size():
+		if !is_instance_valid(bullets[index]):
+			bullets.remove_at(index)
 			continue
+		
+		var shot = bullets[index]
 		match shot.id:
 			"hover": # data: mode, timer
 				var mode = shot.data[0]
@@ -257,9 +234,18 @@ func process_bullets(delta):
 					shot.data = [0.6, 600]
 					shot.velocity = Vector2(randf_range(600, 800), 0).rotated(randf_range(0, PI*2))
 					shot.lifespan = shot.time + 8
-	
-	for item in remove_queue:
-		bullets.erase(item)
+			"repel": # data: repel_str, split_time, split_cnt, split_vel
+				shot.velocity += player.position.direction_to(shot.position) / player.position.distance_squared_to(shot.position) * shot.data[0] * delta
+				if shot.time > shot.data[1]:
+					for i in range(shot.data[2]):
+						var split = bullet_res.instantiate()
+						add_bullet(split, "", [], Vector2(data[3], 0).rotated(shot.velocity.angle() + PI*2/shot.data[2]*i), shot.position)
+						split.apply_color(shot.color)
+						split.fade_time = 0
+					shot.fade_out_time = 0
+					shot.destroy()
+		
+		index += 1
 
 func add_bullet(shot, id="", data=[], vel=Vector2.ZERO, pos=position):
 	shot.id = id
@@ -274,6 +260,43 @@ func orbital_motion(pivot, data, radial_vel, radius_target, angular_vel, delta):
 	data[0] = clamp(data[0] + radial_vel * delta, 0, radius_target)
 	data[1] += angular_vel * delta
 	return pivot + Vector2(data[0], 0).rotated(data[1])
+
+func spawn_saw(pos, fire_dir, saw_spd, ang_vel, c):
+	var vel = fire_dir * saw_spd
+	# data: timer, pivot, pivot_vel, [radius, angle], rad_vel, rad_target, base_ang_vel, max_spd
+	var center = bullet_res.instantiate()
+	add_bullet(center, "saw", [0, position, vel, [0, 0], 0, 0, 0, saw_spd])
+	center.apply_color(c)
+	center.fade_time = 0.2
+	var blade_length = 2
+	var num_blades = 4
+	var spc = 100
+	for i in range(1, blade_length+1):
+		c.h += randf_range(0.08, 0.12)
+		for j in range(num_blades):
+			var shot = bullet_res.instantiate()
+			add_bullet(shot, "saw", [0, position, vel, [spc*i, PI*2*j/num_blades], 0, spc*i, ang_vel, saw_spd])
+			shot.apply_color(c)
+			shot.fade_time = 0.2
+
+func spawn_wheel_ring(center, num_wheels, shots_per_wheel, ring_dist, ring_spd, ring_rot, wheel_rot, wheel_dist, wheel_spd, fade_time, lifespan):
+	for i in range(num_wheels):
+		var p_angle_offset = PI*2/num_wheels*i
+		var c = Color(3, 0, 0)
+		c.h += randf()
+		for j in range(shots_per_wheel):
+			var angle_offset = PI*2/shots_per_wheel*j
+			var shot = bullet_res.instantiate()
+			# data: pivot, p_pivot, [p_radius, p_angle], p_rad_vel, p_rad_target, p_ang_vel, [radius, angle], rad_vel, rad_tg, ang_vel
+			add_bullet(shot, "wheel", [center, center, [0, p_angle_offset], ring_spd, ring_dist, ring_rot, [0, angle_offset], wheel_dist, wheel_spd, wheel_rot])
+			shot.apply_color(c)
+			shot.fade_time = fade_time
+			shot.lifespan = lifespan
+
+func spawn_converge_ring(center, radius, num_shots, spd, repel_f, split_cnt):
+	for i in range(num_shots):
+		var r = Vector2(0, radius).rotated(2*PI/num_shots*i)
+		
 
 
 func movement(delta):
@@ -303,6 +326,8 @@ func graphics(delta):
 # returns a number that starts at ~0 and approaches n as level approaches infinity, at a rate determined by r (smaller=faster)
 func sclnum(n, r):
 	return n/(1+r/level)
+
+
 
 
 
