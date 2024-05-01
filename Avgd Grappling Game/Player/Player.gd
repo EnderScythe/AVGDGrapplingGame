@@ -121,6 +121,7 @@ func take_dmg(dmg):
 		inventory.call_trigger("on_death")
 	if PlayerVariables.health <= 0:
 		PlayerVariables.health = PlayerVariables.max_health
+		PlayerVariables.ores_carried = 0
 		get_tree().reload_current_scene()
 
 func take_hit(dmg, kb=null):
