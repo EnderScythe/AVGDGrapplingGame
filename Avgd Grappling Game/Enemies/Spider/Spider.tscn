@@ -30,7 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://cy23845n1g4ie" path="res://Assets/Spider/Lunge/spiderLunge-11.png.png" id="12_tqejp"]
 [ext_resource type="Texture2D" uid="uid://c820vx1p6kqoa" path="res://Assets/Spider/Lunge/spiderLunge-12.png.png" id="13_mant4"]
 [ext_resource type="PackedScene" uid="uid://dhlisoh50xh2n" path="res://Enemies/Hurtbox.tscn" id="30_ey1aa"]
-[ext_resource type="PackedScene" path="res://Enemies/HPComponent.tscn" id="30_m6cb3"]
+[ext_resource type="PackedScene" uid="uid://bmyvjd7iv4ce7" path="res://Enemies/HPComponent.tscn" id="30_m6cb3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dix5e"]
 animations = [{
@@ -182,7 +182,7 @@ scale = Vector2(0.5, 0.5)
 show_percentage = false
 
 [node name="HpComponent" parent="." instance=ExtResource("30_m6cb3")]
-hp = 100
+hp = 40
 
 [node name="venowThrowDetection" type="Area2D" parent="."]
 visible = false

@@ -19,7 +19,6 @@ func _check_amt():
 
 func _on_area_entered(area):
 	if area.name == "MeleeAtk":
-		print("mined!")
 		hits_left -= 1
 		PlayerVariables.ores_carried += 1
 		_check_amt()

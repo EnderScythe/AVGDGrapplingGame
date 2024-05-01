@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://ix3sh4j1ia1s"]
+[gd_scene load_steps=6 format=3 uid="uid://ix3sh4j1ia1s"]
 
 [ext_resource type="Texture2D" uid="uid://o21xmvg2440r" path="res://Assets/Gray_Dank Cave Images/grayFilling.png" id="1_mra0f"]
 [ext_resource type="PackedScene" uid="uid://cjlcm3gj7pmgf" path="res://Player/Player.tscn" id="2_2beu5"]
 [ext_resource type="PackedScene" uid="uid://bi1ridl1wi85d" path="res://Levels/TileMap.tscn" id="3_g1fo6"]
 [ext_resource type="PackedScene" uid="uid://b1y2kbr22paxm" path="res://$metadata/GenericTexture.tscn" id="3_yeyaq"]
+[ext_resource type="PackedScene" uid="uid://cg8u4e35y1d52" path="res://$metadata/VitalityNode.tscn" id="5_47sdr"]
 
 [node name="Arena" type="Node2D"]
 
@@ -22,3 +23,15 @@ position = Vector2(2557, 1363)
 
 [node name="GenericTexture" parent="." instance=ExtResource("3_yeyaq")]
 position = Vector2(5222, 200)
+
+[node name="VitalityNode" parent="." instance=ExtResource("5_47sdr")]
+position = Vector2(3165, -965)
+
+[node name="VitalityNode2" parent="." instance=ExtResource("5_47sdr")]
+position = Vector2(7064, -961)
+
+[node name="VitalityNode3" parent="." instance=ExtResource("5_47sdr")]
+position = Vector2(2437, 1479)
+
+[node name="VitalityNode4" parent="." instance=ExtResource("5_47sdr")]
+position = Vector2(7938, 1476)

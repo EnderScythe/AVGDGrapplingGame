@@ -2,7 +2,7 @@ extends Area2D
 
 var lifespan = 0.4
 var collision_exceptions = []
-var dmg = 1
+var dmg = 10
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

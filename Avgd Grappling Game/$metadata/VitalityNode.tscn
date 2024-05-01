@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cg8u4e35y1d52"]
+
+[ext_resource type="Script" path="res://$metadata/VitalityNode.gd" id="1_y6jdp"]
+[ext_resource type="Texture2D" uid="uid://bq5mf5cjcryjh" path="res://Assets/Minerals/minerals_large.png.png" id="2_r43uy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ily5s"]
+size = Vector2(128, 128)
+
+[node name="VitalityNode" type="Area2D"]
+script = ExtResource("1_y6jdp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(5.33, 5.33)
+texture = ExtResource("2_r43uy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_ily5s")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

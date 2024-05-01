@@ -5,7 +5,7 @@ extends Area2D
 @onready var hurtbox = $Hurtbox
 
 var velocity = Vector2.ZERO
-var c = Color(3, 0, 0)
+var color = Color(3, 0, 0)
 var id = ""
 var time = 0
 var fade_time = 0.8
@@ -16,7 +16,7 @@ var data = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	apply_color(c, 0)
+	apply_color(color, 0)
 	hurtbox.set_collision_mask_value(1, false)
 	# hurtbox.kb_scale = null
 	
@@ -31,10 +31,10 @@ func _process(delta):
 	match active:
 		0:
 			if time < fade_time:
-				apply_color(c, time/fade_time)
+				apply_color(color, time/fade_time)
 			else:
 				active = 1
-				apply_color(c)
+				apply_color(color)
 		1:
 			pass
 		2:
@@ -42,7 +42,7 @@ func _process(delta):
 			if a < 0:
 				queue_free()
 				return
-			apply_color(c, a)
+			apply_color(color, a)
 		_:
 			queue_free()
 	
@@ -51,15 +51,16 @@ func _process(delta):
 
 
 func destroy():
+	if active == 2: return
 	lifespan = time + fade_out_time
 	active = 2
 
 
 func apply_color(color, a=1, coef=1):
-	c = color * Color(coef, coef, coef)
-	core.process_material.color = c
+	self.color = color * Color(coef, coef, coef)
+	core.process_material.color = self.color
 	core.process_material.color.a = a
-	aura.process_material.color = c
+	aura.process_material.color = self.color
 	aura.process_material.color.a = a * 0.6
 
 

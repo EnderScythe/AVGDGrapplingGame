@@ -104,7 +104,7 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_37vpw")
 
 [node name="HpComponent" parent="." instance=ExtResource("17_d6w5c")]
-hp = 2
+hp = 20
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
