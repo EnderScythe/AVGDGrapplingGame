@@ -42,39 +42,16 @@ func _process(delta):
 		l_ready = false
 	if time > r_start + .15:
 		r_ready = false
-	
-	
-	#if Input.is_action_pressed("interact"):
-		#player.velocity.x = 0
-		#e_held += delta
-	#if e_held > PlayerVariables.rocket_timer:
-		#boost_ready = true
-	#
-	#if boost_ready == true && Input.is_action_just_released("interact"):
-		#boost_ready = false
-		#e_held = 0
-		#boosting = true
-		#mult = 1
-		#start_boost = time
-		#if player.sprite.flip_h:
-			#mult = -1
-	#
-	#if player.velocity.x == 0 && time > start_boost + .1:
-		#boosting = false
-	#if boosting == true:
-		#player.velocity.x = PlayerVariables.rocket_vel * mult
-	#if boosting == true && Input.is_action_just_pressed("interact"):
-		#boosting = false
-		#player.velocity.x = 0
-	
 
 func apply_effect():
 	if PlayerVariables.rocket_vel == 0:
 		PlayerVariables.rocket_vel = boost_value
 	PlayerVariables.rocket_vel += boost_value
+	PlayerVariables.rocket_timer *= .75
 
 func deapply_effect():
 	PlayerVariables.rocket_vel -= boost_value
+	PlayerVariables.rocket_timer /= .75
 
 #func on_grapple():
 	#player.MAX_LENGTH += increment

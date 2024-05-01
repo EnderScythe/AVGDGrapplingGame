@@ -1,11 +1,8 @@
 extends Item
+# Completed
 
 var boost_value = 500
 const increment = 300
-
-# this is an example script for an item that increases the player's 
-# grapple range by 500px + an additional 300px every time they use the grappling hook
-# this can be used as a template or reference for future item scripts
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

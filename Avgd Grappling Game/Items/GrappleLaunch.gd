@@ -1,4 +1,5 @@
 extends Item
+# Completed
 
 var boost_value = 500
 
