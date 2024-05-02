@@ -14,8 +14,6 @@ var movingLeft = true
 var spiderShootOnce = false
 var spiderState = "wander"
 
-var forcedGravity = false
-
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -30,12 +28,8 @@ func _physics_process(delta):
 	var playerPosition = get_parent().get_node("Player").position
 	get_tree().current_scene.get_node("TileMap").deal_enemy_damage(position, self, delta)
 	
-	#if not is_on_floor() and not is_on_ceiling():
-		#adjustOffset()
-	
-	# Add the gravity.
-	if forcedGravity:
-		velocity.y += gravity * delta
+	#if !$l_ray.is_colliding():
+		#spiderState = "chase"
 	
 	if not is_on_floor() and not is_on_ceiling() and rotation_degrees != -180:
 		velocity.y += gravity * delta
@@ -71,6 +65,9 @@ func _physics_process(delta):
 			velocity.x = maxSpeed
 		elif (velocity.x < -maxSpeed):
 			velocity.x = -maxSpeed
+		
+		if ($VenomTimer.time_left == 0):
+			spiderState = "wander"
 	
 	elif (spiderState == "lung"):
 		$AnimatedSprite2D.play("lung")
@@ -164,6 +161,7 @@ func _on_detection_area_body_entered(body):
 func _on_detection_area_body_exited(body):
 	if (body.name == "Player"):
 		spiderState = "chase"
+		$VenomTimer.start()
 
 func update_health():
 	var healthBar = $healthBar
@@ -174,27 +172,26 @@ func _on_venow_throw_detection_body_entered(body):
 		spiderState = "shoot"
 		spiderShootOnce = true
 
-func _on_l_ray_visibility_changed():
-	if $l_ray.get_collider().name == "TileMap":	
-			spiderState = "climb"
-			print("climbing")
+#func _on_l_ray_visibility_changed():
+	#if $l_ray.get_collider().name == "TileMap":	
+			#spiderState = "climb"
+			#print("climbing")
 
 func _on_collision_area_body_entered(body):
 	if (body is TileMap):
 		if (spiderState != "chase"):
 			wallClimb()
-			forcedGravity = false
 			spiderState = "wander"
 
 
-func _on_bottom_collision_area_body_exited(body):	
-	print("off ground")
-	print(offsetFromGround)
-	if (offsetFromGround != 0):
-		forcedGravity = true
-		#adjustOffset()
-	
-
-func _on_bottom_collision_area_body_entered(body):
-	if (body is TileMap):
-		forcedGravity = true
+#func _on_bottom_collision_area_body_exited(body):	
+	#print(offsetFromGround)
+	#if (offsetFromGround != 0):
+		##adjustOffset()
+		#pass
+	#
+#
+#func _on_bottom_collision_area_body_entered(body):
+	#floating = false
+	#if (body is TileMap):
+		#forcedGravity = true
