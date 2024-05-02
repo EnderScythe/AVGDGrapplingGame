@@ -146,7 +146,7 @@ func phase_process(delta):
 			if timer < 1.5:
 				rotspd *= pow(0.4, delta)
 			elif timer < 3.5:
-				rotspd += PI*2 * delta
+				rotspd += PI*4 * delta
 				data[1] -= delta
 				if data[1] < 0 and data[0] < num_rings:
 					data[0] += 1
@@ -212,21 +212,23 @@ func phase_process(delta):
 				enter_phase(0)
 		
 		6: # revolving door
-			if timer < 0.8:
-				rotspd += PI*2 * data[1] * delta
+			if timer < 0.5:
+				accl = 6000
+				rotspd += PI*4 * data[1] * delta
 			if timer < 2:
 				if data[0] == 0:
-					maxspd = 3000
+					maxspd = 0
 					var radius = 2400
 					var spc = 100
 					var gap_size = 8
 					var rot_dir = data[1]
+					var fade_time = 2
 					var duration = 8
-					spawn_wall_ring(position, radius, 30, -PI/4*rot_dir, 0.8, duration)
-					spawn_saw_gaps(position, ceil(radius/spc), 4, PI/6*rot_dir, duration, gap_size)
+					spawn_wall_ring(position, radius, 30, -PI/4*rot_dir, fade_time, duration)
+					spawn_saw_gaps(position, ceil(radius/spc), 4, PI/6*rot_dir, duration, gap_size, fade_time)
 					data[0] = 1
 			elif timer < 3:
-				accl = 6000
+				maxspd = 3000
 			else:
 				enter_phase(0)
 		
@@ -275,8 +277,7 @@ func enter_phase(p):
 		6:
 			timer = 0
 			data = [0, 1 if randf() < 0.5 else -1]
-			accl = 6000
-			maxspd = 0
+			target_offset *= 0.6
 	
 	phase = p
 
@@ -324,8 +325,8 @@ func process_bullets(delta):
 				if shot.data[0] > shot.data[9]:
 					if shot.data[10]:
 						shot.id = "seek"
+						shot.velocity = Vector2(randf_range(500, 700), 0).rotated(shot.data[3][1] + randf_range(-PI/12, PI/12))
 						shot.data = [0.5, 600]
-						shot.velocity = Vector2(randf_range(500, 700), 0).rotated(randf_range(0, PI*2))
 						shot.lifespan = shot.time + 8
 					else:
 						shot.destroy()

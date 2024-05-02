@@ -46,7 +46,7 @@ lifetime = 0.8
 local_coords = true
 
 [node name="Hurtbox" parent="." instance=ExtResource("3_n7672")]
-dmg = 10
+dmg = 8
 kb_scale = 1800.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
