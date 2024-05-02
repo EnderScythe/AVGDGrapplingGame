@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://cserdjckfnxk6"]
 
-[ext_resource type="Script" path="res://$metadata/Projectile.gd" id="1_64ii6"]
-[ext_resource type="Texture2D" uid="uid://bkckcmps4w8ql" path="res://icon.svg" id="2_unb2t"]
-[ext_resource type="PackedScene" uid="uid://dhlisoh50xh2n" path="res://Enemies/Hurtbox.tscn" id="3_h6a0s"]
+[ext_resource type="Script" path="res://Boss/Projectile.gd" id="1_cbtrd"]
+[ext_resource type="Texture2D" uid="uid://bkckcmps4w8ql" path="res://icon.svg" id="2_vspqg"]
+[ext_resource type="PackedScene" uid="uid://dhlisoh50xh2n" path="res://Enemies/Hurtbox.tscn" id="3_5tc5x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cjkld"]
 radius = 33.0606
@@ -43,7 +43,7 @@ color = Color(3, 0, 0, 0.6)
 
 [node name="Projectile" type="Area2D"]
 collision_layer = 2
-script = ExtResource("1_64ii6")
+script = ExtResource("1_cbtrd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_cjkld")
@@ -51,7 +51,7 @@ shape = SubResource("CircleShape2D_cjkld")
 [node name="CoreParticles" type="GPUParticles2D" parent="."]
 amount = 5
 process_material = SubResource("ParticleProcessMaterial_x0jwo")
-texture = ExtResource("2_unb2t")
+texture = ExtResource("2_vspqg")
 lifetime = 0.7
 visibility_rect = Rect2(-300, -300, 300, 300)
 local_coords = true
@@ -59,12 +59,12 @@ local_coords = true
 [node name="AuraParticles" type="GPUParticles2D" parent="."]
 amount = 12
 process_material = SubResource("ParticleProcessMaterial_86uq3")
-texture = ExtResource("2_unb2t")
+texture = ExtResource("2_vspqg")
 lifetime = 0.4
 visibility_rect = Rect2(-1000, -1000, 1000, 1000)
 
-[node name="Hurtbox" parent="." instance=ExtResource("3_h6a0s")]
-dmg = 5
+[node name="Hurtbox" parent="." instance=ExtResource("3_5tc5x")]
+dmg = 8
 kb_scale = 400
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]

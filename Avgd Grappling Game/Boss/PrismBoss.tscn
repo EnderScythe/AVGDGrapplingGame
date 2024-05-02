@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://b1y2kbr22paxm"]
 
 [ext_resource type="Texture2D" uid="uid://bkckcmps4w8ql" path="res://icon.svg" id="1_he06o"]
-[ext_resource type="Script" path="res://$metadata/GenericTexture.gd" id="1_k4mgm"]
+[ext_resource type="Script" path="res://Boss/PrismBoss.gd" id="1_k4mgm"]
 [ext_resource type="PackedScene" uid="uid://dhlisoh50xh2n" path="res://Enemies/Hurtbox.tscn" id="3_n7672"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_es3qm"]
@@ -31,7 +31,7 @@ hue_variation_max = 0.1
 [sub_resource type="CircleShape2D" id="CircleShape2D_hb5qy"]
 radius = 93.1933
 
-[node name="GenericTexture" type="Node2D"]
+[node name="PrismBoss" type="Node2D"]
 z_index = 4
 script = ExtResource("1_k4mgm")
 
@@ -46,8 +46,8 @@ lifetime = 0.8
 local_coords = true
 
 [node name="Hurtbox" parent="." instance=ExtResource("3_n7672")]
-dmg = 5
-kb_scale = 2400
+dmg = 10
+kb_scale = 1800.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("CircleShape2D_hb5qy")

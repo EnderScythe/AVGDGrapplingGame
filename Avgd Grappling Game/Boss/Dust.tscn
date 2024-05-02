@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dxfavbtb6gju7"]
 
-[ext_resource type="Script" path="res://$metadata/AlternateTexture.gd" id="1_5ff3h"]
-[ext_resource type="Texture2D" uid="uid://bkckcmps4w8ql" path="res://icon.svg" id="2_1aedd"]
+[ext_resource type="Script" path="res://Boss/Dust.gd" id="1_8njnm"]
+[ext_resource type="Texture2D" uid="uid://bkckcmps4w8ql" path="res://icon.svg" id="2_4x2sn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ghd8e"]
 radius = 63.3877
@@ -43,10 +43,10 @@ scale_min = 0.1
 scale_max = 0.4
 color = Color(0, 0, 0, 1)
 
-[node name="AlternateTexture" type="CharacterBody2D"]
+[node name="Dust" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 4
-script = ExtResource("1_5ff3h")
+script = ExtResource("1_8njnm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ghd8e")
@@ -54,14 +54,14 @@ shape = SubResource("CircleShape2D_ghd8e")
 [node name="CoreParticles" type="GPUParticles2D" parent="."]
 amount = 5
 process_material = SubResource("ParticleProcessMaterial_tg5gj")
-texture = ExtResource("2_1aedd")
+texture = ExtResource("2_4x2sn")
 lifetime = 0.8
 local_coords = true
 
 [node name="AuraParticles" type="GPUParticles2D" parent="."]
 amount = 12
 process_material = SubResource("ParticleProcessMaterial_kcy87")
-texture = ExtResource("2_1aedd")
+texture = ExtResource("2_4x2sn")
 visibility_rect = Rect2(-500, -500, 500, 500)
 
 [node name="Area2D" type="Area2D" parent="."]

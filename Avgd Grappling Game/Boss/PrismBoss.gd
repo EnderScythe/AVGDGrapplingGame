@@ -3,7 +3,7 @@ extends Node2D
 @onready var sprite = $Sprite2D
 @onready var particles = $GPUParticles2D
 @onready var player = $/root/Global.get_player()
-var bullet_res = preload("res://$metadata/Projectile.tscn")
+var bullet_res = preload("res://Boss/Projectile.tscn")
 const base_offset = Vector2(0, -1200)
 
 var velocity = Vector2.ZERO
@@ -19,8 +19,8 @@ var timer = 0
 var phase_pool = []
 var data = []
 
-var level = 1  # difficulty scaling coefficient, increases with time -- considering deleting/replacing with different difficulty scaling mechanic
-var health = 4
+var level = 1  # difficulty scaling coefficient
+var health = [2, 4]
 
 var bullets = []
 
@@ -38,6 +38,7 @@ phase explanation
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	enter_phase(0)
+	add_user_signal("activate_hp_nodes")
 	
 
 
@@ -55,7 +56,7 @@ func _process(delta):
 	
 	position += velocity * delta
 	
-	level += delta
+	# level += delta
 	
 	
 
@@ -187,7 +188,7 @@ func phase_process(delta):
 		5: # converge repel
 			if timer < 3:
 				data[1] -= delta
-				if data[0] < 3 and data[1] < 0:
+				if data[0] < 2 and data[1] < 0:
 					# spawn_converge_ring(center, radius, num_shots, shot_vel, repel_f, time, split_cnt, split_vel)
 					spawn_converge_ring(player.position, 1600+200*data[0], 12+4*data[0], 800+100*data[0], 400000, 4.5, 3+data[0]*2, 800)
 					data[0] += 1
@@ -198,7 +199,7 @@ func phase_process(delta):
 					target_offset.y += randf_range(0, 300)
 					data[0] = 0
 					data[1] = 0
-			elif timer < 4.5:
+			elif timer < 5:
 				data[1] -= delta
 				if data[0] < 3 and data[1] < 0:
 					var dir = position.direction_to(player.position)
@@ -220,8 +221,8 @@ func phase_process(delta):
 					var spc = 100
 					var gap_size = 8
 					var rot_dir = data[1]
-					var duration = 10
-					spawn_wall_ring(position, radius, 30, -PI/4*rot_dir, 1, duration)
+					var duration = 8
+					spawn_wall_ring(position, radius, 30, -PI/4*rot_dir, 0.8, duration)
 					spawn_saw_gaps(position, ceil(radius/spc), 4, PI/6*rot_dir, duration, gap_size)
 					data[0] = 1
 			elif timer < 3:
@@ -246,14 +247,14 @@ func enter_phase(p):
 				if is_instance_valid(shot):
 					shot.destroy()
 		0:
-			timer = -randf_range(1, 3)
+			timer = -randf_range(1, 3) - 1.2 if level == 1 else 0
 			accl = 6000
 			maxspd = 3000
 			target_offset = base_offset
 			if phase_pool == null or phase_pool == []:
 				phase_pool = [2, 3, 4, 5, 6]
 		1:
-			timer = -0.8
+			timer = -0.8 - 0.4 if level == 1 else 0
 			accl = 24000
 			maxspd = 4000
 		2:
@@ -450,10 +451,17 @@ func spawn_saw_gaps(pos, blade_length, num_blades, ang_vel, lifespan, gap_size, 
 
 
 func take_dmg(dmg=1):
-	health -= dmg
-	if health <= 0:
-		enter_phase(-1)
-		PlayerVariables.ores_carried += 1000
+	health[1] -= dmg
+	if health[1] <= 0:
+		health[0] -= 1
+		if health[0] > 0:
+			health[1] = 4
+			level += 1
+			emit_signal("activate_hp_nodes")
+		else:
+			enter_phase(-1)
+			PlayerVariables.ores_carried += 1000
+	
 
 # returns a number that starts at ~0 and approaches n as level approaches infinity, at a rate determined by r (smaller=faster)
 func sclnum(n, r):
