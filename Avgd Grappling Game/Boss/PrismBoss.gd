@@ -213,7 +213,8 @@ func phase_process(delta):
 					var rot_dir = data[1]
 					var fade_time = 2
 					var duration = 9
-					spawn_wall_ring(position, radius, 30, -PI/4*rot_dir, fade_time, duration)
+					# wall split offset behavior: (ang_vel)*(split_cd) % (2*PI/num_shots)
+					spawn_wall_ring(position, radius, 30, -1.2*rot_dir, 0.24, fade_time, duration)
 					spawn_saw_gaps(position, ceil(radius/spc), 4 + (1 if level > 1 else 0), PI/6*rot_dir, duration, gap_size, fade_time)
 					data[0] = 1
 			elif timer < 2.5:
@@ -412,7 +413,7 @@ func spawn_converge_ring(center, radius, num_shots, shot_vel, repel_f, time, spl
 		add_bullet(shot, "repel", [repel_f, time, split_cnt, split_vel], -r.normalized()*shot_vel, center+r)
 		shot.apply_color(c)
 
-func spawn_wall_ring(center, radius, num_shots, ang_vel, fade_time, lifespan):
+func spawn_wall_ring(center, radius, num_shots, ang_vel, split_cd, fade_time, lifespan):
 	var c = Color(3, 0, 0)
 	c.h += randf()
 	for i in range(num_shots):
@@ -421,7 +422,7 @@ func spawn_wall_ring(center, radius, num_shots, ang_vel, fade_time, lifespan):
 		var r = Vector2(0, radius).rotated(angle)
 		var shot = bullet_res.instantiate()
 		# data: pivot, [radius, angle], ang_vel, split_cd, cur_split_cd, split_vel
-		add_bullet(shot, "wall", [center, [radius, angle], ang_vel, 0.21, fade_time, 1800], Vector2.ZERO, center+r)
+		add_bullet(shot, "wall", [center, [radius, angle], ang_vel, split_cd, fade_time, 1800], Vector2.ZERO, center+r)
 		shot.apply_color(c)
 		shot.fade_time = fade_time
 		shot.lifespan = lifespan
