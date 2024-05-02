@@ -2,7 +2,7 @@ extends AnimatedSprite2D
 
 @onready var player = get_parent()
 var hurt_time = 0;
-var HURT_ANIMATION_TIME = 1;
+var HURT_ANIMATION_TIME = 0.5
 var hit = false
 
 # Called when the node enters the scene tree for the first time.

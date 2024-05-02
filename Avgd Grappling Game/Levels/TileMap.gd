@@ -8,6 +8,9 @@ const ORE_ID = [7, 8]
 var rng = RandomNumberGenerator.new()
 @onready var player = get_parent().get_node("Player")
 var geyser = preload("res://Environmental Hazards/Geyser/gay.tscn")
+var stalactite = preload("res://Environmental Hazards/Stalactite/Stalactite.tscn")
+var ACCELERATION = 300
+var lava_velocity = Vector2(0, -1)
 
 func _ready():
 	proceduralGeneration()
@@ -17,7 +20,8 @@ func _process(delta):
 	var id = get_cell_source_id(0, Vector2i(player.position) / 144, true)
 	if time > dmgable:
 		if id in LAVA_ID:
-			print(get_cell_alternative_tile(0, Vector2i(player.position) / 144, true))
+			if player.velocity.y >= 0:
+				player.velocity = Vector2(player.velocity.x, player.velocity.y / 2) 
 			player.take_dmg(1) # Takes 2 dmg every instance of damage
 							   # Fair seemed to be 15 dmg every .75 dmg = 30 dmg every 1.5 secs => 20 dmg per sec => 1 dmg per .05 secs
 			dmgable = time + .05
@@ -26,14 +30,14 @@ func _process(delta):
 			PlayerVariables.ores_carried += 4
 			minable = time + PlayerVariables.swing_rate
 
-#<<<<<<< Updated upstream
+
 func deal_enemy_damage(position, body, delta):
 	time += delta
 	var id = get_cell_source_id(0, Vector2i(position) / 144, true)
 	if time > dmgable:
 		if id in LAVA_ID:
 			body.take_dmg(1) 
-#=======
+
 func proceduralGeneration():
 	var exposedCells = []
 	var outsideCells = []
@@ -60,15 +64,44 @@ func proceduralGeneration():
 			if get_cell_source_id(0, cell, true) == -1 and get_used_rect().has_point(cell):
 				air_count += 1
 				neighbor = cell
-		if air_count == 1 and neighbor.y < cellPosition.y:
+		if air_count == 1:
 			var rand = rng.randi_range(1, 100)
-			if rand <= 5:
-				var instance = geyser.instantiate()
-				instance.position = cellPosition * 144
-				add_sibling.call_deferred(instance)
-			elif rand > 5 and rand <= 15:
-				set_cell(0, cellPosition, 11, get_cell_atlas_coords(0, cellPosition, true), 0)
-					
-					
-		
-#>>>>>>> Stashed changes
+			var instance = null
+			if neighbor.y < cellPosition.y:
+				if rand <= 5:
+					var lava_size_max = rng.randi_range(3, 6)
+					for i in range(lava_size_max):
+						var right = Vector2i(cellPosition.x + i, cellPosition.y)
+						var left = Vector2i(cellPosition.x - i, cellPosition.y)
+						var rightID = get_cell_source_id(0, right, true)
+						var leftID = get_cell_source_id(0, left, true)
+						var depth = rng.randi_range(0, 2)
+						if rightID != -1 and rightID == 3:
+							set_cell(0, right, 11, get_cell_atlas_coords(0, right, true), 0)
+							var below = Vector2i(right.x, right.y - 1)
+							for j in range(depth):
+								if get_cell_source_id(0, below, true) == -1 or get_cell_source_id(0, Vector2i(below.x, below.y + 1), true) == -1:
+									break
+								else:
+									set_cell(0, below, 10, get_cell_atlas_coords(0, below, true), 0)
+									below = Vector2i(below.x, below.y + 1)
+						if leftID != -1 and leftID == 3:
+							set_cell(0, left, 11, get_cell_atlas_coords(0, left, true), 0)
+							var below = Vector2i(left.x, left.y + 1);
+							for j in range(depth):
+								if get_cell_source_id(0, below, true) == -1 or get_cell_source_id(0, Vector2i(below.x, below.y + 1), true) == -1:
+									break
+								else:
+									set_cell(0, below, 10, get_cell_atlas_coords(0, below, true), 0)
+									below = Vector2i(below.x, below.y + 1)
+			elif neighbor.y < cellPosition.y:
+				if rand > 10 and rand <= 15 and get_cell_source_id(0, cellPosition, true) != 11:
+					instance = geyser.instantiate()
+					instance.position = cellPosition * 144
+			elif neighbor.y > cellPosition.y:
+				if rand > 15 and rand <= 20:
+					instance = stalactite.instantiate()
+					instance.position = cellPosition * 144
+					instance.position.y += 240
+			if instance != null:
+				add_sibling.call_deferred(instance)	
