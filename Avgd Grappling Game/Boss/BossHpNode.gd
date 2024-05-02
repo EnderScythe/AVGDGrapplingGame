@@ -12,11 +12,16 @@ var decolor_timer = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	color.h += randf()
-	boss.connect("activate_hp_nodes", func():activate())
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if boss == null: queue_free()
+	if boss == null:
+		queue_free()
+		return
+	
+	if !has_user_signal("activate_hp_nodes"):
+		boss.connect("activate_hp_nodes", func():activate())
 	
 	if decolor_timer > 0:
 		decolor_timer -= delta
@@ -33,6 +38,7 @@ func on_hit(hit):
 	if !active: return
 	hp -= hit.dmg
 	if hp <= 0:
+		PlayerVariables.ores_carried += 50
 		deactivate()
 		if boss != null:
 			boss.take_dmg()

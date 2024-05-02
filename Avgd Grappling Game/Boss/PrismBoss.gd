@@ -96,6 +96,7 @@ func phase_process(delta):
 					shot.fade_out_time = 8
 					shot.lifespan = 0
 				queue_free()
+		
 		0: # passive
 			if timer >= 0:
 				enter_phase(1)
@@ -110,53 +111,41 @@ func phase_process(delta):
 		2: # hover
 			data[0] -= delta
 			if timer < 3:
+				data[1] += delta
 				if data[0] < 0:
 					data[0] = randf_range(0.25, 0.35) #- sclnum(0.2, 400)
 					var shot = bullet_res.instantiate()
-					add_bullet(shot, "hover", [0], Vector2(randf_range(400, 800), 0).rotated(randf_range(0, PI*2)))
-					shot.velocity.y *= 0.8
+					var delay = 3.3 + data[1]*(1-data[1]/3)
+					# data: mode, timer, delay
+					add_bullet(shot, "hover", [0, delay, 2], Vector2(randf_range(300, 600) * (-1 if randf() < 0.5 else 1), randf_range(-600, 100)))
 					var c = Color(3, 0, 0)
-					c.h += data[1]
-					c.h += data.size() * 0.08 * randf_range(0.9, 1.1)
+					c.h += data[2]
+					data[2] += 0.06
 					shot.apply_color(c)
-					data.append(shot)
 			elif timer < 3.5: pass
 			elif timer < 6:
-				accl = 1600
+				accl = 1500 + (100 if level > 1 else 0)
 				maxspd = 2400
 				target_offset = Vector2.ZERO
-				if data[0] < 0:
-					data[0] = 0.6 #- sclnum(0.45, 300)
-					if data.size() > 2:
-						var shot = data[2]
-						shot.data = [1, 0]
-						shot.velocity = Vector2(0, -450)
-						data.remove_at(2)
 			else:
-				while data.size() > 2:
-					var shot = data[2]
-					shot.data = [1, 0]
-					shot.velocity = Vector2(0, -450)
-					data.remove_at(2)
 				enter_phase(0)
 		
 		3: # wheel ring
-			var num_rings = 4
-			var shots_per_wheel = 3
 			if timer < 1.5:
 				rotspd *= pow(0.4, delta)
-			elif timer < 3.5:
+			elif timer < 3:
 				rotspd += PI*4 * delta
-				data[1] -= delta
-				if data[1] < 0 and data[0] < num_rings:
-					data[0] += 1
-					data[1] = 2/num_rings
-					var ring_dist = 300 + 1500*data[0]
-					var ring_spd = ring_dist/4
-					var ring_rot = 1 if data[0] % 2 == 0 else -1
-					var wheels_per_ring = 3 + 2*data[0]
-					spawn_wheel_ring(position, wheels_per_ring, shots_per_wheel, ring_dist, ring_spd, ring_rot*PI/10, PI/8, 300, 500, 5, 15)
-			elif timer < 4:
+				if data[0] == 0:
+					data[0] = -1 if randf() < 0.5 else 1
+					var num_rings = 4
+					var shots_per_wheel = 3
+					for i in range(num_rings):
+						var ring_dist = 1800 + 1500*i
+						var ring_spd = ring_dist/4
+						var ring_rot = data[0] * (1 if i % 2 == 0 else -1)
+						var wheels_per_ring = 5 + 2*i + (ceil(0.5*i) if level > 1 else 0)
+						spawn_wheel_ring(position, wheels_per_ring, shots_per_wheel, ring_dist, ring_spd, ring_rot*PI/10, PI/8, 300, 500, 5, 12)
+			elif timer < 3.5:
 				accl = 6000
 				maxspd = 3000
 			else:
@@ -174,8 +163,8 @@ func phase_process(delta):
 					var fire_dir = position.direction_to(player.position)
 					var saw_spd = 1200
 					var spd_decay = 300
-					var ang_vel = PI*6 * 1 if position.x < player.position.x else -1
-					spawn_saw(position, fire_dir*saw_spd, 2, 4, spd_decay, ang_vel, 3.5)
+					var ang_vel = PI*5 * (1 if position.x < player.position.x else -1)
+					spawn_saw(position, fire_dir*saw_spd, 2, 4 + (1 if level > 1 else 0), spd_decay, ang_vel, 3.5)
 					accl = 6000
 					maxspd = 4000
 					velocity = -fire_dir * 4000
@@ -204,30 +193,31 @@ func phase_process(delta):
 				if data[0] < 3 and data[1] < 0:
 					var dir = position.direction_to(player.position)
 					var spread = PI/3 + PI/6*data[0]
-					var ang_vel = PI*4 * 1 if position.x < player.position.x else -1
-					spawn_saw(position, dir.rotated(randf_range(-spread, spread))*randf_range(600, 800), 1, 3, 300, ang_vel, 3)
+					var ang_vel = PI*4 * (1 if position.x < player.position.x else -1)
+					spawn_saw(position, dir.rotated(randf_range(-spread, spread))*randf_range(500, 700), 1, 3 + (1 if level > 1 else 0), 260, ang_vel, 3)
 					data[0] += 1
 					data[1] = 0.1
 			else:
 				enter_phase(0)
 		
 		6: # revolving door
-			if timer < 0.5:
-				accl = 6000
+			if timer < 0.6: pass
+			elif timer < 1:
+				maxspd = 0
 				rotspd += PI*4 * data[1] * delta
-			if timer < 2:
+			elif timer < 1.5:
 				if data[0] == 0:
-					maxspd = 0
-					var radius = 2400
+					var radius = 2500
 					var spc = 100
-					var gap_size = 8
+					var gap_size = 9
 					var rot_dir = data[1]
 					var fade_time = 2
-					var duration = 8
+					var duration = 9
 					spawn_wall_ring(position, radius, 30, -PI/4*rot_dir, fade_time, duration)
-					spawn_saw_gaps(position, ceil(radius/spc), 4, PI/6*rot_dir, duration, gap_size, fade_time)
+					spawn_saw_gaps(position, ceil(radius/spc), 4 + (1 if level > 1 else 0), PI/6*rot_dir, duration, gap_size, fade_time)
 					data[0] = 1
-			elif timer < 3:
+			elif timer < 2.5:
+				accl = 6000
 				maxspd = 3000
 			else:
 				enter_phase(0)
@@ -245,26 +235,27 @@ func enter_phase(p):
 			data = [1, 0]
 			maxspd = 0
 			rotspd = 0
+			$Hurtbox.monitoring = false
 			for shot in bullets:
 				if is_instance_valid(shot):
 					shot.destroy()
 		0:
-			timer = -randf_range(1, 3) - 1.2 if level == 1 else 0
+			timer = -randf_range(1, 3) - (1.2 if level == 1 else 0)
 			accl = 6000
 			maxspd = 3000
 			target_offset = base_offset
 			if phase_pool == null or phase_pool == []:
 				phase_pool = [2, 3, 4, 5, 6]
 		1:
-			timer = -0.8 - 0.4 if level == 1 else 0
+			timer = -0.8 - (0.4 if level == 1 else 0)
 			accl = 24000
 			maxspd = 4000
 		2:
 			timer = 0
-			data = [0, randf()]
+			data = [0, 0, randf()]
 		3:
 			timer = 0
-			data = [0, 0]
+			data = [0]
 			maxspd = 0
 		4:
 			timer = 0
@@ -278,6 +269,7 @@ func enter_phase(p):
 			timer = 0
 			data = [0, 1 if randf() < 0.5 else -1]
 			target_offset *= 0.6
+			accl = 36000
 	
 	phase = p
 
@@ -292,13 +284,18 @@ func process_bullets(delta):
 		
 		var shot = bullets[index]
 		match shot.id:
-			"hover": # data: mode, timer
-				var mode = shot.data[0]
-				if mode == 0: shot.velocity = shot.velocity.limit_length(shot.velocity.length()-80*delta)
-				elif mode == 1:
+			"hover": # data: mode, timer, delay
+				if shot.data[0] == 0:
+					shot.velocity = shot.velocity.limit_length(shot.velocity.length()-80*delta)
+					shot.data[1] -= delta
+					if shot.data[1] < 0:
+						shot.data[0] = 1
+						shot.data[1] = shot.data[2]
+						shot.velocity = Vector2(0, -450)
+				elif shot.data[0] == 1:
 					shot.velocity = shot.velocity.limit_length(shot.velocity.length()-200*delta)
-					shot.data[1] += delta
-					if shot.data[1] > 2:
+					shot.data[1] -= delta
+					if shot.data[1] < 0:
 						shot.data[0] = 2
 						shot.velocity = shot.position.direction_to(player.position) * 1800
 						shot.lifespan = shot.time + 8
@@ -375,9 +372,9 @@ func orbital_motion(pivot, data, radial_vel, radius_target, angular_vel, delta):
 	return pivot + Vector2(data[0], 0).rotated(data[1])
 
 func spawn_saw(pos, vel, blade_length, num_blades, spd_decay, ang_vel, lifespan, enable_split=true, fade_time=0.2, spc=100):
-	# data: timer, pivot, pivot_vel, [radius, angle], rad_vel, rad_target, base_ang_vel, max_spd, spd_decay
+	# data: timer, pivot, pivot_vel, [radius, angle], rad_vel, rad_target, base_ang_vel, ang_decay, spd_decay, lifespan, enable_split
 	var center = bullet_res.instantiate()
-	add_bullet(center, "saw", [0, position, vel, [0, 0], 0, 0, 0, 0, spd_decay, lifespan, enable_split])
+	add_bullet(center, "saw", [0, position, vel, [0, vel.angle()], 0, 0, 0, 0, spd_decay, lifespan, enable_split])
 	var c = Color(3, 0, 0)
 	c.h += randf()
 	center.apply_color(c)
@@ -386,7 +383,7 @@ func spawn_saw(pos, vel, blade_length, num_blades, spd_decay, ang_vel, lifespan,
 		c.h += randf_range(0.08, 0.12)
 		for j in range(num_blades):
 			var shot = bullet_res.instantiate()
-			add_bullet(shot, "saw", [0, position, vel, [spc*i, PI*2*j/num_blades], 0, spc*i, ang_vel, 0 if vel.length() == 0 else ang_vel*spd_decay/vel.length(), spd_decay, lifespan, enable_split])
+			add_bullet(shot, "saw", [0, position, vel, [spc*i, vel.angle() + PI*2*j/num_blades], 0, spc*i, ang_vel, 0 if vel.length() == 0 else abs(ang_vel)*spd_decay/vel.length(), spd_decay, lifespan, enable_split])
 			shot.apply_color(c)
 			shot.fade_time = fade_time
 
@@ -424,7 +421,7 @@ func spawn_wall_ring(center, radius, num_shots, ang_vel, fade_time, lifespan):
 		var r = Vector2(0, radius).rotated(angle)
 		var shot = bullet_res.instantiate()
 		# data: pivot, [radius, angle], ang_vel, split_cd, cur_split_cd, split_vel
-		add_bullet(shot, "wall", [center, [radius, angle], ang_vel, 0.2, fade_time, 1800], Vector2.ZERO, center+r)
+		add_bullet(shot, "wall", [center, [radius, angle], ang_vel, 0.21, fade_time, 1800], Vector2.ZERO, center+r)
 		shot.apply_color(c)
 		shot.fade_time = fade_time
 		shot.lifespan = lifespan
@@ -461,13 +458,13 @@ func take_dmg(dmg=1):
 			emit_signal("activate_hp_nodes")
 		else:
 			enter_phase(-1)
-			PlayerVariables.ores_carried += 1000
+			PlayerVariables.ores_carried += 600
 	
 
 # returns a number that starts at ~0 and approaches n as level approaches infinity, at a rate determined by r (smaller=faster)
+# this method is not currently in use
 func sclnum(n, r):
 	return n/(1+r/level)
-
 
 
 func movement(delta):
@@ -493,6 +490,8 @@ func graphics(delta):
 	particles.process_material.orbit_velocity_max = abs(rotspd) / PI / 3
 	particles.process_material.orbit_velocity_min = 0.8
 	
+
+
 
 
 

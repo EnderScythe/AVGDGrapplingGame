@@ -15,7 +15,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var hook = null
 var SPEED = 600.0 # maximum horizontal speed from normal movement
 var JUMP_VELOCITY = -1200.0 # velocity at start of jump
-var ACCL = 4000.0 # how fast the player horizontally accelerates using normal movement
+var ACCL = 4200.0 # how fast the player horizontally accelerates using normal movement
 var AIR_ACCL_FAC = 0.5 # coefficient of ACCL when player is in the air
 var FRIC = 800.0 # friction when on the ground
 var LAUNCH_VEL = 3000.0 # velocity of launched hook
@@ -24,7 +24,7 @@ var HOOK_PULL = 4800.0 # acceleration towards hook when player is outside range
 var MAX_LENGTH = 1600.0 # maximum tether length (range)
 var REEL_SPEED = 1200.0 # affects the rate at which tether length changes and the maximum centripetal velocity when pulling in
 var PULL_BOOST_X = 1000.0 # p where Fc *= 1 + 2x/(x+p) and x is how much dist_to_hook exceeds tether length; p is the amount of extra distance such that Fc is doubled
-var IMMUNE_TIME = 0.5 # time the player is immune after receiving external damage
+var IMMUNE_TIME = 0.6 # time the player is immune after receiving external damage
 var STOP_FORCE = 1500 # flat reduction in current velocity upon taking a hit
 var itime = 0 # remaining immune time, in seconds
 var melee_cd = 0 # cooldown for melee attack
