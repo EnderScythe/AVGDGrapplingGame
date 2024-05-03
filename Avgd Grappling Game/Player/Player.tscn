@@ -1,38 +1,39 @@
-[gd_scene load_steps=36 format=3 uid="uid://cjlcm3gj7pmgf"]
+[gd_scene load_steps=37 format=3 uid="uid://cjlcm3gj7pmgf"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_0hqw1"]
 [ext_resource type="Script" path="res://Player/Inventory.gd" id="2_o1yc3"]
-[ext_resource type="Texture2D" uid="uid://5qmpoxky5rq7" path="res://Assets/Player/Walk/playerwalk_1 cont-1.png.png" id="3_aicxo"]
-[ext_resource type="Texture2D" uid="uid://b6htacitt4qq" path="res://Assets/Player/Idle/player_idle-1.png.png" id="3_atdol"]
-[ext_resource type="Texture2D" uid="uid://p7d7q1jiw04s" path="res://Assets/Player/Hurt/playerHurt-1.png.png" id="3_q2750"]
-[ext_resource type="Texture2D" uid="uid://wveb3xd7klxi" path="res://Assets/Player/Hurt/playerHurt-2.png.png" id="4_bi1va"]
-[ext_resource type="Texture2D" uid="uid://bsujwdqgvhtv4" path="res://Assets/Player/Idle/player_idle-2.png.png" id="4_pfimm"]
-[ext_resource type="Texture2D" uid="uid://ducso1alx8vb2" path="res://Assets/Player/Walk/playerwalk_1 cont-2.png.png" id="4_s0dcw"]
-[ext_resource type="Texture2D" uid="uid://bxrcdgop3m0rc" path="res://Assets/Player/Walk/playerwalk_1 cont-3.png.png" id="5_1hpbi"]
-[ext_resource type="Texture2D" uid="uid://bph1f1fowavnv" path="res://Assets/Player/Idle/player_idle-3.png.png" id="5_fsp7s"]
-[ext_resource type="Texture2D" uid="uid://rh6c71cnflfn" path="res://Assets/Player/Hurt/playerHurt-3.png.png" id="5_inxpi"]
-[ext_resource type="Texture2D" uid="uid://cgov4jc821cfg" path="res://Assets/Player/Walk/playerwalk_1 cont-4.png.png" id="6_1vqb6"]
-[ext_resource type="Texture2D" uid="uid://bonpjobnvnde5" path="res://Assets/Player/Hurt/playerHurt-4.png.png" id="6_icoau"]
-[ext_resource type="Texture2D" uid="uid://c6iq5hgyckcy5" path="res://Assets/Player/Idle/player_idle-4.png.png" id="6_q1b8v"]
-[ext_resource type="Texture2D" uid="uid://ck1bjli2qhfet" path="res://Assets/Player/Hurt/playerHurt-5.png.png" id="7_1damm"]
-[ext_resource type="Texture2D" uid="uid://cu1ma0xjg8k2f" path="res://Assets/Player/Walk/playerwalk_1 cont-5.png.png" id="7_y4vcy"]
-[ext_resource type="Texture2D" uid="uid://ribog4i67ru3" path="res://Assets/Player/Idle/player_idle-5.png.png" id="7_yu3mr"]
-[ext_resource type="Texture2D" uid="uid://cgabee2rqhv07" path="res://Assets/Player/Walk/playerwalk_1 cont-6.png.png" id="8_ckogi"]
-[ext_resource type="Texture2D" uid="uid://dokhmrv6rfikp" path="res://Assets/Player/Idle/player_idle-6.png.png" id="8_sp6ul"]
-[ext_resource type="Texture2D" uid="uid://bato61q8uyavr" path="res://Assets/Player/Walk/playerwalk_1 cont-7.png.png" id="9_gk1ej"]
-[ext_resource type="Texture2D" uid="uid://bmrj60abn1ylb" path="res://Assets/Player/Idle/player_idle-7.png.png" id="9_jksoq"]
-[ext_resource type="Texture2D" uid="uid://be5nlbe681fgh" path="res://Assets/Player/Idle/player_idle-8.png.png" id="10_e2tpk"]
-[ext_resource type="Texture2D" uid="uid://djfdiljk2xbui" path="res://Assets/Player/Walk/playerwalk_1 cont-8.png.png" id="10_j12j5"]
-[ext_resource type="Texture2D" uid="uid://k2fyy1jy1sne" path="res://Assets/Player/Idle/player_idle-9.png.png" id="11_itm8o"]
-[ext_resource type="Texture2D" uid="uid://dfpmywh0mwj1v" path="res://Assets/Player/Walk/playerwalk_1 cont-9.png.png" id="11_jf24i"]
-[ext_resource type="Texture2D" uid="uid://bodmdf67r8vcd" path="res://Assets/Player/Idle/player_idle-10.png.png" id="12_cpovj"]
-[ext_resource type="Texture2D" uid="uid://trt0mutnsq82" path="res://Assets/Player/Walk/playerwalk_1 cont-10.png.png" id="12_r7e8y"]
-[ext_resource type="Texture2D" uid="uid://bf0pa4ssrxgph" path="res://Assets/Player/Walk/playerwalk_1 cont-11.png.png" id="13_23qy1"]
-[ext_resource type="Texture2D" uid="uid://b0w02kij51hiu" path="res://Assets/Player/Walk/playerwalk_1 cont-12.png.png" id="14_x8ssi"]
+[ext_resource type="Texture2D" uid="uid://mn86p5kai3pd" path="res://Assets/Player/Walk/playerwalk_1 cont-1.png.png" id="3_aicxo"]
+[ext_resource type="Texture2D" uid="uid://vwcqhm3nao2u" path="res://Assets/Player/Idle/player_idle-1.png.png" id="3_atdol"]
+[ext_resource type="Texture2D" uid="uid://cv5gmaoaj7kix" path="res://Assets/Player/Hurt/playerHurt-1.png.png" id="3_q2750"]
+[ext_resource type="Texture2D" uid="uid://b1vwq7hlcwsql" path="res://Assets/Player/Hurt/playerHurt-2.png.png" id="4_bi1va"]
+[ext_resource type="Texture2D" uid="uid://cinvy8q8pgf8o" path="res://Assets/Player/Idle/player_idle-2.png.png" id="4_pfimm"]
+[ext_resource type="Texture2D" uid="uid://cnbenwjwm3fg5" path="res://Assets/Player/Walk/playerwalk_1 cont-2.png.png" id="4_s0dcw"]
+[ext_resource type="Texture2D" uid="uid://chq7x4g5omomb" path="res://Assets/Player/Walk/playerwalk_1 cont-3.png.png" id="5_1hpbi"]
+[ext_resource type="Texture2D" uid="uid://xxn45sspysp1" path="res://Assets/Player/Idle/player_idle-3.png.png" id="5_fsp7s"]
+[ext_resource type="Texture2D" uid="uid://by4a0ckxj6syc" path="res://Assets/Player/Hurt/playerHurt-3.png.png" id="5_inxpi"]
+[ext_resource type="Texture2D" uid="uid://bggd1r4vpl53f" path="res://Assets/Player/Walk/playerwalk_1 cont-4.png.png" id="6_1vqb6"]
+[ext_resource type="Texture2D" uid="uid://baa5rnckqq77d" path="res://Assets/Player/Hurt/playerHurt-4.png.png" id="6_icoau"]
+[ext_resource type="Texture2D" uid="uid://ryv5esvfds6m" path="res://Assets/Player/Idle/player_idle-4.png.png" id="6_q1b8v"]
+[ext_resource type="Texture2D" uid="uid://hn6isjm5vg7e" path="res://Assets/Player/Hurt/playerHurt-5.png.png" id="7_1damm"]
+[ext_resource type="Texture2D" uid="uid://dvadtmspswt71" path="res://Assets/Player/Walk/playerwalk_1 cont-5.png.png" id="7_y4vcy"]
+[ext_resource type="Texture2D" uid="uid://cmafubfkhsf83" path="res://Assets/Player/Idle/player_idle-5.png.png" id="7_yu3mr"]
+[ext_resource type="Texture2D" uid="uid://bg7d7pwgxg0nf" path="res://Assets/Player/Walk/playerwalk_1 cont-6.png.png" id="8_ckogi"]
+[ext_resource type="Texture2D" uid="uid://osovv68d0t2t" path="res://Assets/Player/Idle/player_idle-6.png.png" id="8_sp6ul"]
+[ext_resource type="Texture2D" uid="uid://douycvfuukfa0" path="res://Assets/Player/Walk/playerwalk_1 cont-7.png.png" id="9_gk1ej"]
+[ext_resource type="Texture2D" uid="uid://dc82av1epm0x" path="res://Assets/Player/Idle/player_idle-7.png.png" id="9_jksoq"]
+[ext_resource type="Texture2D" uid="uid://biyt2ci1d72s7" path="res://Assets/Player/Idle/player_idle-8.png.png" id="10_e2tpk"]
+[ext_resource type="Texture2D" uid="uid://c2adkayb6rcr4" path="res://Assets/Player/Walk/playerwalk_1 cont-8.png.png" id="10_j12j5"]
+[ext_resource type="Texture2D" uid="uid://dp386ir1ebea6" path="res://Assets/Player/Idle/player_idle-9.png.png" id="11_itm8o"]
+[ext_resource type="Texture2D" uid="uid://dxrtcdwlxa7yn" path="res://Assets/Player/Walk/playerwalk_1 cont-9.png.png" id="11_jf24i"]
+[ext_resource type="Texture2D" uid="uid://pdfvftjjpugq" path="res://Assets/Player/Idle/player_idle-10.png.png" id="12_cpovj"]
+[ext_resource type="Texture2D" uid="uid://dvsbxmua4i24v" path="res://Assets/Player/Walk/playerwalk_1 cont-10.png.png" id="12_r7e8y"]
+[ext_resource type="Texture2D" uid="uid://c5dikxrj4266s" path="res://Assets/Player/Walk/playerwalk_1 cont-11.png.png" id="13_23qy1"]
+[ext_resource type="Texture2D" uid="uid://ctnoxhcj0oqvn" path="res://Assets/Player/Walk/playerwalk_1 cont-12.png.png" id="14_x8ssi"]
 [ext_resource type="Script" path="res://Player/PlayerSprite.gd" id="30_ty42j"]
 [ext_resource type="PackedScene" uid="uid://bw8c03yqjhcb0" path="res://Menu/settings_scene.tscn" id="31_op2u3"]
-[ext_resource type="Texture2D" uid="uid://470kjxu5lead" path="res://Assets/Player/Shield/Shield.png" id="32_cg75t"]
+[ext_resource type="PackedScene" uid="uid://bksf07tlettfh" path="res://Menu/temp_settings_scene.tscn" id="32_j73u0"]
 [ext_resource type="Script" path="res://Assets/Player/Shield/Shield_Sprite.gd" id="33_7mn73"]
+[ext_resource type="Script" path="res://Menu/temp_settings_scene_pausable.gd" id="33_m05w0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j1f3m"]
 size = Vector2(126, 126)
@@ -206,13 +207,17 @@ animation = &"idle"
 frame_progress = 0.258642
 script = ExtResource("30_ty42j")
 
-[node name="settings" parent="." instance=ExtResource("31_op2u3")]
-process_mode = 3
-visible = false
-
 [node name="Shield_Sprite" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(0, -27)
 scale = Vector2(5, 5)
-texture = ExtResource("32_cg75t")
 script = ExtResource("33_7mn73")
+
+[node name="settings" parent="." instance=ExtResource("31_op2u3")]
+
+[node name="TempSettingsScene" parent="." instance=ExtResource("32_j73u0")]
+offset_left = -1244.0
+offset_top = -646.0
+offset_right = -1244.0
+offset_bottom = -646.0
+script = ExtResource("33_m05w0")

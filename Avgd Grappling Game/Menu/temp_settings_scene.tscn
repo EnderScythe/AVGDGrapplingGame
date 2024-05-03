@@ -53,6 +53,17 @@ layout_mode = 2
 layout_mode = 2
 theme_override_constants/separation = 100
 
+[node name="ResetKeybinds" type="Button" parent="TabContainer/Controls/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 2.08165e-12)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Reset to Default Settings
+"
+
+[node name="HSeparator8" type="HSeparator" parent="TabContainer/Controls/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 100
+
 [node name="HotkeyRebindButton" parent="TabContainer/Controls/MarginContainer/VBoxContainer" instance=ExtResource("1_rqxj6")]
 layout_mode = 2
 
@@ -113,3 +124,4 @@ visible = false
 layout_mode = 2
 
 [connection signal="tab_clicked" from="TabContainer" to="." method="_on_tab_container_tab_clicked"]
+[connection signal="pressed" from="TabContainer/Controls/MarginContainer/VBoxContainer/ResetKeybinds" to="." method="_on_reset_keybinds_pressed"]

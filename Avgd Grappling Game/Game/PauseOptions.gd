@@ -1,5 +1,7 @@
 extends Control
 var cam
+var controls_pressed = false
+@onready var conSettings = get_parent().get_parent().get_node("TempSettingsScene")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -10,6 +12,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass#position = cam.get_target_position()+Vector2(-500,-250)
+	if (conSettings.backClicked):
+		visible=true
 
 func _input(event):
 	if event.is_action_pressed("escape"):
@@ -28,4 +32,7 @@ func _on_volume_pressed():
 
 func _on_controls_pressed():
 	print("Changing controls")
-	get_tree().change_scene_to_file("res://Menu/temp_settings_scene.tscn")
+	get_tree().paused = false
+	hide()
+	controls_pressed = true
+

@@ -37,15 +37,14 @@ func set_text_for_key() -> void:
 		var action_keycode = OS.get_keycode_string(action_event.physical_keycode)
 		button.text = "%s" % action_keycode
 		print(action_keycode)
-	#elif action_event is InputEventMouseButton:
-		#print(OS.get_button_index_int(action_event.physical_button_index))
+	#elif action_event isb InputEventMouseButton:
+		#print(action_events + "hello")
 		
 		#pass
 		#if action_event 
 		#print(action_event)
 		
 func _on_button_toggled(button_pressed):
-	print("toggled")
 	if button_pressed:
 		button.text = "Press any key..."
 		set_process_unhandled_key_input(button_pressed)

@@ -12,7 +12,8 @@ func _process(delta):
 
 
 func _on_tab_container_tab_clicked(tab):
-	if tab == 2:
-		print("wtf")
+	if tab == 2: 
 		get_tree().change_scene_to_file("res://Menu/menu.tscn")
 
+func _on_reset_keybinds_pressed():
+	pass

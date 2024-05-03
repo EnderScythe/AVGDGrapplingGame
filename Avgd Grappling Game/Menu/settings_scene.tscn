@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Game/PauseOptions.gd" id="1_btqsj"]
 
 [node name="settings" type="Node2D"]
+process_mode = 3
 z_index = 100
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
