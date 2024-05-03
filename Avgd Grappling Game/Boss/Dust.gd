@@ -1,7 +1,6 @@
 extends CharacterBody2D
 
-@onready var global = $/root/Global
-@onready var player = global.get_player()
+@onready var player = Global.get_player()
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -51,7 +50,7 @@ func superjump():
 
 func _on_area_2d_body_entered(body):
 	if body is Player:
-		get_tree().call_deferred("change_scene_to_file", "res://$metadata/Arena.tscn")
+		get_tree().call_deferred("change_scene_to_file", "res://Boss/Arena.tscn")
 
 
 

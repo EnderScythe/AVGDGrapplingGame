@@ -122,7 +122,7 @@ func take_dmg(dmg):
 	if PlayerVariables.health <= 0:
 		PlayerVariables.health = PlayerVariables.max_health
 		PlayerVariables.ores_carried = 0
-		get_tree().reload_current_scene()
+		get_tree().call_deferred("reload_current_scene")
 
 func take_hit(dmg, kb=null):
 	if PlayerVariables.shield_health > 0 && PlayerVariables.has_shield == true:

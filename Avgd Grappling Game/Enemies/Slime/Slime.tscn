@@ -1,0 +1,81 @@
+[gd_scene load_steps=8 format=3 uid="uid://cvpw7d3f0xv6g"]
+
+[ext_resource type="Script" path="res://Enemies/Slime/Slime.gd" id="1_gx81s"]
+[ext_resource type="Texture2D" uid="uid://bkckcmps4w8ql" path="res://icon.svg" id="2_rrgec"]
+[ext_resource type="PackedScene" uid="uid://bmyvjd7iv4ce7" path="res://Enemies/HPComponent.tscn" id="3_381oy"]
+[ext_resource type="PackedScene" uid="uid://dhlisoh50xh2n" path="res://Enemies/Hurtbox.tscn" id="3_f7jmw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ghd8e"]
+radius = 63.3877
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tg5gj"]
+resource_local_to_scene = true
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 10.0
+emission_ring_inner_radius = 20.0
+angle_max = 720.0
+spread = 180.0
+initial_velocity_max = 10.0
+angular_velocity_max = 10.0
+orbit_velocity_max = 0.1
+radial_velocity_min = -10.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_max = 0.6
+color = Color(0, 0, 0, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_c13gu"]
+resource_local_to_scene = true
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 80.0
+angle_max = 720.0
+spread = 180.0
+initial_velocity_max = 20.0
+angular_velocity_max = 30.0
+orbit_velocity_max = 0.06
+gravity = Vector3(0, 0, 0)
+scale_min = 0.1
+scale_max = 0.25
+color = Color(0, 6, 1, 0.6)
+
+[node name="Slime" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_gx81s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ghd8e")
+
+[node name="CoreParticles" type="GPUParticles2D" parent="."]
+visible = false
+amount = 5
+process_material = SubResource("ParticleProcessMaterial_tg5gj")
+texture = ExtResource("2_rrgec")
+lifetime = 0.8
+local_coords = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0, 1, 0.533333, 1)
+scale = Vector2(0.796875, 0.796875)
+texture = ExtResource("2_rrgec")
+
+[node name="AuraParticles" type="GPUParticles2D" parent="."]
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_c13gu")
+texture = ExtResource("2_rrgec")
+lifetime = 0.8
+visibility_rect = Rect2(-500, -500, 500, 500)
+
+[node name="HpComponent" parent="." instance=ExtResource("3_381oy")]
+hp = 30
+
+[node name="Hurtbox" parent="." instance=ExtResource("3_f7jmw")]
+dmg = 6
+kb_scale = 1800.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_ghd8e")
