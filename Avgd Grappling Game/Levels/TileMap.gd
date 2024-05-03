@@ -42,6 +42,7 @@ func proceduralGeneration():
 	var exposedCells = []
 	var outsideCells = []
 	var origin = get_used_rect().position
+	var playerSpawn = Rect2i(-100, -100, 200, 200)
 	var end = get_used_rect().end
 	for i in range(end.x - origin.x):
 		outsideCells.append(Vector2i(origin.x + i, origin.y))
@@ -50,6 +51,8 @@ func proceduralGeneration():
 		outsideCells.append(Vector2i(origin.x, origin.y + i))
 		outsideCells.append(Vector2i(end.x, origin.y + i))
 	for cellPosition in get_used_cells(0):
+		if playerSpawn.has_point(cellPosition):
+			continue
 		var neighborCells = get_surrounding_cells(cellPosition)
 		for neighbor in neighborCells:
 			var cellID = get_cell_source_id(0, neighbor, true)
