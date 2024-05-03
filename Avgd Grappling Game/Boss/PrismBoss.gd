@@ -20,7 +20,7 @@ var phase_pool = []
 var data = []
 
 var level = 1  # difficulty scaling coefficient
-var health = [1, 1]
+var health = [2, 4]
 
 var bullets = []
 
@@ -65,6 +65,7 @@ func phase_process(delta):
 	timer += delta
 	match phase:
 		-1: # death
+			clear_bullets()
 			if timer < 0:
 				rotspd += PI*delta
 				data[1] -= delta

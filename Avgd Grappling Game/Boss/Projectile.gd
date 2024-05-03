@@ -51,7 +51,10 @@ func _process(delta):
 
 
 func destroy():
-	lifespan = min(lifespan, time + fade_out_time)
+	if active == 2:
+		lifespan = min(lifespan, time + fade_out_time)
+		return
+	lifespan = time + fade_out_time
 	active = 2
 
 
