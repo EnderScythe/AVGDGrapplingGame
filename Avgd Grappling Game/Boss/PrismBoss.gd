@@ -20,7 +20,7 @@ var phase_pool = []
 var data = []
 
 var level = 1  # difficulty scaling coefficient
-var health = [2, 4]
+var health = [1, 1]
 
 var bullets = []
 
@@ -237,9 +237,7 @@ func enter_phase(p):
 			maxspd = 0
 			rotspd = 0
 			$Hurtbox.monitoring = false
-			for shot in bullets:
-				if is_instance_valid(shot):
-					shot.destroy()
+			clear_bullets()
 		0:
 			timer = -randf_range(1, 3) - (1.2 if level == 1 else 0)
 			accl = 6000
@@ -329,7 +327,7 @@ func process_bullets(delta):
 					else:
 						shot.destroy()
 			
-			"repel": # data: repel_str, split_time, split_cnt, split_vel
+			"repel": # data: repel_f, split_time, split_cnt, split_vel
 				shot.velocity += player.position.direction_to(shot.position) / player.position.distance_to(shot.position) * shot.data[0] * delta
 				if shot.time > shot.data[1]:
 					for i in range(shot.data[2]):
@@ -409,7 +407,6 @@ func spawn_converge_ring(center, radius, num_shots, shot_vel, repel_f, time, spl
 		c.h += 1.0/num_shots
 		var r = Vector2(0, -radius).rotated(2*PI/num_shots*i)
 		var shot = bullet_res.instantiate()
-		# repel_str, split_time, split_cnt, split_vel
 		add_bullet(shot, "repel", [repel_f, time, split_cnt, split_vel], -r.normalized()*shot_vel, center+r)
 		shot.apply_color(c)
 
@@ -448,6 +445,10 @@ func spawn_saw_gaps(pos, blade_length, num_blades, ang_vel, lifespan, gap_size, 
 			shot.apply_color(c)
 			shot.fade_time = fade_time
 
+func clear_bullets():
+	for shot in bullets:
+		if is_instance_valid(shot):
+			shot.destroy()
 
 func take_dmg(dmg=1):
 	health[1] -= dmg
