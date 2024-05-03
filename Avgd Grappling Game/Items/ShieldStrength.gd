@@ -1,7 +1,6 @@
 extends Item
 
 var boost_value = 2
-const increment = 300
 
 # this is an example script for an item that increases the player's 
 # grapple range by 500px + an additional 300px every time they use the grappling hook
@@ -22,7 +21,7 @@ func apply_effect():
 	PlayerVariables.shield_health = PlayerVariables.shield_max
 
 func deapply_effect():
-	player.MAX_LENGTH -= boost_value
+	PlayerVariables.shield_max -= boost_value
 
 #func on_grapple():
 	#player.MAX_LENGTH += increment

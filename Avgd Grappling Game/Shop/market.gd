@@ -82,6 +82,9 @@ func roll_slot(spot):
 	var shield_upgrade = randi_range(1, 2)
 	selected_upgrades[spot] = shield_upgrade
 	buyable[spot] = UPGRADES[shield_upgrade].instantiate()
+	#$Option_3_Area/Sprite2D.set_texture(load(buyable[spot].get_img_path()))
+	get_node(str("Option_",spot+1,"_Area/Sprite2D")).set_texture(load(buyable[spot].get_img_path()))
+	get_node(str("Option_", spot+1)).text = buyable[spot].get_upgrade()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -99,7 +102,7 @@ func _process(delta):
 				print("reroll slot" + str(0))
 				roll_slot(0)
 				print(buyable[0].get_upgrade())
-				$Option_1_Area/Sprite2D.set_texture(load(buyable[0].get_img_path()))
+				#$Option_1_Area/Sprite2D.set_texture(load(buyable[0].get_img_path()))
 		if In_Option_2 == true and money >= buyable[1].get_cost():
 			money -= buyable[1].get_cost()
 			player.inventory.add_item(buyable[1])
@@ -109,7 +112,7 @@ func _process(delta):
 				print("reroll slot" + str(1))
 				roll_slot(1)
 				print(buyable[1].get_upgrade())
-				$Option_2_Area/Sprite2D.set_texture(load(buyable[1].get_img_path()))
+				#$Option_2_Area/Sprite2D.set_texture(load(buyable[1].get_img_path()))
 		if In_Option_3 == true and money >= buyable[2].get_cost():
 			money -= buyable[2].get_cost()
 			player.inventory.add_item(buyable[2])
@@ -119,7 +122,7 @@ func _process(delta):
 				print("reroll slot" + str(2))
 				roll_slot(2)
 				print(buyable[2].get_upgrade())
-				$Option_3_Area/Sprite2D.set_texture(load(buyable[2].get_img_path()))
+				#$Option_3_Area/Sprite2D.set_texture(load(buyable[2].get_img_path()))
 	PlayerVariables.coins = money
 
 func _on_option_1_area_body_entered(body):
