@@ -13,7 +13,7 @@ var ACCELERATION = 300
 var lava_velocity = Vector2(0, -1)
 
 func _ready():
-	proceduralGeneration()
+	hazardGeneration()
 
 func _process(delta):
 	time += delta
@@ -38,11 +38,12 @@ func deal_enemy_damage(position, body, delta):
 		if id in LAVA_ID:
 			body.take_dmg(1) 
 
-func proceduralGeneration():
+func hazardGeneration():
 	var exposedCells = []
 	var outsideCells = []
 	var origin = get_used_rect().position
-	var playerSpawn = Rect2i(origin.x, origin.y, 20, 6)
+	var pos = (Vector2i(position) / 144)
+	var playerSpawn = Rect2i(pos.x, pos.y, 20, 6)
 	var end = get_used_rect().end
 	for i in range(end.x - origin.x):
 		outsideCells.append(Vector2i(origin.x + i, origin.y))

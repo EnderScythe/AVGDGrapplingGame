@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bqkcq3ijkllyd"]
+[gd_scene load_steps=4 format=3 uid="uid://bqkcq3ijkllyd"]
 
 [ext_resource type="PackedScene" uid="uid://bi1ridl1wi85d" path="res://Levels/TileMap.tscn" id="1_t8dy4"]
 [ext_resource type="PackedScene" uid="uid://cjlcm3gj7pmgf" path="res://Player/Player.tscn" id="2_p5dgs"]
+[ext_resource type="PackedScene" uid="uid://bucbarig533t3" path="res://Levels/Teleporter.tscn" id="3_rph28"]
 
 [node name="Design4" type="Node2D"]
 
@@ -10,3 +11,6 @@ layer_0/tile_data = PackedInt32Array(-524295, 2, 0, 65529, 2, 0, 131065, 2, 0, 1
 
 [node name="Player" parent="." instance=ExtResource("2_p5dgs")]
 position = Vector2(-278, 1538)
+
+[node name="Teleporter" parent="." instance=ExtResource("3_rph28")]
+position = Vector2(17195, 2368)

@@ -36,7 +36,7 @@ func generateRandomEnemy():
 	var enemy_instance = null
 	#CURRENT SPAWN CHANCES: BAT -> 40%, SLIME -> 30%, SPIDER -> 20%, WORM->10%
 	if rand <= 40:
-		enemy_instance = worm.instantiate()
+		enemy_instance = bat.instantiate()
 	elif rand > 40 and rand <= 70:
 		enemy_instance = slime.instantiate()
 	elif rand > 70 and rand <= 90:

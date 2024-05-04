@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bokw6qqthgs75"]
+[gd_scene load_steps=5 format=3 uid="uid://bokw6qqthgs75"]
 
 [ext_resource type="PackedScene" uid="uid://bi1ridl1wi85d" path="res://Levels/TileMap.tscn" id="1_i4gl1"]
 [ext_resource type="PackedScene" uid="uid://cjlcm3gj7pmgf" path="res://Player/Player.tscn" id="2_4og4m"]
 [ext_resource type="PackedScene" uid="uid://cvpw7d3f0xv6g" path="res://Enemies/Slime/Slime.tscn" id="3_5lvk4"]
+[ext_resource type="PackedScene" uid="uid://bucbarig533t3" path="res://Levels/Teleporter.tscn" id="4_ns5ds"]
 
 [node name="Design5" type="Node2D"]
 position = Vector2(2825, 5482)
@@ -15,3 +16,6 @@ position = Vector2(-683, -1751)
 
 [node name="Slime" parent="." instance=ExtResource("3_5lvk4")]
 position = Vector2(466, -1759)
+
+[node name="Teleporter" parent="." instance=ExtResource("4_ns5ds")]
+position = Vector2(16284, 654)

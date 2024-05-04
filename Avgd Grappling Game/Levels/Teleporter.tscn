@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bucbarig533t3"]
+
+[ext_resource type="Script" path="res://Levels/Teleporter.gd" id="1_7go1m"]
+[ext_resource type="Texture2D" uid="uid://bkckcmps4w8ql" path="res://icon.svg" id="1_xnb4d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d0jfq"]
+size = Vector2(358, 322)
+
+[node name="Teleporter" type="Area2D"]
+script = ExtResource("1_7go1m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_d0jfq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2.79688, 2.52344)
+texture = ExtResource("1_xnb4d")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

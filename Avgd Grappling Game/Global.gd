@@ -3,7 +3,7 @@ extends Node
 var current_scene = null
 var scenes = [1, 2, 3, 4, 5]
 var rng = RandomNumberGenerator.new()
-
+@onready var teleporter = get_tree().current_scene.get_node("Teleporter")
 
 func _ready():
 	var root = get_tree().root
