@@ -43,8 +43,6 @@ func proceduralGeneration():
 	var outsideCells = []
 	var origin = get_used_rect().position
 	var playerSpawn = Rect2i(origin.x, origin.y, 20, 6)
-	print(playerSpawn.position)
-	print(playerSpawn.end)
 	var end = get_used_rect().end
 	for i in range(end.x - origin.x):
 		outsideCells.append(Vector2i(origin.x + i, origin.y))
