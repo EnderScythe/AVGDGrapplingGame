@@ -85,6 +85,7 @@ func roll_slot(spot):
 	#$Option_3_Area/Sprite2D.set_texture(load(buyable[spot].get_img_path()))
 	get_node(str("Option_",spot+1,"_Area/Sprite2D")).set_texture(load(buyable[spot].get_img_path()))
 	get_node(str("Option_", spot+1)).text = buyable[spot].get_upgrade()
+	get_node("Upgrade_Description").text = buyable[spot].get_descript()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
