@@ -1,5 +1,6 @@
 extends Item
 @onready var shield = get_parent().get_parent().get_node("Shield_Sprite")
+@onready var hud = get_parent().get_parent().get_node("HUD")
 # Completed
 
 # Called when the node enters the scene tree for the first time.
@@ -14,6 +15,7 @@ func _process(delta):
 func apply_effect():
 	PlayerVariables.has_shield = true
 	shield.trigger_shield_sprite()
+	hud.shield_has()
 
 func deapply_effect():
 	PlayerVariables.has_Shield = false
