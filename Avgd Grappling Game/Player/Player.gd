@@ -65,10 +65,6 @@ func _physics_process(delta):
 
 
 func _process(delta):
-	get_node("Health").text = "Health: " + str(ceil(PlayerVariables.health))
-	get_node("Coin").text = "Coin: " + str(floor(PlayerVariables.coins))
-	$Ores.text = "Ores: " + str(floor(PlayerVariables.ores_carried))
-	
 	itime -= delta
 	melee_cd -= delta
 	
@@ -117,7 +113,7 @@ func take_dmg(dmg):
 	sprite.play_hurt()
 	inventory.call_trigger("on_take_dmg", dmg)
 	PlayerVariables.health -= dmg
-	check_HP()
+	HP_Changed()
 	if PlayerVariables.health <= 0:
 		inventory.call_trigger("on_death")
 	if PlayerVariables.health <= 0:
@@ -145,12 +141,12 @@ func take_hit(dmg, kb=null):
 			velocity -= velocity.normalized() * STOP_FORCE
 		velocity += kb
 
-func check_HP():
-	$Low_HP.change_transparancy()
+func HP_Changed():
+	$HUD.Health_Changed()
 
 func heal(amt):
 	PlayerVariables.health += amt
-	check_HP()
+	HP_Changed()
 	if PlayerVariables.health > PlayerVariables.max_health:
 		PlayerVariables.health = PlayerVariables.max_health
 
