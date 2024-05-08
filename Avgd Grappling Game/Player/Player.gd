@@ -113,7 +113,6 @@ func take_dmg(dmg):
 	sprite.play_hurt()
 	inventory.call_trigger("on_take_dmg", dmg)
 	PlayerVariables.health -= dmg
-	HP_Changed()
 	if PlayerVariables.health <= 0:
 		inventory.call_trigger("on_death")
 	if PlayerVariables.health <= 0:
@@ -141,12 +140,8 @@ func take_hit(dmg, kb=null):
 			velocity -= velocity.normalized() * STOP_FORCE
 		velocity += kb
 
-func HP_Changed():
-	$HUD.Health_Changed()
-
 func heal(amt):
 	PlayerVariables.health += amt
-	HP_Changed()
 	if PlayerVariables.health > PlayerVariables.max_health:
 		PlayerVariables.health = PlayerVariables.max_health
 
