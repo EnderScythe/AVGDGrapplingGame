@@ -121,12 +121,6 @@ func take_dmg(dmg):
 		get_tree().call_deferred("reload_current_scene")
 
 func take_hit(dmg, kb=null):
-	if PlayerVariables.shield_health > 0 && PlayerVariables.has_shield == true:
-		PlayerVariables.shield_health -= 1
-		itime = IMMUNE_TIME
-		if PlayerVariables.shield_health == 0:
-			PlayerVariables.shield_broken = true
-			shield.trigger_shield_sprite()
 	if PlayerVariables.shield_health == 0 || PlayerVariables.has_shield == false:
 		if itime >= 0: return
 		itime = IMMUNE_TIME
@@ -139,6 +133,22 @@ func take_hit(dmg, kb=null):
 		else:
 			velocity -= velocity.normalized() * STOP_FORCE
 		velocity += kb
+	else:
+		if itime >= 0: return
+		itime = IMMUNE_TIME
+		PlayerVariables.shield_health -= 1
+	
+		if kb == null: return
+	
+		if velocity.length() <= STOP_FORCE:
+			velocity = Vector2.ZERO
+		else:
+			velocity -= velocity.normalized() * STOP_FORCE
+		velocity += kb
+		
+		if PlayerVariables.shield_health == 0:
+			PlayerVariables.shield_broken = true
+			shield.trigger_shield_sprite()
 
 func heal(amt):
 	PlayerVariables.health += amt
