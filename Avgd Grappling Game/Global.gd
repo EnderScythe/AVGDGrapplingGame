@@ -9,7 +9,7 @@ func _ready():
 	current_scene = root.get_child(root.get_child_count() - 1)
 	while(scenes[0] == 0):
 		scenes.shuffle()
-	#nextScene()
+	get_tree().change_scene_to_file("res://Menu/menu.tscn")
 
 func _enter_tree():
 	# get_tree().current_scene.add_child.call_deferred(load("res://$metadata/AssetLoader.tscn").instantiate())
@@ -23,7 +23,7 @@ func goto_scene(path):
 
 
 func _deferred_goto_scene(path):
-	current_scene.free()
+	# current_scene.free()
 
 	var s = ResourceLoader.load(path)
 
@@ -42,7 +42,7 @@ func get_player():
 func nextScene():
 	#get_tree().change_scene_to_file("res://Levels/Design" + str(scenes[0]) + ".tscn")
 	if(scenes[0] != 0):
-		goto_scene("res://Levels/Design" + str(scenes[0]) + ".tscn")
+		get_tree().change_scene_to_file("res://Levels/Design" + str(scenes[0]) + ".tscn")
 	else:
-		goto_scene("res://Shop/rest_area.tscn")
+		get_tree().change_scene_to_file("res://Shop/rest_area.tscn")
 	scenes.remove_at(0)
