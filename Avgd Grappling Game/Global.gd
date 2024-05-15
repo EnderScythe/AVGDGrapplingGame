@@ -1,14 +1,14 @@
 extends Node
 
 var current_scene = null
-var scenes = [1, 2, 3, 4, 5]
+var scenes = [0, 1, 2, 3, 4, 5]
 var rng = RandomNumberGenerator.new()
-@onready var teleporter = get_tree().current_scene.get_node("Teleporter")
 
 func _ready():
 	var root = get_tree().root
 	current_scene = root.get_child(root.get_child_count() - 1)
-	scenes.shuffle()
+	while(scenes[0] == 0):
+		scenes.shuffle()
 	#nextScene()
 
 func _enter_tree():
@@ -40,5 +40,9 @@ func get_player():
 # "res://Global.gd"
 
 func nextScene():
-	get_tree().change_scene_to_file("res://Levels/Design" + str(scenes[0]) + ".tscn")
+	#get_tree().change_scene_to_file("res://Levels/Design" + str(scenes[0]) + ".tscn")
+	if(scenes[0] != 0):
+		goto_scene("res://Levels/Design" + str(scenes[0]) + ".tscn")
+	else:
+		goto_scene("res://Shop/rest_area.tscn")
 	scenes.remove_at(0)
