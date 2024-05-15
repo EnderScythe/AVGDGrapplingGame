@@ -256,11 +256,12 @@ text = "C"
 horizontal_alignment = 1
 
 [node name="TempSettingsScene" parent="." instance=ExtResource("32_j73u0")]
+process_mode = 3
 visible = false
-offset_left = -1244.0
-offset_top = -646.0
-offset_right = -1244.0
-offset_bottom = -646.0
+offset_left = -1300.0
+offset_top = -629.0
+offset_right = -1300.0
+offset_bottom = -629.0
 script = ExtResource("33_m05w0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
