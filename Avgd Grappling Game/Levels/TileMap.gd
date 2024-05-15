@@ -11,9 +11,11 @@ var geyser = preload("res://Environmental Hazards/Geyser/gay.tscn")
 var stalactite = preload("res://Environmental Hazards/Stalactite/Stalactite.tscn")
 var ACCELERATION = 300
 var lava_velocity = Vector2(0, -1)
+@export var randomize = true
 
 func _ready():
-	hazardGeneration()
+	if randomize:
+		hazardGeneration()
 
 func _process(delta):
 	time += delta
