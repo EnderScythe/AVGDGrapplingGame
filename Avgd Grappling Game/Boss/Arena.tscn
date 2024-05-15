@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://ix3sh4j1ia1s"]
 
-[ext_resource type="Texture2D" uid="uid://dhetvknr6vh0v" path="res://Assets/Gray_Dank Cave Images/background/PREVIEW.png" id="1_k0wds"]
-[ext_resource type="Texture2D" uid="uid://o21xmvg2440r" path="res://Assets/Gray_Dank Cave Images/grayFilling.png" id="1_mra0f"]
+[ext_resource type="Texture2D" uid="uid://cgx307k0bob1m" path="res://Assets/Gray_Dank Cave Images/background/PREVIEW.png" id="1_k0wds"]
+[ext_resource type="Texture2D" uid="uid://dls1qpq1h0l4d" path="res://Assets/Gray_Dank Cave Images/grayFilling.png" id="1_mra0f"]
 [ext_resource type="PackedScene" uid="uid://cjlcm3gj7pmgf" path="res://Player/Player.tscn" id="2_2beu5"]
-[ext_resource type="PackedScene" uid="uid://bi1ridl1wi85d" path="res://Levels/TileMap.tscn" id="3_g1fo6"]
+[ext_resource type="PackedScene" path="res://Levels/TileMap.tscn" id="3_g1fo6"]
 [ext_resource type="PackedScene" uid="uid://b1y2kbr22paxm" path="res://Boss/PrismBoss.tscn" id="3_yeyaq"]
 [ext_resource type="PackedScene" uid="uid://cg8u4e35y1d52" path="res://Boss/BossHpNode.tscn" id="5_47sdr"]
 
