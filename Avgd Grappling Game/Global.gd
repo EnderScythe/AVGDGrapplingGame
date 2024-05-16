@@ -10,6 +10,7 @@ func _ready():
 	while(scenes[0] == 0):
 		scenes.shuffle()
 	get_tree().change_scene_to_file("res://Menu/menu.tscn")
+	scenes.append(-1)
 
 func _enter_tree():
 	# get_tree().current_scene.add_child.call_deferred(load("res://$metadata/AssetLoader.tscn").instantiate())
@@ -41,6 +42,9 @@ func get_player():
 
 func nextScene():
 	#get_tree().change_scene_to_file("res://Levels/Design" + str(scenes[0]) + ".tscn")
+	if scenes[0] == -1:
+		get_tree().change_scene_to_file("res://Boss/Arena.tscn")
+		return
 	if(scenes[0] != 0):
 		get_tree().change_scene_to_file("res://Levels/Design" + str(scenes[0]) + ".tscn")
 	else:
