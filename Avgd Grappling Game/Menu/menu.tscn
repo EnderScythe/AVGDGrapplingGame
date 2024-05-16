@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://c1ecjxi7w7ff8"]
 
 [ext_resource type="Script" path="res://Menu/Menu.gd" id="1_ax8nx"]
-[ext_resource type="Texture2D" uid="uid://dsj8xd5waljks" path="res://FWG_2560x1440.jpg" id="2_46y4l"]
+[ext_resource type="Texture2D" uid="uid://cgx307k0bob1m" path="res://Assets/Gray_Dank Cave Images/background/PREVIEW.png" id="2_3ckri"]
 [ext_resource type="Script" path="res://Menu/Camera2D.gd" id="3_803cc"]
 [ext_resource type="Script" path="res://Menu/MenuOptions.gd" id="4_2wxol"]
 [ext_resource type="Texture2D" uid="uid://b2n1er5ags1fv" path="res://Untitled drawing.png" id="5_q4yt7"]
@@ -23,8 +23,9 @@ motion_scale = Vector2(0.1, 0.1)
 motion_mirroring = Vector2(2560, 2.08165e-12)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Background"]
-position = Vector2(1281, 720)
-texture = ExtResource("2_46y4l")
+position = Vector2(1298.5, 741.5)
+scale = Vector2(5.42708, 5.47778)
+texture = ExtResource("2_3ckri")
 
 [node name="Camera2D" type="Camera2D" parent="ParallaxBackground"]
 position = Vector2(900, 602)
