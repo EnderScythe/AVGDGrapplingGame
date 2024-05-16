@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b3e788l2qcir0" path="res://Shop/market.tscn" id="7_obg3h"]
 [ext_resource type="PackedScene" path="res://Shop/health_pickup.tscn" id="8_xw2vr"]
 [ext_resource type="PackedScene" uid="uid://bl26f3l21o0qj" path="res://Environmental Hazards/Geyser/gay.tscn" id="10_4mvqr"]
-[ext_resource type="PackedScene" path="res://Levels/Teleporter.tscn" id="10_6ggo3"]
+[ext_resource type="PackedScene" uid="uid://bucbarig533t3" path="res://Levels/Teleporter.tscn" id="10_6ggo3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rnq5b"]
 texture = ExtResource("1_7bgmb")
