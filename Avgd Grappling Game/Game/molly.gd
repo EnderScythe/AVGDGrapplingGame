@@ -21,7 +21,9 @@ func _process(delta):
 func _on_body_entered(body):
 	deposit = time
 	in_molly = true
+	$Sprite2D.set_texture(preload("res://Assets/Molly/Open_Molly.png"))
 
 
 func _on_body_exited(body):
 	in_molly = false
+	$Sprite2D.set_texture(preload("res://Assets/Molly/Molly.png"))

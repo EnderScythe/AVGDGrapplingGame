@@ -10,7 +10,6 @@ func _ready():
 	$Player.visible = false
 	$Phase_0/Sprite2D.visible = true
 	$Phase_1/Lore.visible = false
-	$Phase_1/Move.visible = false
 	$Phase_2/Grapple_Text.visible = false
 	$Phase_3/Ore_Depot.visible = false
 	$Phase_3/Right_Click.visible = false
@@ -44,8 +43,6 @@ func phase_zero():
 func phase_one():
 	$Phase_1/Lore.text = "[system] you are an autonomous excavator. your sole purpose is to mine and deliver ores. this is a test set up by [redacted] to assess different scenarios."
 	$Phase_1/Lore.visible = true
-	if time > 7.5:
-		$Phase_1/Move.visible = true
 
 func phase_two():
 	$Phase_2/Grapple_Text.visible = true
