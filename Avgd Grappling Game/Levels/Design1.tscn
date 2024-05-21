@@ -1,12 +1,16 @@
 [gd_scene load_steps=8 format=3 uid="uid://oue7cxlo22v"]
 
+<<<<<<< Updated upstream
 [ext_resource type="Texture2D" uid="uid://bo2b10qd0x8pl" path="res://Assets/Gray_Dank Cave Images/background/PREVIEW.png" id="1_qj0tf"]
+=======
+[ext_resource type="Texture2D" uid="uid://cgx307k0bob1m" path="res://Assets/Gray_Dank Cave Images/background/PREVIEW.png" id="1_qj0tf"]
+>>>>>>> Stashed changes
 [ext_resource type="PackedScene" uid="uid://cjlcm3gj7pmgf" path="res://Player/Player.tscn" id="1_sxmqo"]
-[ext_resource type="PackedScene" uid="uid://bi1ridl1wi85d" path="res://Levels/TileMap.tscn" id="2_wtesr"]
-[ext_resource type="PackedScene" uid="uid://djnme3fdbjo55" path="res://Levels/EnemySpawner.tscn" id="4_wj3qm"]
+[ext_resource type="PackedScene" path="res://Levels/TileMap.tscn" id="2_wtesr"]
+[ext_resource type="PackedScene" path="res://Levels/EnemySpawner.tscn" id="4_wj3qm"]
 [ext_resource type="PackedScene" uid="uid://bl26f3l21o0qj" path="res://Environmental Hazards/Geyser/gay.tscn" id="5_u56tn"]
 [ext_resource type="PackedScene" uid="uid://it708vpxsog3" path="res://Environmental Hazards/Stalactite/Stalactite.tscn" id="6_0psk6"]
-[ext_resource type="PackedScene" uid="uid://bucbarig533t3" path="res://Levels/Teleporter.tscn" id="6_de0gj"]
+[ext_resource type="PackedScene" path="res://Levels/Teleporter.tscn" id="6_de0gj"]
 
 [node name="Design1" type="Node2D"]
 
