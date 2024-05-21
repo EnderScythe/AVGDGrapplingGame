@@ -30,7 +30,7 @@ func _process(delta):
 	if time > minable:
 		if id in ORE_ID:
 			PlayerVariables.ores_carried += 4
-			minable = time + PlayerVariables.swing_rate
+			minable = time + PlayerVariables.swing_cd
 
 
 func deal_enemy_damage(position, body, delta):
@@ -107,11 +107,13 @@ func hazardGeneration():
 									below = Vector2i(below.x, below.y + 1)
 						else:
 							leftAvailable = false
-			if neighbor.y < cellPosition.y:
-				instance = crystal.instantiate()
-				instance.position = cellPosition * 144
+			if neighbor.y < cellPosition.y and (get_cell_source_id(0, cellPosition, true) not in LAVA_ID):
+				var gem = rng.randi_range(1, 100)
+				if gem <= 5:
+					instance = crystal.instantiate()
+					instance.position = (cellPosition * 144) + Vector2i(72, -129)
 			elif neighbor.y < cellPosition.y:
-				if rand > 10 and rand <= 15 and get_cell_source_id(0, cellPosition, true) != 11:
+				if rand > 10 and rand <= 15 and get_cell_source_id(0, cellPosition, true) not in LAVA_ID:
 					instance = geyser.instantiate()
 					instance.position = cellPosition * 144
 			elif neighbor.y > cellPosition.y:
