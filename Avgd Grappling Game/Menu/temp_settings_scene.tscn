@@ -95,6 +95,14 @@ action_name = "launch_grapple"
 layout_mode = 2
 theme_override_constants/separation = 150
 
+[node name="HotkeyRebindButton8" parent="TabContainer/Controls/MarginContainer/VBoxContainer" instance=ExtResource("1_rqxj6")]
+layout_mode = 2
+action_name = "contract_grapple"
+
+[node name="HSeparator9" type="HSeparator" parent="TabContainer/Controls/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 150
+
 [node name="HotkeyRebindButton5" parent="TabContainer/Controls/MarginContainer/VBoxContainer" instance=ExtResource("1_rqxj6")]
 layout_mode = 2
 action_name = "extend_grapple"
@@ -105,7 +113,7 @@ theme_override_constants/separation = 150
 
 [node name="HotkeyRebindButton6" parent="TabContainer/Controls/MarginContainer/VBoxContainer" instance=ExtResource("1_rqxj6")]
 layout_mode = 2
-action_name = "contract_grapple"
+action_name = "escape"
 
 [node name="HSeparator7" type="HSeparator" parent="TabContainer/Controls/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -117,7 +125,23 @@ action_name = "interact"
 
 [node name="HSeparator10" type="HSeparator" parent="TabContainer/Controls/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 100
+theme_override_constants/separation = 150
+
+[node name="HotkeyRebindButton9" parent="TabContainer/Controls/MarginContainer/VBoxContainer" instance=ExtResource("1_rqxj6")]
+layout_mode = 2
+action_name = "throw"
+
+[node name="HSeparator11" type="HSeparator" parent="TabContainer/Controls/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 150
+
+[node name="HotkeyRebindButton10" parent="TabContainer/Controls/MarginContainer/VBoxContainer" instance=ExtResource("1_rqxj6")]
+layout_mode = 2
+action_name = "attack"
+
+[node name="HSeparator12" type="HSeparator" parent="TabContainer/Controls/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 150
 
 [node name="Back" type="TabBar" parent="TabContainer"]
 visible = false
