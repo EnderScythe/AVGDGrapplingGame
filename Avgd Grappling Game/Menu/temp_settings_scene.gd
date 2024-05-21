@@ -16,4 +16,4 @@ func _on_tab_container_tab_clicked(tab):
 		get_tree().change_scene_to_file("res://Menu/menu.tscn")
 
 func _on_reset_keybinds_pressed():
-	get_node("TabContainer").get_node("Controls").get_node("MarginContainer").get_node("VBoxContainer").get_node("HotkeyRebindButton").reset_default_keybinds()
+	pass
