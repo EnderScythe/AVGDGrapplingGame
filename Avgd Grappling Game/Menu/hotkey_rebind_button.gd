@@ -26,27 +26,21 @@ func set_action_name() -> void:
 			label.text = "Contract Grapple"
 		"extend_grapple":
 			label.text = "Extend Grapple"
-		"escape":
-			label.text = "Escape"
 		"interact":
 			label.text = "Interact Key"
-		"throw":
-			label.text = "Throw"
-		"attack":
-			label.text = "Attack"
 			
 func set_text_for_key() -> void: 
 	var action_events = InputMap.action_get_events(action_name)
 	var action_event = action_events[0]
-	#print(action_event)
+	print(action_event)
 	
 	if action_event is InputEventKey:
 		var action_keycode = OS.get_keycode_string(action_event.physical_keycode)
 		button.text = "%s" % action_keycode
-		#print(action_keycode)
+		print(action_keycode)
 	elif action_event is InputEventMouseButton:
 		button.text = "Mouse" + str(action_event.button_index)
-		#print(action_event)
+		print(action_event)
 		
 		#pass
 		#if action_event 
@@ -86,33 +80,6 @@ func rebind_action_key(event) -> void:
 	set_process_unhandled_key_input(false)
 	set_text_for_key()
 	set_action_name()
-	
-func reset_default_keybinds(): 
-	pass 
-	#match action_name:
-		#"jump":
-			#button.text = "Space"
-			#var action_events = InputMap.action_get_events(action_name)
-			#InputMap.action_erase_events(action_name)
-			##var x = InputEventKey
-			##x.physical_keycode = 32
-			#InputMap.action_add_event("jump", )
-			#
-		#"move_left":
-			#label.text = "Move Left"
-		#"move_right":
-			#label.text = "Move Left"
-		#"launch_grapple":
-			#label.text = "Launch Grapple"
-		#"contract_grapple":
-			#label.text = "Contract Grapple"
-		#"extend_grapple":
-			#label.text = "Extend Grapple"
-		#"interact":
-			#label.text = "Interact Key"
-	#set_process_unhandled_key_input(false)
-	#set_action_name()
-	#set_text_for_key()
 		
 
 	
