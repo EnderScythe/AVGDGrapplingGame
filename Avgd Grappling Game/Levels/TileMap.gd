@@ -9,6 +9,7 @@ var rng = RandomNumberGenerator.new()
 @onready var player = get_parent().get_node("Player")
 var geyser = preload("res://Environmental Hazards/Geyser/gay.tscn")
 var stalactite = preload("res://Environmental Hazards/Stalactite/Stalactite.tscn")
+var crystal = preload("res://Game/ore.tscn")
 var ACCELERATION = 300
 var lava_velocity = Vector2(0, -1)
 @export var randomize = true
@@ -106,6 +107,9 @@ func hazardGeneration():
 									below = Vector2i(below.x, below.y + 1)
 						else:
 							leftAvailable = false
+			if neighbor.y < cellPosition.y:
+				instance = crystal.instantiate()
+				instance.position = cellPosition * 144
 			elif neighbor.y < cellPosition.y:
 				if rand > 10 and rand <= 15 and get_cell_source_id(0, cellPosition, true) != 11:
 					instance = geyser.instantiate()
