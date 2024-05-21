@@ -109,7 +109,7 @@ func hazardGeneration():
 							leftAvailable = false
 			if neighbor.y < cellPosition.y and (get_cell_source_id(0, cellPosition, true) not in LAVA_ID):
 				var gem = rng.randi_range(1, 100)
-				if gem <= 5:
+				if gem <= 105:
 					instance = crystal.instantiate()
 					instance.position = (cellPosition * 144) + Vector2i(72, -129)
 			elif neighbor.y < cellPosition.y:

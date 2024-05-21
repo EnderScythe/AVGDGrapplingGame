@@ -4,7 +4,7 @@ const temp_item_res = preload("res://Items/DoubleJump.tscn") # just to test if i
 
 var max_health = 100
 var health = max_health
-var coins = 9999
+var coins = 0
 var inventory = []
 var swing_cd = 0.6 # in seconds (so default is 1 swing per .6 seconds)
 var rocket_vel = 0

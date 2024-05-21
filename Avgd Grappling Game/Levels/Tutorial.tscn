@@ -73,23 +73,20 @@ collision_layer = 0
 position = Vector2(2.5, 361.5)
 shape = SubResource("RectangleShape2D_4aig6")
 
-[node name="Ore_Depot" type="TextEdit" parent="Phase_3"]
-offset_left = 10888.0
-offset_top = 1118.0
-offset_right = 11805.0
-offset_bottom = 1298.0
+[node name="Ore_Depot" type="Label" parent="Phase_3"]
+offset_left = 10890.0
+offset_top = 1119.0
+offset_right = 11806.0
+offset_bottom = 1301.0
 theme_override_font_sizes/font_size = 100
 text = "[system] ore vein."
-placeholder_text = "test"
-editable = false
-context_menu_enabled = false
-shortcut_keys_enabled = false
-selecting_enabled = false
-deselect_on_focus_loss_enabled = false
-drag_and_drop_selection_enabled = false
-virtual_keyboard_enabled = false
-middle_mouse_paste_enabled = false
-wrap_mode = 1
+
+[node name="Label" type="Label" parent="Phase_3"]
+offset_left = 10992.0
+offset_top = 1747.0
+offset_right = 11710.0
+offset_bottom = 2029.0
+text = "[system] right_click() to harvest and mine."
 
 [node name="Right_Click" type="TextEdit" parent="Phase_3"]
 offset_left = 10992.0
