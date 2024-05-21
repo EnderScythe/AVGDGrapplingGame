@@ -19,7 +19,7 @@ func set_action_name() -> void:
 		"move_left":
 			label.text = "Move Left"
 		"move_right":
-			label.text = "Move Right"
+			label.text = "Move Left"
 		"launch_grapple":
 			label.text = "Launch Grapple"
 		"contract_grapple":
