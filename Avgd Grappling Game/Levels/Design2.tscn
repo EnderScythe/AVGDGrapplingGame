@@ -1,12 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bvjntygqn06fy"]
+[gd_scene load_steps=6 format=3 uid="uid://bvjntygqn06fy"]
 
 [ext_resource type="PackedScene" uid="uid://bi1ridl1wi85d" path="res://Levels/TileMap.tscn" id="1_e75u8"]
 [ext_resource type="Texture2D" uid="uid://cxvjron02dob3" path="res://Assets/Gray_Dank Cave Images/background/PREVIEW.png" id="1_yvsvg"]
 [ext_resource type="PackedScene" uid="uid://cjlcm3gj7pmgf" path="res://Player/Player.tscn" id="2_mvwam"]
-[ext_resource type="PackedScene" uid="uid://8htvqj06xg2w" path="res://Enemies/Worm/WormHead.tscn" id="3_lt3lt"]
-[ext_resource type="PackedScene" uid="uid://qajqqd2gk71l" path="res://Enemies/Bat/Bat.tscn" id="4_k3ltx"]
-[ext_resource type="PackedScene" uid="uid://cngjmghkejll0" path="res://Enemies/Spider/Spider.tscn" id="5_a2sik"]
-[ext_resource type="PackedScene" path="res://Levels/Teleporter.tscn" id="6_1pdeo"]
+[ext_resource type="PackedScene" uid="uid://djnme3fdbjo55" path="res://Levels/EnemySpawner.tscn" id="5_mywmx"]
+[ext_resource type="PackedScene" uid="uid://bucbarig533t3" path="res://Levels/Teleporter.tscn" id="6_1pdeo"]
 
 [node name="Design2" type="Node2D"]
 
@@ -21,20 +19,20 @@ layer_0/tile_data = PackedInt32Array(1966080, 2, 0, 2031616, 2, 0, 2031617, 2, 0
 [node name="Player" parent="." instance=ExtResource("2_mvwam")]
 position = Vector2(374, 4084)
 
-[node name="Worm" parent="." instance=ExtResource("3_lt3lt")]
-position = Vector2(8615, 986)
-
-[node name="Bat" parent="." instance=ExtResource("4_k3ltx")]
-position = Vector2(13008, 3525)
-
-[node name="Spider" parent="." instance=ExtResource("5_a2sik")]
-position = Vector2(6069, 3628)
-
-[node name="Bat2" parent="." instance=ExtResource("4_k3ltx")]
-position = Vector2(16178, 2053)
-
-[node name="Spider2" parent="." instance=ExtResource("5_a2sik")]
-position = Vector2(17216, 3629)
-
 [node name="Teleporter" parent="." instance=ExtResource("6_1pdeo")]
 position = Vector2(18217, 3820)
+
+[node name="EnemySpawner" parent="." instance=ExtResource("5_mywmx")]
+position = Vector2(8737, 3708)
+
+[node name="EnemySpawner2" parent="." instance=ExtResource("5_mywmx")]
+position = Vector2(16103, 1752)
+
+[node name="EnemySpawner3" parent="." instance=ExtResource("5_mywmx")]
+position = Vector2(14071, 3581)
+
+[node name="EnemySpawner4" parent="." instance=ExtResource("5_mywmx")]
+position = Vector2(4394, 2210)
+
+[node name="EnemySpawner5" parent="." instance=ExtResource("5_mywmx")]
+position = Vector2(11099, 1981)

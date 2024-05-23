@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqkcq3ijkllyd"]
+[gd_scene load_steps=6 format=3 uid="uid://bqkcq3ijkllyd"]
 
 [ext_resource type="PackedScene" uid="uid://bi1ridl1wi85d" path="res://Levels/TileMap.tscn" id="1_t8dy4"]
 [ext_resource type="Texture2D" uid="uid://cxvjron02dob3" path="res://Assets/Gray_Dank Cave Images/background/PREVIEW.png" id="1_v51u8"]
 [ext_resource type="PackedScene" uid="uid://cjlcm3gj7pmgf" path="res://Player/Player.tscn" id="2_p5dgs"]
-[ext_resource type="PackedScene" path="res://Levels/Teleporter.tscn" id="3_rph28"]
+[ext_resource type="PackedScene" uid="uid://bucbarig533t3" path="res://Levels/Teleporter.tscn" id="3_rph28"]
+[ext_resource type="PackedScene" uid="uid://djnme3fdbjo55" path="res://Levels/EnemySpawner.tscn" id="5_wvw1p"]
 
 [node name="Design4" type="Node2D"]
 
@@ -20,3 +21,18 @@ position = Vector2(-289, 1763)
 
 [node name="Teleporter" parent="." instance=ExtResource("3_rph28")]
 position = Vector2(17195, 2368)
+
+[node name="EnemySpawner" parent="." instance=ExtResource("5_wvw1p")]
+position = Vector2(3518, 1671)
+
+[node name="EnemySpawner2" parent="." instance=ExtResource("5_wvw1p")]
+position = Vector2(14916, -778)
+
+[node name="EnemySpawner3" parent="." instance=ExtResource("5_wvw1p")]
+position = Vector2(15511, 2141)
+
+[node name="EnemySpawner4" parent="." instance=ExtResource("5_wvw1p")]
+position = Vector2(2428, -639)
+
+[node name="EnemySpawner5" parent="." instance=ExtResource("5_wvw1p")]
+position = Vector2(9349, -394)
