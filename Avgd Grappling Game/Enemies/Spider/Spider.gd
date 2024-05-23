@@ -26,8 +26,10 @@ func _ready():
 
 func _physics_process(delta):
 	var playerPosition = get_parent().get_node("Player").position
-	get_tree().current_scene.get_node("TileMap").deal_enemy_damage(position, self, delta)
-	
+	#get_tree().current_scene.get_node("TileMap").deal_enemy_damage(position, self, delta)
+	var tilemap = get_tree().current_scene.get_node("TileMap")
+	#if get_tree().current_scene.name != "TestRoom":
+	tilemap.deal_enemy_damage(position, self, delta)
 	#if !$l_ray.is_colliding():
 		#spiderState = "chase"
 	
