@@ -2,6 +2,7 @@ extends Area2D
 
 @onready var boss = get_parent().get_node("PrismBoss")
 @onready var sprite = $Sprite2D
+@onready var particle = $GPUParticles2D
 
 var color = Color(2, 0, 0)
 var hp = 30
@@ -33,9 +34,11 @@ func _process(delta):
 		modulate = color.lerp(Color(0.3, 0.3, 0.3), decolor_timer/decolor_time)
 	else:
 		modulate = color.lerp(Color(0.3, 0.3, 0.3), 1-decolor_timer/decolor_time)
+	
 
 func on_hit(hit):
 	if !active: return
+	particle.emitting = true
 	hp -= hit.dmg
 	if hp <= 0:
 		PlayerVariables.ores_carried += 50

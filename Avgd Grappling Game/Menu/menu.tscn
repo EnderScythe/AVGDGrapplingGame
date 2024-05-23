@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://c1ecjxi7w7ff8"]
 
 [ext_resource type="Script" path="res://Menu/Menu.gd" id="1_ax8nx"]
-[ext_resource type="Texture2D" uid="uid://cgx307k0bob1m" path="res://Assets/Gray_Dank Cave Images/background/PREVIEW.png" id="2_3ckri"]
+[ext_resource type="Texture2D" uid="uid://djcmbgc4gf0ev" path="res://Assets/Gray_Dank Cave Images/background/PREVIEW.png" id="2_3ckri"]
 [ext_resource type="Script" path="res://Menu/Camera2D.gd" id="3_803cc"]
 [ext_resource type="Script" path="res://Menu/MenuOptions.gd" id="4_2wxol"]
 [ext_resource type="Texture2D" uid="uid://b2n1er5ags1fv" path="res://Untitled drawing.png" id="5_q4yt7"]

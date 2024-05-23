@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bl26f3l21o0qj"]
+[gd_scene load_steps=8 format=3 uid="uid://bl26f3l21o0qj"]
 
 [ext_resource type="Script" path="res://Environmental Hazards/Geyser/gayser.gd" id="1_aaptn"]
 [ext_resource type="Texture2D" uid="uid://bkckcmps4w8ql" path="res://icon.svg" id="2_jurau"]
-[ext_resource type="Texture2D" uid="uid://do4ku158rky7k" path="res://Assets/Gayser/menacing (1).png" id="3_og5te"]
-[ext_resource type="Texture2D" uid="uid://vq6ssk2dat3b" path="res://Assets/Gayser/menacingDarke2.png" id="4_gkr2f"]
+[ext_resource type="Texture2D" uid="uid://cunjwqqbgiii1" path="res://Assets/Gayser/menacing (1).png" id="3_og5te"]
+[ext_resource type="Texture2D" uid="uid://bq6cje4xj4yrh" path="res://Assets/Gayser/menacingDarke2.png" id="4_gkr2f"]
+[ext_resource type="AudioStream" uid="uid://bp6yabtwu2abj" path="res://Assets/Sound Effects/Vine boom sound effect.mp3" id="5_s436e"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qtdkl"]
 radius = 48.0
@@ -67,6 +68,10 @@ fixed_fps = 60
 trail_lifetime = 0.05
 trail_sections = 2
 trail_section_subdivisions = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_s436e")
+pitch_scale = 1.5
 
 [connection signal="body_entered" from="DectectionArea" to="." method="_on_area_2d_body_entered"]
 [connection signal="finished" from="GPUParticles2D" to="." method="_on_gpu_particles_2d_finished"]

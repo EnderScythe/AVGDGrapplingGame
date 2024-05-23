@@ -9,7 +9,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	print(get_local_mouse_position().angle())
 	flip_h = sprite.flip_h
 	self.rotation = sprite.get_local_mouse_position().angle() - PI/2
 	if sprite.flip_h:

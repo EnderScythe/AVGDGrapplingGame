@@ -5,10 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://bi1ridl1wi85d" path="res://Levels/TileMap.tscn" id="3_p621m"]
 [ext_resource type="PackedScene" uid="uid://ccm4mwbk8a1q2" path="res://Game/molly.tscn" id="4_v2alb"]
 [ext_resource type="PackedScene" uid="uid://ictrkea1qqrn" path="res://Game/ore.tscn" id="7_byro4"]
-[ext_resource type="Texture2D" uid="uid://di2as5abw2bcr" path="res://Assets/Tutorial/Key_A.png" id="7_rowv3"]
-[ext_resource type="Texture2D" uid="uid://bfo3ymeg8bq1x" path="res://Assets/Tutorial/Key_D.png" id="8_rb0at"]
+[ext_resource type="Texture2D" uid="uid://31svjgempacm" path="res://Assets/Tutorial/Key_A.png" id="7_rowv3"]
+[ext_resource type="Texture2D" uid="uid://o4a1s0kcge3q" path="res://Assets/Tutorial/Key_D.png" id="8_rb0at"]
 [ext_resource type="PackedScene" uid="uid://bucbarig533t3" path="res://Levels/Teleporter.tscn" id="8_vf0du"]
-[ext_resource type="Texture2D" uid="uid://bgxnxuxqh68wn" path="res://Assets/Tutorial/Black_Box.png" id="9_ukq40"]
+[ext_resource type="Texture2D" uid="uid://b26leicrc488s" path="res://Assets/Tutorial/Black_Box.png" id="9_ukq40"]
 [ext_resource type="PackedScene" uid="uid://it708vpxsog3" path="res://Environmental Hazards/Stalactite/Stalactite.tscn" id="11_xaj7t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4aig6"]

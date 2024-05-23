@@ -1,6 +1,5 @@
 extends Area2D
 
-@onready var player = get_node("res://Player/Player.tscn")
 var time = 0
 var white = -1
 var max_hits = 5
