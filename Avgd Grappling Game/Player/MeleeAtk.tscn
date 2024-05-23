@@ -38,6 +38,7 @@ position = Vector2(26.3333, -5)
 shape = SubResource("RectangleShape2D_8wvj8")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+visible = false
 position = Vector2(-6.66667, -17)
 emitting = false
 amount = 12
@@ -50,6 +51,7 @@ explosiveness = 0.75
 local_coords = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 self_modulate = Color(1, 1, 1, 0.0980392)
 position = Vector2(28, -4.66667)
 scale = Vector2(0.346354, 0.528646)

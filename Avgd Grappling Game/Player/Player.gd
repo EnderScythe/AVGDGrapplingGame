@@ -68,11 +68,14 @@ func _process(delta):
 	itime -= delta
 	melee_cd -= delta
 	
+	$AnimatedSprite2D/Arm.set_frame(1 if hook else 0)
+	
 	if PlayerVariables.shield_broken == true:
 		regen_shield(delta)
 
 func launch_grapple(angle):
-	if hook != null: return
+	if hook != null:
+		return
 	hook = HOOK_RES.instantiate()
 	hook.player = self
 	hook.position = position
@@ -93,7 +96,9 @@ func _input(event):
 			hook.enter_retract()
 	elif event.is_action_pressed("attack"):
 		if melee_cd <= 0:
+			#$AnimatedSprite2D.play("pick")
 			spawn_melee()
+			$AudioStreamPlayer.playing = true
 			melee_cd = variables.swing_cd
 	
 
@@ -110,6 +115,7 @@ func grapple_process(delta):
 		velocity = tangential_vel + to_hook * centripetal_vel_fac + centripetal_force
 
 func take_dmg(dmg):
+	$AudioStreamPlayer2.playing = true
 	sprite.play_hurt()
 	inventory.call_trigger("on_take_dmg", dmg)
 	PlayerVariables.health -= dmg

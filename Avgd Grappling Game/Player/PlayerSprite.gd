@@ -15,7 +15,9 @@ func _process(delta):
 	if hit:
 		play("hurt")
 	if get_animation() != "hurt":
-		if Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
+		if Input.is_action_pressed("attack"):
+			play("pick")	
+		elif Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
 			if player.is_on_floor():
 				play("walk")
 		else:

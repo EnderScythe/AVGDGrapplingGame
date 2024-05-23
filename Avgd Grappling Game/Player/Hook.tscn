@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://bautgcdxopws3"]
 
 [ext_resource type="Script" path="res://Player/Hook.gd" id="1_fuc4f"]
-[ext_resource type="Texture2D" uid="uid://bkckcmps4w8ql" path="res://icon.svg" id="2_d3cyg"]
+[ext_resource type="Texture2D" uid="uid://p7r26osj5ryl" path="res://Assets/Player/Detached arm and grapple/grapple_hand.png.png" id="2_oi2pr"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_t8ng7"]
-radius = 27.074
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3tvs3"]
+size = Vector2(29, 17.3333)
 
 [node name="Hook" type="RigidBody2D"]
 collision_layer = 9
@@ -13,10 +13,13 @@ gravity_scale = 0.05
 script = ExtResource("1_fuc4f")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.421875, 0.421875)
-texture = ExtResource("2_d3cyg")
+position = Vector2(4, -15)
+scale = Vector2(8, 8)
+texture = ExtResource("2_oi2pr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_t8ng7")
+position = Vector2(1, -4)
+scale = Vector2(1, 0.75)
+shape = SubResource("RectangleShape2D_3tvs3")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

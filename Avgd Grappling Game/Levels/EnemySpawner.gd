@@ -8,9 +8,9 @@ var slime = preload("res://Enemies/Slime/Slime.tscn")
 var prev_time = 0
 var time = 0;
 var enemies = []
-var SPAWN_TIMER = rng.randi_range(10, 15)
+var SPAWN_TIMER = rng.randi_range(30, 60)
 #MAX NUMBER OF ENEMIES ONE ENEMYSPAWNER CAN HAVE MADE AT A TIME
-const MAX_ENEMIES = 3
+const MAX_ENEMIES = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

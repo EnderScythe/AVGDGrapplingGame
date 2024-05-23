@@ -25,6 +25,7 @@ func _on_area_2d_body_entered(body):
 
 func fire(body):
 	if(!cooldown):
+		$AudioStreamPlayer.playing = true
 		$DectectionArea/CollisionShape2D.set_deferred("disabled", true)
 		$GPUParticles2D.set_deferred("emitting", true)
 		if body is Player: body.take_hit(8, position.direction_to(body.position)*2400)

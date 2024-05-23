@@ -57,7 +57,12 @@ func dist_player():
 
 func _draw():
 	if player == null: return
-	draw_line(Vector2.ZERO, (player.position - position).rotated(-rotation), Color(0.3, 0.4, 1), 4)
+	var dist = player.position - position
+	var arm = player.get_node("AnimatedSprite2D").get_node("Arm")
+	if arm != null:
+		dist += arm.get_hand_pos()
+	draw_line(Vector2.ZERO, dist.rotated(-rotation), Color(0.3, 0.4, 1), 4)
+	
 
 
 func _on_body_entered(body):
