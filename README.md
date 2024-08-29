@@ -1,2 +1,3 @@
 # AVGDGrapplingGame
-Gaming with the guhs.
+
+2d Sidescroller Video Game
